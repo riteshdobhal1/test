@@ -1,0 +1,1 @@
+DROP table ums.user_activity_incexc, ums.realm_incexc, ums.org_incexc, ums.user_by_mps_incexc, ums.end_customer_incexc, ums.end_customer_serials_incexc, ums.sso_details_incexc, ums.mps_incexc, ums.features_incexc, ums.role_incexc, ums.role_mps_features_incexc, ums.role_realms_incexc, ums.user_incexc, ums.prospect_incexc;

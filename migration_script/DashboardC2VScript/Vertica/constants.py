@@ -1,12 +1,12 @@
-vertica_host = 'gbq-searchdev-01'
+vertica_host = 'gbq-cass-03'
 vertica_port = 5433
 vertica_user = 'gbq'
-vertica_password = 'Gla55Beam'
+vertica_password = 'dbadmin123'
 vertica_database = 'glassbeam'
 buffer_size=65536
-vertica_keyspace = 'infoserver'
+vertica_keyspace = 'dashboards'
 
-vertica_table_test_name_suffix = '_test'
+vertica_table_test_name_suffix = '_testing'
 
 vertica_schema_tables = {
     'dashboards': f'dashboards{vertica_table_test_name_suffix}',

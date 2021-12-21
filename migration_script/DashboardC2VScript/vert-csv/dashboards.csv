@@ -44,6 +44,52 @@ gdi/gdi/podv10|ef0d9b18-364d-415d-bff1-2e79f3c478fb||||2021-06-02 14:12:08.59100
 gdi/gdi/podv10|f3830f79-1f69-4398-aaeb-cb4cb4fd064c||||2021-08-02 07:39:24.719000||||Top10 Exams|True|2021-08-02 07:39:24.719000||||Tableau|False
 gdi/gdi/podv10|f414e5ea-9f30-41fd-856b-ee881e084e80||||2021-08-02 07:39:24.719000||||CT Referral Analysis Trend Report (Clinsights 2.1)|True|2021-08-02 07:39:24.719000||||Tableau|False
 gdi/gdi/podv10|fb11bbd7-a892-4e63-8a15-83c698e0a916||||2021-08-02 07:39:24.719000||||Radiology Home v501|True|2021-08-02 07:39:24.719000||||Tableau|False
+kodak/kodak/podui|d312374b-db90-4393-bacd-98f0a4898934|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Alaris Summary Dashboard|True|2020-11-20 16:35:41.758000|kodakadmin@glassbeam.com|||Internal|False
+kodak/kodak/podui|d312474b-db90-4393-bacd-98f0a4898934|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Inactive Account Dashboard|True|2020-11-20 16:35:03.612000|kodakadmin@glassbeam.com|||Internal|False
+kodak/kodak/podui|d312574b-db90-4393-bacd-98f0a4898934|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Consumable Treshold Dashboard|True|1970-01-19 10:02:15.602000|kodakadmin@glassbeam.com|||Internal|False
+meddemo/meddemo/meddemo|d349874b-db90-4393-bacd-98f0a4898011|False|True|gb|2018-01-11 00:00:00|||Dashboard|Med Demo|True|2018-01-16 00:00:00||||Internal|False
+meddemo/meddemo/meddemo|d349874b-db90-4393-bacd-98f0a4898061|False||gb|2018-01-11 00:00:00|||Dashboard|Med Demo 1|True|2018-01-16 00:00:00||||Internal|False
+ptc/ptc/podui|d349874b-db90-4393-bacd-98f0a4898910|False|True|gb|2018-01-11 00:00:00|||Dashboard|Healthcheck Alerts|True|2018-01-16 00:00:00||||Internal|False
+ptc/ptc/podui|d349874b-db90-4393-bacd-98f0a4899890|False||gb|2019-04-01 00:00:00|||Dashboard|Operational Dashboard|True|2019-04-01 00:00:00|ptcqa@glassbeam.com|||Internal|False
+ptc/ptc/podui|d349874b-db90-4393-bacd-98f0a4899899|False||gb|2019-04-01 00:00:00|||Dashboard|Summary Report|True|2019-04-01 00:00:00|ptcqa@glassbeam.com|||Internal|False
+siemens/siemens/pod|d349874b-db90-4393-bacd-98f0a4898985|False|True|gb|2018-01-11 00:00:00|||Dashboard|healthcheck -2|True|2018-01-16 00:00:00||||Internal|False
+siemens/siemens/pod|d349874b-db90-4393-bacd-98f0a4898991|False|True|gb|2018-01-11 00:00:00|||Dashboard|Clinsight|True|2020-08-10 07:50:04||||Internal|False
+siemens/siemens/podui|9cbd50cc-5190-4057-8498-0f398cade721||||2021-09-15 07:41:30.614000||||tue|True|2021-09-23 03:57:13.928000|demo@glassbeam.com|f40bcec4-b555-45c1-b2a7-11b5a38c6622|tue|Tableau|False
+siemens/siemens/podui|d349874b-db90-4393-bacd-98f0a4298001|False||gb|2018-01-11 00:00:00|||Dashboard|GDI Dashboard|True|2021-08-20 18:11:22.759000|siemensqa@glassbeam.com|||Internal|False
+siemens/siemens/podui|d349874b-db90-4393-bacd-98f0a4891927|False||gb|2018-01-11 00:00:00|||Dashboard|MED Clinsights|True|2021-11-18 10:27:17.083000|siemensqa@glassbeam.com|||Internal|False
+siemens/siemens/podui|d349874b-db90-4393-bacd-98f0a4898001|False||gb|2018-01-11 00:00:00|Storage||Dashboard|Call Home Report 2|False|2021-11-26 13:56:58.404000|siemens_rc@glassbeam.com|||Internal|False
+siemens/siemens/podui|d349874b-db90-4393-bacd-98f0a4898021|False||gb|2018-01-11 00:00:00|||Dashboard|ALARIS MAIN|True|2021-11-24 08:30:14.363000|siemens_rc@glassbeam.com|||Internal|False
+siemens/siemens/podui|d349874b-db90-4393-bacd-98f0a4898060|False||gb|2018-01-11 00:00:00|||Dashboard|NYU - Weekly Tube Scan Count|True|2021-08-20 18:11:22.759000|siemensqa@glassbeam.com|||Internal|False
+siemens/siemens/podui|d349874b-db90-4393-bacd-98f0a4898111|False||gb|2018-01-11 00:00:00|||Dashboard|Clinsights BSWH|True|2021-08-20 18:11:22.759000|siemens_rc@glassbeam.com|||Internal|False
+siemens/siemens/podui|d349874b-db90-4393-bacd-98f0a4898301|False||gb|2018-01-11 00:00:00|||Dashboard|Operational dashboard - Vertica|True|2021-08-20 18:11:22.759000|siemensqa@glassbeam.com|||Internal|False
+siemens/siemens/podui|d349874b-db90-4393-bacd-98f0a4898927|False|False|gb|2018-01-11 00:00:00|||Dashboard|Clinsight|False|2021-09-23 05:52:00.911000||||Internal|False
+siemens/siemens/podui|d349874b-db90-4393-bacd-98f0a4898955|False||gb|2018-01-11 00:00:00|Group ABCDEFG||Dashboard|Healthcheck Alerts|True|2021-08-20 18:11:22.759000|siemensqa@glassbeam.com|||Internal|False
+siemens/siemens/podui|d349874b-db90-4393-bacd-98f0a4898975|False||gb|2018-01-11 00:00:00|Group A||Dashboard|Customer WorkFlow|True|2021-08-20 18:11:22.759000|siemensqa@glassbeam.com|||Internal|False
+siemens/siemens/podui|d349874b-db90-4393-bacd-98f0a4898987|False|False|gb|2018-01-11 00:00:00|||Dashboard|healthcheck -2|True|2021-09-16 10:23:21.586000||||Internal|False
+siemens/siemens/podui|d349874b-db90-4393-bacd-98f0a4899457|False||gb|2018-01-11 00:00:00|Group A||Dashboard|Pre-Clarification Dashboard|True|2021-08-20 18:11:22.759000|siemensqa@glassbeam.com|||Internal|False
+siemens/siemens/podui|d349874b-db90-4393-bacd-98f0a4899805|False||gb|2018-01-11 00:00:00|||Dashboard|NSR|True|2018-01-16 00:00:00||||Internal|False
+siemens/siemens/podui|d349877b-db90-4393-bacd-66f0a4813001|||auto@glassbeam.com|2016-04-06 00:00:00||https://gbdashboards.glassbeam.com/Dimension_HC_QA/rdPage.aspx?rdReport=Reports.Main|HealthCheck-2|HealthCheck-2|True|2021-05-12 04:23:06.875000||||Internal|False
+siemens/siemens/podui|d349877b-db90-4393-bacd-66f0a4813002|||auto@glassbeam.com|2016-04-06 00:00:00||https://gbreports.glassbeam.com/Siemens_New_QA/rdPage.aspx?rdReport=Customer_Summary.customer_summary|HealthCheck-1|HealthCheck-1|True|2021-08-20 18:11:22.759000|siemensqa@glassbeam.com|||Internal|False
+novant/novant/podui|d349874b-db90-4393-bacd-98f0a4898967|False||gb|2018-01-11 00:00:00|||Dashboard|Operational Dashboard|True|2018-01-16 00:00:00||||Internal|False
+novant/novant/podui|d49a373e-75df-4d99-b959-6e8e8de5729a||||2019-07-22 11:59:30.069000|||||True|2019-07-22 11:59:30.069000|novantqa@glassbeam.com|||Tableau|False
+novant/novant/podui|ed92e48a-5e7b-416c-8c0f-45da0200bf7f||||2019-07-22 12:09:34.747000|||||True|2019-07-22 12:09:34.747000|novantqa@glassbeam.com|||Tableau|False
+canon/canon/canonct|d212174b-db90-4293-bacd-98f0a4898934|False|True|2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Clinsight Dashboard|True|1970-01-19 10:02:15.602000|canonadmin@glassbeam.com|||Internal|False
+canon/canon/canonct|d312574b-db90-4393-bacd-98f0a4898673|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Cinsight V5 Dashboard|True|1970-01-19 10:02:15.602000|canonadmin@glassbeam.com|||Internal|False
+canon/canon/canonct|d312574b-db90-4393-bacd-98f0a4898901|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Canon Report Dashboard|True|2021-11-12 02:48:05.554000|canonadmin@glassbeam.com|||Internal|False
+canon/canon/canonct|d349874b-db90-4393-bacd-98f0a4898521|False|False|gb|2018-01-11 00:00:00||https://gbreports.glassbeam.com/CanonCTTableau_qa/rdPage.aspx?rdReport=IB_Health.CT_IBHealth&cust_name=CanonCTIBHealth|Dashboard|Canon Call Home Report|True|2021-10-29 12:48:40.751000|canonadmin@glassbeam.com|||Internal|False
+canon/canon/canonct|d349874b-db90-4393-bacd-98f0a4898921|False||gb|2018-01-11 00:00:00|||Dashboard|IB health|True|2021-11-12 02:48:05.554000||||Internal|False
+ddau/ddau/podui|d422344b-db90-4321-bacd-45f0a2135435|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Configuration Report (Beta)|True|1970-01-19 10:02:15.602000|ddauadmin@glassbeam.com|||Internal|False
+ddau/ddau/podui|d423444b-db90-4321-bacd-45f0a2135435|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Data Quality Report|True|1970-01-19 10:02:15.602000|ddauadmin@glassbeam.com|||Internal|False
+ddau/ddau/podui|d426234b-db65-4341-bacd-45f0a2325435|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Capacity Dashboard|True|1970-01-19 10:02:15.602000|ddauadmin@glassbeam.com|||Internal|False
+ddau/ddau/podui|d426234b-db65-4351-bacd-45f0a2325435|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Event and Incident Analysis Report|True|1970-01-19 10:02:15.602000|ddauadmin@glassbeam.com|||Internal|False
+ddau/ddau/podui|d426234b-db90-4321-bacd-45f0a2135435|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Configuration Item Dashboard|True|1970-01-19 10:02:15.602000|ddauadmin@glassbeam.com|||Internal|False
+ddau/ddau/podui|d426234b-db90-4351-bacd-45f0a2135435|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Capacity Dashboard(Beta)|True|1970-01-19 10:02:15.602000|ddauadmin@glassbeam.com|||Internal|False
+ddau/ddau/podui|d426544b-db90-4321-bacd-45f0a2135435|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Configuration Item Dashboard (Beta)|True|1970-01-19 10:02:15.602000|ddauadmin@glassbeam.com|||Internal|False
+ddau/ddau/podui|d312374b-db90-9174-bacd-98f0a4891034|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Monitoring Summary (BETA)|True|1970-01-19 10:02:15.602000|ddauadmin@glassbeam.com|||Internal|False
+ddau/ddau/podui|d422344b-db90-9124-bacd-45f0a2131034|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Configuration Report|True|1970-01-19 10:02:15.602000|ddauadmin@glassbeam.com|||Internal|False
+ddau/ddau/podui|d422344b-db90-9124-bacd-45f0a2135435|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||User Activity Report|True|1970-01-19 10:02:15.602000|ddauadmin@glassbeam.com|||Internal|False
+ddau/ddau/podui|d422474b-db90-9174-bacd-98f0a2131034|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Proactive Disk Space Management Report|True|1970-01-19 10:02:15.602000|ddauadmin@glassbeam.com|||Internal|False
+canon/canon/canonmr|d312574b-db90-4393-bacd-98f0a4898935|False|True|2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||https://gbdashboards.glassbeam.com/ClinsightsV5_canon/rdPage.aspx?rdReport=Health_Check.1Home&cust_name=CanonMR||Clinsight Dashboard|True|1970-01-19 10:02:15.602000|canonadmin@glassbeam.com|||Internal|False
 gdi/gdi/podui|0051a7cb-e67c-4181-8757-cc7217d9858f||||2021-12-06 07:06:04.231000||||Prdashboard_e97|True|2021-12-06 07:06:04.231000|gdiadmin@glassbeam.com|||Tableau|False
 gdi/gdi/podui|006d5d8a-3652-410d-9edd-35a0694a7bda||||2021-12-06 07:06:04.231000||||Prdashboard_f20|True|2021-12-06 07:06:04.231000|gdiadmin@glassbeam.com|||Tableau|False
 gdi/gdi/podui|00c3ef6f-149e-4aae-abbd-38028496d1c1||||2021-12-06 07:06:04.231000||||Prdashboard_g19|True|2021-12-06 07:06:04.231000|gdiadmin@glassbeam.com|||Tableau|False
@@ -73,7 +119,7 @@ gdi/gdi/podui|0a1c1e25-f8a9-4441-9a7b-3d708ac10600||||2021-12-06 05:08:07.602000
 gdi/gdi/podui|0b55bf53-1553-4994-9a8d-b40579d98f07||||2021-12-06 07:06:04.231000||||Prdashboard_e25|True|2021-12-06 07:06:04.231000|gdiadmin@glassbeam.com|||Tableau|False
 gdi/gdi/podui|0bf2a0e8-b7d0-4316-aac3-abede05702f4||||2021-12-06 07:06:04.231000||||Prdashboard_f8|True|2021-12-06 07:06:04.231000|gdiadmin@glassbeam.com|||Tableau|False
 gdi/gdi/podui|0c05f8d7-6499-4987-b59b-93edf168b307||||2021-12-06 07:06:04.231000||||Prdashboard_f62|True|2021-12-06 07:06:04.231000|gdiadmin@glassbeam.com|||Tableau|False
-gdi/gdi/podui|0d3958e9-34cf-49c9-b045-d3a10010eafa||||2021-07-23 05:03:06.655000||||Exam Analysis v501|True|2021-07-23 05:03:06.655000||||Tableau|False
+gdi/gdi/podui|0d3958e9-34cf-49c9-b045-d3a10010eafa||||2021-12-17 10:25:06.314000||||Exam Analysis v501|True|2021-12-17 10:25:44.357000||||Tableau|False
 gdi/gdi/podui|0e9bef79-ed90-4251-9612-2b4b7b166d22||||2021-12-06 07:06:04.231000||||Prdashboard_e89|True|2021-12-06 07:06:04.231000|gdiadmin@glassbeam.com|||Tableau|False
 gdi/gdi/podui|0eac4484-fecf-4219-93f0-8e52ddf3c5a1||||2021-12-06 07:06:04.231000||||Prdashboard_f93|True|2021-12-06 07:06:04.231000|gdiadmin@glassbeam.com|||Tableau|False
 gdi/gdi/podui|107570d6-d67d-4c14-89e2-748f1cdf45cb||||2021-12-06 07:06:04.231000||||Prdashboard_g33|True|2021-12-06 07:06:04.231000|gdiadmin@glassbeam.com|||Tableau|False
@@ -545,3 +591,8 @@ gdi/gdi/podui|fdc489d3-1ce2-4b09-8763-5218c2763d74||||2021-12-06 05:08:07.602000
 gdi/gdi/podui|feab7ef9-32fd-4612-b337-6734eea9c44a||||2021-12-06 07:06:04.231000||||Prdashboard_f3|True|2021-12-06 07:06:04.231000|gdiadmin@glassbeam.com|||Tableau|False
 gdi/gdi/podui|fed461ad-f4e6-4240-a850-5c72208f7509||||2021-07-23 05:03:06.655000||||Referral Analysis Other Views v501|True|2021-07-23 05:03:06.655000||||Tableau|False
 gdi/gdi/podui|ff016930-d2c2-49ab-87d7-fa3d4b3ab72c||||2021-12-06 05:08:07.602000||||Prdashboard_d86|True|2021-12-06 05:08:07.602000|gdiadmin@glassbeam.com|||Tableau|False
+bswh/bswh/podui|99bed5c0-704f-11eb-83a4-cb5a396d97b7|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Radiology|True|1970-01-19 10:02:15.602000|bswhadmin@glassbeam.com|||Internal|False
+bswh/bswh/podui|bc43cf60-704f-11eb-83a4-cb5a396d97b7|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Asset Location|True|1970-01-19 10:02:15.602000|bswhadmin@glassbeam.com|||Internal|False
+bswh/bswh/podui|cfe1a150-704f-11eb-83a4-cb5a396d97b7|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Failure Prediction|True|1970-01-19 10:02:15.602000|bswhadmin@glassbeam.com|||Internal|False
+bswh/bswh/podui|ef823fb0-704f-11eb-83a4-cb5a396d97b7|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Clinical Engineering|True|1970-01-19 10:02:15.602000|bswhadmin@glassbeam.com|||Internal|False
+bswh/bswh/podui|080bfcb0-7050-11eb-83a4-cb5a396d97b7|False||2018-01-11 00:00:00.000000+0000|1970-01-19 09:17:37.202000||||Clinsights (BETA)|True|1970-01-19 10:02:15.602000|bswhadmin@glassbeam.com|||Internal|False

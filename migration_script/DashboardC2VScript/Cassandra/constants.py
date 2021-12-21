@@ -10,7 +10,7 @@ INCLUDE_TEXT = 'INLCUDE'
 EXCLUDE_TEXT = 'EXCLUDE'
 INCLUDE_ALL = 'ALL'
 # keep both exclude_customers & include_customers False or True to include all
-exclude_customers = False
+exclude_customers = True
 include_customers = True
 
 #cassandra_tables = ['dashboards']

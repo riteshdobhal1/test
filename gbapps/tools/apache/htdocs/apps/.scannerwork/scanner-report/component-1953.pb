@@ -1,1 +1,0 @@
-¡ 2webXhr0app/partials/rules-and-alerts/tag_subscribe.html

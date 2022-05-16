@@ -1,1 +1,0 @@
-ë 2webXhr9dist/partials/rules-and-alerts/bundles_from_logvault.html

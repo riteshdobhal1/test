@@ -1,1 +1,0 @@
-È 2cssXhr#app/lib/loading-bar/loading-bar.css

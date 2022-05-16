@@ -1,1 +1,0 @@
-· 2webXhr3app/partials/rules-and-alerts/rules_and_alerts.html

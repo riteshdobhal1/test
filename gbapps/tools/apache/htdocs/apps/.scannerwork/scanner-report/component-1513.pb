@@ -1,1 +1,0 @@
-é 2jsXchr,app/lib/angular/i18n/angular-locale_sl-si.js

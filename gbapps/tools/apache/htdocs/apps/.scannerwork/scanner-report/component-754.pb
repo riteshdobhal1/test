@@ -1,1 +1,0 @@
-ò 2webXhr>dist/partials/rules-and-alerts/delete_api_config_template.html

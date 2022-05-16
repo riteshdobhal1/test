@@ -1,1 +1,0 @@
-¦ 2webXhr#dist/partials/apps_change_view.html

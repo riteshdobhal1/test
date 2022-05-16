@@ -1,1 +1,0 @@
-æ 2jsXhrapp/logstatus/js/app.js

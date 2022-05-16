@@ -1,1 +1,0 @@
-· 2webX‹hr7app/partials/uns-rules-and-alert/test_rule_history.html

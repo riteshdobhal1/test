@@ -1,1 +1,0 @@
-¬ 2webXhr4app/partials/rules-and-alerts/enable_draft_rule.html

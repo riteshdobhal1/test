@@ -1,1 +1,0 @@
-µ 2webXhr app/gbtour/templates/gbtour.html

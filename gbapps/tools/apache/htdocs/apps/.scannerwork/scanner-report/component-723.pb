@@ -1,1 +1,0 @@
-Ó 2webXhr2dist/partials/rules-and-alerts/bulk_subscribe.html

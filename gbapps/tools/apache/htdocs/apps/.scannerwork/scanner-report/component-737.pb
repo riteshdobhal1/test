@@ -1,1 +1,0 @@
-á 2webXhr5dist/partials/rules-and-alerts/enable_draft_rule.html

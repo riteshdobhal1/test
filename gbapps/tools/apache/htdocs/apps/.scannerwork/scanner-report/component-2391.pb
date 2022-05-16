@@ -1,1 +1,0 @@
-× 2jsXéhrPapp/MDViz/module-Slim_Line_GantryRoomTemp/lib-js/amcharts/exporting/filesaver.js

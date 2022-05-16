@@ -1,1 +1,0 @@
-À 2webX:hr/app/partials/rules-and-alerts/rule_tagging.html

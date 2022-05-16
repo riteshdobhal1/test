@@ -1,1 +1,0 @@
-Æ 2webXhr'app/partials/apps/confirmation_box.html

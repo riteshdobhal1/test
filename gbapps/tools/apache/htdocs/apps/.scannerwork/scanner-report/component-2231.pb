@@ -1,1 +1,0 @@
-· 2jsX¡hrLapp/MDViz/module-Sensation_Temperature/lib-js/amcharts/exporting/rgbcolor.js

@@ -1,8 +1,0 @@
-The unit had tube temperature error in the morning during checkup, Unit resets a few times during checkup and unit rescans again. After a few tries of reset and recans the unit then completes the checkup and scans fine the whole day. The problem repeated for 3 days and then tube was replaced to solve the problem. 
-We see the Cathode 2 temperature was very high during switch on in the morning and after a few tries stabilized and then was able to keep the temperature steady.
-Comparing with the A sdie tube on the same unit as it has the same cooler for both tubes, clearly shows problem with tube
-Here are the errors and warnings from the unit
-W  09-Feb-2016 06:31:20	10241	CT_XRB            0   Warning: Dev: - actual [°C]: 90 - limit [°C]: 90; Dev:XDCThresholdWarning_TempMagBot
-E	CT_XRB_9985	CT_XRB_XDCThresholdError_TempMagBot
-E	CT_XRB_11542	CT_XRB_TCMHwError_TempLower
-E	CT_XRB_10033	CT_XRB_XDCThresholdSensBreak_TempMagBot

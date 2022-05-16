@@ -1,1 +1,0 @@
-Ý 2webXhr6dist/partials/rules-and-alerts/analytics-heat-map.html

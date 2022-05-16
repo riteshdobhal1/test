@@ -1,1 +1,0 @@
-­ 2jsX)hrIapp/MDViz/module-Slim_Line_Temperature/lib-js/callbackSlimLineRoomTemp.js

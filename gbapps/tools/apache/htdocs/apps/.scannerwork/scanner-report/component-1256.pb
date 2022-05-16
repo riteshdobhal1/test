@@ -1,1 +1,0 @@
-è	 2webX@hrapp/login/change-password.html

@@ -1,1 +1,0 @@
-í	 2jsXahrapp/login/js/global.js

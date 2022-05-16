@@ -1,1 +1,0 @@
-¸ 2webX(hr8app/partials/rules-and-alerts/delete_multiple_rules.html

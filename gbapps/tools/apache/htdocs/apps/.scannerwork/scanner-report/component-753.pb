@@ -1,1 +1,0 @@
-ñ 2webXhr3dist/partials/rules-and-alerts/delete_template.html

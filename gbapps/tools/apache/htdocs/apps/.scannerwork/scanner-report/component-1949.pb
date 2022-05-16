@@ -1,1 +1,0 @@
-ù 2webX©hr3app/partials/rules-and-alerts/api_admin_config.html

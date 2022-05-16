@@ -1,1 +1,0 @@
-Í 2webXhr7dist/partials/rules-and-alerts/analytics-bar-chart.html

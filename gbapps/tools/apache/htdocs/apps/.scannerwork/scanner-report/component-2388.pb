@@ -1,1 +1,0 @@
-Ô 2jsXšhrLapp/MDViz/module-Slim_Line_GantryRoomTemp/lib-js/amcharts/exporting/canvg.js

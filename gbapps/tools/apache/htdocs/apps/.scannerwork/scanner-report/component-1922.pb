@@ -1,1 +1,0 @@
-‚ 2webXhr!app/partials/expensive_query.html

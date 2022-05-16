@@ -1,1 +1,0 @@
-Ç 2webX]hrVtableau/2020.2/packages/vizportalclient.20202.20.0425.1206/public/en/embeddedAuth.html

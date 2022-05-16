@@ -1,1 +1,0 @@
-À 2jsXåhr5app/MDViz/module-Sensation_Temperature/lib-js/main.js

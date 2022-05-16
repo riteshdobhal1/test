@@ -1,1 +1,0 @@
-ú 2webXhrEdist/MDViz/module-Sensation_Temperature/Sensation_Temperature-v1.html

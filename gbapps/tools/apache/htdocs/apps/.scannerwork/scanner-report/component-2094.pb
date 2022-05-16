@@ -1,1 +1,0 @@
-® 2jsXšhr<app/MDViz/module-thvis-v4/lib-js/amcharts/exporting/canvg.js

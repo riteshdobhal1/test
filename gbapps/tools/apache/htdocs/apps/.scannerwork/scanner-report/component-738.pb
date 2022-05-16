@@ -1,1 +1,0 @@
-â 2webXhr2dist/partials/rules-and-alerts/datapath_modal.html

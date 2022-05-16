@@ -1,1 +1,0 @@
-Á 2jsXšhrMapp/MDViz/module-Sensation_Gantry_WCS_Temp/lib-js/amcharts/exporting/canvg.js

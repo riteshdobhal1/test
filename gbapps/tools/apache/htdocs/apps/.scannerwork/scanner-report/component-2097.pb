@@ -1,1 +1,0 @@
-± 2jsXæhrLapp/MDViz/module-thvis-v4/lib-js/amcharts/exporting/jspdf.plugin.addimage.js

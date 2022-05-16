@@ -1,1 +1,0 @@
-É 2jsX¥hr"app/lib/loading-bar/loading-bar.js

@@ -1,2 +1,0 @@
-# gbapps
-Contains UI + installer

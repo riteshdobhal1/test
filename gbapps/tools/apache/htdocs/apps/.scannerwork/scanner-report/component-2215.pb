@@ -1,1 +1,0 @@
-§ 2jsXéhrMapp/MDViz/module-Slim_Line_Temperature/lib-js/amcharts/exporting/filesaver.js

@@ -1,1 +1,0 @@
-Æ 2webXhr5dist/partials/rules-and-alerts/test_rule_history.html

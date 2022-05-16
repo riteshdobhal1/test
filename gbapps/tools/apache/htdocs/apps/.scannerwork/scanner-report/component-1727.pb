@@ -1,1 +1,0 @@
-¿ 2webXhrapp/lib/xdomain/proxy.html

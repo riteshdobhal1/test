@@ -1,1 +1,0 @@
-ö 2cssXhr7dist/MDViz/module-Sensation_Temperature/lib-js/main.css

@@ -1,1 +1,0 @@
-Ä 2webXhr7dist/partials/rules-and-alerts/rule-read-only-info.html

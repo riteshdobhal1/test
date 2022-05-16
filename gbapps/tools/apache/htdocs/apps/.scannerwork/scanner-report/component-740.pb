@@ -1,1 +1,0 @@
-ä 2webXhr5dist/partials/rules-and-alerts/navigate_add_rule.html

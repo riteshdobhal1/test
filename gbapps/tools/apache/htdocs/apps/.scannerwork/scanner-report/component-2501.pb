@@ -1,1 +1,0 @@
-Å 2cssXhrYtableau/2020.2/packages/wgserver.20202.20.0425.1206/public/stylesheets/tableau_viewer.css

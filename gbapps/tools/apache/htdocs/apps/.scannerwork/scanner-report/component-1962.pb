@@ -1,1 +1,0 @@
-ª 2webXhr6app/partials/rules-and-alerts/delete_api_template.html

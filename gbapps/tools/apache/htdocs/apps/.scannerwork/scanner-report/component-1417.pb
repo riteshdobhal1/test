@@ -1,1 +1,0 @@
-‰ 2jsXÕhr#app/lib/angular/angular-resource.js

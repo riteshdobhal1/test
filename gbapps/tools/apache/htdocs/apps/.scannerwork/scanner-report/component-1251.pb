@@ -1,1 +1,0 @@
-ã	 2webXhr!dist/gbtour/templates/gbtour.html

@@ -1,1 +1,0 @@
-» 2webXJhrOapp/MDViz/module-thvis-v4/lib-js/amcharts/plugins/responsive/examples/pie2.html

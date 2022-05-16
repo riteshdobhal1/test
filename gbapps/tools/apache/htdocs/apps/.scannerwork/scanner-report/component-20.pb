@@ -1,1 +1,0 @@
- 2jsXÖ<hr+test/unit/rulesAndAlerts/controllersSpec.js

@@ -1,1 +1,0 @@
-è 2webX1hr6app/partials/rules-and-alerts/rule-read-only-info.html

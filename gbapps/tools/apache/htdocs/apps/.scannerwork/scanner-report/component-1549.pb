@@ -1,1 +1,0 @@
-ç 2jsXchr,app/lib/angular/i18n/angular-locale_gl-es.js

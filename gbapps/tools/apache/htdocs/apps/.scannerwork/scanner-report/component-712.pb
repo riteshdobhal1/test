@@ -1,1 +1,0 @@
-È 2webXhrAdist/partials/rules-and-alerts/modal-enable-rule-message-box.html

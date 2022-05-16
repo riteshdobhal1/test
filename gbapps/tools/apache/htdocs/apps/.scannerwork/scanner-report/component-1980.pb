@@ -1,1 +1,0 @@
-¼ 2webXhr2app/partials/rules-and-alerts/delete_template.html

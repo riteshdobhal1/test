@@ -1,1 +1,0 @@
-è 2webXhr dist/partials/golden_config.html

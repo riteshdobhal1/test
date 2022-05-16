@@ -1,1 +1,0 @@
-Š 2webXhr&app/partials/logvault-facet-chart.html

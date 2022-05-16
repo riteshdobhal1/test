@@ -1,1 +1,0 @@
-É 2webXhrapp/partials/apps/lview.html

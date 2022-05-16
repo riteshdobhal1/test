@@ -1,1 +1,0 @@
-Ã 2webXÚhrPapp/MDViz/module-thvis-v4/lib-js/amcharts/plugins/responsive/examples/stock.html

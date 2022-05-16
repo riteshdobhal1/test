@@ -1,2 +1,0 @@
-Problem occurred on Force indicating a problem with the Temp in the XTA on the B side.  After using the Tube visualizer you can clearly see a problem with Cathode 1 sensor while Cathode 2 is normal.  
-As a reference we used A side graph to determine what normal is.

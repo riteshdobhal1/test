@@ -1,1 +1,0 @@
-Ã 2webXShrapp/partials/upload.html

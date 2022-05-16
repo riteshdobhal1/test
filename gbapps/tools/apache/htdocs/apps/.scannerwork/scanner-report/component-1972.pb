@@ -1,1 +1,0 @@
-´ 2webXOhr8app/partials/rules-and-alerts/multiple_owner_change.html

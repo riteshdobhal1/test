@@ -1,1 +1,0 @@
-— 2webX1hr?app/partials/rules-and-alerts/delete_api_template_multiple.html

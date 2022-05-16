@@ -1,1 +1,0 @@
-¹ 2webXðhr.app/partials/uns-rules-and-alert/add_rule.html

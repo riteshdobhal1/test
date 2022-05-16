@@ -1,1 +1,0 @@
-² 2webX)hrapp/partials/delete_view.html

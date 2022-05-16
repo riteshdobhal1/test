@@ -1,1 +1,0 @@
-Ñ 2webX¶hr'app/partials/instance-viewer/event.html

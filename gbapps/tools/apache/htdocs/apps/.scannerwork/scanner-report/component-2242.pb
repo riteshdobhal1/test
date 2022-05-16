@@ -1,1 +1,0 @@
-Â 2jsX‹hrJapp/MDViz/module-Sensation_Temperature/lib-js/SensationGantryTempParser.js

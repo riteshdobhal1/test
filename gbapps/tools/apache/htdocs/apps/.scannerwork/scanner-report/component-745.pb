@@ -1,1 +1,0 @@
-é 2webXhr9dist/partials/rules-and-alerts/multiple_owner_change.html

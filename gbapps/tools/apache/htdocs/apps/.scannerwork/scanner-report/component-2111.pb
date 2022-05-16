@@ -1,1 +1,0 @@
-¿ 2webXnhrPapp/MDViz/module-thvis-v4/lib-js/amcharts/plugins/responsive/examples/index.html

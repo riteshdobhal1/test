@@ -1,1 +1,0 @@
-Þ 2webXhrBdist/partials/rules-and-alerts/delete_email_template_multiple.html

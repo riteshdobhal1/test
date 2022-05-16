@@ -1,1 +1,0 @@
-¨ 2webXhr.dist/partials/workbench_remove_datasource.html

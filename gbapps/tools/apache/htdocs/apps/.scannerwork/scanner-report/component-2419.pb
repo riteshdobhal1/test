@@ -1,1 +1,0 @@
-ó 2webXŽhrapp/logstatus/index.html

@@ -1,1 +1,0 @@
-• 2webXˆhr2app/partials/rules-and-alerts/bulk_edit_rules.html

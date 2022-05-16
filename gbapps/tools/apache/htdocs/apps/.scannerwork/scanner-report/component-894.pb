@@ -1,1 +1,0 @@
-þ 2webXzhrNdist/MDViz/module-thvis-v4/lib-js/amcharts/plugins/responsive/examples/xy.html

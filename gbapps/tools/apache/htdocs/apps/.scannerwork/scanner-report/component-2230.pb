@@ -1,1 +1,0 @@
-¶ 2jsXšhrIapp/MDViz/module-Sensation_Temperature/lib-js/amcharts/exporting/canvg.js

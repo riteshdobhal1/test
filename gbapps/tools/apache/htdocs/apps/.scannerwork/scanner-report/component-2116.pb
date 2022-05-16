@@ -1,1 +1,0 @@
-Ä 2webXHhrQapp/MDViz/module-thvis-v4/lib-js/amcharts/plugins/responsive/examples/funnel.html

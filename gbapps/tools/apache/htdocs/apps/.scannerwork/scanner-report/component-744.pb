@@ -1,1 +1,0 @@
-è 2webXhr8dist/partials/rules-and-alerts/dashboard-rule-level.html

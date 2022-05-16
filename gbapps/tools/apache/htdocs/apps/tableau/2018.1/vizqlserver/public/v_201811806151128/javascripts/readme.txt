@@ -1,1 +1,0 @@
-delete jsstrings_en.js.gz and vqlweb.js.gz and replace these two files here

@@ -1,1 +1,0 @@
-© 2cssXhr$app/lib/font-awesome/scss/_core.scss

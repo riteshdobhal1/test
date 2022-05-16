@@ -1,1 +1,0 @@
-Û 2webXhr@dist/partials/rules-and-alerts/analytics-vertical-bar-chart.html

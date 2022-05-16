@@ -1,1 +1,0 @@
- 2jsXahrtest/unit/appSpec.js

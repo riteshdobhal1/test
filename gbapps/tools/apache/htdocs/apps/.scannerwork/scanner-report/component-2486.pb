@@ -1,1 +1,0 @@
-¶ 2jsX®hrapp/gbtour/controllers.js

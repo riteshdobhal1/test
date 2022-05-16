@@ -1,1 +1,0 @@
-¾ 2webXhrapp/partials/trendsview.html

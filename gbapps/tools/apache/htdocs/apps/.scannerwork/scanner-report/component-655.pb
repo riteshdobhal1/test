@@ -1,1 +1,0 @@
-è 2webXhr%dist/partials/dashboards/summery.html

@@ -1,1 +1,0 @@
-´ 2webXÍhrapp/partials/explorer.html

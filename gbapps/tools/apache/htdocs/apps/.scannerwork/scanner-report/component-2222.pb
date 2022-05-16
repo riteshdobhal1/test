@@ -1,1 +1,0 @@
-® 2jsX)hrHapp/MDViz/module-Slim_Line_Temperature/lib-js/callbackSlimLineDMSTemp.js

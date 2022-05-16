@@ -1,1 +1,0 @@
-¤ 2jsX¡hrLapp/MDViz/module-Slim_Line_Temperature/lib-js/amcharts/exporting/rgbcolor.js

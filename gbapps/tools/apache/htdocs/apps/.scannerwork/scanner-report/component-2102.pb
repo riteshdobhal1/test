@@ -1,1 +1,0 @@
-¶ 2jsXƒhr<app/MDViz/module-thvis-v4/lib-js/amcharts/themes/patterns.js

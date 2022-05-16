@@ -1,1 +1,0 @@
-ì 2webXhr!app/partials/alert_box_extra.html

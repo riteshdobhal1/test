@@ -1,1 +1,0 @@
-¯ 2webXhr4app/partials/rules-and-alerts/navigate_add_rule.html

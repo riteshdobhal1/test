@@ -1,1 +1,0 @@
-– 2webX5hr0app/partials/rules-and-alerts/rules_details.html

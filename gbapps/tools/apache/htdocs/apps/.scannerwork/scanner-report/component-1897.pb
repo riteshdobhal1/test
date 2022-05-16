@@ -1,1 +1,0 @@
-é 2webXNhr app/partials/changepassword.html

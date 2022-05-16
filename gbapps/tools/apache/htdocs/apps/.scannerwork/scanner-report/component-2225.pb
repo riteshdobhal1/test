@@ -1,1 +1,0 @@
-± 2jsXçhrFapp/MDViz/module-Slim_Line_Temperature/lib-js/SlimLineDMSTempParser.js

@@ -1,1 +1,0 @@
-À 2webXÌhrRapp/MDViz/module-thvis-v4/lib-js/amcharts/plugins/responsive/examples/serial1.html

@@ -1,1 +1,0 @@
-« 2webXlhr6app/partials/rules-and-alerts/manage_API_template.html

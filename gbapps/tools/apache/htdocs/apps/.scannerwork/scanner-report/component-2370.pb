@@ -1,1 +1,0 @@
-Â 2jsX¡hrPapp/MDViz/module-Sensation_Gantry_WCS_Temp/lib-js/amcharts/exporting/rgbcolor.js

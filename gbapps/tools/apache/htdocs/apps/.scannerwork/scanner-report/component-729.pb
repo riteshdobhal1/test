@@ -1,1 +1,0 @@
-Ù 2webXhr/dist/partials/rules-and-alerts/delete_rule.html

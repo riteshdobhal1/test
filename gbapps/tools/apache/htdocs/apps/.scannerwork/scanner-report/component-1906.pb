@@ -1,1 +1,0 @@
-ò 2webXºhrapp/partials/configdiff.html

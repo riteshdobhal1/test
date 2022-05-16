@@ -1,1 +1,0 @@
-ó 2webXhrdist/partials/trendsview.html

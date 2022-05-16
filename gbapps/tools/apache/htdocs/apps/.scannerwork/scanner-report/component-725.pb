@@ -1,1 +1,0 @@
-Õ 2webXhr3dist/partials/rules-and-alerts/manage_template.html

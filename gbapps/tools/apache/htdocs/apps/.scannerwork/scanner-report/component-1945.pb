@@ -1,1 +1,0 @@
-™ 2webX^hr-app/partials/rules-and-alerts/upload_log.html

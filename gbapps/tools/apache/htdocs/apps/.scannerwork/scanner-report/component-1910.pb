@@ -1,1 +1,0 @@
-ö 2webXŽhrapp/partials/save_view.html

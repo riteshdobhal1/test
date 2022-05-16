@@ -1,1 +1,0 @@
-î 2webXhr:dist/partials/rules-and-alerts/analytics-top-10-rules.html

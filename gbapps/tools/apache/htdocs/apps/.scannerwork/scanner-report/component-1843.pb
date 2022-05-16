@@ -1,1 +1,0 @@
-³ 2webX^hrapp/partials/golden_config.html

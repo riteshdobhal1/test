@@ -1,1 +1,0 @@
-Ë 2webXhr1dist/partials/rules-and-alerts/rules_details.html

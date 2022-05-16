@@ -1,1 +1,0 @@
-É 2webX‘hrMapp/MDViz/module-thvis-v4/lib-js/amcharts/plugins/responsive/examples/xy.html

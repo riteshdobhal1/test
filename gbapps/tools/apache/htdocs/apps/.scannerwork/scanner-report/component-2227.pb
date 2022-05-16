@@ -1,1 +1,0 @@
-³ 2webX~hrDapp/MDViz/module-Slim_Line_Temperature/Slim_Line_Temperature-v1.html

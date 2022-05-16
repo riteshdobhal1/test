@@ -1,1 +1,0 @@
-À 2webXèhrapp/partials/apps/pview.html

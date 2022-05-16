@@ -1,1 +1,0 @@
-¹ 2webXhrdist/partials/loader.html

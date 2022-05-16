@@ -1,1 +1,0 @@
-Ç 2webXhr6dist/partials/rules-and-alerts/rule-drill-details.html

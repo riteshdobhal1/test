@@ -1,1 +1,0 @@
-ç 2webXhr6app/partials/rules-and-alerts/enable_disable_rule.html

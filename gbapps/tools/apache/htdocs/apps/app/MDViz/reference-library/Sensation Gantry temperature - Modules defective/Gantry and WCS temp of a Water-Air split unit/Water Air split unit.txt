@@ -1,2 +1,0 @@
-This unit has a water _Air split unit. So the Primary temperature is actually the Glycol temperature to the Fan unit.
-Notice that the WCS water fluctuates quite high, (14 to 23). One of the reasons is the pressure is less or the pipe length from WCS to Gantry is less

@@ -1,1 +1,0 @@
-õ 2webXhr&dist/partials/dashboard_bulk_edit.html

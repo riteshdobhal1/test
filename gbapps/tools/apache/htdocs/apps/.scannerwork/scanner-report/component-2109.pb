@@ -1,1 +1,0 @@
-½ 2webXChrPapp/MDViz/module-thvis-v4/lib-js/amcharts/plugins/responsive/examples/radar.html

@@ -1,0 +1,56 @@
+@(cl:IndexedSeq[(String, String, String, String, String)], signedInUserName: Option[String], userorg: Option[String], userrole: Option[String], version: String)(implicit flash: Flash, messages: Messages)
+
+@import helper._
+@import constants._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrap2Input.f) } 
+
+@title = {
+  Customers 
+}
+
+@main(signedInUserName,  userorg, userrole, title, true, Page.Admin) {
+
+  <div class="span12">
+  
+    @flash.get(FKSuccess).map { message =>  <div class="alert alert-success"> @message  </div> }
+    @flash.get(FKError).map { message =>  <div class="alert alert-error"> @message  </div> }
+    
+    @if(cl.nonEmpty){
+    <table class="table table-striped" >
+      <thead>
+        <tr>
+          <th> Manufacturer </th>
+          <th> Product </th>
+          <th> Schema </th>
+          <th> Ec </th>
+          <th> Realm </th>
+          <th> Action </th>
+        </tr>
+      </thead>
+      <tbody>      
+        @cl.map { case (m, p, s, e, r) => 
+          <tr>      
+            <td> @m  </td>
+            <td> @p  </td>
+            <td> @s  </td>
+            <td> @e  </td>
+            <td> @r  </td>
+            <td>      
+              @form(routes.AdminCustomer.delete("v1", m, p, s, e, r)) {
+                <input class="btn btn-primary" type="submit" name="action" onclick="return confirm('Are you sure to remove this customer?')" value="remove" />
+              }   
+            </td>
+          </tr>
+      }
+      </tbody>
+    </table>
+  } else {
+        <div class="well">
+            <em> You have not created any customers yet.</em>
+        </div>  
+  }
+    
+  </div>
+       
+}

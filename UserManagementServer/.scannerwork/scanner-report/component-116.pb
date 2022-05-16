@@ -1,0 +1,1 @@
+t 2webXhr(app/views/forgotPasswordEmail.scala.html

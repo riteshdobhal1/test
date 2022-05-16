@@ -1,0 +1,1 @@
+… 2webXghrapp/views/clinsight.scala.html

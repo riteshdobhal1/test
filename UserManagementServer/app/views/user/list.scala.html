@@ -1,0 +1,152 @@
+@(ul: IndexedSeq[User], signedInUserName: Option[String], userorg: Option[String], userrole: Option[String], version: String)(implicit flash: Flash, messages: Messages)
+
+@import helper._
+@import constants._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrap2Input.f) } 
+
+@title = {
+  Users 
+}
+
+@main(signedInUserName, userorg, userrole, title, true, Page.Admin) {
+  
+  <div class="span12">
+  @userorg.map {org => @if(org == GBName) {
+          <select id="drop" name="mfrDrop">
+            <option value="">Select a manufacturer.. </option>
+            <option value="@routes.AdminUser.listByOrg(version, "all")">All</option>
+            @Org.mfrs.toList.map { m=> 
+              <option value="@routes.AdminUser.listByOrg(version, m)">@m.toString</option>
+            }
+          </select>
+          <a href="#" id="goBtn" class="btn btn-primary" style="margin-bottom:10px">Go</a> 
+          <a href="#" id="selectAllUsersBtn" class="btn btn-primary" style="margin-bottom:10px">Select All Users</a>
+          <a id="editUsersBtn" class="btn btn-primary" style="margin-bottom:10px">Edit Users</a>
+          <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")"></script> 
+          <script>
+            $(document).on('change', '#drop', function(){
+              $('#goBtn').attr('href', $(this).val());
+            });
+            $(document).ready(function(){
+                var mfr= $(location).attr('href').split("/")[$(location).attr('href').split("/").length - 1]
+                if(mfr!="list"){
+                	$('#drop').val("/v1/admin/user/list/" + mfr)
+                    }
+                if(mfr=="list"){
+                	$('#drop').val("/v1/admin/user/list/all")
+                }
+                if(mfr=="all" || mfr=="list" || mfr ==""){
+                    $('#editUsersBtn').hide()
+                    $('#selectAllUsersBtn').hide()
+                    $("input:checkbox").hide() 
+                }
+                
+
+            });
+            var emailArr = [] ;
+            $('#editUsersBtn').click(function(){
+                
+                $("input:checkbox[class=checkbox]:checked").each(function(){
+                	emailArr.push($(this).val())
+                });
+                var emailString = emailArr.join(",");
+                var mfrLink = $('#drop').val();
+                var mfr = mfrLink.split("/")[mfrLink.split("/").length - 1];
+                if(mfr=="list"){
+                    mfr="all";
+                } 
+                alert(mfr);
+                var url = "/v1/admin/users/edit/" + mfr + "/" + emailString;
+                if(emailString=="") {
+                	return confirm('Please select at least one user to edit.');
+                } else {
+                 window.location.href=url
+                }
+            });
+                        
+         </script>           
+        } else {
+             <input type="hidden" name="mfr" value=@org />   
+        }
+        
+  }
+  </div>
+  <div class="span12">
+  
+    @flash.get(FKSuccess).map { message =>  <div class="alert alert-success"> @message  </div> }
+    @flash.get(FKError).map { message =>  <div class="alert alert-error"> @message  </div> }
+    
+    @if(ul.nonEmpty){
+    <table class="table table-striped" >
+      <thead>
+        <tr>        
+          <th> Name </th>
+          <th> Organization </th>
+          <th> Email </th>
+          <th> Role </th>
+          <th> MPS Def </th>
+          <th> Realm Def </th>
+          <th> URL Def </th>
+          <th> SSO </th>
+          <th> WB User Name </th>
+          <th> Report Usage </th>
+          <th> Active </th>
+          <th> Show Info </th>
+          <th> Dashboard Admin </th> 
+          <th> Action </th>
+        </tr>
+      </thead>
+      <tbody>
+        @ul.map { u => @if(u.first_name != signedInUserName.get) {
+          <tr id=@u.email>      
+            <td> @u.first_name  </td>
+            <td> @u.org  </td>
+            <td> @u.email </td>
+            <td> @u.role </td>
+            <td> @u.mps_def </td>
+            <td> @u.realm_def </td>
+            <td> @u.url_def </td>
+            <td> @u.sso </td>
+            <td> @u.wb_user_name </td>
+            <td> @u.report_usage </td>
+            <td> @u.active </td>
+            <td> @u.show_info </td>
+            <td> @u.dashboard_admin </td>
+            <td> 
+              <table style="float:left">  
+                <tr><td style="border:0;background:transparent">
+                @form(routes.AdminUser.remove(version, u.email, u.org)) {
+                  <input class="btn btn-primary" type="submit" name="action" onclick="return confirm('Are you sure to remove this user?')" value="Remove" />
+                }</td><td style="border:0;background:transparent">
+	            @form(routes.AdminUser.editForm(version, u.email, u.org)) {
+                  <input class="btn btn-primary" type="submit" name="action" value="Edit" />
+                }
+	            </td><td style="border:0;background:transparent">
+	              <input type="checkbox" value=@u.email id="selecteduser" class="checkbox">
+	            </td></tr>
+	          </table>     
+            </td>
+          </tr>
+        } }
+      </tbody>
+      <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")"></script> 
+          <script>
+            $('#selectAllUsersBtn').on('click', function(){
+                $('.checkbox').prop('checked', function(i, val) {return !val;});
+                $(this).text( ($(this).html() == 'Select All Users' ? 'Unselect All' : 'Select All Users'));
+            });
+            $('#checkAll').change(function(){
+               $("input:checkbox").prop('checked', $(this).prop("checked"));
+            });
+
+         </script>
+    </table>
+  } else {
+        <div class="well">
+            <em> You have not created any users yet.</em>
+        </div>  
+  }
+  </div>
+       
+}

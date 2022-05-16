@@ -1,0 +1,20 @@
+  <div class="modal-body">
+    <p ngbAutofocus><span id="dispMessage" [innerHTML]="msg"></span></p>
+    <ul class="" *ngIf="subMsg!=undefined">
+        <li *ngFor="let item of subMsg">{{item}}</li>
+      </ul>
+      <p ngbAutofocus *ngIf="footerMsg!=undefined">
+        <span [innerHTML]="footerMsg"></span>
+      </p>
+      <p ngbAutofocus *ngIf="confirmationMsg!=undefined">
+        <span [innerHTML]="confirmationMsg"></span>
+      </p>
+      <ul class="list-unstyled listdisplay" *ngIf="listToDisplay!=undefined">
+        <li *ngFor="let item of listToDisplay" id="customScroll">{{item}}</li>
+      </ul>
+  </div>
+  <div class="modal-footer">
+
+    <button type="button" id="noclickBtn" class="btn btn-sm btn-outline-danger float-right" (click)="activeModal.close('noclick')"><fa-icon [icon]="['fas','times-circle']"></fa-icon> No</button>
+    <button type="button" id="yesclickBtn" class="btn btn-sm btn-outline-primary float-right" (click)="activeModal.close('yesclick')"><fa-icon [icon]="['fas','check-circle']"></fa-icon> Yes</button>
+  </div>

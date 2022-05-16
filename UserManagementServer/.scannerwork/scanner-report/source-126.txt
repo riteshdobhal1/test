@@ -1,0 +1,44 @@
+@(editMultiUserForm: Form[MultiUserEdit], roles: Set[String], signedInUserName: Option[String], userorg: Option[String], userrole: Option[String], usrEmails: String, mfr:String, version: String)(implicit flash: Flash, messages: Messages)
+
+@import helper._
+@import constants._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrap2Input.f) } 
+
+@title = {
+  Edit User 
+}
+
+@main(signedInUserName,  userorg, userrole, title, true, Page.Admin) {
+  <div class="span6">
+
+   @flash.get(FKSuccess).map { message =>  <div class="alert alert-success">   @message  </div>  }
+   
+   @if(editMultiUserForm.hasErrors) { <div class="alert alert-error"> Oops! Please see below. </div> }       
+   @editMultiUserForm.globalError.map { error => <div class="alert alert-error"> @error.message   </div>  }
+
+   @form(routes.AdminUser.editMulti("v1", mfr), 'class -> "form-horizontal") {        
+      @inputText( editMultiUserForm("wb_user_name"), 'maxlength -> "128", '_label -> "Wb User Name: ",'_showConstraints -> false) 
+      @select(editMultiUserForm("role"), 
+        options(roles.toList),
+        '_default -> "Select the user's role",
+        '_label -> "Role: *",
+        '_error -> editMultiUserForm("role").error.map(_.withMessage("Please select a role")),
+        '_showConstraints -> false          
+        ) 
+      @select( editMultiUserForm("realm_def"), 
+	          options = options(Org.realms.toList),
+	          '_default -> "Select a Realm",
+	          '_label -> "Default Realm: *",
+	          '_error -> editMultiUserForm("realm_def").error.map(_.withMessage("Please select a default realm")),
+	          '_showConstraints -> false)               
+
+      @inputText( editMultiUserForm("url_def"), 'maxlength -> "512", '_label -> "Default Url: ",'_showConstraints -> false) 
+      @inputText( editMultiUserForm("mps_def"), 'maxlength -> "128", '_label -> "Default MPS: ",'_showConstraints -> false)
+      <input type="hidden" id="usrEmails" name="usrEmails" value=@usrEmails /> 
+      <div class="form-actions">
+        <input name="action" class="btn btn-primary" type="submit" value="Save">
+        <a href="@routes.AdminUser.list("v1")" class="btn">Cancel</a> 
+      </div>
+    }            
+  </div>
+}

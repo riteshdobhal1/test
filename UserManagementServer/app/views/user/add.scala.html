@@ -1,0 +1,76 @@
+@(addUserForm: Form[UserWithPasswd], orgs: IndexedSeq[String], roles: Set[String], signedInUserName: Option[String], userorg: Option[String], userrole: Option[String], version: String)(implicit flash: Flash, messages: Messages)
+
+@import helper._
+@import constants._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrap2Input.f) } 
+
+@title = {
+  Add New User 
+}
+
+@main(signedInUserName,  userorg, userrole, title, true, Page.Admin) {
+  <div class="span6">
+
+   @flash.get(FKSuccess).map { message =>  <div class="alert alert-success">   @message  </div>  }
+   
+   @if(addUserForm.hasErrors) { <div class="alert alert-error"> Oops! Please see below. </div> }       
+   @addUserForm.globalError.map { error => <div class="alert alert-error"> @error.message   </div>  }
+
+   @form(routes.AdminUser.add("v1"), 'class -> "form-horizontal") {        
+      @inputText( addUserForm("first_name"), 'maxlength -> "128", '_label -> "First Name: *",'_showConstraints -> false)   
+      @inputText( addUserForm("last_name"), 'maxlength -> "128", '_label -> "Last Name: *",'_showConstraints -> false)       
+      @inputText( addUserForm("emails.main"), 'maxlength -> "128", '_label -> "Email: *", '_showConstraints -> false)     
+      @inputText( addUserForm("emails.confirm"), 'maxlength -> "128", '_label -> "Re-enter Email: *",
+        '_showConstraints -> false, 
+        '_error -> addUserForm.error("emails"))
+      @inputText( addUserForm("phone"), 'maxlength -> "20", '_label -> "Phone:",'_showConstraints -> false)
+     <!-- @checkbox( addUserForm("def_passwd"),  '_label -> "Default Password:", 'checked -> "checked" ,'_showConstraints -> false) 
+      @inputText( addUserForm("passwords.main"), 'maxlength -> "128", '_label -> "Password:", '_showConstraints -> false,
+        '_error -> addUserForm("passwords.main").error.map(_.withMessage("Password required")))     
+      @inputText( addUserForm("passwords.confirm"), 'maxlength -> "128", '_label -> "Re-enter Password:",
+        '_showConstraints -> false, 
+        '_error -> addUserForm.error("passwords"))-->
+        
+      @inputText( addUserForm("department"), 'maxlength -> "128", '_label -> "Department:",'_showConstraints -> false)   
+      @inputText( addUserForm("state"), 'maxlength -> "128", '_label -> "State: *",'_showConstraints -> false)   
+       @inputText( addUserForm("city"), 'maxlength -> "128", '_label -> "City: *",'_showConstraints -> false)   
+      @inputText( addUserForm("country"), 'maxlength -> "128", '_label -> "Country: *",'_showConstraints -> false)   
+   
+      @select(addUserForm("org"),	 
+        options(orgs.toList),
+        '_default -> "Select the user's company",
+        '_label -> "Company: *",
+        '_error -> addUserForm("org").error.map(_.withMessage("Please select a company")),
+        '_showConstraints -> false          
+        )
+      @select(addUserForm("role"), 
+        options(roles.toList),
+        '_default -> "Select the user's role",
+        '_label -> "Role: *",
+        '_error -> addUserForm("role").error.map(_.withMessage("Please select a role")),
+        '_showConstraints -> false          
+        ) 
+      @select( addUserForm("realm_def").copy(value = addUserForm("realm_def").value), 
+	          options = options(Org.realms.toList),
+	          '_default -> "Select a Realm",
+	          '_label -> "Default Realm: *",
+	          '_error -> addUserForm("realm_def").error.map(_.withMessage("Please select a default realm")),
+	          '_showConstraints -> false)               
+
+      @inputText( addUserForm("url_def"), 'maxlength -> "512", '_label -> "Default Url: *",'_showConstraints -> false) 
+      @inputText( addUserForm("mps_def"), 'maxlength -> "128", '_label -> "Default MPS: *",'_showConstraints -> false)
+      @checkbox( addUserForm("dashboard_admin"),  '_label -> "Dashboard Admin:", '_showConstraints -> false) 
+      @checkbox( addUserForm("is_prospect"),  '_label -> "Is Prospect:", '_showConstraints -> false)    
+      @checkbox( addUserForm("sso"),  '_label -> "SSO:", 'checked -> "checked" ,'_showConstraints -> false) 
+      @checkbox( addUserForm("report_usage"),  '_label -> "Report Usage:", 'checked -> "checked",'_showConstraints -> false )   
+      @inputText( addUserForm("wb_user_name"), 'maxlength -> "128", '_label -> "Wb User Name: *",'_showConstraints -> false)   
+     <!--  @checkbox( addUserForm("active"),  '_label -> "Is Active:",'_showConstraints -> false, 'checked -> "checked" ,'_showConstraints -> false) -->
+         
+     
+      <div class="form-actions">
+        <input name="action" class="btn btn-primary" type="submit" value="Save">
+        <a href="@routes.AdminUser.list("v1")" class="btn">Cancel</a> 
+      </div>
+    }            
+  </div>
+}

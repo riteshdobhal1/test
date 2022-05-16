@@ -1,0 +1,19 @@
+@(username: String, f_name: String, l_name: String, loginUrl: String, expiryDays: Int, expiryDate: String, footer: String)
+
+@import constants._
+@import constants.Page._
+@import play.api._
+@import play.api.Play.current
+<span style="font-size:17px">Hello @f_name,
+
+Thank you for signing up with us for your 30 days trial.
+You can now login to your account and explore clinical insights
+on your machine data.
+
+To login, use the verified email address as your user name and the
+password mentioned while registration.
+
+For any queries please contact out support team : <a href="mailto:@SalesEmail">Glassbeam Sales</a>
+
+@footer
+</span>

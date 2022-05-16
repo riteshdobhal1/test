@@ -1,0 +1,361 @@
+format version: 5
+output mode:
+1 items
+0 -> single
+output directories:
+1 items
+output dir -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes
+compile options:
+0 items
+javac options:
+0 items
+compiler version:
+1 items
+0 -> 2.10.4
+compile order:
+1 items
+0 -> Mixed
+name hashing:
+1 items
+0 -> true
+products:
+27 items
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$1.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$10.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$11.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$12.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$13.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$14.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$15.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$16.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$17.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$2.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$3.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$4.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$5.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$6.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$7.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$8.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$9.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ColorFormatting$.class
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ColorFormatting.class
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/FrontendRunHook$.class
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/FrontendRunHook$UIBuildHook$2$$anonfun$afterStopped$1.class
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/FrontendRunHook$UIBuildHook$2$.class
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/FrontendRunHook.class
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/FrontendCommands$.class
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> /home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/FrontendCommands.class
+binary dependencies:
+19 items
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/.ivy2/cache/com.typesafe/config/bundles/config-1.3.0.jar
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/.ivy2/cache/org.scala-sbt/apply-macro/jars/apply-macro-0.13.8.jar
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/.ivy2/cache/org.scala-sbt/collections/jars/collections-0.13.8.jar
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/.ivy2/cache/org.scala-sbt/ivy/jars/ivy-0.13.8.jar
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/.ivy2/cache/org.scala-sbt/main-settings/jars/main-settings-0.13.8.jar
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/.ivy2/cache/org.scala-sbt/main/jars/main-0.13.8.jar
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/.ivy2/cache/org.scala-sbt/sbt/jars/sbt-0.13.8.jar
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.play/sbt-plugin/jars/sbt-plugin-2.4.10.jar
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/.ivy2/cache/scala_2.10/sbt_0.13/org.scoverage/sbt-scoverage/jars/sbt-scoverage-1.0.1.jar
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/.ivy2/cache/scala_2.10/sbt_0.13/se.marcuslonnberg/sbt-docker/jars/sbt-docker-1.4.1.jar
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /home/ritesh/.sbt/boot/scala-2.10.4/lib/scala-library.jar
+/home/ritesh/development/UserManagementServer/project/Build.scala -> /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> /home/ritesh/.ivy2/cache/org.scala-sbt/io/jars/io-0.13.8.jar
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> /home/ritesh/.ivy2/cache/org.scala-sbt/sbt/jars/sbt-0.13.8.jar
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> /home/ritesh/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.play/sbt-plugin/jars/sbt-plugin-2.4.10.jar
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> /home/ritesh/.sbt/boot/scala-2.10.4/lib/scala-library.jar
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> /home/ritesh/.sbt/boot/scala-2.10.4/lib/scala-library.jar
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar
+direct source dependencies:
+0 items
+direct external dependencies:
+0 items
+public inherited source dependencies:
+0 items
+public inherited external dependencies:
+0 items
+member reference internal dependencies:
+1 items
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> /home/ritesh/development/UserManagementServer/project/FrontendCommands.scala
+member reference external dependencies:
+0 items
+inheritance internal dependencies:
+0 items
+inheritance external dependencies:
+0 items
+class names:
+27 items
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$1
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$10
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$11
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$12
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$13
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$14
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$15
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$16
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$17
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$2
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$3
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$4
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$5
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$6
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$7
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$8
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild$$anonfun$9
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ColorFormatting
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ColorFormatting$
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> FrontendRunHook
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> FrontendRunHook$
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> FrontendRunHook$UIBuildHook$2$
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> FrontendRunHook$UIBuildHook$2$$anonfun$afterStopped$1
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> FrontendCommands
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> FrontendCommands$
+used names:
+157 items
+/home/ritesh/development/UserManagementServer/project/Build.scala -> %
+/home/ritesh/development/UserManagementServer/project/Build.scala -> %%
+/home/ritesh/development/UserManagementServer/project/Build.scala -> +
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ++=
+/home/ritesh/development/UserManagementServer/project/Build.scala -> +=
+/home/ritesh/development/UserManagementServer/project/Build.scala -> :=
+/home/ritesh/development/UserManagementServer/project/Build.scala -> <init>
+/home/ritesh/development/UserManagementServer/project/Build.scala -> AddSettings
+/home/ritesh/development/UserManagementServer/project/Build.scala -> AnyRef
+/home/ritesh/development/UserManagementServer/project/Build.scala -> Append
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ApplicationBuild
+/home/ritesh/development/UserManagementServer/project/Build.scala -> Build
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ColorFormatting
+/home/ritesh/development/UserManagementServer/project/Build.scala -> Compile
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ConfigFactory
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ConfigKey
+/home/ritesh/development/UserManagementServer/project/Build.scala -> DockerPlugin
+/home/ritesh/development/UserManagementServer/project/Build.scala -> File
+/home/ritesh/development/UserManagementServer/project/Build.scala -> FullInstance
+/home/ritesh/development/UserManagementServer/project/Build.scala -> InitializeInstance
+/home/ritesh/development/UserManagementServer/project/Build.scala -> Int
+/home/ritesh/development/UserManagementServer/project/Build.scala -> Keys
+/home/ritesh/development/UserManagementServer/project/Build.scala -> Option
+/home/ritesh/development/UserManagementServer/project/Build.scala -> PlayImport
+/home/ritesh/development/UserManagementServer/project/Build.scala -> PlayScala
+/home/ritesh/development/UserManagementServer/project/Build.scala -> Predef
+/home/ritesh/development/UserManagementServer/project/Build.scala -> Project
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ScoverageKeys
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ScoverageSbtPlugin
+/home/ritesh/development/UserManagementServer/project/Build.scala -> Seq
+/home/ritesh/development/UserManagementServer/project/Build.scala -> String
+/home/ritesh/development/UserManagementServer/project/Build.scala -> StringContext
+/home/ritesh/development/UserManagementServer/project/Build.scala -> System
+/home/ritesh/development/UserManagementServer/project/Build.scala -> Test
+/home/ritesh/development/UserManagementServer/project/Build.scala -> appDependencies
+/home/ritesh/development/UserManagementServer/project/Build.scala -> appName
+/home/ritesh/development/UserManagementServer/project/Build.scala -> appVersion
+/home/ritesh/development/UserManagementServer/project/Build.scala -> append1
+/home/ritesh/development/UserManagementServer/project/Build.scala -> appendN
+/home/ritesh/development/UserManagementServer/project/Build.scala -> appendSeq
+/home/ritesh/development/UserManagementServer/project/Build.scala -> apply
+/home/ritesh/development/UserManagementServer/project/Build.scala -> at
+/home/ritesh/development/UserManagementServer/project/Build.scala -> bColor
+/home/ritesh/development/UserManagementServer/project/Build.scala -> backColor
+/home/ritesh/development/UserManagementServer/project/Build.scala -> backgroundColor
+/home/ritesh/development/UserManagementServer/project/Build.scala -> cache
+/home/ritesh/development/UserManagementServer/project/Build.scala -> collection
+/home/ritesh/development/UserManagementServer/project/Build.scala -> color
+/home/ritesh/development/UserManagementServer/project/Build.scala -> com
+/home/ritesh/development/UserManagementServer/project/Build.scala -> conf
+/home/ritesh/development/UserManagementServer/project/Build.scala -> config
+/home/ritesh/development/UserManagementServer/project/Build.scala -> configurationToKey
+/home/ritesh/development/UserManagementServer/project/Build.scala -> coverageExcludedPackages
+/home/ritesh/development/UserManagementServer/project/Build.scala -> doc
+/home/ritesh/development/UserManagementServer/project/Build.scala -> empty
+/home/ritesh/development/UserManagementServer/project/Build.scala -> enablePlugins
+/home/ritesh/development/UserManagementServer/project/Build.scala -> file
+/home/ritesh/development/UserManagementServer/project/Build.scala -> filters
+/home/ritesh/development/UserManagementServer/project/Build.scala -> formatText
+/home/ritesh/development/UserManagementServer/project/Build.scala -> getOrElse
+/home/ritesh/development/UserManagementServer/project/Build.scala -> getProperty
+/home/ritesh/development/UserManagementServer/project/Build.scala -> getString
+/home/ritesh/development/UserManagementServer/project/Build.scala -> in
+/home/ritesh/development/UserManagementServer/project/Build.scala -> intransitive
+/home/ritesh/development/UserManagementServer/project/Build.scala -> java
+/home/ritesh/development/UserManagementServer/project/Build.scala -> javaOptions
+/home/ritesh/development/UserManagementServer/project/Build.scala -> jdbc
+/home/ritesh/development/UserManagementServer/project/Build.scala -> lang
+/home/ritesh/development/UserManagementServer/project/Build.scala -> libraryDependencies
+/home/ritesh/development/UserManagementServer/project/Build.scala -> main
+/home/ritesh/development/UserManagementServer/project/Build.scala -> msg
+/home/ritesh/development/UserManagementServer/project/Build.scala -> package
+/home/ritesh/development/UserManagementServer/project/Build.scala -> packageDoc
+/home/ritesh/development/UserManagementServer/project/Build.scala -> parallelExecution
+/home/ritesh/development/UserManagementServer/project/Build.scala -> parseFile
+/home/ritesh/development/UserManagementServer/project/Build.scala -> play
+/home/ritesh/development/UserManagementServer/project/Build.scala -> println
+/home/ritesh/development/UserManagementServer/project/Build.scala -> publishArtifact
+/home/ritesh/development/UserManagementServer/project/Build.scala -> pure
+/home/ritesh/development/UserManagementServer/project/Build.scala -> reset
+/home/ritesh/development/UserManagementServer/project/Build.scala -> resolve
+/home/ritesh/development/UserManagementServer/project/Build.scala -> resolvers
+/home/ritesh/development/UserManagementServer/project/Build.scala -> s
+/home/ritesh/development/UserManagementServer/project/Build.scala -> sbt
+/home/ritesh/development/UserManagementServer/project/Build.scala -> sbtdocker
+/home/ritesh/development/UserManagementServer/project/Build.scala -> scala
+/home/ritesh/development/UserManagementServer/project/Build.scala -> scalaVersion
+/home/ritesh/development/UserManagementServer/project/Build.scala -> scalacOptions
+/home/ritesh/development/UserManagementServer/project/Build.scala -> scoverage
+/home/ritesh/development/UserManagementServer/project/Build.scala -> set
+/home/ritesh/development/UserManagementServer/project/Build.scala -> settings
+/home/ritesh/development/UserManagementServer/project/Build.scala -> sources
+/home/ritesh/development/UserManagementServer/project/Build.scala -> str
+/home/ritesh/development/UserManagementServer/project/Build.scala -> tColor
+/home/ritesh/development/UserManagementServer/project/Build.scala -> testOptions
+/home/ritesh/development/UserManagementServer/project/Build.scala -> textColor
+/home/ritesh/development/UserManagementServer/project/Build.scala -> toGroupID
+/home/ritesh/development/UserManagementServer/project/Build.scala -> toRepositoryName
+/home/ritesh/development/UserManagementServer/project/Build.scala -> txtColor
+/home/ritesh/development/UserManagementServer/project/Build.scala -> typesafe
+/home/ritesh/development/UserManagementServer/project/Build.scala -> version
+/home/ritesh/development/UserManagementServer/project/Build.scala -> ws
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> !
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> +
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> /
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> <init>
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> AnyRef
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> File
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> FrontendCommands
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> FrontendRunHook
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> InetSocketAddress
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> None
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> Option
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> PlayRunHook
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> Predef
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> Process
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> String
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> System
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> UIBuildHook
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> Unit
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> apply
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> base
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> contains
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> dependencyInstall
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> destroy
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> exists
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> foreach
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> getProperty
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> java
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> lang
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> net
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> npmInstall
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> npmInstall_=
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> npmRun
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> npmRun_=
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> package
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> play
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> process
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> process_=
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> richFile
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> run
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> sbt
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> scala
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> serve
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> sys
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> toLowerCase
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> unary_!
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> <init>
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> AnyRef
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> FrontendCommands
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> Predef
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> String
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> build
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> dependencyInstall
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> scala
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> serve
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> test
+product stamps:
+27 items
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$1.class -> lastModified(1650265207714)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$10.class -> lastModified(1650265207714)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$11.class -> lastModified(1650265207714)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$12.class -> lastModified(1650265207718)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$13.class -> lastModified(1650265207718)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$14.class -> lastModified(1650265207718)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$15.class -> lastModified(1650265207718)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$16.class -> lastModified(1650265207718)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$17.class -> lastModified(1650265207722)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$2.class -> lastModified(1650265207722)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$3.class -> lastModified(1650265207722)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$4.class -> lastModified(1650265207722)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$5.class -> lastModified(1650265207726)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$6.class -> lastModified(1650265207726)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$7.class -> lastModified(1650265207726)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$8.class -> lastModified(1650265207726)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$$anonfun$9.class -> lastModified(1650265207726)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild$.class -> lastModified(1650265207710)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ApplicationBuild.class -> lastModified(1650265207686)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ColorFormatting$.class -> lastModified(1650265207730)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/ColorFormatting.class -> lastModified(1650265207730)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/FrontendCommands$.class -> lastModified(1645440679944)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/FrontendCommands.class -> lastModified(1645440679944)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/FrontendRunHook$.class -> lastModified(1645440679956)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/FrontendRunHook$UIBuildHook$2$$anonfun$afterStopped$1.class -> lastModified(1645440679960)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/FrontendRunHook$UIBuildHook$2$.class -> lastModified(1645440679960)
+/home/ritesh/development/UserManagementServer/project/target/scala-2.10/sbt-0.13/classes/FrontendRunHook.class -> lastModified(1645440679948)
+source stamps:
+3 items
+/home/ritesh/development/UserManagementServer/project/Build.scala -> hash(db2b9a8ae8e124f97c895defa6571256e00eb031)
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> hash(fecef70b2a3289aaa790fb740523db4fc148d65a)
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> hash(9a04ed005c1983c88a378c1d74b4595641557394)
+binary stamps:
+13 items
+/home/ritesh/.ivy2/cache/com.typesafe/config/bundles/config-1.3.0.jar -> lastModified(1431099969000)
+/home/ritesh/.ivy2/cache/org.scala-sbt/apply-macro/jars/apply-macro-0.13.8.jar -> lastModified(1429631043000)
+/home/ritesh/.ivy2/cache/org.scala-sbt/collections/jars/collections-0.13.8.jar -> lastModified(1618381408000)
+/home/ritesh/.ivy2/cache/org.scala-sbt/io/jars/io-0.13.8.jar -> lastModified(1618381455000)
+/home/ritesh/.ivy2/cache/org.scala-sbt/ivy/jars/ivy-0.13.8.jar -> lastModified(1618381470000)
+/home/ritesh/.ivy2/cache/org.scala-sbt/main-settings/jars/main-settings-0.13.8.jar -> lastModified(1618381485000)
+/home/ritesh/.ivy2/cache/org.scala-sbt/main/jars/main-0.13.8.jar -> lastModified(1618381583000)
+/home/ritesh/.ivy2/cache/org.scala-sbt/sbt/jars/sbt-0.13.8.jar -> lastModified(1429631014000)
+/home/ritesh/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.play/sbt-plugin/jars/sbt-plugin-2.4.10.jar -> lastModified(1618372515000)
+/home/ritesh/.ivy2/cache/scala_2.10/sbt_0.13/org.scoverage/sbt-scoverage/jars/sbt-scoverage-1.0.1.jar -> lastModified(1417170912000)
+/home/ritesh/.ivy2/cache/scala_2.10/sbt_0.13/se.marcuslonnberg/sbt-docker/jars/sbt-docker-1.4.1.jar -> lastModified(1488474452000)
+/home/ritesh/.sbt/boot/scala-2.10.4/lib/scala-library.jar -> lastModified(1645378137703)
+/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar -> lastModified(1635947699000)
+class names:
+13 items
+/home/ritesh/.ivy2/cache/com.typesafe/config/bundles/config-1.3.0.jar -> com.typesafe.config.ConfigFactory
+/home/ritesh/.ivy2/cache/org.scala-sbt/apply-macro/jars/apply-macro-0.13.8.jar -> sbt.appmacro.Instance$
+/home/ritesh/.ivy2/cache/org.scala-sbt/collections/jars/collections-0.13.8.jar -> sbt.LinePosition$
+/home/ritesh/.ivy2/cache/org.scala-sbt/io/jars/io-0.13.8.jar -> sbt.RichFile
+/home/ritesh/.ivy2/cache/org.scala-sbt/ivy/jars/ivy-0.13.8.jar -> sbt.Resolver
+/home/ritesh/.ivy2/cache/org.scala-sbt/main-settings/jars/main-settings-0.13.8.jar -> sbt.ConfigKey$
+/home/ritesh/.ivy2/cache/org.scala-sbt/main/jars/main-0.13.8.jar -> sbt.Build
+/home/ritesh/.ivy2/cache/org.scala-sbt/sbt/jars/sbt-0.13.8.jar -> sbt.package$
+/home/ritesh/.ivy2/cache/scala_2.10/sbt_0.13/com.typesafe.play/sbt-plugin/jars/sbt-plugin-2.4.10.jar -> play.package$
+/home/ritesh/.ivy2/cache/scala_2.10/sbt_0.13/org.scoverage/sbt-scoverage/jars/sbt-scoverage-1.0.1.jar -> scoverage.ScoverageSbtPlugin
+/home/ritesh/.ivy2/cache/scala_2.10/sbt_0.13/se.marcuslonnberg/sbt-docker/jars/sbt-docker-1.4.1.jar -> sbtdocker.DockerPlugin$
+/home/ritesh/.sbt/boot/scala-2.10.4/lib/scala-library.jar -> scala.Int
+/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar -> java.lang.Object
+internal apis:
+3 items
+/home/ritesh/development/UserManagementServer/project/Build.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHCukY03AHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAJ3NyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cBtrgIt0AAZub3RpZnlzcQB+AAyXPS3ldAAPYmFja2dyb3VuZENvbG9yc3EAfgAMWpJpm3QABHdhaXRzcQB+AAxT5avbdAANJGFzSW5zdGFuY2VPZnNxAH4ADP8XDth0AAxidWlsZExvYWRlcnNzcQB+AAzLRJAAdAAGZXF1YWxzc3EAfgAMkQmHg3QAB2FwcE5hbWVzcQB+AAygyGAldAAMYXNJbnN0YW5jZU9mc3EAfgAMBCHLvHQAEnByb2plY3REZWZpbml0aW9uc3NxAH4ADCENTZ50AAxzeW5jaHJvbml6ZWRzcQB+AAxw2sGedAAKYXBwVmVyc2lvbnNxAH4ADGCObtB0AA0kaXNJbnN0YW5jZU9mc3EAfgAMSsFCCHQAEEFwcGxpY2F0aW9uQnVpbGRzcQB+AAwRlX1zdAAJdGV4dENvbG9yc3EAfgAMxeRhoHQAEmFsZXJ0TXNnJGRlZmF1bHQkM3NxAH4ADFNp2Pt0AARtYWluc3EAfgAM3E+f0XQACW5vdGlmeUFsbHNxAH4ADJFKtqB0ABJhbGVydE1zZyRkZWZhdWx0JDJzcQB+AAwOus3jdAALcm9vdFByb2plY3RzcQB+AAz6Df/JdAAEY29uZnNxAH4ADDuWEml0AAxpc0luc3RhbmNlT2ZzcQB+AAxIO7H2dAAPYXBwRGVwZW5kZW5jaWVzc3EAfgAMm3AAhHQAAj09c3EAfgAMXsO61HQAC3Rlc3RPcHRpb25zc3EAfgAM+PSEa3QABWNsb25lc3EAfgAMaOemznQABXJlc2V0c3EAfgAMtlE2wnQACHRvU3RyaW5nc3EAfgAMqanyCnQAAiE9c3EAfgAMfvNrLnQACHByb2plY3Rzc3EAfgAMV0VIqXQACGdldENsYXNzc3EAfgAMbBWyL3QACGFsZXJ0TXNnc3EAfgAMsWMecnQACmZvcm1hdFRleHRzcQB+AAyHnM7wdAACbmVzcQB+AAwle2aDdAACZXFzcQB+AAw74frgdAAIc2V0dGluZ3NzcQB+AAxpb63odAACIyNzcQB+AAyOoI9adAAIZmluYWxpemVzcQB+AAzmovvjdAAIaGFzaENvZGVzcQB+AAzMyf4fdAAPQ29sb3JGb3JtYXR0aW5nc3IAE3hzYnRpLmFwaS5Tb3VyY2VBUEm5Xqf5KSM4pAIAAlsAC2RlZmluaXRpb25zdAAXW0x4c2J0aS9hcGkvRGVmaW5pdGlvbjtbAAhwYWNrYWdlc3QAFFtMeHNidGkvYXBpL1BhY2thZ2U7eHB1cgAXW0x4c2J0aS5hcGkuRGVmaW5pdGlvbjuIyVzntONeDgIAAHhwAAAAAnNyABN4c2J0aS5hcGkuQ2xhc3NMaWtlgzQcod+wl2wCAARMAA5kZWZpbml0aW9uVHlwZXQAGkx4c2J0aS9hcGkvRGVmaW5pdGlvblR5cGU7WwAQc2F2ZWRBbm5vdGF0aW9uc3QAE1tMamF2YS9sYW5nL1N0cmluZztMAAhzZWxmVHlwZXQAEEx4c2J0aS9hcGkvTGF6eTtMAAlzdHJ1Y3R1cmVxAH4AZXhyACF4c2J0aS5hcGkuUGFyYW1ldGVyaXplZERlZmluaXRpb275EW6x1VA84gIAAVsADnR5cGVQYXJhbWV0ZXJzdAAaW0x4c2J0aS9hcGkvVHlwZVBhcmFtZXRlcjt4cgAUeHNidGkuYXBpLkRlZmluaXRpb26HKhvocULjRgIABEwABmFjY2Vzc3QAEkx4c2J0aS9hcGkvQWNjZXNzO1sAC2Fubm90YXRpb25zdAAXW0x4c2J0aS9hcGkvQW5ub3RhdGlvbjtMAAltb2RpZmllcnN0ABVMeHNidGkvYXBpL01vZGlmaWVycztMAARuYW1lcQB+AA14cHNyABB4c2J0aS5hcGkuUHVibGljulg9rmwtYEICAAB4cgAQeHNidGkuYXBpLkFjY2Vzc91imvgdYzFIAgAAeHB1cgAXW0x4c2J0aS5hcGkuQW5ub3RhdGlvbjvrl+sZEPaNSAIAAHhwAAAAAHNyABN4c2J0aS5hcGkuTW9kaWZpZXJzxxETIWmc3CQCAAFCAAVmbGFnc3hwAHEAfgAndXIAGltMeHNidGkuYXBpLlR5cGVQYXJhbWV0ZXI72W0mDyid8rYCAAB4cAAAAAB+cgAYeHNidGkuYXBpLkRlZmluaXRpb25UeXBlAAAAAAAAAAASAAB4cgAOamF2YS5sYW5nLkVudW0AAAAAAAAAABIAAHhwdAAGTW9kdWxldXIAE1tMamF2YS5sYW5nLlN0cmluZzut0lbn6R17RwIAAHhwAAAAAHNyABN4c2J0aS5TYWZlTGF6eSRJbXBsUAIuk5eXQD8CAANaAAhiaXRtYXAkMEwAAl90dAASTGphdmEvbGFuZy9PYmplY3Q7TAAEZXZhbHQAEUxzY2FsYS9GdW5jdGlvbjA7eHIAFnhzYnRpLmFwaS5BYnN0cmFjdExhennTd7UBX7vnoAIAAHhwAXNyABN4c2J0aS5hcGkuRW1wdHlUeXBlvP2eRkk7iSQCAAB4cgAUeHNidGkuYXBpLlNpbXBsZVR5cGVyeGKIISO/QAIAAHhyAA54c2J0aS5hcGkuVHlwZT9q2SEWSarKAgAAeHBwc3EAfgB8AXNyABN4c2J0aS5hcGkuU3RydWN0dXJlqar5gJNv2AACAANMAAhkZWNsYXJlZHEAfgBlTAAJaW5oZXJpdGVkcQB+AGVMAAdwYXJlbnRzcQB+AGV4cQB+AINzcQB+AHwBdXEAfgBgAAAAAHBzcQB+AHwBdXEAfgBgAAAAAHBzcQB+AHwBdXIAEVtMeHNidGkuYXBpLlR5cGU7dP+lWnv56UECAAB4cAAAAANzcgAUeHNidGkuYXBpLlByb2plY3Rpb27z0o1U6UWkLQIAAkwAAmlkcQB+AA1MAAZwcmVmaXh0ABZMeHNidGkvYXBpL1NpbXBsZVR5cGU7eHEAfgCCdAAFQnVpbGRzcgATeHNidGkuYXBpLlNpbmdsZXRvbvynX/jPVuRGAgABTAAEcGF0aHQAEEx4c2J0aS9hcGkvUGF0aDt4cQB+AIJzcgAOeHNidGkuYXBpLlBhdGibPVwIzqUnhAIAAVsACmNvbXBvbmVudHN0ABpbTHhzYnRpL2FwaS9QYXRoQ29tcG9uZW50O3hwdXIAGltMeHNidGkuYXBpLlBhdGhDb21wb25lbnQ7Q9oJdC1nFnQCAAB4cAAAAAJzcgAMeHNidGkuYXBpLklkmDJsizdTxEACAAFMAAJpZHEAfgANeHIAF3hzYnRpLmFwaS5QYXRoQ29tcG9uZW50X5oiWy6Gn7wCAAB4cHQAA3NidHNyAA54c2J0aS5hcGkuVGhpc9sJ7abMWkBcAgAAeHEAfgCcc3EAfgCPdAAGT2JqZWN0c3EAfgCTc3EAfgCWdXEAfgCZAAAAA3NxAH4Am3QABGphdmFzcQB+AJt0AARsYW5ncQB+AKBzcQB+AI90AANBbnlzcQB+AJNzcQB+AJZ1cQB+AJkAAAACc3EAfgCbdAAFc2NhbGFxAH4AoHBwc3EAfgBicQB+AG91cQB+AHAAAAAAc3EAfgByAHEAfgBbdXEAfgB0AAAAAHEAfgB4dXEAfgB6AAAAAHNxAH4AfAFxAH4AhHBzcQB+AHwBc3EAfgCGc3EAfgB8AXVxAH4AYAAAAABwc3EAfgB8AXVxAH4AYAAAAABwc3EAfgB8AXVxAH4AjQAAAAJzcQB+AI9xAH4AonNxAH4Ak3NxAH4AlnVxAH4AmQAAAANzcQB+AJtxAH4Ap3NxAH4Am3EAfgCpcQB+AKBzcQB+AI9xAH4Aq3NxAH4Ak3NxAH4AlnVxAH4AmQAAAAJzcQB+AJtxAH4AsHEAfgCgcHB1cgAUW0x4c2J0aS5hcGkuUGFja2FnZTtbExk3cKcnoQIAAHhwAAAAAHNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABgDt4rM11cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5cQB+AA1MAA9zb3VyY2VEaXJlY3RvcnlxAH4ADXhwdABYL2hvbWUvcml0ZXNoL2RldmVsb3BtZW50L1VzZXJNYW5hZ2VtZW50U2VydmVyL3Byb2plY3QvdGFyZ2V0L3NjYWxhLTIuMTAvc2J0LTAuMTMvY2xhc3Nlc3QAAS91cgACW0Ks8xf4BghU4AIAAHhwAAAAFNsrmoro4ST5fIld76ZXElbgDrAx
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHD9GUggAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAFXNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cK5IlW90AAZub3RpZnlzcQB+AAzQPfi5dAAEd2FpdHNxAH4ADFDCi3x0AA0kYXNJbnN0YW5jZU9mc3EAfgAMkE/DGnQABmVxdWFsc3NxAH4ADFTMFPF0AAxhc0luc3RhbmNlT2ZzcQB+AAwpEkUddAAMc3luY2hyb25pemVkc3EAfgAMqN9jIHQADSRpc0luc3RhbmNlT2ZzcQB+AAyxuOtGdAAPRnJvbnRlbmRSdW5Ib29rc3EAfgAMAnuSgnQACW5vdGlmeUFsbHNxAH4ADOo2q/F0AAxpc0luc3RhbmNlT2ZzcQB+AAwB6K9mdAAFYXBwbHlzcQB+AAx2+NwcdAACPT1zcQB+AAy8bECXdAAFY2xvbmVzcQB+AAzYxG4tdAAIdG9TdHJpbmdzcQB+AAzVC+obdAACIT1zcQB+AAxI9GwldAAIZ2V0Q2xhc3NzcQB+AAyZ+GTJdAACbmVzcQB+AAxo8ig4dAACZXFzcQB+AAxpTHgwdAACIyNzcQB+AAwoVqIgdAAIZmluYWxpemVzcQB+AAwpDj4TdAAIaGFzaENvZGVzcgATeHNidGkuYXBpLlNvdXJjZUFQSblep/kpIzikAgACWwALZGVmaW5pdGlvbnN0ABdbTHhzYnRpL2FwaS9EZWZpbml0aW9uO1sACHBhY2thZ2VzdAAUW0x4c2J0aS9hcGkvUGFja2FnZTt4cHVyABdbTHhzYnRpLmFwaS5EZWZpbml0aW9uO4jJXOe0414OAgAAeHAAAAABc3IAE3hzYnRpLmFwaS5DbGFzc0xpa2WDNByh37CXbAIABEwADmRlZmluaXRpb25UeXBldAAaTHhzYnRpL2FwaS9EZWZpbml0aW9uVHlwZTtbABBzYXZlZEFubm90YXRpb25zdAATW0xqYXZhL2xhbmcvU3RyaW5nO0wACHNlbGZUeXBldAAQTHhzYnRpL2FwaS9MYXp5O0wACXN0cnVjdHVyZXEAfgBBeHIAIXhzYnRpLmFwaS5QYXJhbWV0ZXJpemVkRGVmaW5pdGlvbvkRbrHVUDziAgABWwAOdHlwZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9UeXBlUGFyYW1ldGVyO3hyABR4c2J0aS5hcGkuRGVmaW5pdGlvbocqG+hxQuNGAgAETAAGYWNjZXNzdAASTHhzYnRpL2FwaS9BY2Nlc3M7WwALYW5ub3RhdGlvbnN0ABdbTHhzYnRpL2FwaS9Bbm5vdGF0aW9uO0wACW1vZGlmaWVyc3QAFUx4c2J0aS9hcGkvTW9kaWZpZXJzO0wABG5hbWVxAH4ADXhwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnPHERMhaZzcJAIAAUIABWZsYWdzeHAAcQB+AB11cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAZNb2R1bGV1cgATW0xqYXZhLmxhbmcuU3RyaW5nO63SVufpHXtHAgAAeHAAAAAAc3IAE3hzYnRpLlNhZmVMYXp5JEltcGxQAi6Tl5dAPwIAA1oACGJpdG1hcCQwTAACX3R0ABJMamF2YS9sYW5nL09iamVjdDtMAARldmFsdAARTHNjYWxhL0Z1bmN0aW9uMDt4cgAWeHNidGkuYXBpLkFic3RyYWN0TGF6edN3tQFfu+egAgAAeHAAcHNyACB4c2J0aS5TYWZlTGF6eSQkYW5vbmZ1biRzdHJpY3QkMQAAAAAAAAAAAgABTAAHdmFsdWUkMXEAfgBZeHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgBYAHBzcQB+AF1zcgATeHNidGkuYXBpLlN0cnVjdHVyZamq+YCTb9gAAgADTAAIZGVjbGFyZWRxAH4AQUwACWluaGVyaXRlZHEAfgBBTAAHcGFyZW50c3EAfgBBeHEAfgBhc3EAfgBYAHBzcQB+AF11cQB+ADwAAAAAc3EAfgBYAHBzcQB+AF11cQB+ADwAAAAAc3EAfgBYAHBzcQB+AF11cgARW0x4c2J0aS5hcGkuVHlwZTt0/6Vae/npQQIAAHhwAAAAAnNyABR4c2J0aS5hcGkuUHJvamVjdGlvbvPSjVTpRaQtAgACTAACaWRxAH4ADUwABnByZWZpeHQAFkx4c2J0aS9hcGkvU2ltcGxlVHlwZTt4cQB+AGB0AAZPYmplY3RzcgATeHNidGkuYXBpLlNpbmdsZXRvbvynX/jPVuRGAgABTAAEcGF0aHQAEEx4c2J0aS9hcGkvUGF0aDt4cQB+AGBzcgAOeHNidGkuYXBpLlBhdGibPVwIzqUnhAIAAVsACmNvbXBvbmVudHN0ABpbTHhzYnRpL2FwaS9QYXRoQ29tcG9uZW50O3hwdXIAGltMeHNidGkuYXBpLlBhdGhDb21wb25lbnQ7Q9oJdC1nFnQCAAB4cAAAAANzcgAMeHNidGkuYXBpLklkmDJsizdTxEACAAFMAAJpZHEAfgANeHIAF3hzYnRpLmFwaS5QYXRoQ29tcG9uZW50X5oiWy6Gn7wCAAB4cHQABGphdmFzcQB+AH10AARsYW5nc3IADnhzYnRpLmFwaS5UaGlz2wntpsxaQFwCAAB4cQB+AH5zcQB+AHF0AANBbnlzcQB+AHVzcQB+AHh1cQB+AHsAAAACc3EAfgB9dAAFc2NhbGFxAH4AhHVyABRbTHhzYnRpLmFwaS5QYWNrYWdlO1sTGTdwpyehAgAAeHAAAAAAc3IAFXhzYnRpLmFwaS5Db21waWxhdGlvbu364MNq6KBCAgACSgAJc3RhcnRUaW1lWwAHb3V0cHV0c3QAGltMeHNidGkvYXBpL091dHB1dFNldHRpbmc7eHAAAAF/G+g0k3VyABpbTHhzYnRpLmFwaS5PdXRwdXRTZXR0aW5nO39qwvOnh6VCAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5PdXRwdXRTZXR0aW5netmaR3T7HXsCAAJMAA9vdXRwdXREaXJlY3RvcnlxAH4ADUwAD3NvdXJjZURpcmVjdG9yeXEAfgANeHB0AFgvaG9tZS9yaXRlc2gvZGV2ZWxvcG1lbnQvVXNlck1hbmFnZW1lbnRTZXJ2ZXIvcHJvamVjdC90YXJnZXQvc2NhbGEtMi4xMC9zYnQtMC4xMy9jbGFzc2VzdAABL3VyAAJbQqzzF/gGCFTgAgAAeHAAAAAU/s73CyoyiaqnkPt0BSPbT8FI1lo=
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> 
+rO0ABXNyABB4c2J0aS5hcGkuU291cmNlFlpwRASfbtoCAAZJAAdhcGlIYXNoWgAIaGFzTWFjcm9MABhfaW50ZXJuYWxPbmx5X25hbWVIYXNoZXN0ACRMeHNidGkvYXBpL19pbnRlcm5hbE9ubHlfTmFtZUhhc2hlcztMAANhcGl0ABVMeHNidGkvYXBpL1NvdXJjZUFQSTtMAAtjb21waWxhdGlvbnQAF0x4c2J0aS9hcGkvQ29tcGlsYXRpb247WwAEaGFzaHQAAltCeHDPKouNAHNyACJ4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaGVzVNq+mfrU7EwCAAJbAA9pbXBsaWNpdE1lbWJlcnN0ACNbTHhzYnRpL2FwaS9faW50ZXJuYWxPbmx5X05hbWVIYXNoO1sADnJlZ3VsYXJNZW1iZXJzcQB+AAd4cHVyACNbTHhzYnRpLmFwaS5faW50ZXJuYWxPbmx5X05hbWVIYXNoO0lagLbdlov0AgAAeHAAAAAAdXEAfgAJAAAAGHNyACB4c2J0aS5hcGkuX2ludGVybmFsT25seV9OYW1lSGFzaFsO9SJ2OFfPAgACSQAEaGFzaEwABG5hbWV0ABJMamF2YS9sYW5nL1N0cmluZzt4cDPCwZZ0AAZub3RpZnlzcQB+AAygIOWpdAAEdGVzdHNxAH4ADMOMhft0AAR3YWl0c3EAfgAMfzQfXHQADSRhc0luc3RhbmNlT2ZzcQB+AAykun9MdAAGZXF1YWxzc3EAfgAMfllO/XQABXNlcnZlc3EAfgAMz1ALKnQADGFzSW5zdGFuY2VPZnNxAH4ADNqqQnl0AAxzeW5jaHJvbml6ZWRzcQB+AAycp+4ZdAANJGlzSW5zdGFuY2VPZnNxAH4ADBb/WxV0AAVidWlsZHNxAH4ADOva6BR0AAlub3RpZnlBbGxzcQB+AAyOVNnKdAAMaXNJbnN0YW5jZU9mc3EAfgAMsHVMyXQAEWRlcGVuZGVuY3lJbnN0YWxsc3EAfgAMTLNBjHQAAj09c3EAfgAMefSrsnQABWNsb25lc3EAfgAMM4Z1a3QAEEZyb250ZW5kQ29tbWFuZHNzcQB+AAyZNAltdAAIdG9TdHJpbmdzcQB+AAw9PbfjdAACIT1zcQB+AAzmaf+rdAAIZ2V0Q2xhc3NzcQB+AAyzHnFedAACbmVzcQB+AAxqCsbQdAACZXFzcQB+AAzy+R3JdAACIyNzcQB+AAwZIVObdAAIZmluYWxpemVzcQB+AAypN1tydAAIaGFzaENvZGVzcgATeHNidGkuYXBpLlNvdXJjZUFQSblep/kpIzikAgACWwALZGVmaW5pdGlvbnN0ABdbTHhzYnRpL2FwaS9EZWZpbml0aW9uO1sACHBhY2thZ2VzdAAUW0x4c2J0aS9hcGkvUGFja2FnZTt4cHVyABdbTHhzYnRpLmFwaS5EZWZpbml0aW9uO4jJXOe0414OAgAAeHAAAAABc3IAE3hzYnRpLmFwaS5DbGFzc0xpa2WDNByh37CXbAIABEwADmRlZmluaXRpb25UeXBldAAaTHhzYnRpL2FwaS9EZWZpbml0aW9uVHlwZTtbABBzYXZlZEFubm90YXRpb25zdAATW0xqYXZhL2xhbmcvU3RyaW5nO0wACHNlbGZUeXBldAAQTHhzYnRpL2FwaS9MYXp5O0wACXN0cnVjdHVyZXEAfgBHeHIAIXhzYnRpLmFwaS5QYXJhbWV0ZXJpemVkRGVmaW5pdGlvbvkRbrHVUDziAgABWwAOdHlwZVBhcmFtZXRlcnN0ABpbTHhzYnRpL2FwaS9UeXBlUGFyYW1ldGVyO3hyABR4c2J0aS5hcGkuRGVmaW5pdGlvbocqG+hxQuNGAgAETAAGYWNjZXNzdAASTHhzYnRpL2FwaS9BY2Nlc3M7WwALYW5ub3RhdGlvbnN0ABdbTHhzYnRpL2FwaS9Bbm5vdGF0aW9uO0wACW1vZGlmaWVyc3QAFUx4c2J0aS9hcGkvTW9kaWZpZXJzO0wABG5hbWVxAH4ADXhwc3IAEHhzYnRpLmFwaS5QdWJsaWO6WD2ubC1gQgIAAHhyABB4c2J0aS5hcGkuQWNjZXNz3WKa+B1jMUgCAAB4cHVyABdbTHhzYnRpLmFwaS5Bbm5vdGF0aW9uO+uX6xkQ9o1IAgAAeHAAAAAAc3IAE3hzYnRpLmFwaS5Nb2RpZmllcnPHERMhaZzcJAIAAUIABWZsYWdzeHAAcQB+AC11cgAaW0x4c2J0aS5hcGkuVHlwZVBhcmFtZXRlcjvZbSYPKJ3ytgIAAHhwAAAAAH5yABh4c2J0aS5hcGkuRGVmaW5pdGlvblR5cGUAAAAAAAAAABIAAHhyAA5qYXZhLmxhbmcuRW51bQAAAAAAAAAAEgAAeHB0AAZNb2R1bGV1cgATW0xqYXZhLmxhbmcuU3RyaW5nO63SVufpHXtHAgAAeHAAAAAAc3IAE3hzYnRpLlNhZmVMYXp5JEltcGxQAi6Tl5dAPwIAA1oACGJpdG1hcCQwTAACX3R0ABJMamF2YS9sYW5nL09iamVjdDtMAARldmFsdAARTHNjYWxhL0Z1bmN0aW9uMDt4cgAWeHNidGkuYXBpLkFic3RyYWN0TGF6edN3tQFfu+egAgAAeHAAcHNyACB4c2J0aS5TYWZlTGF6eSQkYW5vbmZ1biRzdHJpY3QkMQAAAAAAAAAAAgABTAAHdmFsdWUkMXEAfgBfeHBzcgATeHNidGkuYXBpLkVtcHR5VHlwZbz9nkZJO4kkAgAAeHIAFHhzYnRpLmFwaS5TaW1wbGVUeXBlcnhiiCEjv0ACAAB4cgAOeHNidGkuYXBpLlR5cGU/atkhFkmqygIAAHhwc3EAfgBeAHBzcQB+AGNzcgATeHNidGkuYXBpLlN0cnVjdHVyZamq+YCTb9gAAgADTAAIZGVjbGFyZWRxAH4AR0wACWluaGVyaXRlZHEAfgBHTAAHcGFyZW50c3EAfgBHeHEAfgBnc3EAfgBeAHBzcQB+AGN1cQB+AEIAAAAAc3EAfgBeAHBzcQB+AGN1cQB+AEIAAAAAc3EAfgBeAHBzcQB+AGN1cgARW0x4c2J0aS5hcGkuVHlwZTt0/6Vae/npQQIAAHhwAAAAAnNyABR4c2J0aS5hcGkuUHJvamVjdGlvbvPSjVTpRaQtAgACTAACaWRxAH4ADUwABnByZWZpeHQAFkx4c2J0aS9hcGkvU2ltcGxlVHlwZTt4cQB+AGZ0AAZPYmplY3RzcgATeHNidGkuYXBpLlNpbmdsZXRvbvynX/jPVuRGAgABTAAEcGF0aHQAEEx4c2J0aS9hcGkvUGF0aDt4cQB+AGZzcgAOeHNidGkuYXBpLlBhdGibPVwIzqUnhAIAAVsACmNvbXBvbmVudHN0ABpbTHhzYnRpL2FwaS9QYXRoQ29tcG9uZW50O3hwdXIAGltMeHNidGkuYXBpLlBhdGhDb21wb25lbnQ7Q9oJdC1nFnQCAAB4cAAAAANzcgAMeHNidGkuYXBpLklkmDJsizdTxEACAAFMAAJpZHEAfgANeHIAF3hzYnRpLmFwaS5QYXRoQ29tcG9uZW50X5oiWy6Gn7wCAAB4cHQABGphdmFzcQB+AIN0AARsYW5nc3IADnhzYnRpLmFwaS5UaGlz2wntpsxaQFwCAAB4cQB+AIRzcQB+AHd0AANBbnlzcQB+AHtzcQB+AH51cQB+AIEAAAACc3EAfgCDdAAFc2NhbGFxAH4AinVyABRbTHhzYnRpLmFwaS5QYWNrYWdlO1sTGTdwpyehAgAAeHAAAAAAc3IAFXhzYnRpLmFwaS5Db21waWxhdGlvbu364MNq6KBCAgACSgAJc3RhcnRUaW1lWwAHb3V0cHV0c3QAGltMeHNidGkvYXBpL091dHB1dFNldHRpbmc7eHAAAAF/G+g0k3VyABpbTHhzYnRpLmFwaS5PdXRwdXRTZXR0aW5nO39qwvOnh6VCAgAAeHAAAAABc3IAF3hzYnRpLmFwaS5PdXRwdXRTZXR0aW5netmaR3T7HXsCAAJMAA9vdXRwdXREaXJlY3RvcnlxAH4ADUwAD3NvdXJjZURpcmVjdG9yeXEAfgANeHB0AFgvaG9tZS9yaXRlc2gvZGV2ZWxvcG1lbnQvVXNlck1hbmFnZW1lbnRTZXJ2ZXIvcHJvamVjdC90YXJnZXQvc2NhbGEtMi4xMC9zYnQtMC4xMy9jbGFzc2VzdAABL3VyAAJbQqzzF/gGCFTgAgAAeHAAAAAUmgTtAFwZg8iKN4wddLRZVkFVc5Q=
+external apis:
+0 items
+source infos:
+3 items
+/home/ritesh/development/UserManagementServer/project/Build.scala -> 
+AAAAAAAAAAIAAAEAAAAtAGggIHZhbCBtYWluID0gUHJvamVjdChhcHBOYW1lLCBmaWxlKCIuIikpLmVuYWJsZVBsdWdpbnMocGxheS5QbGF5U2NhbGEsIHNidGRvY2tlci5Eb2NrZXJQbHVnaW4pLnNldHRpbmdzKAEAAAbyAQAAADwBADwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICABAEEvaG9tZS9yaXRlc2gvZGV2ZWxvcG1lbnQvVXNlck1hbmFnZW1lbnRTZXJ2ZXIvcHJvamVjdC9CdWlsZC5zY2FsYQEAQS9ob21lL3JpdGVzaC9kZXZlbG9wbWVudC9Vc2VyTWFuYWdlbWVudFNlcnZlci9wcm9qZWN0L0J1aWxkLnNjYWxhAE12YWx1ZSBQbGF5U2NhbGEgaW4gcGFja2FnZSBwbGF5IGlzIGRlcHJlY2F0ZWQ6IFVzZSBwbGF5LnNidC5QbGF5U2NhbGEgaW5zdGVhZAEAAAEAAAAlADggICAgImNvbS50d2lsaW8uc2RrIiAlICJ0d2lsaW8iICUgIjcuMTUuNSIgaW50cmFuc2l0aXZlLAEAAAXEAQAAACsBACsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAQBBL2hvbWUvcml0ZXNoL2RldmVsb3BtZW50L1VzZXJNYW5hZ2VtZW50U2VydmVyL3Byb2plY3QvQnVpbGQuc2NhbGEBAEEvaG9tZS9yaXRlc2gvZGV2ZWxvcG1lbnQvVXNlck1hbmFnZW1lbnRTZXJ2ZXIvcHJvamVjdC9CdWlsZC5zY2FsYQFxcG9zdGZpeCBvcGVyYXRvciBpbnRyYW5zaXRpdmUgc2hvdWxkIGJlIGVuYWJsZWQKYnkgbWFraW5nIHRoZSBpbXBsaWNpdCB2YWx1ZSBzY2FsYS5sYW5ndWFnZS5wb3N0Zml4T3BzIHZpc2libGUuClRoaXMgY2FuIGJlIGFjaGlldmVkIGJ5IGFkZGluZyB0aGUgaW1wb3J0IGNsYXVzZSAnaW1wb3J0IHNjYWxhLmxhbmd1YWdlLnBvc3RmaXhPcHMnCm9yIGJ5IHNldHRpbmcgdGhlIGNvbXBpbGVyIG9wdGlvbiAtbGFuZ3VhZ2U6cG9zdGZpeE9wcy4KU2VlIHRoZSBTY2FsYSBkb2NzIGZvciB2YWx1ZSBzY2FsYS5sYW5ndWFnZS5wb3N0Zml4T3BzIGZvciBhIGRpc2N1c3Npb24Kd2h5IHRoZSBmZWF0dXJlIHNob3VsZCBiZSBleHBsaWNpdGx5IGVuYWJsZWQuAQ==
+/home/ritesh/development/UserManagementServer/project/FrontendBuild.scala -> 
+AAAAAAAAAAA=
+/home/ritesh/development/UserManagementServer/project/FrontendCommands.scala -> 
+AAAAAAAAAAA=
+compilations:
+2 items
+0 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABfxvoNJN1cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAWC9ob21lL3JpdGVzaC9kZXZlbG9wbWVudC9Vc2VyTWFuYWdlbWVudFNlcnZlci9wcm9qZWN0L3RhcmdldC9zY2FsYS0yLjEwL3NidC0wLjEzL2NsYXNzZXN0AAEv
+1 -> rO0ABXNyABV4c2J0aS5hcGkuQ29tcGlsYXRpb27t+uDDauigQgIAAkoACXN0YXJ0VGltZVsAB291dHB1dHN0ABpbTHhzYnRpL2FwaS9PdXRwdXRTZXR0aW5nO3hwAAABgDt4rM11cgAaW0x4c2J0aS5hcGkuT3V0cHV0U2V0dGluZzt/asLzp4elQgIAAHhwAAAAAXNyABd4c2J0aS5hcGkuT3V0cHV0U2V0dGluZ3rZmkd0+x17AgACTAAPb3V0cHV0RGlyZWN0b3J5dAASTGphdmEvbGFuZy9TdHJpbmc7TAAPc291cmNlRGlyZWN0b3J5cQB+AAZ4cHQAWC9ob21lL3JpdGVzaC9kZXZlbG9wbWVudC9Vc2VyTWFuYWdlbWVudFNlcnZlci9wcm9qZWN0L3RhcmdldC9zY2FsYS0yLjEwL3NidC0wLjEzL2NsYXNzZXN0AAEv

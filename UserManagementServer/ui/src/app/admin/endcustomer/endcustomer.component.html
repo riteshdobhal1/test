@@ -1,0 +1,557 @@
+<app-admin></app-admin>
+<div class="loading" *ngIf="loading" id="loaderDiv">
+  <app-loader></app-loader>
+</div>
+<div class="col-xl-5 col-sm-5 col-md-5 gb-first-add" *ngIf="initialEmpty">
+  <button type="button" class="btn btn-lg btn-outline-primary box-1 btn-block"
+    (click)="openModal(addeditendcust, 'addEndCust', '')" id="addEndCustomerBtn">
+    <fa-icon class="mr-2" [icon]="['fas','user-plus']"></fa-icon>
+    <span>{{globalObj.addEndCustomerMsg}}</span>
+  </button>
+</div>
+
+<div class="container-fluid gb-main-container" id="mainCotainer" *ngIf = "!initialEmpty" [ngClass]="{'onscreenEnabled': isOnscreenenabled()}">
+  <div class="row flex-nowrap wrapper">
+    <div class="col-md-2 col-1 pl-0 pr-0 width border-right sidebar collapse"  [ngClass]="{'show': showFilter}">
+      <div class="leftnavbar expandLeft">
+        <div id="endCustomer-filterTitle" class="d-flex justify-content-between px-2 bg-darker">
+          <div><h6 class="text-light my-1">Filter</h6></div>
+            <div>
+                <fa-icon title="Close Filter" class="text-light" [icon]="['fas','arrow-left']" 
+                (click)="showFilter = !showFilter" id="closeFilterBtn"></fa-icon>
+            </div>
+        </div>
+        <ngb-accordion #acc="ngbAccordion">
+          <div id="endCustomer-filterData" class="filter-data" *ngFor="let filter of endCustomerFilterData">
+            <ngb-panel>
+              <ng-template ngbPanelHeader let-opened="opened">
+                <div id="filterColumnTitle-{{filter.columnName}}" class="d-flex align-items-center justify-content-between">
+                  <button ngbPanelToggle class="flex-fill p-0 btn btn-link text-decoration-none text-dark text-left float-left" id="endCustomer-filterColumnTitleBtn"><fa-icon *ngIf="!opened" class="ml-1"[icon]="['fas','angle-down']"></fa-icon><fa-icon *ngIf="opened" class="ml-1"[icon]="['fas','angle-up']"></fa-icon> {{filter.columnTitle}}<span class="badge badge-primary float-right mr-1" *ngIf="filter.appliedFilterCount > 0">{{filter.appliedFilterCount}}</span></button>
+                  <!-- <button ngbPanelToggle id="endCustomer-filterColumnTitleBtn"
+                  class="flex-fill btn btn-sm btn-outline-secondary text-left">{{filter.columnTitle}}
+                  <span id="endCustomer-filterColumCount" class="badge badge-secondary float-right mt-1"
+                      *ngIf="filter.appliedFilterCount > 0">{{filter.appliedFilterCount}}</span>
+                  <fa-icon *ngIf="!opened" class="float-right mr-1" [icon]="['fas','angle-down']">
+                  </fa-icon>
+                  <fa-icon *ngIf="opened" class="float-right mr-1" [icon]="['fas','angle-up']"></fa-icon>
+              </button> -->
+                </div>
+              </ng-template>
+    
+              <ng-template ngbPanelContent>
+                <div id="endCustomer-filterSearchDiv" class="" *ngIf="filter.showSearch">
+                    <!-- <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2" [(ngModel)]="filter.searchText"> -->
+                    <div class="input-group input-group-sm mb-1" id="searchdiv-{{filter.columnName}}">
+                      <input id="filterDataColumnSearch-{{filter.columnName}}"type="text" class="form-control" placeholder="Search"
+                          [(ngModel)]="filter.searchText">
+                      <div class="input-group-append">
+                          <button id="filterDataColumn-ClearSearchButton" [disabled]="filter.searchText==''" class="btn btn-outline-danger"
+                              (click)="filter.searchText=''" type="button">
+                              <fa-icon title="Clear Search" class="mt-1" [icon]="['fas','times']"></fa-icon>
+                          </button>
+                      </div>
+                  </div>
+                    <div id="endCustomer-filterDataValue"class="filterDataValue p-1" *ngFor="let data of getFilterData(filter)">
+                      <div class="pretty p-svg p-curve m-0">
+                        <input  type="checkbox" [checked]="data.selected" value="{{data.name}}" (change)="data.selected = !data.selected; updateDataFilter(data.name, data.selected, filter.multiselect, filter.data)"/>
+                        <div class="state p-primary">
+                          <svg class="svg svg-icon" viewBox="0 0 20 20">
+                            <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                          </svg>
+                          <label>{{data.name}}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="endCustomer-filterData" class="p-3" *ngIf="filter.searchText.length >=3 && !getFilterData(filter).length">
+                      {{noDataFound}}
+                  </div>
+                </div>
+                <div  id="endCustomer-filterDataColVal" *ngIf="!filter.showSearch">
+                    <div class="p-1" *ngFor="let data of filter.data" id="filterData-{{data.value}}">
+                        <div class="pretty p-svg p-curve m-0"
+                        [ngClass]="{'p-curve': filter.multiselect , 'p-round': !filter.multiselect}"
+                        (click)="data.selected = !data.selected; updateDataFilter(data.name, data.selected, filter.multiselect, filter.data, filter.columnName)">
+                            <input   type="checkbox" [checked]="data.selected" value="{{data.name}}" />
+                            <div class="state p-primary">
+                                <svg class="svg svg-icon" viewBox="0 0 20 20">
+                                    <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                </svg>
+                                <label>{{data.name}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </ng-template>
+            </ngb-panel>
+          </div>
+        </ngb-accordion>
+      </div>
+    </div>
+    <div class="main col-12" [ngClass]="{'animateMain': showFilter, 'animateMainFull': !showFilter}">
+      <div class="row p-0 pr-1"  *ngIf = "!initialEmpty" >
+        <div class="col-1">
+          <div class="btn-group box-1" role="group" aria-label="Basic example" *ngIf="!showFilter">
+            <button type="button" (click)="showFilter = !showFilter" id="filterButton" 
+              class="btn btn-sm btn-primary gb-not-btn">
+              <fa-icon title="Filter" class="mt-1" [icon]="['fas','filter']"></fa-icon><span *ngIf="filterCount > 0"
+                class="badge badge-dark">{{filterCount}}</span>
+                <span (click)="helperClick($event)" class="btn-helper bg-warning" placement="right" container="body" [ngbPopover]="filterPop" popoverClass="filterPop"><fa-icon [icon]="['fas','info']"></fa-icon></span>
+            </button>
+            <button type="button" class="btn btn-sm btn-danger" *ngIf="filterCount > 0" id="filterReset"
+              (click)="resetFilter()">
+              <fa-icon title="Filter" class="mt-1" [icon]="['fas','times']"></fa-icon>
+            </button>
+          </div>
+        </div>
+        
+        <div class="col-3"></div>
+        <div class="col-5" id="endCustomerSelectedCount">
+          <span class="mr-2" *ngIf="selectedCount>0" id="endcustomerSelectionMsgSpan" class="badge badge-light gb-not-btn">
+            <span class="mr-2" id="selectAllMsg"><span *ngIf="allSelectedFlag">All </span> <strong class="text-primary mr-1 ml-1">{{selectedCount}}</strong> Group(s) selected</span>
+            <span id="selectAcrossPages" class="ml-1 mr-1 text-primary cursor-pointer"  (click)="selectAcrossPages()" *ngIf="!allSelectedFlag">Select all {{getEndcustomerListFiltered().length}} Groups</span>
+            <span id="clearAllSelection" class="text-danger cursor-pointer" (click)="clearSelection()" id="clearAllSelection">Clear All</span></span>
+      </div>
+        <div class="col-3 d-flex justify-content-end">
+          <div class="input-group input-group-sm mb-1 mr-2">
+              <input type="text" class="form-control" id="endcustomerSearchInput" placeholder="Search" [(ngModel)]="searchText" (input)="PaginationReset=true">
+              <span (click)="helperClick($event)" class="btn-helper bg-warning" placement="left" container="body" [ngbPopover]="endCustomerGlobalSearchHelp" popoverClass="endCustomerGlobalSearchHelp"><fa-icon [icon]="['fas','info']"></fa-icon></span>
+              <div class="input-group-append">
+                  <button [disabled]="searchText==''" id="userSearchClearText" class="btn btn-outline-danger" (click)="searchText=''; PaginationReset=true" type="button"><fa-icon title="Clear Search" class="mt-1" [icon]="['fas','times']"></fa-icon></button>
+              </div>
+              
+          </div>
+          <button class="btn m-0 p-0 mt-2 position-relative" (click)="exportCSVFile()" id="downloadCSVBtn"><fa-icon title="Download CSV" [icon]="['fas','download']"></fa-icon><span (click)="helperClick($event)" class="btn-helper-iconBtn-alt bg-warning" placement="left" container="body" [ngbPopover]="endCustDownloadPop" popoverClass="endCustDownloadPop"><fa-icon [icon]="['fas','info']"></fa-icon></span></button>
+          
+      </div>
+      </div>
+      <div col-8 class="gb-div-table container-fluid mb-1 mt-2" *ngIf = "!loading || initialEmpty " id="EndcustomerTableDiv">
+        <div class="alert alert-danger mt-3 text-center" role="alert" *ngIf="!getEndcustomerListFiltered().length || initialEmpty "><strong>{{noEndCustomerFound}}</strong></div>
+        <div class="gb-table-head row font-weight-bold border border-left-0 border-right-0 border-top-0" id="endCustomer-table-header" *ngIf="getEndcustomerListFiltered().length">
+          <div id="header-endcustomerName" class="col-6 col-md-2 col-lg-2 col-xl-2 mt-2 mb-2" attr.type="{{endCustomerListTableLabel.endCustName.type}}" ><p-checkbox id="selectAllEndCustomer"  (change)="endCustToggleSelect()" [checked]="allEndCustSelected()" binary="true" shape="curve" color="primary" binary="true"><svg p-svg class="svg-icon-green" viewBox="0 0 20 20"><path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path></svg></p-checkbox>
+            <span class="pl-3" sortable="endcustomer_name" (sort)="onSort($event)" direction="{{defaultSort.direction}}"  >{{endCustomerListTableLabel.endCustName.name}}</span>
+          </div>
+          <div id="header-deviceId" class="col-6 d-none d-sm-block col-md-4 col-lg-4 col-xl-4 col-sm-4 mt-2 mb-2" attr.type="{{endCustomerListTableLabel.serialNum.type}}">{{endCustomerListTableLabel.serialNum.name}}</div>
+          <div id="header-createdBy" class="col-6 col-md-2 col-lg-2 col-xl-2 col-sm-2 mt-2 mb-2" attr.type="{{endCustomerListTableLabel.createdBy.type}}">
+            <span sortable="created_by" direction="" (sort)="onSort($event)" >{{endCustomerListTableLabel.createdBy.name}}</span>
+          </div>
+          <div id="header-modifiedOn" class="col-1 d-none d-sm-block  col-md-2 col-lg-1 col-xl-1 col-sm-1 mt-2 mb-2" attr.type="{{endCustomerListTableLabel.product.type}}"> 
+            <span sortable="updated_on" direction="" (sort)="onSort($event)" >{{endCustomerListTableLabel.product.name}}</span>
+          </div>
+          <div id="header-modifiedOn" class="col-2 d-none d-sm-block  col-md-2 col-lg-2 col-xl-2 col-sm-2 mt-2 mb-2" attr.type="{{endCustomerListTableLabel.modifiedOn.type}}"> 
+            <span sortable="updated_on" direction="" (sort)="onSort($event)" >{{endCustomerListTableLabel.modifiedOn.name}}</span>
+          </div>
+          <div id="header-actions" class="col-1 col-2 d-none d-sm-block  col-md-1 col-lg-1 col-xl-1 col-sm-1 mt-2 mb-2" attr.type="{{endCustomerListTableLabel.actionLab.type}}">{{endCustomerListTableLabel.actionLab.name}}</div>
+        </div>
+    
+        <div id="endcustomerTableData{{ind}}" class="row endcustomerTableData border border-left-0 border-right-0 border-top-0 gb-custom_scroll-bar" *ngFor="let customer of getEndcustomerListFiltered() | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let ind = index">
+          <div id="end-customer-name-tabledata" class="col-6 col-md-2 col-lg-2 col-xl-2 mt-2 mb-2 ellipseText gb-name-div" (mouseenter)='enableTootip($event, customer.endcustomer_name)' >
+                <p-checkbox animation="smooth" shape="curve" color="primary" class="ml-1" (change)="customer.selected = !customer.selected;allEndCustSelected()" [checked]="customer.selected" binary="true">
+                  <svg p-svg class="svg-icon-green" viewBox="0 0 20 20"><path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;">
+                  </path></svg></p-checkbox> 
+                  <span class="pl-3">{{customer.endcustomer_name}}</span>
+            </div>
+    
+          <div  id="end-customer-sysid-tabledata" class="d-none d-sm-block col-6 col-md-4 col-lg-4 col-xl-4 mt-2 mb-2">
+            <h6>
+              <span class="badge badge-secondary mr-1" *ngFor="let device of customer.serial_number;let first = first; let last = last; index as j">{{ device }}
+                <!-- <span *ngIf="j < customer.serial_number.length-1 ">,</span> -->
+              </span>
+              <span *ngIf="customer.group_name.length">
+                <span class="badge badge-info mr-1" [attr.title]="groupSysIdMap[group]"
+                  *ngFor="let group of customer.group_name">{{ group }}
+                </span>
+              </span>
+            </h6>
+          </div>
+          <div id="end-customer-createdby-tabledata" class="col-6 col-md-2 col-lg-2 col-xl-2 col-sm-2 mt-2 mb-2 ellipseText" [title]="showFilter ? customer.created_by : ''"> {{customer.created_by}}</div>
+          <div id="end-customer-product-tabledata" class="col-1 col-md-1 col-lg-1 col-xl-1 col-sm-1 mt-2 mb-2"> {{customer.product}}</div>
+          <div id="end-customer-updatedon-tabledata" class="col-2 d-none d-sm-block  col-md-2 col-lg-2 col-xl-2 col-sm-2 mt-2 mb-2">{{ customer.updated_on | date: 'dd/MM/yyyy HH:mm:ss' }}</div>
+          <div class="col-1 col-2 d-none d-sm-block  col-md-1 col-lg-1 col-xl-1 col-sm-1 mt-2 mb-2 productAction" id="EndcustomeractionButtonDiv" >
+            <div class="d-flex justify-content-left gb-action-container">
+                <button class="btn position-relative m-0 p-0 edit-icon mr-1" (click)="openModal(addeditendcust, 'editEndCust', customer)" title="Edit Group" id="editEndCustBtn_{{ind}}"><fa-icon  [icon]="['fas','edit']"></fa-icon></button>
+                <button class="btn position-relative m-0 p-0 delete-icon" title="Delete Group" id="deleteEndCustBtn_{{ind}}" (click)="openConfirmation('delSingle', customer)"><fa-icon [icon]="['fas','trash']"></fa-icon><span *ngIf="ind==0" (click)="helperClick($event)" class="btn-helper-iconBtn-alt bg-warning" placement="left" container="body" [ngbPopover]="endCustDelEcHelper" popoverClass="endCustEditEcHelper"><fa-icon [icon]="['fas','info']"></fa-icon></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex flex-row justify-content-between mt-3 pagination-div"  *ngIf = "!loading"> 
+        <div class="col-4" id="pageSizeDiv">
+          <span class="pt-1 d-none d-sm-inline" *ngIf="getEndcustomerListFiltered().length && getEndcustomerListFiltered().length > 0">Page Size</span>
+          <select class="form-control form-control-sm d-inline-block ml-1" style="width: auto" 
+          [(ngModel)]="pageSize" *ngIf="getEndcustomerListFiltered().length && getEndcustomerListFiltered().length > 0" (change) = "page = 1">
+            <option *ngFor="let pageCount of pageValue" [ngValue]="pageCount"  
+            [disabled]="getEndcustomerListFiltered().length+defaultPageSize<=pageCount">{{pageCount}}</option>
+          </select>
+          <span *ngIf="getEndcustomerListFiltered().length && getEndcustomerListFiltered().length > 0" (click)="helperClick($event)" class="btn-helper-inline bg-warning" placement="right" container="body" [ngbPopover]="pageSizePop" popoverClass="pageSizePop"><fa-icon [icon]="['fas','info']"></fa-icon></span>
+        </div>
+    
+        <div class="col-4" id="paginationDiv" >
+          <ngb-pagination *ngIf="(getEndcustomerListFiltered().length > 0 && getEndcustomerListFiltered().length > getCollectionLength())" [(page)]="page" [pageSize]="pageSize" 
+          [collectionSize]="getEndcustomerListFiltered().length" [ellipses]="true" [maxSize]="10" [size]="smsize" ></ngb-pagination>
+          <span (click)="helperClick($event)" class="btn-helper-inline bg-warning" placement="top" container="body" *ngIf="(getEndcustomerListFiltered().length > 0 && getEndcustomerListFiltered().length > getCollectionLength())" [ngbPopover]="paginationPop" popoverClass="paginationPop"><fa-icon [icon]="['fas','info']"></fa-icon></span>
+        </div>
+    
+          <div class="col-4 text-right" *ngIf="getEndcustomerListFiltered().length">
+            <button *ngIf="!loading" type="button" id="multiDeleteEndCustBtn" class="btn btn-sm btn-outline-danger box-1 position-relative" [disabled]="getActionButtonDisable('delMultipleButton')" (click)="openConfirmation('delMultiple', '')"><fa-icon [icon]="['fas','trash-alt']"></fa-icon><span class="d-none d-sm-inline"> Delete</span><span (click)="helperClick($event)" class="btn-helper bg-warning" placement="left" container="body" [ngbPopover]="endCustDelHelper" popoverClass="endCustDelHelper"><fa-icon [icon]="['fas','info']"></fa-icon></span></button>
+      
+           
+              <button type="button" class="btn ml-1 btn-sm btn-outline-primary float-right box-1 position-relative" (click)="openModal(addeditendcust, 'addEndCust', '')" id="addEndCustomerBtn">
+                <fa-icon class="mr-2" [icon]="['fas','user-plus']"></fa-icon>
+                <span>{{globalObj.addEndCustomerMsg}}</span>
+                <span (click)="helperClick($event)" class="btn-helper bg-warning" placement="left" container="body" [ngbPopover]="endCustAddEcHelper" popoverClass="endCustAddEcHelper"><fa-icon [icon]="['fas','info']"></fa-icon></span>
+              </button>
+          </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Add End user  Modal content here -->
+<ng-template #addeditendcust let-modal>
+  <div class="modal-header bg-info gb-modal-header" id="addCustModal-HeaderDiv">
+    <h4 class="modal-title text-light" id="modal-basic-title">{{modalHeader}}</h4>
+    <button type="button" class="close text-light" aria-label="Close"
+      (click)="modal.dismiss('Cross click');resetFormData()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div class="modal-body addEditEndCustForm" id="addCustModal-BodyDiv" [ngClass]="{'onscreenEnabled': isOnscreenenabled()}">
+    <div class="modal-loader" *ngIf="sysidLoading">
+      <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+    <form id="addCustModal-form" [formGroup]="addEditEndCustForm">
+      <div class="row">
+        <div id="addCustModal-nameDiv" class="form-group col-12 col-md-6 col-lg-6 col-xl-6 ">
+          <div class="input-group input-group-sm mb-2">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">Group Name</span>
+              </div>
+          <input type="text" title={{addEditEndCustForm.controls.endCustomerName.value}}  pattern="^[0-9a-zA-Z\_\.\- ]+$" class="form-control form-control-sm" formControlName="endCustomerName" id="endcustomer_name" placeholder="Customer Name" [disabled]="editEndUserMode" [ngClass]="{ 'is-invalid': submitted && f.endCustomerName.errors }">
+          <div *ngIf="!editEndUserMode" class="ml-1 mt-1" title="- {{groupNameHelpText[0]}}&#010;- {{groupNameHelpText[1]}}"><fa-icon [icon]="['fas','info-circle']"></fa-icon></div>
+          <div *ngIf="submitted && f.endCustomerName.errors" class="invalid-feedback">
+              <div *ngIf="f.endCustomerName.errors.required">{{addEndcustomerNameError.required}}</div>
+              <div *ngIf="f.endCustomerName.errors.duplicate">{{addEndcustomerNameError.duplicate}}</div>
+              <div *ngIf="f.endCustomerName.errors.pattern">{{addEndcustomerNameError.invalid}}</div>
+              <div *ngIf="f.endCustomerName.errors.minlength">{{addEndcustomerNameError.minLength}}</div>
+              <div *ngIf="f.endCustomerName.errors.maxlength">{{addEndcustomerNameError.maxLength}}</div>
+	        </div>    
+          </div>
+        </div>
+        <div id="addCustModal-productDiv" class="form-group col-12 col-md-6 col-lg-6 col-xl-6">
+          <div class="input-group input-group-sm mb-2">
+              <div class="input-group-prepend">
+                  <span class="input-group-text">Select Product</span>
+              </div>
+              <select title={{productTooltip}} id="selectPrpductEndCustomer" formControlName="prodName" (change)="onProdChange();" class="form-control form-control-sm" [ngClass]="{ 'is-invalid': submitted && f.prodName.errors }">
+                <option value="" title="{{globalObj.chooseProduct}}" disabled>{{globalObj.chooseProduct}}</option>
+                <option *ngFor="let product of endCustomerProductList | keyvalue" [ngValue]="product.value" title="{{product.key}}">{{product.key}}</option>
+              </select>
+              <span (click)="helperClick($event)" class="btn-helper bg-warning" placement="left" container="body" [ngbPopover]="endCustAddEndCustProdHelper" popoverClass="endCustAddEndCustProdHelper"><fa-icon [icon]="['fas','info']"></fa-icon></span>
+          </div>
+          <!-- <div *ngIf="submitted && f.prodName.errors" class="invalid-feedback">
+              <div *ngIf="f.prodName.errors.required">{{gbobalObj.nameRequired}}</div>
+          </div> -->
+        </div>
+      </div>
+      <div class="row ml-0 mr-0" *ngIf="showSysIdDiv && sysIdAttributeList.length">
+        <div class="form-group col-12 col-md-12 col-lg-12 col-xl-12 available-sysid-list box-1" id="availableSysId">
+          <div class="row d-flex">
+            <div class="col-2">
+              <label for="exampleFormControlSelect2">{{selectedView === 'device' ? globalObj.availableDeviceId : globalObj.availableGroups}}</label>
+            </div>
+            <div class="col-10 d-flex">
+              <div ngbDropdown display="dynamic" *ngIf="selectedView == 'device'">
+                <button id="addEndCustSearchDrop" class="btn btn-outline-primary position-relative" type="button" ngbDropdownToggle>
+                  <fa-icon icon="caret-down"></fa-icon>
+                  <span (click)="helperClick($event)" class="btn-helper bg-warning" placement="right" container="body" [ngbPopover]="endCustAddEndCustSearchHelper" popoverClass="endCustAddEndCustSearchHelper"><fa-icon [icon]="['fas','info']"></fa-icon></span>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="p-0 m-0 search-attribute-dropdown">
+                  <div class="row" *ngFor="let header of attributeList">
+                    <div class="col ellipseText">
+                      <p-checkbox id="dropdownVal_{{header.colName}}" class="ml-1 mr-0" triggers="click:blur" shape="curve" color="primary"
+                        [checked]="header.selected" (change)="header.selected = !header.selected; changeSearchView(header)">
+                        <svg p-svg class="svg-icon-green" viewBox="0 0 20 20">
+                          <path
+                            d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
+                            style="stroke: white;fill:white;"></path>
+                        </svg>
+                        <span>{{header.colLabel}}</span>
+                      </p-checkbox>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div formArrayName="syssearchtext" class="attribute-search-container gb-custom_scroll-bar-horizontal input-group d-flex flex-nowrap" *ngIf="(selectedView == 'device')">
+                <div class="attribute-search-item d-flex align-items-center"
+                  *ngFor="let header of selectedSearchAttrList; let ind = index">
+                  <span class="text-nowrap ml-2">{{header.colLabel}}: </span>
+                  <input class="mr-2" type="text" name="attribute" id="searchAttr_{{header.colName}}" [formControlName]="header.colName"><br>
+                </div>
+              </div>
+              <div class="input-group-append" *ngIf="selectedView == 'device'">
+                <button id="userSearchText" class="btn btn-outline-primary"
+                  (click)="callsysid()" type="button" [disabled]="searchDisbledButtonState()">
+                  <fa-icon title="Search" class="mt-1" [icon]="['fas','search']"></fa-icon>
+                </button>
+              </div>
+              <div class="input-group-append" *ngIf="selectedView == 'device'">
+                <button id="userSearchClearTextSysid" class="btn btn-outline-danger"
+                  (click)="clearSearchText()" type="button" [disabled]="searchDisbledButtonStateForCancel()">
+                  <fa-icon title="Clear Search" class="mt-1" [icon]="['fas','times']"></fa-icon>
+                </button>
+              </div>
+              <div class="d-flex input-group" *ngIf="selectedView == 'group' && !showDivSearch">
+                <input type="text" class="form-control" id="group-name-search" placeholder="Search by Group Name/ {{headerText}}"
+                  formControlName="groupNameSearch">
+                <div class="input-group-append">
+                  <button id="userSearchClearText" class="btn btn-outline-danger"
+                    (click)="clearGroupSearchText()" type="button" [disabled]="!addEditEndCustForm.value.groupNameSearch.length">
+                    <fa-icon title="Clear Search" class="mt-1" [icon]="['fas','times']"></fa-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" *ngIf="selectedSearchAttrList.length == 1 && selectedSearchAttrList[0].colName == sysIdAttr && selectedView == 'device'">
+            <div class="col-2"></div>
+            <div class="col-10">
+              <span class="small text-info ml-6">Note: {{headerText}} is the default search attribute.</span>
+            </div>
+          </div>
+          <div class="btn-group">
+            <button id="availableDevices_SysId" type="button" class="btn btn-sm btn-outline-primary"
+              [ngClass]="{'selected' : selectedView == 'device'}" (click)="switchView('device', 'add')">{{headerText}}</button>
+            <button id="availableDevices_Group" type="button" class="btn btn-sm btn-outline-primary"
+              [ngClass]="{'selected' : selectedView == 'group'}" (click)="switchView('group', 'add')">Group<span (click)="helperClick($event)" class="btn-helper bg-warning" placement="right" container="body" [ngbPopover]="SysIdGroupTabsHelper" popoverClass="SysIdGroupTabsHelper"><fa-icon [icon]="['fas','info']"></fa-icon></span></button>
+          </div>
+          <div class="sysid-empty-block" *ngIf="sysIdList.length == 0 && selectedView == 'device'">No {{headerText}}(s) available</div>
+          <div class="sysid-list-wrapper" *ngIf="selectedView == 'device'">
+            <div class="gb-div-table">
+              <div class="col-12">
+                <div class="gb-table-head row font-weight-bold border border-left-0 border-right-0 border-top-0">
+                  <div class="col mt-2 mb-2" *ngFor="let header of sysIdAttributeList">
+                    <span class="">{{header.colLabel}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="sysid-list gb-custom_scroll-bar">
+                <div class="col-12">
+                  <div id="availableSysId_value{{ind}}" class="row sysid-table-row border border-left-0 border-right-0 border-top-0"
+                    *ngFor="let sysid of sysIdList; let ind = index"
+                    [ngClass]="{'selected': sysid.selected, 'disabled': sysid.disabled}"
+                    (click)="rowClick($event,sysid, sysIdList); addRmoveBtnState('add')">
+                    <div id="availableSysId_value{{ind}}_{{sysCol.colName}}" class="col mt-2 mb-2 text-truncate" *ngFor="let sysCol of sysIdAttributeList; let ind1 = index">
+                      <span class="" title="{{sysid[sysCol.colName]}}">{{sysid[sysCol.colName]}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sysid-empty-block" *ngIf="getGroupListFiltered().length == 0 && selectedView == 'group'">No Group(s) Available</div>
+          <div class="sysid-list-wrapper" *ngIf="selectedView == 'group'">
+            <div class="gb-div-table">
+              <div class="gb-table-head row font-weight-bold border border-left-0 border-right-0 border-top-0">
+                <div class="col-3 col-md-3 col-lg-3 col-xl-3 mt-2 mb-2">
+                  <span class="pl-3">Group</span>
+                </div>
+                <div class="col-9 d-none d-sm-block col-md-9 col-lg-9 col-xl-9 col-sm-3 mt-2 mb-2">{{headerText}}'s</div>
+              </div>
+
+              <div class="sysid-list gb-custom_scroll-bar">
+                <div id="availableGroup_value{{ind}}" class="row sysid-table-row border border-left-0 border-right-0 border-top-0"
+                  *ngFor="let group of getGroupListFiltered(); let ind = index"
+                  (click)="rowClick($event,group, getGroupListFiltered()); addRmoveBtnState('add')"
+                  [ngClass]="{'selected': group.selected, 'disabled': group.disabled}">
+                  <div id="availableGroup_value{{ind}}_group" class="col-3 col-md-3 col-lg-3 col-xl-3 mt-2 mb-2 ellipseText gb-name-div">
+                    <span title="{group.endcustomer_name}}" class="ml-2">{{group.endcustomer_name}}</span>
+                  </div>
+                  <div id="availableGroup_value{{ind}}_SysId" class="d-none d-sm-block col-9 col-md-9 col-lg-9 col-xl-9 mt-2">
+                    <h6>
+                      <span class="badge badge-secondary mr-1"
+                        *ngFor="let device of group.serial_number;let first = first; let last = last; index as j">
+                        {{device}}
+                      </span>
+                      <span *ngIf="group.group_name.length">
+                        <span class="badge badge-info mr-1" [attr.title]="groupSysIdMap[group]"
+                          *ngFor="let item of group.group_name">{{ item }}
+                        </span>
+                      </span>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <select multiple class="form-control sysid-list gb-custom_scroll-bar" id="selectAvailableSys" #selectAvailableSys formControlName="availableSelectedSysIdname" (change)="addRmoveBtnState()">
+            <option class="sysid-item" *ngFor="let sysid of sysIdList" [ngValue]="sysid.name" [disabled]="sysid.selected" >{{sysid.name}}</option>
+          </select> -->
+          <div id="sysidpagination" class="gb-sysId-pagination-div-device d-flex" *ngIf="selectedView === 'device' && !sysidLoading">
+            <span class="pagination-text margin-top-10" *ngIf="sysIdList.length">{{pagination.paginationText}}</span>
+            <div class="pagination-links-cont" *ngIf="dataSet > pagination.pageSiz">
+              <button id="sysidPrevBtn" class="btn btn-sm btn-outline-primary gb-sysId-page-btn" type="button"
+                [disabled]="pagination.currentPage == 1" (click)="loadPrevSet()">Previous
+              </button>
+              <button id="sysidNextBtn" class="btn btn-sm btn-outline-primary gb-sysId-page-btn" type="button"
+                [disabled]="pagination.currentPage >= pagination.noOfPages" (click)="loadNextSet()"> Next
+              </button>
+            </div>
+          </div>
+          <div id="sysidpagination" class="gb-sysId-pagination-div-group d-flex" *ngIf="selectedView === 'group'">
+            <span class="pagination-text margin-top-10" *ngIf="getGroupListFiltered().length">{{paginationGroup.paginationText}}</span>
+            <div class="pagination-links-cont" *ngIf="dataSet > paginationGroup.pageSiz">
+              <button id="sysidPrevBtn" class="btn btn-sm btn-outline-primary gb-sysId-page-btn" type="button"
+                [disabled]="paginationGroup.currentPage == 1" (click)="loadPrevSet()">Previous
+              </button>
+              <button id="sysidNextBtn" class="btn btn-sm btn-outline-primary gb-sysId-page-btn" type="button"
+                [disabled]="paginationGroup.currentPage >= paginationGroup.noOfPages" (click)="loadNextSet()"> Next
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="form-group col-12 col-md-12 col-lg-12 col-xl-12 sysid-action-container d-flex justify-content-center">
+          <button id="addEndCustomerAddBtn" type="button" class="btn btn-sm btn-outline-primary  box-1 position-relative"
+            (click)="addSysIds(); resetScrollTop('selectAvailableSys')"  [disabled]="!tempAddSysIdList.length && !tempAddGroupList.length" id="addSysIdBtn">
+            <span class="label-text">Add</span>
+            <span class="gb-angle-icon">
+              <fa-icon [icon]="['fas','angle-double-down']" [attr.disabled]="getActionButtonDisable('addsys')"></fa-icon>
+            </span>
+            <span (click)="helperClick($event)" class="btn-helper bg-warning" placement="right" container="body" [ngbPopover]="addEndCustAddSysID" popoverClass="addEndCustAddSysID"><fa-icon [icon]="['fas','info']"></fa-icon></span>
+          </button>
+          <button id="addEndCustomerDeleteBtn" type="button" class="btn btn-sm btn-outline-primary box-1 ml-1 position-relative"
+            [disabled]="!tempRemoveSysIdList.length && !tempRemoveGroupList.length" (click)="removeSysIds()"
+            id="removeSysIdBtn">
+            <span class="gb-angle-icon">
+              <fa-icon [icon]="['fas','angle-double-up']" [attr.disabled]="getActionButtonDisable('remsys')">
+              </fa-icon>
+            </span>
+            <span class="label-text">Remove</span>
+            <span (click)="helperClick($event)" class="btn-helper bg-warning" placement="right" container="body" [ngbPopover]="addEndCustRemoveSysID" popoverClass="addEndCustRemoveSysID"><fa-icon [icon]="['fas','info']"></fa-icon></span>
+          </button>
+        </div>
+        <div class="form-group col-12 col-md-12 col-lg-12 col-xl-12 selected-sysid-list box-1" id="selectedSysId">
+          <div>
+            <label for="exampleFormControlSelect2"> {{selectedView === 'device' ? globalObj.selectedSysId : globalObj.selectedGroups}}</label><span (click)="helperClick($event)" class="btn-helper-inline bg-warning" placement="right" container="body" [ngbPopover]="addEndCustSeleDev"><fa-icon [icon]="['fas','info']"></fa-icon></span>
+          </div>
+          <div class="btn-group">
+            <button id="selectedDevices_SysId" type="button" class="btn btn-sm btn-outline-primary"
+              [ngClass]="{'selected' : selectedView == 'device'}" (click)="switchView('device','selected')">
+              <span>{{headerText}}</span>
+              <span class="small ml-1">({{selectedSysIds.length}})</span>
+            </button>
+            <button id="selectedDevices_Group" type="button" class="btn btn-sm btn-outline-primary"
+              [ngClass]="{'selected' : selectedView == 'group'}"
+              (click)="switchView('group', 'selected')">
+              <span>Group</span>
+              <span class="small ml-1">({{selectedGroups.length}})</span>
+            </button>
+          </div>
+          <!-- <div class="sysid-empty-block" *ngIf="selectedSysIds.length == 0">No Device ID(s) selected</div> -->
+          <div class="sysid-list-wrapper" *ngIf="selectedView == 'device'">
+            <div class="sysid-empty-block" *ngIf="selectedSysIds.length == 0">No {{headerText}}(s) added</div>
+            <div class="gb-div-table">
+              <div class="col-12">
+                <div class="gb-table-head row font-weight-bold border border-left-0 border-right-0 border-top-0">
+                  <div class="col mt-2 mb-2" *ngFor="let header of sysIdAttributeList">
+                    <span class="">{{header.colLabel}}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="sysid-list gb-custom_scroll-bar">
+                <div class="col-12">
+                  <div id="selectedSysId_value{{ind}}" class="row sysid-table-row border border-left-0 border-right-0 border-top-0"
+                    [ngClass]="{'selected': sysid.selected}" *ngFor="let sysid of selectedSysIds; let ind = index"
+                    (click)="rowClick($event,sysid,selectedSysIds); addRmoveBtnState('remove')">
+                    <div id="selectedSysId_value{{ind}}_{{sysCol.colName}}" class="text-truncate text-left col mt-2 mb-2" *ngFor="let sysCol of sysIdAttributeList; let ind1 = index">
+                      <span class="" title="{{sysid[sysCol.colName]}}">{{sysid[sysCol.colName]}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sysid-list-wrapper" *ngIf="selectedView == 'group'">
+            <div class="sysid-empty-block" *ngIf="selectedGroups.length == 0">No Group(s) added</div>
+            <div class="gb-div-table">
+              <div class="gb-table-head row font-weight-bold border border-left-0 border-right-0 border-top-0" *ngIf="selectedGroups.length > 0">
+                <div class="col-3 col-md-3 col-lg-3 col-xl-3 mt-2 mb-2">
+                  <span class="pl-3">Group</span>
+                </div>
+                <div class="col-9 d-none d-sm-block col-md-9 col-lg-9 col-xl-9 col-sm-3 mt-2 mb-2">{{headerText}}'s</div>
+              </div>
+              <div class="sysid-list gb-custom_scroll-bar">
+                <div id="selectedGroup_value{{ind}}" class="row sysid-table-row border border-left-0 border-right-0 border-top-0"
+                  *ngFor="let group of selectedGroups; let ind= index"
+                  (click)="rowClick($event,group, selectedGroups); addRmoveBtnState('remove')"
+                  [ngClass]="{'selected': group.selected}">
+                  <div id="selectedGroup_value{{ind}}_group" class="col-3 col-md-3 col-lg-3 col-xl-3 mt-2 mb-2 ellipseText gb-name-div">
+                    <span title="{group.endcustomer_name}}" class="ml-2">{{group.endcustomer_name}}</span>
+                  </div>
+                  <div id="selectedGroup_value{{ind}}_SysId" class="d-none d-sm-block col-9 col-md-9 col-lg-9 col-xl-9 mt-2">
+                    <h6>
+                      <span class="badge badge-secondary mr-1"
+                        *ngFor="let device of group.serial_number;let first = first; let last = last; index as j">
+                        {{device}}
+                      </span>
+                      <span *ngIf="group.group_name.length">
+                        <span class="badge badge-info mr-1" [attr.title]="groupSysIdMap[group]"
+                          *ngFor="let item of group.group_name">{{ item }}
+                        </span>
+                      </span>
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="submitted && !selectedSysIds.length" class="invalid-feedback">
+            <div *ngIf="!selectedSysIds.length">{{globalObj.requiredSysId}}</div>
+          </div>
+        </div>
+        <div class="col-12 mt-3 d-flex justify-content-between">
+          <div>
+            <div class="pretty p-svg p-curve m-0 d-inline-flex" *ngIf="editEndUserMode">
+                <input type="checkbox" formControlName="sendNotification" />
+                <div class="state p-info">
+                    <svg class="svg svg-icon" viewBox="0 0 20 20">
+                        <path
+                            d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
+                            style="stroke: white;fill:white;"></path>
+                    </svg>
+                    <label class="text-info">Notify the change to the user(s) of this group.</label>
+                </div>
+              </div>
+              <span *ngIf="editEndUserMode" class="ml-2" title="System Group update will impact the rule subscriptions of users associated to this group. Check this option to send an e-mail notification to all the users associated to this system group regarding the change.">
+                <fa-icon class="" [icon]="['fas','info-circle']"></fa-icon>
+              </span>
+          </div>
+            <div class="">
+              <button type="button" class="btn btn-sm btn-outline-danger mr-1" id="addEndCustomerCancelButton" aria-label="Close" (click)="closeEndCustomerModal()">Cancel</button>
+              <button type="button" id="addEndCustomerUserBtn" class="btn btn-sm btn-outline-primary box-1" (click)="addEndCustSubmit(addEditEndCustForm)">Save</button>
+            </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<!--END---------------Add End user  Modal content here-->
+<ng-template #filterPop><div [innerHTML]="onscreenConst.endCustFilter"></div></ng-template>
+<ng-template #endCustomerGlobalSearchHelp><div [innerHTML]="onscreenConst.endCustGlobalSearch"></div></ng-template>
+<ng-template #endCustDownloadPop><div [innerHTML]="onscreenConst.endCustDownloadPop"></div></ng-template>
+<ng-template #endCustEditEcHelper><div [innerHTML]="onscreenConst.endCustEditEcHelper"></div></ng-template>
+<ng-template #endCustDelEcHelper><div [innerHTML]="onscreenConst.endCustDelEcHelper"></div></ng-template>
+<ng-template #pageSizePop><div [innerHTML]="onscreenConst.roleListPageSize"></div></ng-template>
+<ng-template #paginationPop><div [innerHTML]="onscreenConst.roleListPagination"></div></ng-template>
+<ng-template #endCustDelHelper><div [innerHTML]="onscreenConst.endCustDelHelper"></div></ng-template>
+<ng-template #endCustAddEcHelper><div [innerHTML]="onscreenConst.endCustAddEcHelper"></div></ng-template>
+<ng-template #endCustAddEndCustProdHelper><div [innerHTML]="onscreenConst.endCustAddEndCustProdHelper"></div></ng-template>
+<ng-template #endCustAddEndCustSearchHelper><div [innerHTML]="onscreenConst.endCustAddEndCustSearchHelper"></div></ng-template>
+<ng-template #SysIdGroupTabsHelper><div [innerHTML]="onscreenConst.SysIdGroupTabsHelper"></div></ng-template>
+<ng-template #addEndCustAddSysID><div [innerHTML]="onscreenConst.addEndCustAddSysID"></div></ng-template>
+<ng-template #addEndCustRemoveSysID><div [innerHTML]="onscreenConst.addEndCustRemoveSysID"></div></ng-template>
+<ng-template #addEndCustSeleDev><div [innerHTML]="onscreenConst.addEndCustSeleDev"></div></ng-template>

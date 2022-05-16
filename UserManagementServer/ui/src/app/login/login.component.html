@@ -1,0 +1,111 @@
+<!-- Default form login -->
+
+<app-toast-notification></app-toast-notification>
+<div class="loading" *ngIf="loading" id="loaderDiv"><app-loader></app-loader></div>
+<section id="cover" class="min-vh-100" [ngStyle]="{'background': 'url(' + imageDir + '/user.jpg) no-repeat 0 0 / cover'}">
+  <div id="cover-caption">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10 mx-auto text-center form bg-white">
+          <div class="row">
+            <div class="col m-2 bg-white text-left login-left min-height-400">
+              <app-logo></app-logo>
+              <div class="" *ngIf="!userValidated">
+                <div class="col-lg p-0">
+                  <div align="center" id="errorMsg"> <small id="errorMsgSmall" class="col-sm-10 text-danger" align="center" >{{errorMsg}}</small></div>
+                  <div class="loginInput" style="overflow:hidden">
+                      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <re-captcha  *ngIf = "isCaptchaEnabled" #captchaRef="reCaptcha" id='recaptcha' (resolved)="resolved($event)" siteKey= {{sitekey}} size="invisible"></re-captcha>
+                    <div class="form-group" id="inputEmailDiv" >
+                      <label id="email" for="email" class="text-secondary">Username</label>                      
+                      <input type="text" class="form-control" id="username" formControlName="email" [ngClass]="{ 'is-invalid': submitted && login.email.errors }">
+                      <div *ngIf="submitted && login.email.errors" class="invalid-feedback">
+                        <div id="emailErrMsg" *ngIf="(submitted && login.email.errors.required) || (submitted && login.email.errors.pattern)">{{emailMsg}}</div>
+                      </div>
+                    </div>           
+                    <div class="form-group" id="inputPasswordDiv">
+                      <label id="password" for="password" class="text-secondary">Password</label>          
+                      <input type="password" class="form-control" id="inputPassword" formControlName="password" [ngClass]="{ 'is-invalid':submitted && login.password.errors }">
+                      <div *ngIf="submitted && login.password.errors" class="invalid-feedback">
+                        <div id="passwordErrMsg" *ngIf="submitted && login.password.errors.required">{{passMsg}}</div>
+                      </div>
+                    </div>
+                    <button id="forgot-password" type="button" class="btn btn-sm px-0 btn-link float-left" (click) = 'forgotPasswordForm()'>Forgot Password?</button>
+                    <button id='submit' class="btn btn-sm btn-outline-primary float-right" type="submit" >         
+                      <span>Sign In</span>
+                      <fa-icon title="Sign In" class="mt-1 ml-1" [icon]="['fas','sign-in-alt']"></fa-icon>
+                    </button>
+                  </form>
+                  </div>
+                </div>
+              </div>
+              <div class="" *ngIf="userValidated">
+                <div class="text-center" id="errorMsg"> <small id="errorMsgSmall" class="col-sm-10 text-danger"  >{{errorMsg}}</small></div>
+                <div class=" p-3 alert alert-success alert-dismissible gb-otp-resend-success" id="successMsg" role="alert" *ngIf="showResendAlert">
+                  <div>
+                    <strong>{{resendSuccessMsg[0]}}</strong> {{resendSuccessMsg[1]}}
+                  </div>
+                  <div>
+                    <button type="button" class="close" id="closeBtn" data-dismiss="alert" aria-label="Close"
+                      (click)="closeNotification()">
+                      <span aria-hidden="true" id="closeBtnSpan">&times;</span>
+                    </button>
+                  </div>
+                </div>
+                <div id="otpHeaderMsg">We have sent your One-Time security code to your email
+                  <span class="masked-email-mobile text-primary small">{{maskedMail}}&nbsp;</span>.
+                  <span *ngIf="showMobMsg">and phone
+                    <span class="masked-email-mobile text-primary small">{{mobileNum}}</span>.
+                  </span>
+                  <span id="otpExpiryTime"> <br /> This code is valid for {{timeout}}.</span>
+                </div>
+                
+                <div id="otpform">
+                  <form [formGroup]="otpForm">
+                    <div id="otpInputDiv">
+                      <input type="text" name="" id="otpInput" placeholder="Enter OTP" class="form-control" formControlName="otp" [ngClass]="{ 'is-invalid': otpSubmitted && f.otp.errors }">
+                      <div *ngIf="f.otp.errors" class="invalid-feedback">
+                        <div *ngIf="f.otp.errors.required" id="otpRequredError">OTP Required</div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div id="resendContainer" class="mt-3 d-flex justify-content-between flex-row">
+                  <div id="resendOtpDiv" class="col-5 d-flex justify-content-start flex-row pl-0">
+                    <div>
+                      <button class="btn  btn-sm btn-outline-primary" id="resendOtpBtn" (click)="resendOTP()" [disabled]="enableResend">
+                        RESEND OTP
+                      </button>
+                    </div>
+                    <div class=" ml-2 d-flex align-items-center ">
+                      <span id="secondsTimer" class="secondsTimer text-warning" innerHtml="{{timeleft}}" *ngIf="showTimer"></span>
+                    </div>
+                  </div>
+                  <div id="verifyOtpDiv">
+                    <button class="btn ml-1 btn-sm btn-outline-primary" id="verifyOtpBtn" (click)="validateOTP()">
+                      VERIFY OTP
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col m-2 bg-white login-right min-height-400 text-light text-left" [ngStyle]="{'background': 'url(' + imageDir + '/rightSideBg.jpg) no-repeat 0 0 / cover'}">
+              <div class="mx-4 mt-6">
+                <h5 id="primary-info">Leverage the power of your machine data</h5>
+                <ul class="px-4 a">
+                  <li>360-degree product intelligence</li>
+                  <li>Turn data into insight</li>
+                  <li>Deliver proactive customer services</li>
+                  <li>Pursue data-driven product roadmaps</li>
+                  <li>Cross and upsell with reliable customer intelligence</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
+

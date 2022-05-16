@@ -1,0 +1,16 @@
+@(f_name: String, l_name: String, email_link: String, linkExpiry: String, footer: String)
+@import constants._
+@import constants.Page._
+@import play.api._
+@import play.api.Play.current
+<span style="font-size:17px">Hello @f_name,
+
+Thank you for signing up with Glassbeam. Please click
+the link below to verify your email address.
+
+<a style='padding:10px 20px 10px 30px;margin-bottom:20px;color:#22b8eb;font-size:17px;text-decoration:none;display:inline-block;text-align:left' href=@email_link>Click here to verify your account</a>
+
+This link will expire in next @linkExpiry from now.
+
+@footer
+</span>       

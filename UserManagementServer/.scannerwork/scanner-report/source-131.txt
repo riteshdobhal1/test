@@ -1,0 +1,62 @@
+@(roleForm: Form[NewRole], mfr: Seq[String],  prod: Seq[String], sch: Seq[String], feature: Seq[(String,String)],signedInUserName: Option[String], userorg: Option[String], userrole: Option[String], version: String)(implicit flash: Flash, messages: Messages)
+
+
+@import helper._
+@import constants._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrap2Input.f) }
+
+@title = {
+@roleForm.value match {
+case Some(rf) => { Edit Role}
+case None => {Add New Role}
+}
+}
+
+@main(signedInUserName,  userorg, userrole, title, true, Page.Admin) {
+<div class="span6">
+    @flash.get(FKSuccess).map { message =>  <div class="alert alert-success">   @message  </div>  }
+    @if(roleForm.hasErrors) { <div class="alert alert-error"> Oops! Please see below. </div>  }
+    @roleForm.globalError.map { error => <div class="alert alert-error"> @error.message   </div>  }
+    @form(routes.AdminRole.add(version), 'class -> "form-horizontal") {
+    @inputText( roleForm("name"), 'maxlength -> "128", '_label -> "Name: *",'_showConstraints -> false)
+
+    @inputText( roleForm("domain"), 'maxlength -> "128", '_label -> "Domain: *",'_showConstraints -> false)
+    @select(roleForm ("mfr"),
+    options = mfr.map(m => (m.toString, m)),
+    '_label -> "Manufacture:",
+    '_error -> roleForm("mfr").error.map(_.withMessage("Please select at least one manufacture")),
+    '_showConstraints -> false
+    )
+    @select(roleForm ("prod"),
+    options = prod.map(p => (p.toString, p)),
+    '_label -> "Product:",
+    '_error -> roleForm("prod").error.map(_.withMessage("Please select at least one product")),
+    '_showConstraints -> false
+    )
+    @select(roleForm ("sch"),
+    options = sch.map(s => (s.toString, s)),
+    '_label -> "Schema:",
+    '_error -> roleForm("sch").error.map(_.withMessage("Please select at least one schema")),
+    '_showConstraints -> false
+    )
+
+    @checkbox( roleForm("is_super"),  '_label -> "Is Super:", 'checked -> "checked",'_showConstraints -> false )
+
+    @select(roleForm("realm"),
+    options = options(Org.realms.toList),
+    '_label -> "Realm: *",
+    '_showConstraints -> false,
+    'multiple-> "multiple"
+
+    )
+
+    @inputCheckboxGroup(roleForm("features"),  options = feature,'_showConstraints -> false,'_label -> "Features: *",
+    '_error -> roleForm("features").error.map(_.withMessage("select one or more features")))
+
+    <div class="form-actions">
+        <input name="action" class="btn btn-primary" type="submit" value="Save">
+        <a href="@routes.AdminRole.list(version)" class="btn">Cancel</a>
+    </div>
+    }
+</div>
+}

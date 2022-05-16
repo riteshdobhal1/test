@@ -1,0 +1,67 @@
+ul.a {
+    list-style-type: circle;
+  }
+.alert-danger {
+border-radius: .2cm;
+padding-left: .2cm;
+}
+.open-close-container {
+  border: 1px solid #dddddd;
+  margin-top: 1em;
+  padding: 20px 20px 0px 20px;
+  color: #000000;
+  font-weight: bold;
+  font-size: 20px;
+}  
+.is-invalid{
+  border-color: #dc3545 !important;
+}
+.gb-otp-resend-success{
+  position: absolute;
+  top: -3px;
+  width: 90%;
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-device-width : 320px) and (max-device-width : 640px)  {
+  .mainLoginDiv{
+    flex-direction: column !important;
+  }
+  .loginHeader{
+    width: 100% !important;
+  }
+  .loginInput{
+    width: 100% !important;
+  }
+  
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 641px) and (max-device-width : 1024px) {
+  /* Styles */
+  .mainLoginDiv{
+    flex-direction: column !important;
+  }
+  .loginHeader{
+    width: 100% !important;
+  }
+  .loginInput{
+    width: 100% !important;
+  }
+  }
+
+
+  @media (min-width: 641px) and (orientation:landscape) {
+    .col-md-4 {
+        // some properties
+        width:100% !important;
+    }
+}
+
+@media (min-width: 992px) and (orientation:portrait) {
+    .col-md-4 {
+         // redefined
+         width:100% !important;
+    }
+}
+

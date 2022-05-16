@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Glassbeam : Administrator</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+  <script language='javascript'>
+
+  var url_string = window.location.href;
+  var url = new URL(url_string);
+  var token = url.searchParams.get("token_id");
+  var email = unescape(url.searchParams.get("email"));
+  var domain=url.searchParams.get("domain");
+  document.cookie = "token_id=" + token + ";domain=." + domain + ";path=/";
+  document.cookie = "email=" + email + ";domain=." + domain + ";path=/";
+  </script>  
+</head>
+<body id="bodyWrap">
+  <app-root></app-root>
+</body>
+</html>

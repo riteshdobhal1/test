@@ -1,0 +1,78 @@
+{
+	"Status": "Success",
+	"Msg": "List all information for a user",
+	"Data": {
+		"user": [{
+			"email": "siemensqa@glassbeam.com",
+			"first_name": "Ritesh",
+			"end_customer": "",
+			"org": "glassbeam",
+			"role": "siemens_siemens_podui_admin",
+			"last_name": "NA",
+			"def_passwd": false,
+			"department": "NA",
+			"sso": false,
+			"wb_user_name": "siemensqa@glassbeam.com",
+			"report_usage": false,
+			"created_on": "Fri Sep 20 12:48:49 UTC 2019",
+			"active": true,
+			"city": "NA",
+			"state": "NA",
+			"country": "NA",
+			"is_external": false,
+			"mps_def": "siemens:siemens:podui",
+			"org_type": 1000,
+			"show_info": false,
+			"events_export_limit": 300,
+			"dashboard_admin": true
+		}],
+		"role_details": {
+			"name": "siemens_siemens_podui_admin",
+			"is_super": false,
+			"domains": {
+				"Siemens Prod": "siemens:siemens:pod",
+				"SiemensWH Prodv10": "siemens:siemenswh:podv10",
+				"-": "default:default:default",
+				"Siemens Prod60": "siemens:siemens:pod60",
+				"SIEMENS-POD": "siemens:siemens:podui"
+			},
+			"features": {
+				"siemens:siemens:pod": "admin,explorer,logvault",
+				"siemens:siemenswh:podv10": "admin,explorer,logvault,healthcheck",
+				"default:default:default": "workbench,explorer,logvault,admin",
+				"siemens:siemens:pod60": "dashboards,file_upload,rules_and_alerts,explorer,logvault,admin,healthcheck",
+				"siemens:siemens:podui": "admin,dashboards,file_upload,rules_and_alerts, explorer,logvault,workbench,rule_creator,healthcheck,dashboard_admin"
+			},
+			"realm_isdomain": {
+				"qaui": "http://searchdev.glassbeam.com:9000/v1",
+				"stage": "",
+				"autostage": "http://autostage.glassbeam.com:9000/v1"
+			},
+			"realm_uidomain": {
+				"qaui": "dev.glassbeam.com",
+				"stage": "",
+				"autostage": "autostage.glassbeam.com"
+			},
+			"mps_uidomain": {
+				"siemens:siemenswh:podv10": "searchdev.glassbeam.com",
+				"siemens:siemens:pod60": "dev.glassbeam.com",
+				"siemens:siemens:podui": "dev.glassbeam.com"
+			},
+			"mps_isdomain": {
+				"siemens:siemenswh:podv10": "http://searchdev.glassbeam.com:9000/v1",
+				"siemens:siemens:pod60": "http://searchdev.glassbeam.com:9000/v1",
+				"siemens:siemens:podui": "http://searchdev.glassbeam.com:9000/v1"
+			},
+			"realm_appsversion": {
+				"siemens:siemenswh:podv10": "5.5",
+				"siemens:siemens:pod60": "6.1",
+				"siemens:siemens:podui": "6.1"
+			},
+			"realm": ["qaui", "stage", "autostage"],
+			"studio_proj_limit": 0
+		},
+		"max_users": 20,
+        "max_licensed_users": 10,
+        "max_creator_licenses": 2
+	}
+}

@@ -1,0 +1,17 @@
+@(f_name: String, l_name: String, timeString: String)
+@import constants._
+@import constants.Page._
+@import play.api._
+@import play.api.Play.current
+<span style="font-size:17px">Hello @f_name,
+
+Your account has been blocked as you have exceeded the
+maximum number of incorrect login attempts.
+
+Please try logging in after @timeString or contact your
+site administrator to enable your account.
+
+Thank You,
+The Glassbeam Team
+<a href="http://www.glassbeam.com" target="_blank">http://www.glassbeam.com</a>
+</span>

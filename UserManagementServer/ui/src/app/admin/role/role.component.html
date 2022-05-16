@@ -1,0 +1,451 @@
+<app-admin></app-admin>
+<div class="loading" *ngIf="loading"><app-loader></app-loader></div>
+<div class="container-fluid gb-main-container" [ngClass]="{'onscreenEnabled': isOnscreenenabled()}">
+    <div class="row flex-nowrap wrapper">
+        <div class="col-md-2 col-1 pl-0 pr-0 width border-right sidebar collapse"  [ngClass]="{'show': showFilter}">
+            <div class="leftnavbar expandLeft roleFilterPanel pl-1 customScroll" id="customScroll">
+                <div class="d-flex justify-content-between px-2 bg-darker">
+                    <div><h6 class="text-light my-1">Filter</h6></div>
+                    <fa-icon title="Close" class="text-light" [icon]="['fas','arrow-left']" (click)="showFilter = !showFilter"></fa-icon>
+                </div>
+                <ngb-accordion #acc="ngbAccordion">
+                    <ngb-panel id="nameFilter">
+                        <ng-template ngbPanelHeader let-opened="opened">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <button ngbPanelToggle class="flex-fill p-0 btn btn-link text-decoration-none text-dark text-left float-left" id="roleNameFilter"><fa-icon *ngIf="!opened" class="ml-1"[icon]="['fas','angle-down']"></fa-icon><fa-icon *ngIf="opened" class="ml-1"[icon]="['fas','angle-up']"></fa-icon> {{roleFilterArray[3].columnTitle}} <span class="badge badge-primary float-right mr-1" *ngIf="roleFilterArray[3].enabledCount!=0">{{roleFilterArray[3].enabledCount}}</span></button>
+                            </div>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                                <div class="input-group input-group-sm mb-1 mr-2">
+                                    <input type="text" class="form-control" id="roleNameSearchInput" placeholder="Search by name" [(ngModel)]="roleNameFilterSearch" (ngModelChange)="updateFilter(roleFilterArray[3], '')">
+                                    <div class="input-group-append">
+                                        <button [disabled]="roleNameFilterSearch==''" id="roleNameSearchTextClear" class="btn btn-outline-danger" (click)="roleNameFilterSearch=''; updateFilter(roleFilterArray[3], '')" type="button"><fa-icon title="Clear Search" class="mt-1" [icon]="['fas','times']"></fa-icon></button>
+                                    </div>
+                                </div>
+                                <div class="px-1" *ngFor="let data of getFilterRoleData(), let indRoleName= index" id="roleNameFilteredList">
+                                    <div class="pretty p-svg p-curve m-0">
+                                        <input type="checkbox" id="roleNameFilterCheck_{{indRoleName}}" [checked]="data.selected" (change)="data.selected = !data.selected; updateFilter(roleFilterArray[3], '')" />
+                                        <div class="state p-primary">
+                                            <svg class="svg svg-icon" viewBox="0 0 20 20">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path></svg>
+                                            <label id="roleNameFilterLabel_{{indRoleName}}">{{data.name}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="px-1" *ngIf="getFilterRoleData().length === 0 && roleNameFilterSearch.length >= fieldLength.min" id="roleNameFilterNoResults">
+                                    <span>{{noDataFound}}</span>
+                                </div>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+                <ngb-accordion #acc="ngbAccordion">
+                    <ngb-panel id="typeFilter">
+                        <ng-template ngbPanelHeader let-opened="opened">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <button ngbPanelToggle class="flex-fill p-0 btn btn-link text-decoration-none text-dark text-left float-left" id="roleTypeFilter"><fa-icon *ngIf="!opened" class="ml-1"[icon]="['fas','angle-down']"></fa-icon><fa-icon *ngIf="opened" class="ml-1"[icon]="['fas','angle-up']"></fa-icon> {{roleFilterArray[0].columnTitle}}<span class="badge badge-primary float-right mr-1" *ngIf="roleFilterArray[0].enabledCount!=0">{{roleFilterArray[0].enabledCount}}</span></button>                                
+                            </div>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <div class="px-1" *ngFor="let data of roleFilterArray[0].data; let i = index">
+                                <p-checkbox shape="round" color="primary" (change)="data.selected = !data.selected;updateFilter(roleFilterArray[0], i)" [checked]="data.selected" id="roleTypeFilterItem_{{i}}">
+                                    <svg p-svg class="svg-icon-green" viewBox="0 0 20 20">
+                                        <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                    </svg>
+                                    {{data.name}}
+                                </p-checkbox>
+                            </div>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+                <ngb-accordion #acc="ngbAccordion">
+                    <ngb-panel id="prodFilter">
+                        <ng-template ngbPanelHeader let-opened="opened">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <button ngbPanelToggle class="flex-fill p-0 btn btn-link text-decoration-none text-dark text-left float-left" id="roleProdFilter"><fa-icon *ngIf="!opened" class="ml-1"[icon]="['fas','angle-down']"></fa-icon><fa-icon *ngIf="opened" class="ml-1"[icon]="['fas','angle-up']"></fa-icon> {{roleFilterArray[1].columnTitle}}<span class="badge badge-primary float-right mr-1" *ngIf="roleFilterArray[1].enabledCount!=0">{{roleFilterArray[1].enabledCount}}</span></button>                                
+                            </div>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <div class="px-1" *ngFor="let data of roleFilterArray[1].data; let i = index">
+                                <p-checkbox shape="curve" color="primary" (change)="data.selected = !data.selected;updateFilter(roleFilterArray[1], i)" [checked]="data.selected" id="roleProdFilter_{{i}}">
+                                    <svg p-svg class="svg-icon-green" viewBox="0 0 20 20">
+                                        <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                    </svg>
+                                    {{data.name}}
+                                </p-checkbox>
+                            </div>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+                <ngb-accordion #acc="ngbAccordion">
+                    <ngb-panel id="featureFilter">
+                        <ng-template ngbPanelHeader let-opened="opened">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <button ngbPanelToggle class="flex-fill p-0 btn btn-link text-decoration-none text-dark text-left float-left" id="roleFeatureFilter"><fa-icon *ngIf="!opened" class="ml-1"[icon]="['fas','angle-down']"></fa-icon><fa-icon *ngIf="opened" class="ml-1"[icon]="['fas','angle-up']"></fa-icon> {{roleFilterArray[2].columnTitle}}<span class="badge badge-primary float-right mr-1" *ngIf="roleFilterArray[2].enabledCount!=0">{{roleFilterArray[2].enabledCount}}</span></button>                                
+                            </div>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <div class="px-1" *ngFor="let data of roleFilterArray[2].data; let i = index">
+                                <p-checkbox shape="curve" color="primary" (change)="data.selected = !data.selected;updateFilter(roleFilterArray[1], i)" [checked]="data.selected" id="roleFeatureFilter_{{i}}">
+                                    <svg p-svg class="svg-icon-green" viewBox="0 0 20 20">
+                                        <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                    </svg>
+                                    {{data.name}}
+                                </p-checkbox>
+                            </div>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+                <ngb-accordion #acc="ngbAccordion">
+                    <ngb-panel id="explorerDataFilter">
+                        <ng-template ngbPanelHeader let-opened="opened">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <button ngbPanelToggle class="flex-fill p-0 btn btn-link text-decoration-none text-dark text-left float-left" id="explorerDataRestrictionFilter"><fa-icon *ngIf="!opened" class="ml-1"[icon]="['fas','angle-down']"></fa-icon><fa-icon *ngIf="opened" class="ml-1"[icon]="['fas','angle-up']"></fa-icon> {{roleFilterArray[4].columnTitle}}<span class="badge badge-primary float-right mr-1" *ngIf="roleFilterArray[4].enabledCount!=0">{{roleFilterArray[4].enabledCount}}</span></button>                                
+                            </div>
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            <div class="px-1" *ngFor="let data of roleFilterArray[4].data; let i = index">
+                                <p-checkbox shape="curve" color="primary" (change)="data.selected = !data.selected;updateFilter(roleFilterArray[1], i)" [checked]="data.selected" id="explorerDataRestrictionFilter_{{i}}">
+                                    <svg p-svg class="svg-icon-green" viewBox="0 0 20 20">
+                                        <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                    </svg>
+                                    {{data.name}}
+                                </p-checkbox>
+                            </div>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+            </div>
+        </div>
+        <div class="main col-12" [ngClass]="{'animateMain': showFilter, 'animateMainFull': !showFilter}">
+            <div class="row p-0 pr-1">
+                <div class="col-1">
+                    <div class="btn-group" role="group" aria-label="Basic example" *ngIf="!showFilter">
+                        <button type="button" (click)="showFilter = !showFilter" id="filterButton" class="btn btn-sm btn-primary gb-not-btn"><fa-icon title="Filter" class="mt-1" [icon]="['fas','filter']"></fa-icon><span *ngIf="filterEnabled" class="badge badge-dark">{{filterEnabledCount}}</span><span (click)="helperClick($event)" class="btn-helper bg-warning" placement="right" container="body" [ngbPopover]="filterPop" popoverClass="filterPop"><fa-icon [icon]="['fas','info']"></fa-icon></span></button>
+                        <button type="button" class="btn btn-sm btn-danger" *ngIf="filterEnabled" id="filterReset" (click)="resetFilter()"><fa-icon title="Filter" class="mt-1" [icon]="['fas','times']"></fa-icon></button>
+                    </div>
+                </div>
+                <div class="col-3">
+                </div>
+                <div class="col-5">
+                    <span *ngIf="selectedCount>0" class="badge badge-light gb-not-btn"><span id="selectAllMsg"><span *ngIf="selectedCount==getRoleListLength()">All </span> <strong class="text-primary mr-1 ml-1">{{selectedCount}}</strong> role(s) selected </span><span id="selectAcrossPages" class="ml-1 mr-1 pl-1 pr-1 text-primary cursor-pointer"  (click)="selectAcrossPages()" *ngIf="selectedCount!=getRoleListLength()">Select all {{getRoleListLength()}} Roles</span><span class="text-danger ml-1 mr-1 pl-1 pr-1 cursor-pointer" (click)="clearSelection()" id="clearAllSelection">Clear All</span></span>
+                </div>
+                <div class="col-3 d-flex justify-content-end">
+                    <div class="input-group input-group-sm mb-1 mr-2">
+                        <input type="text" class="form-control" id="roleSearchInput" placeholder="Search" [(ngModel)]="searchText" (input)="PaginationReset=true">
+                        <div class="input-group-append">
+                            <button [disabled]="searchText==''" id="roleSearchTextClear" class="btn btn-outline-danger" (click)="searchText='';PaginationReset=true" type="button"><fa-icon title="Clear Search" class="mt-1" [icon]="['fas','times']"></fa-icon><span (click)="helperClick($event)" class="btn-helper bg-warning" placement="left" container="body" [ngbPopover]="searchPop" popoverClass="searchPop"><fa-icon [icon]="['fas','info']"></fa-icon></span></button>
+                        </div>
+                    </div>
+                    <button class="btn m-0 p-0 mt-2 position-relative" (click)="exportCSVFile()" id="downloadCSVBtn"><fa-icon title="Download CSV" [icon]="['fas','download']"></fa-icon><span (click)="helperClick($event)" class="btn-helper-iconBtn-alt bg-warning" placement="left" container="body" [ngbPopover]="downloadPop" popoverClass="downloadPop"><fa-icon [icon]="['fas','info']"></fa-icon></span></button>
+                </div>
+            </div>
+            <div class="gb-div-table" *ngIf = "!loading" id="roleListTable">
+                <div class="row" *ngIf="getRoleListFiltered().length == 0">
+                    <div class="col">
+                        <div class="alert alert-danger mt-3 text-center" role="alert" id="noRolesFound"><strong>{{noRolesFound}}</strong></div>
+                    </div>
+                </div>
+                <div class="row font-weight-bold border border-left-0 border-right-0 border-top-0 table-head" *ngIf="getRoleListFiltered().length != 0; let roleind = index;" id="roleListTableHeader">
+                    <div class="col-6 col-md-2 col-lg-2 col-xl-2 mt-2 mb-2t" attr.type="{{roleListTableLabel.roleName.type}}"><p-checkbox id="roleListSelectAll" animation="smooth" shape="curve" color="primary" class="ml-1" [disabled]="getActionButtonDisable(selectallflag)" (click)="roleToggleSelect()" [checked]="allRoleSelected()" binary="true"><svg p-svg class="svg-icon-green" viewBox="0 0 20 20"><path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path></svg></p-checkbox><span sortable="DisName" direction="{{persistantSorting.column==='DisName'?persistantSorting.direction:''}}" (sort)="onSort($event)" id="DisNamecell">{{roleListTableLabel.roleName.name}}</span></div>
+                    <div class="col-6 col-md-1 col-lg-1 col-xl-1 col-sm-8 mt-2 mb-2"  attr.type="{{roleListTableLabel.roleType.type}}"><span id="roleTypecell" sortable="roleType" direction="" (sort)="onSort($event)">{{roleListTableLabel.roleType.name}}</span></div>
+                    <div class="d-none d-sm-block col-md-9 col-lg-9 col-xl-9 mt-2 mb-2">
+                        <div class="row">
+                            <div class="col-2" id="prodNameField" attr.type="{{roleListTableLabel.prodName.type}}">{{roleListTableLabel.prodName.name}}</div>
+                            <!-- <div class="col-1" id="explorerDuration">Data Restriction</div> -->
+                            <div class="col-9" id="featureField" attr.type="{{roleListTableLabel.featureLab.type}}">{{roleListTableLabel.featureLab.name}}</div>
+                            <div class="col-1" id="actionField" attr.type="{{roleListTableLabel.actionLab.type}}">{{roleListTableLabel.actionLab.name}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row RoleTableData border border-left-0 border-right-0 border-top-0" *ngFor="let role of getRoleListFiltered() | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize; let ind = index" id="RoleTableDataRow_{{ind}}">
+                    <div class="col-6 col-md-2 col-lg-2 col-xl-2 mt-2 mb-2 ellipseText" id="roleTableData_{{ind}}_roleNameCell" (mouseenter)='enableTootip($event, role.DisName)' [class.pl-5]="role.DisName == adminRole.DisName"><p-checkbox animation="smooth" shape="curve" color="primary" class="ml-1" *ngIf="role.DisName != adminRole.DisName" (change)="role.selected = !role.selected; updateSelectAllValue()" [checked]="role.selected" binary="true" id="roleTableData_{{ind}}_checkbox"><svg p-svg class="svg-icon-green" viewBox="0 0 20 20"><path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path></svg></p-checkbox> <span id="roleName_{{ind}}">{{role.DisName}}</span></div>
+                    <div class="col-6 col-md-1 col-lg-1 col-xl-1 mt-2 mb-2" id="roleTableData_{{ind}}_roleType">{{role.roleType}} <button type="button" class="btn btn-sm btn-outline-primary d-inline d-sm-none float-right" (click)="role.colapsed = !role.colapsed"><fa-icon [icon]="['fas','eye']"></fa-icon></button></div>
+                    <div class="d-none d-sm-block col-12 col-md-9 col-lg-9 col-xl-9 mt-2 mb-2" id="roleTableData_{{ind}}_prodFeatureCell">
+                        <div class="row gb-feature-row" *ngFor="let prodFeature of role.featureData; let prodind=index" id="roleTableData_{{ind}}_featureData">
+                            <div class="col-2 align-middle ellipseText" id="roleTableData_{{ind}}_featureDataProdName_{{prodind}}">{{prodFeature.name}}</div>
+                            <!-- <div class="col-1">
+                                <span *ngIf="prodFeature.features.indexOf('Explorer') == -1">NA</span>
+                                <span *ngIf="prodFeature.features.indexOf('Explorer') > -1">{{role.explorer_date_range[prodFeature.mpsstring] ? role.explorer_date_range[prodFeature.mpsstring] + ' days': 'All'}}</span>
+                            </div> -->
+                            <div class="col-9" placement="left" [attr.ngbTooltip]="prodFeature.features" id="roleTableData_{{ind}}_featureDataFeatureList_{{prodind}}"><h6><span class="badge badge-secondary mr-1" *ngFor="let feature of prodFeature.featuresDis" [ngClass]="{'badge-primary':feature==='Admin', 'badge-secondary':(feature!='Admin' && feature!='Workbench'), 'badge-info':feature==='Workbench'}">{{feature}}</span></h6></div>
+                            <div class="col-1 productAction">
+                                <button *ngIf="role.DisName != adminRole.DisName" [disabled]="role.roleType == 'External'" id="editRole_{{roleind}}_{{prodind}}" title="Edit Role" (click)="openModal(addeditrole, roleFormMode.edit, role, prodFeature)" class="btn position-relative m-0 p-0 bg-transparent border-0"><fa-icon [icon]="['fas','edit']" class="mr-1 edit-icon"></fa-icon></button>
+                                <button class="btn position-relative m-0 p-0 delete-icon" id="deleteRole_{{roleind}}_{{prodind}}" (click)="openConfirmation(delType.prod, role, prodFeature)" *ngIf="role.DisName != adminRole.DisName"><fa-icon title="Delete Role" [icon]="['fas','trash']"></fa-icon><span (click)="helperClick($event)" class="btn-helper-iconBtn-alt bg-warning" placement="left" container="body" *ngIf="ind == 1" [ngbPopover]="deleteRolePop" popoverClass="deleteRolePop"><fa-icon [icon]="['fas','info']"></fa-icon></span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-block d-sm-none bg-light col-12 col-md-9 col-lg-9 col-xl-9 mt-2 mb-2" *ngIf="!role.colapsed">
+                        <div class="row gb-feature-row" *ngFor="let prodFeature of role.featureData">
+                            <div class="col-4 align-middle">{{prodFeature.name}}</div>
+                            <div class="col-8" placement="left" [attr.ngbTooltip]="prodFeature.features">{{prodFeature.features}}</div>
+                            <div class="col-12"><hr/></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-1"></div>
+            <div class="row pagination-div">
+                <div class="col-4">
+                    <span *ngIf="!loading && getRoleListFiltered().length !== 0" class="pt-1 d-none d-sm-inline position-relative">Page Size </span>
+                    <select *ngIf="!loading && getRoleListFiltered().length !== 0" class="form-control form-control-sm d-inline-block ml-1" id="pageSizeSelect" (change)="page=1" style="width: auto" [(ngModel)]="pageSize">
+                        <option *ngFor="let pageCount of pageValue" [ngValue]="pageCount" [disabled]="getRoleListFiltered().length+defaultPageSize<=pageCount">{{pageCount}}</option>
+                    </select>
+                    <span *ngIf="!loading && getRoleListFiltered().length !== 0" (click)="helperClick($event)" class="btn-helper-inline bg-warning" placement="right" container="body" [ngbPopover]="pageSizePop" popoverClass="pageSizePop"><fa-icon [icon]="['fas','info']"></fa-icon></span>
+                </div>
+                <div class="col-4">
+                    <ngb-pagination *ngIf="!loading && getRoleListFiltered().length > pageSize" [(page)]="page" [ellipses]="true" [maxSize]="10" id="paginationRole" (pageChange) = "rolePageChanged()" [pageSize]="pageSize" [collectionSize]="getRoleListFiltered().length" [size] = "smsize"></ngb-pagination><span (click)="helperClick($event)" class="btn-helper-inline bg-warning" placement="top" container="body" [ngbPopover]="paginationPop" popoverClass="paginationPop" *ngIf="!loading && getRoleListFiltered().length > pageSize"><fa-icon [icon]="['fas','info']"></fa-icon></span>
+                </div>
+                <div class="col-4 text-right" *ngIf="!loading">
+                    <button  type="button" id="roleDeleteBtn" class="btn btn-sm btn-outline-danger position-relative" [disabled]="getActionButtonDisable(delType.role)" (click)="openConfirmation(delType.role, '', '')"><fa-icon [icon]="['fas','trash-alt']"></fa-icon><span class="d-none d-sm-inline"> Delete</span><span (click)="helperClick($event)" class="btn-helper bg-warning" placement="top" container="body" [ngbPopover]="multiDeletePop" popoverClass="multiDeletePop"><fa-icon [icon]="['fas','info']"></fa-icon></span></button>
+                    <button id="addProdBtn" type="button" class="btn btn-sm btn-outline-primary ml-1 position-relative" [disabled]="getActionButtonDisable(roleFormMode.addProd)" (click)="openModal(addeditrole, roleFormMode.addProd, '')"><fa-icon [icon]="['fas','plus']"></fa-icon><span class="d-none d-sm-inline"> Add Product</span><span (click)="helperClick($event)" class="btn-helper bg-warning" placement="top-right" container="body" [ngbPopover]="roleListAddProdPop" popoverClass="roleListAddProdPop"><fa-icon [icon]="['fas','info']"></fa-icon></span></button>
+                    <button type="button" id="addRoleBtn" class="btn btn-sm btn-outline-primary ml-1 position-relative" (click)="openModal(addeditrole, roleFormMode.add, '', '')"><fa-icon [icon]="['fas','list']"></fa-icon><span class="d-none d-sm-inline"> Add Role</span><span (click)="helperClick($event)" class="btn-helper bg-warning" placement="left" container="body" [ngbPopover]="roleLostAddRolePop" popoverClass="roleLostAddRolePop"><fa-icon [icon]="['fas','info']"></fa-icon></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #addeditrole let-modal>
+    <div class="modal-header bg-primary gb-modal-header">
+        <h4 class="modal-title text-light" id="modal-basic-title">{{modalHeader}}</h4>
+        <button type="button" id="addEditRoleCloseModal" class="close text-light" aria-label="Close" (click)="submitted = false;RoleFormReset();modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">        
+        <form [formGroup]="addEditRoleForm" id="addEditRoleForm">
+            <div class="row">
+                <div class="col-12 col-md-5 col-lg-5 col-xl-5 form-group" *ngIf='!editRoleMode'>
+                    <div class="input-group input-group-sm mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Role Name</span>
+                        </div>
+                        <input id="addRoleNameField" title="{{addEditRoleForm.controls.roleName.value}}" pattern="^[0-9a-zA-Z\_\.\-]+$" type="text" [readonly]="editRoleMode || addProdMode" formControlName="roleName" class="form-control form-control-sm" placeholder="Role Name" [ngClass]="{ 'is-invalid': submitted && f.roleName.errors }">
+                        <div class="ml-1 mt-1" title="{{roleNameHelpText}}"><fa-icon [icon]="['fas','info-circle']"></fa-icon></div>
+                        <div *ngIf="submitted && f.roleName.errors" class="invalid-feedback">
+                            <div *ngIf="f.roleName.errors.required" id="addRoleNameErrorBlank">{{addRoleNameError.blank}}</div>
+                            <div *ngIf="f.roleName.errors.pattern" id="addRoleNameErrorInvalid">{{addRoleNameError.invalid}}</div>
+                            <div *ngIf="f.roleName.errors.minlength" id="addRoleNameErrorMin">{{addRoleNameError.minLength}}</div>
+                            <div *ngIf="f.roleName.errors.maxlength" id="addRoleNameErrorMax">{{addRoleNameError.maxLength}}</div>
+                            <div *ngIf="f.roleName.errors.duplicate" id="addRoleNameErrorDuplicate">{{addRoleNameError.duplicate}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3 col-lg-3 col-xl-3 mt-1 form-group" *ngIf="!editRoleMode">
+                    <span class="d-block">{{roleTypeLabel.Internal}} <p-checkbox id="addRoleTypeSwitch" [checked]="addEditRoleForm.controls.roleType.value" [disabled]= "addProdMode || editRoleMode" (change)="isExternalRole()" isSwitch="true" stroke="fill"></p-checkbox> {{roleTypeLabel.External}}</span>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4 form-group">
+                    <div ngbDropdown class="d-block" *ngIf='!editRoleMode'>
+                        <div class="input-group input-group-sm mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Product(s)</span>
+                            </div>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn btn-sm btn-outline-primary" id="addRoleProdDropDown" placement="left" [disabled]="editRoleMode" ngbDropdownToggle>{{addRoleFormLabel.prod}} <fa-icon [icon]="['fas','angle-down']"></fa-icon></button>
+                                <button *ngIf="selectedFormFeatureData.length>0 && !editRoleMode" (click)="clearSelectedProduct()" class="btn btn-sm btn-outline-danger">&times;</button>
+                            </div>
+                            <div ngbDropdownMenu class="addRoleProdDropDownItems">
+                                <div class="row" *ngFor="let prod of availableFeatureData; let prodInd = index">
+                                    <div class="col ellipseText" (mouseenter)='enableTootip($event, prod.name)'>
+                                        <p-checkbox [class.d-none]="addProdMode && disableProd(prod)" [value]="prod.name" [disabled]="prod.disabled || (addProdMode && disableProd(prod))" class="ml-1 mr-0" triggers="click:blur" shape="curve" color="primary" [checked]="prod.selected" (change)="prod.selected = !prod.selected; onProdChange(prod)" id="addRoleProdDropItems_{{prodInd}}">
+                                            <svg p-svg class="svg-icon-green" viewBox="0 0 20 20">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                            </svg>
+                                            <span [class.d-none]="!prod.disabled">{{prod.name}}</span>
+                                        </p-checkbox>
+                                        <span [class.d-none]="(addProdMode && disableProd(prod)) || prod.disabled" class="cursor-pointer" (click)="prod.selected = !prod.selected; onProdChange(prod)"> {{prod.name}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row featureListInput" *ngFor="let feat of selectedFormFeatureData;let featInd1 = index">
+                <div class="col-12">
+                    <h5><span class="d-block badge badge-light text-left"><label (click)="expandFeatureSingle(featInd1)" class="mt-1 cursor-pointer">{{roleListTableLabel.featureLab.name}} : {{feat.name}}</label><span class="badge badge-primary ml-1">{{getFeatureSelected(feat)}} Selected</span><fa-icon class="text-primary ml-1 mt-1" *ngIf="!editRoleMode && feat.expand" title="Expand" (click)="expandFeatureSingle(featInd1)" id="expand_{{featInd1}}" [icon]="['fas','angle-down']"></fa-icon><fa-icon class="text-primary ml-1 mt-1" title="Collapse" *ngIf="!editRoleMode && !feat.expand" id="collapse_{{featInd1}}" (click)="feat.expand = !feat.expand" [icon]="['fas','angle-up']"></fa-icon><fa-icon class="float-right text-primary mr-1 mt-1" title="Expand All" id="expand_all" *ngIf="!editRoleMode && expandFeatureAll && featInd1==0 && selectedFormFeatureData.length>1" (click)="featureExpandToggle()" [icon]="['fas','angle-double-down']"></fa-icon><fa-icon class="float-right text-primary mr-1 mt-1" title="Collapse All" id="collapse_all" *ngIf="!editRoleMode && !expandFeatureAll && featInd1==0 && selectedFormFeatureData.length>1" (click)="featureExpandToggle()" [icon]="['fas','angle-double-up']"></fa-icon></span></h5>
+                    <div [ngbCollapse]="feat.expand">
+                        <div class="row" *ngFor="let featGroup of featGrp; let featGrpInd = index" [ngbCollapse]="feat.expand">
+                            <div class="col">
+                                <div class="card">
+                                    <div class="card-header">{{featGroup.name}}</div>
+                                    <div class="card-body">
+                                        <div class="card-text">
+                                            <div class="row">
+                                                <div class="col-6 col-md-3 col-lg-3 col-xl-3" *ngFor="let dashFeat of getFeatureFiltered(feat, featGroup.value);let featInd = index">
+                                                    <p-checkbox id="addrole_{{dashFeat.value}}_{{featInd1}}" [value]="dashFeat.value" [lock]="dashFeat.value == defaultFeat" [disabled]="getDisabledFeatureState(dashFeat, feat)" [ngbTooltip]="dashFeat.value == defaultFeat ? 'Warning! Default feature cannot be deselected.' : ''" tooltipClass='addRoleDefaultFeatureWarning' triggers="click:blur" shape="curve" color="primary" [checked]="dashFeat.checked" [attr.aria-checked]="dashFeat.checked" (change)="licenseError = false; dashFeat.checked = !dashFeat.checked; checkFeatureDependancy(dashFeat, feat); enableExplorerDropdown(dashFeat, feat)">
+                                                        <svg p-svg class="svg-icon-green" viewBox="0 0 20 20">
+                                                            <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                                        </svg>
+                                                        {{dashFeat.name}}
+                                                    </p-checkbox>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-2" *ngIf="feat.isExplorerEnabled">
+                            <div class="col-6 form-group">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Restrict Explorer Data</span>
+                                    </div>
+                                    <select class="custom-select" id="explorerDataSelect_{{featInd1}}" [(ngModel)]="feat.explorerDateRange" [ngModelOptions]="{standalone: true}">
+                                        <option disabled value=''>Select</option>
+                                        <option *ngFor="let option of exploreDataRestrictionOptions" [ngValue]="option.value">{{option.name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr *ngIf="TwoAuth && selectedFormFeatureData.length>0 && !addProdMode" class="thickSaperator"/>
+            <div class="row" *ngIf="TwoAuth && selectedFormFeatureData.length>0 && !addProdMode">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">{{tfa.header}}</div>
+                                <div class="card-body">
+                                    <div class="card-text">
+                                        <div class="row">
+                                            <div class="col-6 col-md-3 col-lg-3 col-xl-3" *ngFor="let tfaFeat of tfa.fields;let tfafeatInd = index">
+                                                <p-checkbox id="addrole_tfa_{{tfafeatInd}}" [lock]="tfaFeat.label == tfa.default" [disabled]="tfaFeat.label == tfa.default" shape="curve" color="primary" [checked]="tfaFeat.checked" (change)="tfaFeat.checked = !tfaFeat.checked; tfaChanged = true">
+                                                    <svg p-svg class="svg-icon-green" viewBox="0 0 20 20">
+                                                        <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                                    </svg>
+                                                    {{tfaFeat.label}}
+                                                </p-checkbox>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row footer-container p-1">  
+                <div class="col-8">
+                    <span *ngIf="getLicensingInfo().flag" class="badge badge-info" id="licenseInfo">{{getLicensingInfo().msg}}</span>
+                    <span *ngFor ="let msg of formProdFeature"><span *ngIf="msg.value=='workbench' && msg.checked && !licenseError" class="badge badge-warning" id="worbenchLicenseMsgId">{{workbenchLicenseMsg}}</span></span>
+                    <span *ngIf="disableForm" class="badge badge-warning" id="healthcheckwarningMsgId">{{healthcheckWarningMsg}}</span>
+                    <span *ngIf="licenseError" class="badge badge-danger" id="worbenchLicenseErrorId">{{roleLicensingErorrMsg}}</span>
+                </div>
+                <div class="col-4">
+                    <button (click)="addRoleSubmit()" [disabled] ="getAddRoleBtnStatus()" class="btn btn-sm btn-outline-primary float-right" id="addrolesubmitbtn">Save</button>
+                    <button type="button" class="btn btn-sm btn-outline-danger mr-1 float-right" aria-label="Close" (click)="closeRoleModal()" id="addrolecancelbtn">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<!-- <div class="overlay" *ngIf="showFilter">
+    <div class="leftnavbar expandLeft roleFilterPanel" id="customScroll">
+        <div class="d-flex justify-content-between p-2">
+            <div><h5>Filter</h5></div>
+            <fa-icon title="Close" [icon]="['fas','times']" (click)="showFilter = !showFilter"></fa-icon>
+        </div>
+        <ngb-accordion #acc="ngbAccordion">
+            <ngb-panel id="nameFilter">
+                <ng-template ngbPanelHeader let-opened="opened">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <button ngbPanelToggle class="flex-fill btn btn-sm btn-outline-secondary text-left" id="roleNameFilter">{{roleFilterArray[3].columnTitle}} <fa-icon *ngIf="!opened" class="float-right mr-1"[icon]="['fas','angle-down']"></fa-icon><fa-icon *ngIf="opened" class="float-right mr-1"[icon]="['fas','angle-up']"></fa-icon><span class="badge badge-primary float-right mt-1 mr-1" *ngIf="roleFilterArray[3].enabledCount!=0">{{roleFilterArray[3].enabledCount}}</span></button>
+                    </div>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                        <div class="input-group input-group-sm mb-1 mr-2">
+                            <input type="text" class="form-control" id="roleNameSearchInput" placeholder="Search by name" [(ngModel)]="roleNameFilterSearch" (ngModelChange)="updateFilter(roleFilterArray[3], '')">
+                            <div class="input-group-append">
+                                <button [disabled]="roleNameFilterSearch==''" id="roleNameSearchTextClear" class="btn btn-outline-danger" (click)="roleNameFilterSearch=''; updateFilter(roleFilterArray[3], '')" type="button"><fa-icon title="Clear Search" class="mt-1" [icon]="['fas','times']"></fa-icon></button>
+                            </div>
+                        </div>
+                        <div class="p-1" *ngFor="let data of getFilterRoleData(), let indRoleName= index" id="roleNameFilteredList">
+                            <div class="pretty p-svg p-curve m-0">
+                                <input type="checkbox" id="roleNameFilterCheck_{{indRoleName}}" [checked]="data.selected" (change)="data.selected = !data.selected; updateFilter(roleFilterArray[3], '')" />
+                                <div class="state p-primary">
+                                    <svg class="svg svg-icon" viewBox="0 0 20 20">
+                                        <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path></svg>
+                                    <label id="roleNameFilterLabel_{{indRoleName}}">{{data.name}}</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-1" *ngIf="getFilterRoleData().length === 0 && roleNameFilterSearch.length >= fieldLength.min" id="roleNameFilterNoResults">
+                            <span>{{noDataFound}}</span>
+                        </div>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
+        <ngb-accordion #acc="ngbAccordion">
+            <ngb-panel id="typeFilter">
+                <ng-template ngbPanelHeader let-opened="opened">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <button ngbPanelToggle class="flex-fill btn btn-sm btn-outline-secondary text-left" id="roleTypeFilter">{{roleFilterArray[0].columnTitle}} <fa-icon *ngIf="!opened" class="float-right mr-1"[icon]="['fas','angle-down']"></fa-icon><fa-icon *ngIf="opened" class="float-right mr-1"[icon]="['fas','angle-up']"></fa-icon><span class="badge badge-primary float-right mt-1 mr-1" *ngIf="roleFilterArray[0].enabledCount!=0">{{roleFilterArray[0].enabledCount}}</span></button>
+                    </div>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="p-1" *ngFor="let data of roleFilterArray[0].data; let i = index">
+                        <p-checkbox shape="round" color="primary" (change)="data.selected = !data.selected;updateFilter(roleFilterArray[0], i)" [checked]="data.selected" id="roleTypeFilterItem_{{i}}">
+                            <svg p-svg class="svg-icon-green" viewBox="0 0 20 20">
+                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                            </svg>
+                            {{data.name}}
+                        </p-checkbox>
+                    </div>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
+        <ngb-accordion #acc="ngbAccordion">
+            <ngb-panel id="prodFilter">
+                <ng-template ngbPanelHeader let-opened="opened">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <button ngbPanelToggle class="flex-fill btn btn-sm btn-outline-secondary text-left" id="roleProdFilter">{{roleFilterArray[1].columnTitle}} <fa-icon *ngIf="!opened" class="float-right mr-1"[icon]="['fas','angle-down']"></fa-icon><fa-icon *ngIf="opened" class="float-right mr-1"[icon]="['fas','angle-up']"></fa-icon><span class="badge badge-primary float-right mt-1 mr-1" *ngIf="roleFilterArray[1].enabledCount!=0">{{roleFilterArray[1].enabledCount}}</span></button>
+                    </div>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="p-1" *ngFor="let data of roleFilterArray[1].data; let i = index">
+                        <p-checkbox shape="curve" color="primary" (change)="data.selected = !data.selected;updateFilter(roleFilterArray[1], i)" [checked]="data.selected" id="roleProdFilter_{{i}}">
+                            <svg p-svg class="svg-icon-green" viewBox="0 0 20 20">
+                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                            </svg>
+                            {{data.name}}
+                        </p-checkbox>
+                    </div>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
+        <ngb-accordion #acc="ngbAccordion">
+            <ngb-panel id="featureFilter">
+                <ng-template ngbPanelHeader let-opened="opened">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <button ngbPanelToggle class="flex-fill btn btn-sm btn-outline-secondary text-left" id="roleFeatureFilter">{{roleFilterArray[2].columnTitle}} <fa-icon *ngIf="!opened" class="float-right mr-1"[icon]="['fas','angle-down']"></fa-icon><fa-icon *ngIf="opened" class="float-right mr-1"[icon]="['fas','angle-up']"></fa-icon><span class="badge badge-primary float-right mt-1 mr-1" *ngIf="roleFilterArray[2].enabledCount!=0">{{roleFilterArray[2].enabledCount}}</span></button>
+                    </div>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="p-1" *ngFor="let data of roleFilterArray[2].data; let i = index">
+                        <p-checkbox shape="curve" color="primary" (change)="data.selected = !data.selected;updateFilter(roleFilterArray[1], i)" [checked]="data.selected" id="roleFeatureFilter_{{i}}">
+                            <svg p-svg class="svg-icon-green" viewBox="0 0 20 20">
+                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                            </svg>
+                            {{data.name}}
+                        </p-checkbox>
+                    </div>
+                </ng-template>
+            </ngb-panel>
+        </ngb-accordion>
+    </div>
+</div> -->
+<!-- Helper Templates for HTML Content-->
+<ng-template #deleteRolePop><div [innerHTML]="onscreenConst.deleteRole"></div></ng-template>
+<ng-template #filterPop><div [innerHTML]="onscreenConst.roleFilter"></div></ng-template>
+<ng-template #downloadPop><div [innerHTML]="onscreenConst.roleListDownload"></div></ng-template>
+<ng-template #searchPop><div [innerHTML]="onscreenConst.roleListglobalSearch"></div></ng-template>
+<ng-template #pageSizePop><div [innerHTML]="onscreenConst.roleListPageSize"></div></ng-template>
+<ng-template #paginationPop><div [innerHTML]="onscreenConst.roleListPagination"></div></ng-template>
+<ng-template #multiDeletePop><div [innerHTML]="onscreenConst.roleListDelete"></div></ng-template>
+<ng-template #roleListAddProdPop><div [innerHTML]="onscreenConst.roleListAddProd"></div></ng-template>
+<ng-template #roleLostAddRolePop><div [innerHTML]="onscreenConst.roleLostAddRole"></div></ng-template>

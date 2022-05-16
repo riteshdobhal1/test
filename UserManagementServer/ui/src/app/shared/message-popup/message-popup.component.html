@@ -1,0 +1,14 @@
+<div class="modal-body">
+    <p ngbAutofocus><span [innerHTML]="msg"></span></p>
+    <ul class="listdisplay" *ngIf="listToDisplay!=undefined">
+      <li *ngFor="let item of listToDisplay">{{item}}</li>
+    </ul>
+    <p ngbAutofocus *ngIf="footerMsg!=undefined">
+      <span [innerHTML]="footerMsg"></span>
+    </p>
+  </div>
+  <div class="modal-footer">
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-sm btn-outline-primary" (click)="activeModal.close('okclick')"><fa-icon [icon]="['fas','check-circle']"></fa-icon> Ok</button>
+      </div>
+  </div>

@@ -1,0 +1,122 @@
+@import '../../sass/color-constants';
+
+.gb-main-container{
+    background: $light-gray;
+    padding: 0.6rem 0.6rem 0 0.6rem !important;
+}
+.dark-mode .gb-main-container{
+    background: #2c3e50;
+}
+
+.gb-table{
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
+    border-radius: 0.5rem;
+    //background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(244,244,244,0.9808298319327731) 100%);
+    background: $white;
+    font-size: 0.8rem;
+
+    table{
+        thead{
+            border-bottom: 0.1rem solid $gray1;
+        }
+        th{
+           // background: linear-gradient(180deg, rgba(242,242,242,1) 0%, rgba(255,255,255,1) 86%);
+           background: rgb(228,228,228);
+           background: linear-gradient(180deg, #f3f3f3 0%, white 86%);
+        }
+    }
+
+}
+//Dark Mode Table
+.dark-mode .gb-table{
+    background: #34495e;
+    border: 0.1rem solid #7f8c8d;
+    table{
+        color: #ecf0f1 !important;
+        thead{
+            border-bottom: 0.1rem solid #7f8c8d;
+        }
+        th{
+           // background: linear-gradient(180deg, rgba(242,242,242,1) 0%, rgba(255,255,255,1) 86%);
+           background: #2c3e50;
+           border-top: none;
+        }
+        td{
+            border: none;
+        }
+    }
+
+}
+
+.gb-button{
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.2);
+    background: #fff;
+    &:focus{
+        outline: 0.5px solid rgba(0, 0, 0, 0.2);
+        border: none;
+        box-shadow: none;
+    }
+
+}
+.leftnavbar{
+    height: 86vh;
+    background-color: #fff;
+    overflow-y: auto;
+    width: 100%;
+    top:5.8rem;
+    border-radius: 0.3rem;
+    .card{
+        .card-header{
+            padding: 0.2rem 0.4rem;
+            button{
+                font-size: .9rem;
+            }
+            .badge {
+                font-size: .7rem;
+            }
+        }
+        border-radius: 0 0.3rem 0.3rem 0;
+        .filter-data{
+            font-size: 0.9rem;
+        }
+        .card-header{
+            padding: 0.2rem 0.4rem;
+        }
+        .card-body{
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            max-height: 14em;
+            overflow-y: auto;
+        }
+    }
+}
+.helperControl {
+    position: fixed;
+    bottom: 0.5rem;
+    // right: 8px !important;
+    border-radius: 50px;
+    z-index: 1;
+    width: 30px;
+    transition: width .5s;
+    height: 30px;
+    overflow: hidden;
+    background: #2172a5;
+}
+.helperControl .btn {
+    background: #2172a5;
+    color: #ffffff;
+}
+.helperExpanded {
+    width: 155px;
+}
+.helperExpanded.fullWidth {
+    width: 240px;
+}
+
+.icon{
+    right: 8px;
+}
+
+.icon-poweredby{
+    right: 11.5rem;
+}

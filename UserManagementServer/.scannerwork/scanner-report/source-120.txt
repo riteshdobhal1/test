@@ -1,0 +1,61 @@
+@(loginForm: Form[(String, String, Option[String], Option[String])], version: String)(implicit flash: Flash, messages: Messages)
+
+@import helper._
+@import constants._
+@import constants.Page._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrap2Input.f) } 
+
+@title = {
+    Home
+}
+
+@main(None, None, None, title, false, Home) {
+
+	<div class="span7">
+	  <div class="front_page_intro">
+		  <h2>Title</h2>
+			<p>
+				Product description
+			</p>
+			<p>
+        Product description continued...
+			</p>
+		</div>
+	</div>
+    
+	<div class="span5">
+	  <div id="login_message_box">
+		  @flash.get(FKSuccess).map { message => <div class="alert alert-success"> @message  </div> }
+		  @flash.get(FKError).map { message => <div class="alert alert-error"> @message  </div> }
+	  </div>
+
+	  <div id="login_box">		  		  
+  		<div id="sign_in_form">	  
+	  	  @helper.form(action = routes.Application.login(version), 'class -> "form-horizontal", 'id -> "form_login", 'autocomplete->"on") {
+    			@loginForm.globalError.map { error => <div class="alert alert-error">@error.message	</div> }
+    			@flash.get(FKRedirect).map { uri => 
+    			  <div class="alert alert-info"> 			
+	    		    You requested access to a page available to signed-in members only. Please sign in. 
+	    		  </div> 
+		    	  <input type="hidden" name="redirectURI" value=@uri />
+			    }		
+    			@loginForm.data.get("redirectURI").map { uri => 
+	    		  <input type="hidden" name="redirectURI" value=@uri />			
+		    	}
+			    @inputText( loginForm("email"), 'class -> "input-large", 'maxlength -> "128",  
+				  		'_label -> "Email:", '_showConstraints -> false)							
+  			  @inputPassword(loginForm("password"), 'class -> "input-large", 'maxlength -> "16",
+					  	'_label -> "Password:",
+					  	'_error -> loginForm("password").error.map(_.withMessage("Correct password required")),
+					  	'_showConstraints -> false)
+  			  <div class="form-actions">
+	  			  <input class="btn btn-large btn-primary" type="submit" value="Sign in" >
+		  		  <a  class="forgot-password-link" href="#">Forgot password?</a>			
+			    </div>		
+		    }
+		  </div>
+						
+	  </div>
+  </div>
+}

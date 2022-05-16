@@ -1,0 +1,1 @@
+´ 2scalaXŒhr#app/dao/vertica/user_activity.scala

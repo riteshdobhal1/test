@@ -1,0 +1,1 @@
+É 2scalaX-hr,app/dao/vertica/clinsights_master_menu.scala

@@ -1,0 +1,148 @@
+/* You can add global styles to this file, and also import other style files */
+@import './sass/main';
+@import '../node_modules/pretty-checkbox/src/pretty-checkbox.scss'; 
+@font-face {
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 900;
+    font-display: auto;
+    src: url("assets/webfonts/fa-solid-900.eot");
+    src: url("assets/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("assets/webfonts/fa-solid-900.woff2") format("woff2"), url("assets/webfonts/fa-solid-900.woff") format("woff"), url("assets/webfonts/fa-solid-900.ttf") format("truetype"), url("assets/webfonts/fa-solid-900.svg#fontawesome") format("svg");
+}
+@font-face {
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 400;
+    font-display: auto;
+    src: url("assets/webfonts/fa-regular-400.eot");
+    src: url("assets/webfonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("assets/webfonts/fa-regular-400.woff2") format("woff2"), url("assets/webfonts/fa-regular-400.woff") format("woff"), url("assets/webfonts/fa-regular-400.ttf") format("truetype"), url("assets/webfonts/fa-regular-400.svg#fontawesome") format("svg");
+}
+@font-face {
+    font-family: 'Font Awesome 5 Brands';
+    font-style: normal;
+    font-weight: normal;
+    font-display: auto;
+    src: url("assets/webfonts/fa-brands-400.eot");
+    src: url("assets/webfonts/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("assets/webfonts/fa-brands-400.woff2") format("woff2"), url("assets/webfonts/fa-brands-400.woff") format("woff"), url("assets/webfonts/fa-brands-400.ttf") format("truetype"), url("assets/webfonts/fa-brands-400.svg#fontawesome") format("svg");
+}
+// @import url('https://fonts.googleapis.com/css?family=Muli:300,400&display=swap');
+// html, body{
+
+//     font-family: 'Muli', sans-serif !important;
+// }
+
+// @import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,400&display=swap');
+
+/* latin-ext */
+@font-face {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 300;
+    src: url("assets/webfonts/TitilliumWeb-Light.eot");
+    src: url("assets/webfonts/TitilliumWeb-Light.eot?#iefix") format('embedded-opentype'),
+        url("assets/webfonts/TitilliumWeb-Light.woff2") format('woff2'),
+        url("assets/webfonts/TitilliumWeb-Light.woff") format('woff'),
+        url("assets/webfonts/TitilliumWeb-Light.ttf") format('truetype');
+}
+/* latin */
+@font-face {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 300;
+    src: url("assets/webfonts/TitilliumWeb-Regular.eot");
+    src: url("assets/webfonts/TitilliumWeb-Regular.eot?#iefix") format('embedded-opentype'),
+        url("assets/webfonts/TitilliumWeb-Regular.woff2") format('woff2'),
+        url("assets/webfonts/TitilliumWeb-Regular.woff") format('woff'),
+        url("assets/webfonts/TitilliumWeb-Regular.ttf") format('truetype');
+}
+/* latin-ext */
+@font-face {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 400;
+    src: url("assets/webfonts/TitilliumWeb-Light.eot");
+    src: url("assets/webfonts/TitilliumWeb-Light.eot?#iefix") format('embedded-opentype'),
+        url("assets/webfonts/TitilliumWeb-Light.woff2") format('woff2'),
+        url("assets/webfonts/TitilliumWeb-Light.woff") format('woff'),
+        url("assets/webfonts/TitilliumWeb-Light.ttf") format('truetype');
+}
+/* latin */
+@font-face {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 400;
+    src: url("assets/webfonts/TitilliumWeb-Regular.eot");
+    src: url("assets/webfonts/TitilliumWeb-Regular.eot?#iefix") format('embedded-opentype'),
+        url("assets/webfonts/TitilliumWeb-Regular.woff2") format('woff2'),
+        url("assets/webfonts/TitilliumWeb-Regular.woff") format('woff'),
+        url("assets/webfonts/TitilliumWeb-Regular.ttf") format('truetype');
+}
+
+html, body{
+    font-family: 'Titillium Web', sans-serif !important;
+
+    fa-icon {
+        cursor: pointer;
+        &.disabled{
+            opacity: 0.6;
+            pointer-events: none;
+        }
+    }
+}
+
+.btn:disabled{
+    color: #544c4c;
+    background-color: silver;
+    border: solid 1px #a8a3a3;
+    cursor: not-allowed !important;
+    opacity: 0.65;
+}
+.box-1{
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2) !important;
+}
+.container-fluid{
+    overflow-x: hidden;
+}
+
+.gb-rolelist-table{
+    .productAction .edit-icon{
+        color: #007bff;
+    }
+    .productAction .delete-icon{
+        color: red;
+    }
+}
+
+.form-control:focus {
+  box-shadow: none;
+  outline: none;
+}
+.customLink, .customLink:hover{
+    color: white;
+    text-decoration: none;
+  }
+  .introjs-button {
+    background-color: #0062cc !important;
+    border-color: #005cbf !important;
+    background-image: none !important;
+    text-shadow: none !important;
+    color: #fff !important;
+    border-radius: 2px !important;
+    font-size: .875rem !important;
+  }
+  .introjs-skipbutton, .introjs-donebutton {
+      float: left;
+  }
+  .introjs-disabled {
+      opacity: .5 !important;
+      cursor: not-allowed !important;
+  }
+  .introjs-tooltip {
+      min-width: 300px !important;
+  }
+  .introjs-nextbutton {
+      margin-left: 5px !important;
+  }
+  .introjs-progress {
+      height: 4px !important;
+  }

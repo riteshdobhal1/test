@@ -1,0 +1,1 @@
+* 2scalaXøhr#app/controllers/ClinsightMenu.scala

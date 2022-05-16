@@ -1,0 +1,24 @@
+<nav class="menu side-bar-nav gb-admin-sidebar" id="admin-navbar">
+
+    <ul class="navbar-nav bd-navbar-nav flex-column menu-list" id="pageNav">
+        <li [routerLinkActive]="['is-active']" title="User List" id="userPage" [routerLink]="['/users']" id="pageNav_user">
+            <fa-icon [icon]="['fas','user']" class="text-light"></fa-icon>
+        </li>
+        <li [routerLinkActive]="['is-active']" title="Role List" id="rolePage" [routerLink]="['/roles']" id="pageNav_role">
+            <fa-icon [icon]="['fas','list']" class="text-light"></fa-icon>
+        </li>
+        <li [routerLinkActive]="['is-active']" title="System Group List" id="endCustomerPage" [routerLink]="['/endcustomers']" id="pageNav_endcust">
+
+ <!--  <ul id="adminPageNavBar" class="navbar-nav bd-navbar-nav flex-column menu-list">
+        <li id="userListNavItem" [routerLinkActive]="['is-active']" title="User List" [routerLink]="['/users']">
+            <fa-icon [icon]="['fas','user']" class="text-light"></fa-icon>
+        </li>
+        <li id="roleListNavItem" [routerLinkActive]="['is-active']" title="Role List" [routerLink]="['/roles']">
+            <fa-icon [icon]="['fas','list']" class="text-light"></fa-icon>
+        </li>
+        <li id="endcustomerListNavItem" [routerLinkActive]="['is-active']" title="End Customer List" [routerLink]="['/endcustomers']">
+-->
+            <fa-icon [icon]="['fas','users']" class="text-light"></fa-icon>
+        </li>
+    </ul>
+</nav>

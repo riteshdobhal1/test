@@ -1,0 +1,22 @@
+<div>
+    <app-header></app-header>
+    <app-toast-notification></app-toast-notification>
+    <div class="container-fluid m-0 gb-main-container">
+        <div class="row gb-admin-row-cntr d-flex flex-column justify-content-between">
+            <div class="col-12">
+                <app-sidenav></app-sidenav>
+            </div>
+            <div class="col-12">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="alert alert-primary helperControl m-0 p-0" role="alert" [ngClass]="{'helperExpanded': helperFlag, 'fullWidth':page && onscreenflag , 'icon': !showPoweredBy,'icon-poweredby': showPoweredBy }">
+    <button class="btn btn-sm btn-link float-left text-decoration-none" *ngIf="helperFlag && page" (click)="togglePageInfo()"><fa-icon class="mr-1" [icon]="['fas','info']"></fa-icon>Page Tour</button>
+    <button class="btn btn-sm btn-link float-left text-decoration-none" *ngIf="helperFlag && onscreenflag" (click)="toggleOnScreen()"><fa-icon *ngIf="getOnScreenStatus()" class="mr-1" [icon]="['fas','lightbulb']"></fa-icon><fa-icon *ngIf="!getOnScreenStatus()" class="mr-1" [icon]="['far','lightbulb']"></fa-icon>On-screen help</button>
+    <button class="btn btn-sm btn-link float-right" (click)="expandHelper()" id="onScreenHelp"><fa-icon *ngIf="!helperFlag" [icon]="['fas','question']"></fa-icon><fa-icon *ngIf="helperFlag" [icon]="['fas','times']"></fa-icon></button>
+</div>
+<div *ngIf="showPoweredBy">
+    <app-powered-by></app-powered-by>
+</div>

@@ -1,0 +1,30 @@
+// Small devices (landscape phones, 576px and up)
+@media (min-device-width : 320px) and (max-device-width : 640px)  {
+   .footerDiv{
+       text-align: center;
+   }
+  }
+  
+  /* iPads (portrait and landscape) ----------- */
+  @media only screen and (min-device-width : 641px) and (max-device-width : 1024px) {
+    /* Styles */
+    .footerDiv{
+        text-align: center !important
+    }
+
+    .footerDiv span{
+        text-align: center !important
+    }
+    }
+
+    // Small devices (landscape phones, 576px and up)
+@media (min-device-width : 320px) and (max-device-width : 640px)  {
+    .footerDiv{
+        text-align: center !important
+    }
+
+    .footerDiv span{
+        text-align: center !important
+    }
+    
+  }

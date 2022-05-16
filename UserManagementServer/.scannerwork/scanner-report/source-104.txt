@@ -1,0 +1,19 @@
+@(username: Option[String], userorg: Option[String], userrole: Option[String], errType: constants.HttpStatus.HttpStatus, errMessage: String)
+
+@import helper._
+@import constants._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrap2Input.f) } 
+
+@title = {
+	@errType
+}
+
+@main(username, userorg, userrole, title, true, Page.Error) {
+
+	<div class="span10">	
+		<div class="alert alert-error">
+			<p> @errMessage </p>
+		</div>
+	</div>
+}

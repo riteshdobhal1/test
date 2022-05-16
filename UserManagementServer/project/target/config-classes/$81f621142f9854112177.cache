@@ -1,0 +1,4 @@
+buildAll
+gitCommitTask
+compileAll
+cleanAll

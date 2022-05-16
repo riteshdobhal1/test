@@ -1,0 +1,1 @@
+œ 2scalaXžhrapp/models/Supervisor.scala

@@ -1,0 +1,1 @@
+® 2scalaXrhr&app/dao/vertica/user_device_info.scala

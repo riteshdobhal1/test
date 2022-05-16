@@ -1,0 +1,5 @@
+[0m[[0mdebug[0m] [0mCopy resource mappings: [0m
+[0m[[0mdebug[0m] [0m	(/home/ritesh/development/UserManagementServer/conf/logger.xml,/home/ritesh/development/UserManagementServer/target/scala-2.11/classes/logger.xml)[0m
+[0m[[0mdebug[0m] [0m	(/home/ritesh/development/UserManagementServer/conf/routes,/home/ritesh/development/UserManagementServer/target/scala-2.11/classes/routes)[0m
+[0m[[0mdebug[0m] [0m	(/home/ritesh/development/UserManagementServer/conf/application.conf,/home/ritesh/development/UserManagementServer/target/scala-2.11/classes/application.conf)[0m
+[0m[[0mdebug[0m] [0m	(/home/ritesh/development/UserManagementServer/conf/application-docker.conf,/home/ritesh/development/UserManagementServer/target/scala-2.11/classes/application-docker.conf)[0m

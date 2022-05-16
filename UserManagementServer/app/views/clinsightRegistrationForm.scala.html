@@ -1,0 +1,660 @@
+@(clinsightLogo: String)
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Form</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Your site's description should be here">
+    <meta name="keywords" content="Your site's keywords should be here">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Montserrat:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic&amp;subset=cyrillic,cyrillic-ext,latin,latin-ext,vietnamese">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Montserrat, sans-serif;
+        }
+
+        input[type=text], input[type=password], input[type=email],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 0px;
+            resize: vertical;
+            border: 1px solid rgba(0, 0, 0, 0.09);
+            margin-top: 15px;
+            font-size: 13px;
+            -webkit-appearance: none;
+        }
+
+        input::placeholder {
+            font-family: Montserrat, sans-serif;
+        }
+
+
+        input[type=text]:focus, input[type=password]:focus, select:focus, input[type=text]:focus {
+            font-size: 13px;
+        }
+
+
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+        }
+
+        input[type=submit] {
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            float: right;
+            background: #01346d;
+            width: 100%;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 1.3rem;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: Montserrat, sans-serif;
+            outline: none;
+            -webkit-appearance: none;
+            border-radius: 0;
+        }
+
+        input[type=submit]:hover {
+            background-color: #01346d;
+        }
+
+        .container {
+            border-radius: 5px;
+            padding: 20px;
+            margin: 0px auto;
+            /*width: 400px;*/
+            padding-top: 2px;
+        }
+
+        .col-25 {
+            float: left;
+            width: 25%;
+            margin-top: 6px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 75%;
+            margin-top: 6px;
+        }
+
+        .col-100 {
+            float: left;
+            width: 100%;
+            margin-top: 6px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .p {
+            color: #7a7a7a;
+            text-align: center;
+            font-size: 11px;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        .b_logo_div {
+            text-align: left;
+        }
+
+        .gb_logo {
+            width: 150px;
+            object-fit: contain;
+        }
+
+        .form {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .alert {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .alert-success {
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+
+        .alert-info {
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+
+        .alert-warning {
+            color: #8a6d3b;
+            background-color: #fcf8e3;
+            border-color: #faebcc;
+        }
+
+        .alert-danger {
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+        }
+
+        .msg{
+            z-index: 9;
+            position: relative;
+            display: none;
+        }
+
+        .close {
+            position: absolute;
+            top: 5rem;
+            right: 1.6rem;
+            font-size: 1.6rem;
+            cursor: pointer;
+            -moz-transform:rotate(45deg);
+            -webkit-transform:rotate(45deg);
+            -o-transform:rotate(45deg);
+            -ms-transform:rotate(45deg);
+        }
+
+        .error-msg-match{
+            display: none;
+            color: red;
+            font-family: Montserrat, sans-serif;
+            font-size: 0.8rem;
+            padding-left: 0.8rem;
+            padding-right: 0.8rem;
+            margin-bottom: 0;
+        }
+
+        .password-instruction-text{
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        #passwordInstruction{
+            display: none;
+        }
+
+        #passwordInstruction li{
+            font-size: 10px;
+            color: #808080;
+        }
+
+        /* The Modal (background) */
+        .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          padding-top: 0; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: #fefefe;
+        }
+
+        /* Modal Content */
+        .modal-content {
+          background-color: #fefefe;
+          margin: auto;
+          padding: 2em;
+          border: 1px solid #888;
+          width: 100%;
+          height: 100%;
+          /*overflow-y: scroll;*/
+        }
+
+        /* The Close Button */
+        .close-modal {
+          color: #aaaaaa;
+          font-size: 28px;
+          font-weight: bold;
+          position: fixed;
+          right: 20px;
+          top: 10px;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+        }
+
+        .modal__header{
+          height: 60px;
+          /*box-shadow: 0 4px 5px 0 #888888;*/
+        }
+        .with-box-shadow{
+          box-shadow: 0 4px 5px 0 #888888;
+        }
+        .without-box-shadow{
+          box-shadow: none;
+        }
+        .modal__footer {
+            height: 48px;
+            bottom: 0;
+            background-color: rgb(0,0,0);
+            color: white;
+            bottom: 0;
+            text-align: center;
+        }
+        .modal__content,
+        .modal__footer {
+            position: absolute;
+            width: 100%;
+        }
+        .modal__content {
+          bottom: 48px;
+          top: 60px;
+          overflow-y: auto;
+          font-family: Times New Roman, Calibri;
+          padding: 1rem 2rem 0 2rem;
+          font-size: 13px;
+          color: #808080;
+        }
+        .close-button{
+          font-size: 2.3rem;
+          background-color: rgb(0,0,0);
+          color: white;
+          cursor: pointer;
+          font-weight: 200;
+        }
+        .terms-conditions{
+          margin-top:0;
+          padding-top: 20px;
+          text-align: center;
+          text-decoration-line: underline!important;
+          -webkit-text-decoration-line: underline!important;
+        }
+        .sub-header{
+          font-size: 14px!important;
+          font-weight: bold!important;
+          color: #000000!important;
+        }
+
+        /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+        @@media screen and (max-width: 600px) {
+            .col-25,
+            .col-75,
+            .col-100,
+            input[type=submit] {
+                width: 100%;
+                margin-top: 20;
+            }
+
+            .container {
+                width: 100%;
+            }
+            .close-modal{
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-100 gb_logo_div">
+            <img class="gb_logo" src="@clinsightLogo" alt="">
+        </div>
+        <div id="responseBlock" class="container msg">
+            <div class="close" onclick="removeThis('responseBlock')">+</div>
+            <div class="col-100">
+                <div id="responseContainer" class="alert">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <form name="registration_form" id="registrationForm" onsubmit="registerForm(event)" class="form">
+        <div class="row">
+            <div class="col-100">
+                <input id="fname" type="text" onkeyup="removeMessage('fname', 'fnameMessage')" placeholder="First Name*" autofocus />
+            </div>
+        </div>
+        <p id="fnameMessage" class="col-100 error-msg-match"></p>
+        <div class="row">
+            <div class="col-100">
+                <input id="lname" type="text" placeholder="Last Name" />
+            </div>
+        </div>
+        <p id="lnameMessage" class="col-100 error-msg-match"></p>
+        <div class="row">
+            <div class="col-100">
+                <input id="company" type="text" placeholder="Company Name" />
+            </div>
+        </div>
+        <p id="companyMessage" class="col-100 error-msg-match"></p>
+        <div class="row">
+            <div class="col-100">
+                <input id="email" type="email" onkeyup="removeMessage('email', 'emailMessage')" placeholder="Email Id*" />
+            </div>
+        </div>
+        <p id="emailMessage" class="col-100 error-msg-match"></p>
+        <div class="row">
+            <div class="col-100">
+                <input id="password" type="password" placeholder="Password*" minlength="6" maxlength="40" pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{6,}" onfocus="showThis('passwordInstruction')" onblur="removeThis('passwordInstruction')" />
+            </div>
+        </div>
+        <div id="passwordInstruction" class="row">
+            <div class="col-100">
+                <h2 class="password-instruction-text">Password instructions</h2>
+
+                <ul>
+                    <li>Passwords shall have a minimum of 6 characters and maximum of 40 characters </li>
+                    <li>Choose a password that is easy for you to remember but would be hard for another to guess</li>
+                    <li>Passwords must include combination of the four following types of characters.<br />
+                        -uppercase letters (A through Z). <br>
+                        -lower case letters (a through z).<br>
+                        -Numbers (0 through 9).<br>
+                        -Special characters and punctuation symbols (Example: _, -. +, =,!, @@, %, *, &, ”, :, ., or /).
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-100">
+                <input id="cpassword" type="password" onkeyup="removeMessage('cpassword', 'cpasswordMessage')" placeholder="Confirm Password*" />
+            </div>
+        </div>
+        <p id="cpasswordMessage" class="col-100 error-msg-match"></p>
+        <div class="row">
+            <div class="col-100">
+                <input class="register" type="submit" id="register" value="REGISTER" />
+            </div>
+        </div>
+        <div>
+            <p class="p">By clicking on Sign up, you agree to Glassbeam’s
+                <a href="#" id="myBtn" class="text-style">Terms and Conditions of Use.</a>
+            </p>
+        </div>
+    </form>
+
+    <div id="myModal" class="modal">
+        <div class="modal__header">
+            <h3 class="terms-conditions">Terms and Conditions</h6>
+        </div>
+        <div class="modal__content">
+            <p><strong class="sub-header">Sharing of Personally Identifiable Information:</strong></p>
+            <p>We do not share personally identifiable information with third parties as described in this policy. We also maintain some records of Users who contact us for support, for the purpose of responding to such queries and other related activities. However, we do not provide this information to any third party without your permission, or utilize the same for any purposes not set out here.</p>
+            <p><strong class="sub-header">What Information Are We Are Collecting:</strong></p>
+            <ul>
+                <li>
+                    <p>Your first and last name, email and company name when register to use the app</p>
+                </li>
+            </ul>
+            <p><strong class="sub-header">How We Use the Information:</strong></p>
+            <p>What do we do with the information we collect? The short answer is: Provide you an up-to-date set of products and services that we are relentlessly improving. Here are some of the ways we will use the information you provide to do that:</p>
+            <ul>
+                <li>
+                    <p>Develop, operate, improve, deliver, maintain, and communicate changes product features from time to time</p>
+                </li>
+                <li>
+                    <p>Send you communications by email. For example, we may use your email to respond to questions you have on our products or support inquires to share information about our products and services that we think may interest you</p>
+                </li>
+                <li>
+                    <p>Monitor and analyze trends</p>
+                </li>
+                <li>
+                    <p>Personalize the product, among other things including dashboard content that are relevant to your industry and departments challenges</p>
+                </li>
+                <li>
+                    <p>Contextualize your experience, using visual experiences relevant to your industry, for example as a healthcare provider or hospital network</p>
+                </li>
+                <li>
+                    <p>Diagnose or fix technology problems</p>
+                </li>
+                <li>
+                    <p>Remember information so you will not have to reenter it during your next launch of the app.</p>
+                </li>
+            </ul>
+        </div>
+        <div class="modal__footer">
+            <span id="closeButton" onclick="removeThis('myModal')" class="register close-button" >&times;</span>
+        </div>
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+    function registerForm(evt) {
+        evt.preventDefault();
+        var isValidForm = validateForm();
+        if(!isValidForm){
+            return;
+        }
+        removeThis("cpasswordMessage");
+        removeThis("responseBlock");
+        var isMatching = checkPassword();
+        if(!isMatching){
+            return;
+        }
+        var fname = document.getElementById("fname").value;
+        var lname = document.getElementById("lname").value;
+        var company = document.getElementById("company").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var cpassword = document.getElementById("cpassword").value;
+        var url = window.location.protocol + "//" + window.location.host + "/v1/cs/campaign/user/add";
+        postData(url, fname, lname, company, email, password)
+    }
+
+
+
+    function postData(url, fn, ln, cmp, mail, pass) {
+        var data = new FormData();
+        data.append('first_name', fn);
+        data.append('last_name', ln);
+        data.append('company_name', cmp);
+        data.append('username', mail);
+        data.append('password', pass);
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', url, true);
+        xhr.onload = function () {
+
+        };
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState === 4) {
+                var response = JSON.parse(xhr.response);
+                var resMsg = response.Msg;
+                var resStat = response.Status;
+                showThis("responseBlock");
+                appendMsg(resStat, resMsg);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if(resStat == "Success"){
+                    initForm();
+                }
+            }
+        }
+        xhr.send(data);
+    }
+
+    function appendMsg(status, msg){
+        var d = document.getElementById("responseContainer");
+        d.innerText = msg;
+        if(status == "Success"){
+            d.className = "alert alert-success";
+        }
+        else if(status == "Info"){
+            d.className = "alert alert-info";
+        }
+        else if(status == "Failure"){
+            d.className = "alert alert-danger";
+        }
+        else
+            d.className = "alert alert-warning";
+
+    }
+
+    function initForm(){
+        document.getElementById("fname").value = "";
+        document.getElementById("lname").value = "";
+        document.getElementById("company").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("cpassword").value = "";
+    }
+
+    function showThis(id){
+        var d = document.getElementById(id);
+        d.style.display = "block";
+    }
+
+    function removeThis(id){
+        var d = document.getElementById(id);
+        d.style.display = "none";
+    }
+
+    function checkPassword() {
+        if (document.getElementById('password').value ==
+            document.getElementById('cpassword').value) {
+            return true;
+        } else {
+            showThis('cpasswordMessage')
+            document.getElementById('cpasswordMessage').style.color = 'red';
+            document.getElementById('cpasswordMessage').innerHTML = "Passwords do not match";
+            return false;
+        }
+    }
+
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    btn.onclick = function() {
+      modal.style.display = "block";
+      modalContent.scrollTop= 0;
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    var modalContent = document.getElementsByClassName("modal__content")[0];
+    var modalHeader = document.getElementsByClassName("modal__header")[0];
+    modalContent.onscroll = function(event) {
+      if(modalContent.scrollTop < 20){
+        modalHeader.className = "modal__header without-box-shadow";
+      }
+      else{
+        modalHeader.className = "modal__header with-box-shadow";
+      }
+    }
+
+
+    function validateForm() {
+        var fname = document.forms["registration_form"]["fname"];
+        var lname = document.forms["registration_form"]["lname"];
+        var company = document.forms["registration_form"]["company"];
+        var email = document.forms["registration_form"]["email"];
+        var password = document.forms["registration_form"]["password"];
+        var cpassword = document.forms["registration_form"]["cpassword"];
+
+        if (fname.value == "")
+        {
+            showValidationErrorMessage("fnameMessage", "Please enter your first name.");
+            fname.focus();
+            return false;
+        }
+
+        // if (lname.value == "")
+        // {
+        //     showValidationErrorMessage("lnameMessage", "Please enter your last name.");
+        //     lname.focus();
+        //     return false;
+        // }
+
+        // if (company.value == "")
+        // {
+        //     showValidationErrorMessage("comapnyMessage", "Please enter your company name.");
+        //     company.focus();
+        //     return false;
+        // }
+
+        if (email.value == "" || !validateEmail(email.value))
+        {
+            showValidationErrorMessage("emailMessage", "Please enter a valid e-mail address.");
+            email.focus();
+            return false;
+        }
+
+        if (password.value == "" || !validatePassword(password.value))
+        {
+            // showValidationErrorMessage("passwordMessage", "Please match the format requested.");
+            password.focus();
+            return false;
+        }
+
+        if (cpassword.value == "")
+        {
+            showValidationErrorMessage("cpasswordMessage", "Please confirm your password.");
+            cpassword.focus();
+            return false;
+        }
+
+        return true;
+    }
+
+    function showValidationErrorMessage(elemId, msg) {
+        showThis(elemId)
+        document.getElementById(elemId).style.color = 'red';
+        document.getElementById(elemId).innerHTML = msg;
+    }
+
+    function removeMessage(inputFieldId, msgId){
+        var inputText = document.getElementById(inputFieldId).value;
+        if(inputFieldId == 'password'){
+            var isPasswordValid = validatePassword(inputText);
+            if(isPasswordValid){
+                removeThis(msgId);
+            }
+        }
+        else if(inputFieldId == 'email'){
+            var isEmailValid = validateEmail(inputText);
+            if(isEmailValid){
+                removeThis(msgId);
+            }
+        }
+        else{
+            if(inputText.length > 0){
+                removeThis(msgId);
+            }
+        }
+    }
+
+    function validateEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@@"]+(\.[^<>()\[\]\\.,;:\s@@"]+)*)|(".+"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
+    function validatePassword(passwordText) {
+        if(passwordText.length < 6 && passwordText.length > 40){
+            return false;
+        }
+        var re = /^(?=.*?[a-z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{6,}$/;
+        return re.test(String(passwordText));
+    }
+    </script>
+</html>

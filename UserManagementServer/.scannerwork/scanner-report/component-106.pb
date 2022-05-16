@@ -1,0 +1,1 @@
+j 2webX•hr.app/views/clinsightRegistrationForm.scala.html

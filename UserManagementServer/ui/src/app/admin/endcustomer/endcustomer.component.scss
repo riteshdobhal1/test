@@ -1,0 +1,228 @@
+.addEditEndCustForm {
+    .available-sysid-list {
+        border: 1px solid #e6e6e6;
+        border-radius: 10px;
+        height: 400px;
+        padding-top: 8px !important;
+        /* overflow-y: scroll; */
+        background: whitesmoke;
+
+        .btn-group {
+            .btn {
+                &.selected {
+                    color: #fff;
+                    background-color: #007bff;
+                    border-color: #007bff;
+                }
+            }
+        }
+    }
+
+    .selected-sysid-list {
+        border: 1px solid #e6e6e6;
+        border-radius: 10px;
+        height: 325px;
+        padding-top: 8px !important;
+        /* overflow-y: scroll; */
+        background: whitesmoke;
+
+        .btn-group {
+            .btn {
+                &.selected {
+                    color: #fff;
+                    background-color: #007bff;
+                    border-color: #007bff;
+                }
+            }
+        }
+    }
+
+    .gb-angle-icon {
+        vertical-align: middle;
+        padding: 5px
+    }
+
+    .sysid-list {
+        width: 100%;
+        height: 230px;
+        background-color: whitesmoke;
+        margin-top: 5px;
+        overflow: auto;
+        overflow-x: hidden;
+        border: none;
+
+        .sysid-row {
+            &.selected {
+                background-color: #4688cc;
+            }
+
+            &.disabled {
+                background-color: none;
+                pointer-events: none;
+            }
+        }
+    }
+
+    .is-invalid {
+        border-color: #dc3545 !important;
+    }
+
+    label {
+        letter-spacing: 0.7px;
+        color: #656565;
+    }
+
+    .sysid-list.is-invalid {
+        border: 0.5px solid white;
+        border-color: #dc3545 !important;
+    }
+
+    .selected-sysid-list.sysid-list {
+        height: 231px !important;
+    }
+
+    .sel-sysid-list {
+        width: 100%;
+        height: 240px;
+        background-color: whitesmoke;
+        margin-top: 5px;
+        overflow-y: hidden;
+        border: none;
+    }
+
+    // .sysid-list:hover,
+    // .sel-sysid-list:hover {
+    //     overflow-y: scroll !important;
+    // }
+
+    .sysid-empty-block {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: darkgray;
+    }
+
+    .selected-sysid-list .invalid-feedback {
+        padding-top: 38px;
+    }
+
+    .gb-sysId-pagination-div-device,
+    .gb-sysId-pagination-div-group{
+        display: flex;
+        font-size: 11px !important;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .gb-sysId-page-btn {
+        font-size: 11px;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        margin-left: 1em;
+    }
+
+    .sysid-item {
+        font-size: 12px;
+        padding: 6px;
+        margin-bottom: 3px;
+    }
+
+    .sysid-attribute-list {
+        font-size: 13px;
+        padding: 6px;
+        margin-bottom: 3px;
+        color: #495057;
+
+        &.selected {
+            color: white;
+        }
+    }
+
+    .attribute-search-container {
+        background-color: #fff;
+        overflow-x: auto;
+        .attribute-search-item {
+            > span{
+                color: gray;
+            }
+            font-size: 0.9rem;
+            input {
+                padding-left: 0.2rem;
+                outline: none;
+                border: none
+            }
+        }
+    }
+
+    .search-attribute-dropdown {
+        font-size: 0.9rem;
+    }
+}
+
+.gb-div-table {
+    .gb-name-div {
+        padding-left: 0.75rem !important;
+    }
+
+    .gb-name-span {
+        max-width: 21rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.gb-first-add {
+    padding-top: 4em;
+    margin: auto;
+}
+
+.gb-action-container {
+    padding-right: 2em !important;
+}
+
+.gb-table-head {
+    background: #e5e5e5;
+}
+
+.sysid-list-wrapper {
+    .gb-div-table {
+        background-color: whitesmoke;
+        box-shadow: none;
+    }
+
+    .sysid-list {
+        height: 210px;
+        overflow: auto;
+        overflow-x: hidden;
+
+        .sysid-table-row {
+            span{
+                user-select: none;
+                -webkit-user-select: none;
+            }
+            &.disabled {
+                color: gray;
+                pointer-events: none;
+            }
+
+            &.selected {
+                background-color: #4688cc;
+                color: #fff;
+            }
+        }
+    }
+}
+
+.endcustomerTableData{
+    max-height: 12rem;
+    overflow-y: auto;
+}
+
+.end-customer-pagination-div {
+    margin-bottom: 2.5rem;
+}

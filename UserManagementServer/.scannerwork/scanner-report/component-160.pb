@@ -1,0 +1,1 @@
+  2scalaXìhrapp/models/Clinsight.scala

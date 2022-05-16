@@ -1,0 +1,756 @@
+{
+    "Status": "Success",
+    "Msg": "List all information for a user",
+    "Data":[
+        {
+        "name": "siemens_siemens_podui_admin",
+        "is_super": false,
+        "domains": {
+            "Siemens Prod": "siemens:siemens:pod",
+            "SiemensWH Prodv10": "siemens:siemenswh:podv10",
+            "-": "default:default:default",
+            "Siemens Prod60": "siemens:siemens:pod60",
+            "SIEMENS-POD": "siemens:siemens:podui"
+        },
+        "features": {
+            "siemens:siemens:pod": "admin,explorer,logvault",
+            "siemens:siemenswh:podv10": "admin,explorer,logvault,healthcheck",
+            "default:default:default": "workbench,explorer,logvault,admin",
+            "siemens:siemens:pod60": "dashboards,file_upload,rules_and_alerts,explorer,logvault,admin,healthcheck",
+            "siemens:siemens:podui": "admin,dashboards,file_upload,rules_and_alerts,explorer,logvault,workbench,rule_creator,healthcheck,dashboard_admin"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "stage": "",
+            "autostage": "http://autostage.glassbeam.com:9000/v1"
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "stage": "",
+            "autostage": "autostage.glassbeam.com"
+        },
+        "mps_uidomain": {
+            "siemens:siemens:podui": "dev.glassbeam.com",
+            "siemens:siemens:pod60": "dev.glassbeam.com",
+            "siemens:siemenswh:podv10": "searchdev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "siemens:siemens:podui": "http://searchdev.glassbeam.com:9000/v1",
+            "siemens:siemens:pod60": "http://searchdev.glassbeam.com:9000/v1",
+            "siemens:siemenswh:podv10": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "siemens:siemens:podui": "6.1",
+            "siemens:siemens:pod60": "6.1",
+            "siemens:siemenswh:podv10": "5.5"
+        },
+        "realm": ["qaui", "stage", "autostage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "siemens_siemens_podui_testextrole",
+        "is_super": false,
+        "domains": {
+            "SIEMENS-POD": "siemens:siemens:podui"
+        },
+        "features": {
+            "siemens:siemens:podui": "healthcheck"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com"
+        },
+        "mps_uidomain": {
+            "siemens:siemens:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "siemens:siemens:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "siemens:siemens:podui": "6.1"
+        },
+        "realm": ["qaui"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "automation_admin",
+        "is_super": false,
+        "domains": {
+            "SIEMENS": "siemens:siemens:pod",
+            "HIWI-PODUI": "aruba:aruba:podui",
+            "-": "default:default:default",
+            "SPRINGPATH-PODUI": "springpath:springpath:podui",
+            "SIEMENS-POD": "siemens:siemens:podui",
+            "PTC-PODUI": "ptc:ptc:podui"
+        },
+        "features": {
+            "siemens:siemens:pod": "dashboards,file_upload, rules_and_alerts,rule_creator,explorer,logvault,workbench,admin",
+            "default:default:default": "dashboards,explorer,workbench",
+            "aruba:aruba:podui": "dashboards,healthcheck, file_upload, rules_and_alerts,explorer,logvault,workbench,rule_creator,admin",
+            "ptc:ptc:podui": "dashboards,healthcheck,file_upload,rules_and_alerts,explorer,logvault,workbench,admin,rule_creator",
+            "siemens:siemens:podui": "dashboards,file_upload, rules_and_alerts,rule_creator,explorer,logvault,workbench,healthcheck,admin",
+            "springpath:springpath:podui": "dashboards,healthcheck, file_upload, rules_and_alerts,explorer,logvault,workbench,admin"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "autostage": "http://autostage.glassbeam.com:9000/v1"
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "autostage": "autostage.glassbeam.com"
+        },
+        "mps_uidomain": {
+            "aruba:aruba:podui": "dev.glassbeam.com",
+            "ptc:ptc:podui": "dev.glassbeam.com",
+            "siemens:siemens:podui": "dev.glassbeam.com",
+            "springpath:springpath:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "aruba:aruba:podui": "http://searchdev.glassbeam.com:9000/v1",
+            "ptc:ptc:podui": "http://searchdev.glassbeam.com:9000/v1",
+            "siemens:siemens:podui": "http://searchdev.glassbeam.com:9000/v1",
+            "springpath:springpath:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "aruba:aruba:podui": "6.1",
+            "ptc:ptc:podui": "6.1",
+            "siemens:siemens:podui": "6.1",
+            "springpath:springpath:podui": "6.1"
+        },
+        "realm": ["qaui", "autostage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "ptc_ptc_podui_yo1",
+        "is_super": false,
+        "domains": {
+            "PTC-POD": "ptc:ptc:podui"
+        },
+        "features": {
+            "ptc:ptc:podui": "logvault"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com"
+        },
+        "mps_uidomain": {
+            "ptc:ptc:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "ptc:ptc:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "ptc:ptc:podui": "6.1"
+        },
+        "realm": ["qaui"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "siemens_siemens_podui_yo",
+        "is_super": false,
+        "domains": {
+            "SIEMENS-POD": "siemens:siemens:podui"
+        },
+        "features": {
+            "siemens:siemens:podui": "healthcheck"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com"
+        },
+        "mps_uidomain": {
+            "siemens:siemens:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "siemens:siemens:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "siemens:siemens:podui": "6.1"
+        },
+        "realm": ["qaui"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "siemens_siemens_pod60_externalpod60",
+        "is_super": false,
+        "domains": {
+            "Siemens Prod60": "siemens:siemens:pod60"
+        },
+        "features": {
+            "siemens:siemens:pod60": "healthcheck"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com"
+        },
+        "mps_uidomain": {
+            "siemens:siemens:pod60": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "siemens:siemens:pod60": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "siemens:siemens:pod60": "6.1"
+        },
+        "realm": ["qaui"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "siemenstestrole",
+        "is_super": false,
+        "domains": {
+            "-": "default:default:default",
+            "SIEMENS-POD": "siemens:siemens:podui"
+        },
+        "features": {
+            "default:default:default": "dashboards,explorer,logvault,file_upload,rules_and_alerts,rule_creator",
+            "siemens:siemens:podui": "dashboards,explorer,logvault,file_upload,rules_and_alerts,rule_creator"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "stage": ""
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "stage": ""
+        },
+        "mps_uidomain": {
+            "siemens:siemens:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "siemens:siemens:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "siemens:siemens:podui": "6.1"
+        },
+        "realm": ["qaui", "stage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "withoutadmin",
+        "is_super": false,
+        "domains": {
+            "ARUBA UI": "aruba:aruba:podui"
+        },
+        "features": {
+            "aruba:aruba:podui": "dashboards,explorer,logvault,file_upload,workbench"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "stage": ""
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "stage": ""
+        },
+        "mps_uidomain": {
+            "aruba:aruba:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "aruba:aruba:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "aruba:aruba:podui": "6.1"
+        },
+        "realm": ["qaui", "stage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "onlyhealthcheck",
+        "is_super": false,
+        "domains": {
+            "SIEMENS-POD": "siemens:siemens:podui"
+        },
+        "features": {
+            "siemens:siemens:podui": "healthcheck"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "stage": ""
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "stage": ""
+        },
+        "mps_uidomain": {
+            "siemens:siemens:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "siemens:siemens:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "siemens:siemens:podui": "6.1"
+        },
+        "realm": ["qaui", "stage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "siemens_siemens_podui_support",
+        "is_super": false,
+        "domains": {
+            "SIEMENS-POD": "siemens:siemens:podui"
+        },
+        "features": {
+            "siemens:siemens:podui": "dashboards,rules_and_alerts,explorer,logvault"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "siemens_stage": ""
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "siemens_stage": ""
+        },
+        "mps_uidomain": {
+            "siemens:siemens:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "siemens:siemens:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "siemens:siemens:podui": "6.1"
+        },
+        "realm": ["qaui", "siemens_stage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "siemens_siemens_podui_rc_wb",
+        "is_super": false,
+        "domains": {
+            "SIEMENS-POD": "siemens:siemens:podui"
+        },
+        "features": {
+            "siemens:siemens:podui": "dashboards,explorer,rules_and_alerts,workbench,logvault,rule_creator,dashboard_admin"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "siemens_stage": ""
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "siemens_stage": ""
+        },
+        "mps_uidomain": {
+            "siemens:siemens:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "siemens:siemens:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "siemens:siemens:podui": "6.1"
+        },
+        "realm": ["qaui", "siemens_stage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "admin",
+        "is_super": false,
+        "domains": {},
+        "features": {},
+        "realm_isdomain": {
+            "prod": "http://searchdev.glassbeam.com:9000/v1",
+            "poc": "http://searchdev.glassbeam.com:9000/v1",
+            "gbstudio_spl": "http://studiodemo.glassbeam.com",
+            "gbstudio_apps": "http://appsstaging.glassbeam.com:9000/v1"
+        },
+        "realm_uidomain": {
+            "prod": "searchdev.glassbeam.com",
+            "poc": "searchdev.glassbeam.com",
+            "gbstudio_spl": "studiodemo.glassbeam.com",
+            "gbstudio_apps": "appsstaging.glassbeam.com"
+        },
+        "mps_uidomain": {},
+        "mps_isdomain": {},
+        "realm_appsversion": {},
+        "realm": ["prod", "poc", "gbstudio_spl", "gbstudio_apps"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "novant_novant_podui_admin",
+        "is_super": false,
+        "domains": {
+            "NOVANT-PODUI": "novant:novant:podui"
+        },
+        "features": {
+            "novant:novant:podui": "dashboards,healthcheck,file_upload, rules_and_alerts,explorer,logvault,workbench,admin,rule_creator"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "autostage": "http://autostage.glassbeam.com:9000/v1"
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "autostage": "autostage.glassbeam.com"
+        },
+        "mps_uidomain": {
+            "novant:novant:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "novant:novant:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "novant:novant:podui": "6.1"
+        },
+        "realm": ["qaui", "autostage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "ptc_ptc_podui_siemens_siemens_podui_test1",
+        "is_super": false,
+        "domains": {
+            "PTC-POD": "ptc:ptc:podui"
+        },
+        "features": {
+            "ptc:ptc:podui": "healthcheck"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com"
+        },
+        "mps_uidomain": {
+            "ptc:ptc:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "ptc:ptc:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "ptc:ptc:podui": "6.1"
+        },
+        "realm": ["qaui"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "aruba_aruba_podui_support",
+        "is_super": false,
+        "domains": {
+            "Aruba1": "aruba:aruba:pod",
+            "DDAUHC-OnPrem": "ddauhc:ddauhc:pod",
+            "-": "default:default:default",
+            "DDAU-OnPrem": "ddau:ddau:podv1",
+            "Aruba": "aruba:aruba:podui"
+        },
+        "features": {
+            "ddau:ddau:podv1": "logvault,dashboards,admin,workbench,rules_and_alerts,rule_creator",
+            "default:default:default": "dashboards,explorer,rules_and_alerts,workbench,logvault,health_check,file_upload,apps,admin",
+            "aruba:aruba:podui": "admin,rules_and_alerts,workbench,dashboards,health_check,file_upload,apps,gbstudio_apps,explorer,rule_creator,logvault",
+            "ddauhc:ddauhc:pod": "rules_and_alerts,rule_creator,dashboards,admin,logvault",
+            "aruba:aruba:pod": "dashboards,explorer,rules_and_alerts,workbench,logvault,health_check,file_upload,apps,gbstudio_apps,admin"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "gbstudio_apps": "http://appsstaging.glassbeam.com:9000/v1",
+            "aruba_stage": "",
+            "prod": "http://searchdev.glassbeam.com:9000/v1",
+            "autostage": "http://autostage.glassbeam.com:9000/v1"
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "gbstudio_apps": "appsstaging.glassbeam.com",
+            "aruba_stage": "",
+            "prod": "searchdev.glassbeam.com",
+            "autostage": "autostage.glassbeam.com"
+        },
+        "mps_uidomain": {
+            "aruba:aruba:podui": "dev.glassbeam.com",
+            "aruba:aruba:pod": "",
+            "ddau:ddau:podv1": "searchdev.glassbeam.com",
+            "ddauhc:ddauhc:pod": "searchdev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "aruba:aruba:podui": "http://searchdev.glassbeam.com:9000/v1",
+            "aruba:aruba:pod": "",
+            "ddau:ddau:podv1": "http://searchdev.glassbeam.com:9000/v1",
+            "ddauhc:ddauhc:pod": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "aruba:aruba:podui": "6.1",
+            "aruba:aruba:pod": "",
+            "ddau:ddau:podv1": "5.5",
+            "ddauhc:ddauhc:pod": "5.5"
+        },
+        "realm": ["prod", "qaui", "aruba_stage", "autostage", "gbstudio_apps"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "siemens_siemens_podui_testroleritesh",
+        "is_super": false,
+        "domains": {
+            "SIEMENS-POD": "siemens:siemens:podui"
+        },
+        "features": {
+            "siemens:siemens:podui": "dashboards,rules_and_alerts,explorer,logvault"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "siemens_stage": ""
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "siemens_stage": ""
+        },
+        "mps_uidomain": {
+            "siemens:siemens:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "siemens:siemens:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "siemens:siemens:podui": "6.1"
+        },
+        "realm": ["qaui", "siemens_stage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "glassbeam_admin",
+        "is_super": false,
+        "domains": {
+            "-": "default:default:default",
+            "HIWI-PODUI": "aruba:aruba:podui",
+            "SIEMENS-POD": "siemens:siemens:podui",
+            "SPRINGPATH-PODUI": "springpath:springpath:podui"
+        },
+        "features": {
+            "aruba:aruba:podui": "dashboards,healthcheck, file_upload, rules_and_alerts,explorer,logvault,workbench,rule_creator",
+            "default:default:default": "dashboards,explorer,workbench",
+            "siemens:siemens:podui": "dashboards,healthcheck, file_upload, rules_and_alerts,rule_creator,explorer,logvault,workbench",
+            "springpath:springpath:podui": "dashboards,healthcheck, file_upload, rules_and_alerts,explorer,logvault,workbench"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "stage": ""
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "stage": ""
+        },
+        "mps_uidomain": {
+            "aruba:aruba:podui": "dev.glassbeam.com",
+            "siemens:siemens:podui": "dev.glassbeam.com",
+            "springpath:springpath:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "aruba:aruba:podui": "http://searchdev.glassbeam.com:9000/v1",
+            "siemens:siemens:podui": "http://searchdev.glassbeam.com:9000/v1",
+            "springpath:springpath:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "aruba:aruba:podui": "6.1",
+            "siemens:siemens:podui": "6.1",
+            "springpath:springpath:podui": "6.1"
+        },
+        "realm": ["qaui", "stage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "siemens_siemens_podui_testintrole",
+        "is_super": false,
+        "domains": {
+            "SIEMENS-POD": "siemens:siemens:podui"
+        },
+        "features": {
+            "siemens:siemens:podui": "dashboards,rules_and_alerts,logvault"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "siemens_stage": ""
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "siemens_stage": ""
+        },
+        "mps_uidomain": {
+            "siemens:siemens:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "siemens:siemens:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "siemens:siemens:podui": "6.1"
+        },
+        "realm": ["qaui", "siemens_stage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "siemens_siemens_podui_external",
+        "is_super": false,
+        "domains": {
+            "SIEMENS-POD": "siemens:siemens:podui"
+        },
+        "features": {
+            "siemens:siemens:podui": "healthcheck"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com"
+        },
+        "mps_uidomain": {
+            "siemens:siemens:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "siemens:siemens:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "siemens:siemens:podui": "6.1"
+        },
+        "realm": ["qaui"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "aruba_aruba_pod_test",
+        "is_super": false,
+        "domains": {
+            "Aruba1": "aruba:aruba:pod"
+        },
+        "features": {
+            "aruba:aruba:pod": "dashboards,explorer,workbench,logvault,file_upload"
+        },
+        "realm_isdomain": {
+            "pod": ""
+        },
+        "realm_uidomain": {
+            "pod": ""
+        },
+        "mps_uidomain": {
+            "aruba:aruba:pod": ""
+        },
+        "mps_isdomain": {
+            "aruba:aruba:pod": ""
+        },
+        "realm_appsversion": {
+            "aruba:aruba:pod": ""
+        },
+        "realm": ["pod"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "vce_vce_podauto_admin",
+        "is_super": false,
+        "domains": {
+            "VCE-PODAUTO": "vce:vce:podauto"
+        },
+        "features": {
+            "vce:vce:podauto": "dashboards,healthcheck,file_upload, rules_and_alerts,explorer,logvault,workbench,admin,rule_creator"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "stage": ""
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "stage": ""
+        },
+        "mps_uidomain": {
+            "vce:vce:podauto": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "vce:vce:podauto": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "vce:vce:podauto": "6.1"
+        },
+        "realm": ["qaui", "stage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "ptc_ptc_podui_testrole",
+        "is_super": false,
+        "domains": {
+            "PTC POD": "ptc:ptc:podui"
+        },
+        "features": {
+            "ptc:ptc:podui": "healthcheck"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "stage": ""
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "stage": ""
+        },
+        "mps_uidomain": {
+            "ptc:ptc:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "ptc:ptc:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "ptc:ptc:podui": "6.1"
+        },
+        "realm": ["qaui", "stage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "siemens_siemens_podui_rc",
+        "is_super": false,
+        "domains": {
+            "SIEMENS-POD": "siemens:siemens:podui"
+        },
+        "features": {
+            "siemens:siemens:podui": "dashboards,explorer,rules_and_alerts,logvault,rule_creator,dashboard_admin,file_upload"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "siemens_stage": ""
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "siemens_stage": ""
+        },
+        "mps_uidomain": {
+            "siemens:siemens:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "siemens:siemens:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "siemens:siemens:podui": "6.1"
+        },
+        "realm": ["qaui", "siemens_stage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "dashboardadmin",
+        "is_super": false,
+        "domains": {
+            "ARUBA UI": "aruba:aruba:podui"
+        },
+        "features": {
+            "aruba:aruba:podui": "admin,dashboards,explorer,logvault,file_upload,rules_and_alerts,rule_creator,healthcheck,workbench"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1",
+            "stage": ""
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com",
+            "stage": ""
+        },
+        "mps_uidomain": {
+            "aruba:aruba:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "aruba:aruba:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "aruba:aruba:podui": "6.1"
+        },
+        "realm": ["qaui", "stage"],
+        "studio_proj_limit": 0
+    }, {
+        "name": "ptc_ptc_podui_test1",
+        "is_super": false,
+        "domains": {
+            "PTC-POD": "ptc:ptc:podui"
+        },
+        "features": {
+            "ptc:ptc:podui": "logvault"
+        },
+        "realm_isdomain": {
+            "qaui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_uidomain": {
+            "qaui": "dev.glassbeam.com"
+        },
+        "mps_uidomain": {
+            "ptc:ptc:podui": "dev.glassbeam.com"
+        },
+        "mps_isdomain": {
+            "ptc:ptc:podui": "http://searchdev.glassbeam.com:9000/v1"
+        },
+        "realm_appsversion": {
+            "ptc:ptc:podui": "6.1"
+        },
+        "realm": ["qaui"],
+        "studio_proj_limit": 0
+    }]
+}

@@ -1,0 +1,1 @@
+» 2scalaXÈhrapp/dao/vertica/role.scala

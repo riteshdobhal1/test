@@ -1,0 +1,1 @@
+Ñ 2webXhr2dist/partials/rules-and-alerts/subscribe_rule.html

@@ -1,0 +1,135 @@
+<div class="panel panel-primary gb-rules-bulk-edit" >
+        <div class="panel-heading gb-panel-head-fix">
+            <h3 class="panel-title">Bulk Edit Rules</h3>
+            <i class="fa fa-times gb-close-btn gb-panel-close-btn-fix" aria-hidden="true" title="Press Esc to remove"
+                ng-click="modal.close()"></i>
+        </div>
+        <div class="gb-notification-header-small">
+            <h5>
+                <span class="gb-sub">You can only edit the rules which are owned by you.</span>
+            </h5>
+        </div>
+        <div class="panel-body">
+                
+    <div class="col-sm-12">
+        
+
+        <div class="gb-rules-container">
+            <div class="gb-rules-save-form container-fluid">                    
+                <form class="form-horizontal">
+                    <!-- Inline context help directive --> 
+                    
+                    <div class="form-group margin-btm-5 col-lg-6 col-md-12 col-sm-12 col-xs-12" ng-init="showContent['label'] = false;"ng-mouseleave="showContent['label'] = false;" ng-if = "showenable">
+                            <label for="inputLabel" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 control-label font-size-10 font-weight-100" title="{{info.tooltips['label']}}">Enable Rules</label>
+                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="gbTourAddRulesLabel">
+                                <div class="gb-checkbox-container" id="gb-enable-check-div">
+                                        <input type="checkbox" class="margin-0 gb-custom-checkbox glyphicon  ng-valid ng-touched ng-dirty ng-valid-parse" id="inputEnable"
+                                        ng-model="info.modelenable" ng-change = "changestatus('ENABLED')" ng-show="rulesTypeSelected == 'supported'"style=" vertical-align: middle;">
+                                </div>
+                                
+                            </div>
+                    </div>
+
+                    <div class="form-group margin-btm-5 col-lg-6 col-md-12 col-sm-12 col-xs-12" ng-init="showContent['label'] = false;"ng-mouseleave="showContent['label'] = false;"  ng-if = "showdisable">
+                        <label for="inputLabel" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 control-label font-size-10 font-weight-100" title="{{info.tooltips['label']}}">Disable Rules</label>
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="gbTourAddRulesLabel">
+                            <div class="gb-checkbox-container" id="gb-disable-check-div">
+                                    <input type="checkbox" class="margin-0 gb-custom-checkbox glyphicon  ng-valid ng-touched ng-dirty ng-valid-parse" id="inputDisable"
+                                    ng-model="info.modeldisable" ng-change="changestatus('DISABLED')" ng-show="rulesTypeSelected == 'supported'"style=" vertical-align: middle;">   
+                            </div>
+                            
+                        </div>
+                    </div>
+
+
+                    <div class="form-group margin-btm-5 col-lg-6 col-md-12 col-sm-12 col-xs-12" ng-init="showContent['description'] = false;"ng-mouseleave="showContent['description'] = false;" ng-show=" info.modelenable || info.modeldisable">
+                        <label for="inputDescription" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 control-label font-size-10 font-weight-100" title="{{info.tooltips['description']}}">Comments<span class="color-red">*</span></label>
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="gbTourAddRulesDesc"> 
+                            <textarea class="form-control" ng-model="bulkdata.comment" id="inputComments" placeholder="Comments" maxlength="2048" onkeydown="return (event.keyCode!=13);" ng-focus="focusElement('other')" ng-change="setUnsavedMode()"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group margin-btm-5 col-lg-6 col-md-12 col-sm-12 col-xs-12" ng-init="showContent['description'] = false;"ng-mouseleave="showContent['description'] = false;">
+                        <label for="inputDescription" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 control-label font-size-10 font-weight-100" title="{{info.tooltips['description']}}">Description</label>
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="gbTourAddRulesDesc">
+                            <textarea class="form-control" ng-model="bulkdata.description" id="inputDescription" placeholder="Description" maxlength="2048" onkeydown="return (event.keyCode!=13);" ng-focus="focusElement('other')" ng-change="setUnsavedMode()"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group margin-btm-5 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <label for="inputAuthor" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 control-label font-size-10 font-weight-100" title="{{info.tooltips['author']}}">Author</label>
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="gbTourAddRulesAuthor">
+                            <input type="text" class="form-control" id="inputAuthor" ng-model="bulkdata.author" maxlength="64" placeholder="Author" ng-focus="focusElement('other')" ng-change="setUnsavedMode()">
+                        </div>
+                    </div>
+                    <div class="form-group margin-btm-5 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <label for="inputKBLink" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 control-label font-size-10 font-weight-100" title="{{info.tooltips['kb_link']}}">KB Link</label>
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="gbTourAddRulesKBLink">
+                            <input type="text" ng-model="bulkdata.kb_link" class="form-control" id="inputKBLink" maxlength="2048" placeholder="KB Link" ng-focus="focusElement('other')" ng-change="setUnsavedMode()">
+                        </div>
+                    </div>
+                    <div class="form-group margin-btm-5 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <label for="inputCategory" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 control-label font-size-10 font-weight-100" title="{{info.tooltips['category']}}">{{rulesconstants['CATEGORY']}}</label>
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 gb-add-edit-rule-manage-field" id="gbTourAddRulesCategory">
+                            <select name="inputCategory" ng-model="bulkdata.category" id="inputCategory" class="form-control font-size-12 padding-left-3" ng-focus="focusElement('other')" ng-change="setUnsavedMode()">
+                                <option ng-if="bulkdata.category == 'select'" value="select" ng-selected="bulkdata.category == 'select'">Select</option>
+                                <option ng-repeat="category in info.categories track by $index" value="{{category.category_id}}" ng-selected="info.category == category.category_id">{{category.category}}</option>
+                            </select>
+                           
+                        </div>
+                    </div>
+                    <div class="form-group margin-btm-5 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <label for="inputSeverity" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 control-label font-size-10 font-weight-100" title="{{info.tooltips['severity']}}">{{rulesconstants['SEVERITY']}}</label>
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="gbTourAddRulesSeverity">
+                            <select name="inputSeverity" id="inputSeverity" ng-model="bulkdata.severity" class="form-control font-size-12 padding-left-3" ng-focus="focusElement('other')" ng-change="setUnsavedMode()">
+                                <option ng-if="bulkdata.severity == 'select'" value="select" ng-selected="bulkdata.severity == 'select'">Select</option>
+                                <option ng-repeat="severity in info.severities track by $index"  value="{{severity.severity_id}}" ng-selected="info.severity == severity.severity_id">{{severity.severity}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group margin-btm-5 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <label for="inputPriority" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 control-label font-size-10 font-weight-100" title="{{info.tooltips['priority']}}">Priority</label>
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="gbTourAddRulesPriority">
+                            <select name="inputPriority" id="inputPriority" ng-model="bulkdata.priority" class="form-control font-size-12 padding-left-3" ng-focus="focusElement('other')" ng-change="setUnsavedMode()">
+                                <option ng-if="bulkdata.priority == 'select'" value="select" ng-selected="bulkdata.priority == 'select'">Select</option>
+                                <option ng-repeat="priority in info.priorities track by $index"  value="{{priority.priority_id}}" ng-selected="bulkdata.priority == priority.priority_id">{{priority.priority}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                  
+              
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12 gb-add-rule-max-limit-display">
+                        <div class="form-group col-sm-12">
+                            <label for="inputMaxLimitDisplay" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 control-label font-size-10 font-weight-100" title="{{info.tooltips['max_alerts_display_ui']}}">{{rulesconstants['MAX_ALERT_VIEW']}}</label>
+                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 gb-slidecontainer" id="gbTourAddRulesMaxLimitDisplay">
+                                <input type="range" min="1" max="100"  class="slider" id="inputMaxLimitDisplay" ng-model="bulkdata.max_alerts_display_ui" ng-focus="focusElement('other')" ng-change="setUnsavedMode()" >
+                                <span ng-if = bulkdata.max_alerts_display_ui class="gb-slidecontainer-value">{{bulkdata.max_alerts_display_ui}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group margin-btm-5 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                            <label for="inputPriority" class="col-lg-4 col-md-4 col-sm-12 col-xs-12 control-label font-size-10 font-weight-100" title="{{info.tooltips['priority']}}">Change Owner</label>
+                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12" id="gbTourAddRulesPriority">
+                                <select name="inputPriority" id="inputChangeOwner" ng-model="bulkdata.rule_owner" class="form-control font-size-12 padding-left-3" ng-focus="focusElement('other')" ng-change="setUnsavedMode()">
+                                    <option ng-if="bulkdata.rule_owner == 'select'" value="select" ng-selected="bulkdata.rule_owner == 'select'">Select</option>
+                                    <option  ng-repeat="owner in filterOwnerListByRule(rule['rule_owner'], rule.ownerInlineFilter)"  value="{{owner.email}}" >{{owner.email}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    <div class="form-group">
+                            <div class="col-sm-12" style="display: flex;flex-direction: row-reverse;">
+                                <button type="button" id="gb-bulk-edit-submit" class="gb-primary-btn ng-binding" ng-click="submitbulk()">
+                                    Submit
+                                </button>
+                            </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+
+

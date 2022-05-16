@@ -1,0 +1,347 @@
+* {
+	font-family: helvetica, sans-serif;
+	font-size: 10pt;
+}
+table {
+	border:0px solid white;
+	border-collapse:collapse;
+}
+td {
+	padding-left: 10px;
+	padding-right:10px;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+.header {
+	border:7px solid white;
+}
+.meta {
+	background-color: #eee;
+}
+.metaHover {
+	background-color: #afa;
+}
+.meta2 {
+	padding-right:2px;
+	padding-left:5px;
+	text-align: left;
+}
+.messageField {
+	padding-bottom:10px;
+	background-color: #ffffaa;
+}
+#dropzone.hover {
+	background-color: #afa;
+}
+#dropzone.inactive {
+	background-color: #fff;
+}
+.metaSeparator {
+	background-color: #fff;
+}
+.metaSeparatorHover {
+	background-color: #afa;
+}
+.large {
+	font-size: 12pt;
+}
+#tableStatus a:hover {
+	color: #fff;
+	background-color: #00f;
+	cursor:pointer;
+}
+#tableStatus th {
+	border: solid 1pt #000;
+	border-top: #fff;
+	border-left: #fff;
+	border-right: #fff;
+}
+.tableDetails a:hover {
+	color: #fff;
+	background-color: #00f;
+	cursor:pointer;
+}
+.tableDetails th {
+	border: solid 1pt #000;
+	border-top: #fff;
+	border-left: #fff;
+	border-right: #fff;
+}
+.tableDetails td {
+	text-align: center;
+}
+
+.firmwareCheckOk {
+	font-family: monospace;
+	color: #000;
+	background-color: #fff;
+}
+.firmwareCheckError {
+	font-family: monospace;
+	color: #d00;
+	background-color: #fee;
+	font-weight: bold;
+}
+
+
+/* Measurements tab */
+.main_nav ul {
+	background: #fff;
+	float: left;
+	cursor:pointer;
+	margin: 0;
+	padding: 0;
+	overflow: visible;
+	z-index: 999;
+	vertical-align: bottom;
+	-webkit-transition:	.3s;
+	transition:			.3s;
+}
+
+.main_nav li {
+	float: left;
+	position: relative;
+	width: 195px;
+	list-style: none;
+	-webkit-transition:	.3s;
+	transition:			.3s;
+}
+
+.main_nav a {
+	display: block;
+	text-decoration: none;
+	padding: 5px 10px;
+	color: #000;
+}
+
+
+.main_nav ul ul {
+	position: absolute;
+	left: 0;
+	top: 100%;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.main_nav ul ul ul {
+	left: 100%;
+	top: 0;
+}
+
+.main_nav li:hover, .main_nav li:hover li {
+	background: #ccc;
+}
+
+.main_nav li li:hover, .main_nav li li:hover li {
+	background: #eee;
+}
+
+.main_nav li li li:hover {
+	background: #fea;
+}
+
+.main_nav li:hover > ul {
+	visibility: visible;
+	opacity: 1;
+}
+
+#table_main_nav td {
+	border: solid 0px #000;
+	padding: 0 5 0 0;
+}
+td.label_select_params {
+	width: 35;
+	text-align: right;
+}
+
+a.mainLink {
+	display: inline-block;
+	text-decoration: none;
+	padding: 10 20 10 5;
+	color: #000;
+	border: solid 0px #000;
+	font-weight: bold;
+}
+a.mainLink:hover {
+	color: #fff;
+	background: #00f;
+	cursor:pointer;
+}
+
+
+#menubarTable {
+	width: 100%;
+	background-color: #fff;
+	border: solid 2pt #000;
+	border-top: #00f;
+	border-left: #00f;
+	border-right: #00f;
+}
+
+#menubar_x a {
+	font-weight: bold;
+	color: #000;
+	height: 16px;
+	cursor:pointer;
+	padding-top: 3px;
+	padding-left: 8px;
+	padding-right: 8px;
+	display:inline-block;
+}
+#menubar a:hover {
+	color: #fff;
+	background-color: #00f;
+}
+#menubar__x {
+	background-color: #fff;
+	border: solid 2pt #000;
+	border-top: #fff;
+	border-left: #fff;
+	border-right: #fff;
+}
+
+#menubarDropdown {
+	width: 100px;
+	padding: 0px;
+}
+#menubarTriangle {
+	width: 10px;
+}
+#menubarTabName {
+	font-weight: bold;
+	color: #fff;
+	background-color: #000;
+	width: 160px;
+}
+#menubarSerial {
+	width: 200px;
+	padding-left:  60px;
+	padding-right: 60px;
+	text-align: left;
+	background-color: #fff;
+}
+#menubarInfoText {
+	color: #000;
+	background-color: #fff;
+	text-align: left;
+}
+
+/*
+#menubarSerial td {
+	width: 200px;
+	padding-left: 60px;
+}
+#menubarInfoText td {
+	color: #fff;
+	background: #00f;
+	text-align: left;
+}
+*/
+
+/* menubar: drop down menu */
+.menubarNav ul {
+	background: #fff;
+	float: left;
+	cursor:pointer;
+	margin: 0;
+	padding: 0;
+	overflow: visible;
+	z-index: 999;
+	vertical-align: bottom;
+	-webkit-transition:	.3s;
+	transition:			.3s;
+}
+
+.menubarNav li {
+	float: left;
+	position: relative;
+	width: 170px;
+	list-style: none;
+	-webkit-transition:	.3s;
+	transition:			.3s;
+}
+
+.menubarNav a {
+	font-weight: bold;
+	display: block;
+	text-decoration: none;
+	padding: 5px 10px;
+	color: #000;
+}
+
+.menubarNav ul ul {
+	position: absolute;
+	left: 0;
+	top: 100%;
+	visibility: hidden;
+	opacity: 0;
+}
+
+.menubarNav ul ul ul {
+	left: 100%;
+	top: 0;
+}
+
+.menubarNav li:hover, .menubarNav li:hover li {
+	background: #eee;
+}
+
+.menubarNav li li:hover, .menubarNav li li:hover li {
+	background: #eee;
+}
+
+.menubarNav li li li:hover {
+	background: #fea;
+}
+
+.menubarNav li:hover > ul {
+	visibility: visible;
+	opacity: 1;
+}
+
+
+#tabMain {
+	padding: 15 10 10 30;
+}
+
+
+/* design for CT_ISV_59 */
+#tableISV59 {
+	padding: 15 10 10 30;
+}
+#tableISV59 thead {
+	border-bottom: 1px solid #000000;
+}
+#tableISV59 tbody > tr:hover {
+	background-color: #aaffaa;
+}
+.ISV59changedYes {
+	background-color: #ff0000;
+	color: #ffffff;
+}
+.ISV59changedNo {
+	background-color: #ffffff;
+	color: #000000;
+}
+
+#tableFirmwareInfos {
+	border:1px solid black;
+	border-collapse: collapse;
+	background-color: #ffffff;
+}
+#tableFirmwareInfos td {
+	border:1px solid black;
+	border-collapse: collapse;
+}
+#tableFirmwareInfos tbody > tr:hover {
+	background-color: #ddffdd;
+}
+#tableFirmwareInfos thead {
+	font-weight: bold;
+	background-color: #eeeeee;
+}
+.highlighted {
+	background-color: #ffff88;
+	font-weight: bold;
+}
+

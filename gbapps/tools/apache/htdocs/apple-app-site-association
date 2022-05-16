@@ -1,0 +1,11 @@
+{
+        "applinks": {
+                "apps": [],
+                "details": [
+                        {
+                                "appID": "W396C66PB8.com.glassbeams.clinsights",
+                                "paths": [ "*"]
+                        }
+                ]
+        }
+}

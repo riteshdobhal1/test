@@ -1,0 +1,1 @@
+§ 2jsXchr,app/lib/angular/i18n/angular-locale_lv-lv.js

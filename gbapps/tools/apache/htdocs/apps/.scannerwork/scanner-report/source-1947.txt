@@ -1,0 +1,88 @@
+<div id="GB-RuleWiseAnalyticsBody" class="modal-body container-fluid" >
+    <div class="alertsTimeAndDateBar">
+        <div class="gb-analytics-custom-date-cntr" ng-show="selectedTimeFilter.label == 'Custom filter'">
+            <span class="gb-analytics-custom-date-from dropdown">
+                <span class="gb-analytics-custom-date-selected-value">{{selectedTimeFilter.startTime | date:'MM/dd/yyyy'}}</span>
+                <button class="btn btn-info dropdown-toggle gb-cal-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Select date">
+                    <span>
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right gb-analytics-custom-date-dropdown" ng-click="$event.stopPropagation();">
+                    <datepicker ng-model="selectedTimeFilter.startTime" show-weeks="false" year-range="10" max-date="selectedTimeFilter.endTime" min-date="minFromDate"></datepicker>
+                </ul>
+
+            </span>
+            <span class="gb-analytics-custom-date-separator">to</span>
+            <span class="gb-analytics-custom-date-to dropdown">
+                <span class="gb-analytics-custom-date-selected-value">{{selectedTimeFilter.endTime | date:'MM/dd/yyyy'}}</span>
+                <button class="btn btn-info dropdown-toggle gb-cal-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Select date">
+                    <span>
+                        <i class="fa fa-calendar"></i>
+                    </span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right gb-analytics-custom-date-dropdown" ng-click="$event.stopPropagation();">
+                    <datepicker ng-model="selectedTimeFilter.endTime" show-weeks="false" year-range="10" max-date="maxToDate"  min-date="selectedTimeFilter.startTime"></datepicker>
+                </ul>
+            </span>
+        </div>
+
+        <button class="btn gb-analytics-alert-search-btn" ng-show="selectedTimeFilter.label == 'Custom filter'" ng-click="applyTimeFilter()" title="Search">
+            <i class="fa fa-search"></i>
+        </button>
+
+        <div class="gb-analytics-alert-filter-selected-filter" ng-hide="selectedTimeFilter.label == 'Custom filter'">{{selectedTimeFilter.label}}</div>
+
+        <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle gb-analytics-alert-filter-btn" type="button" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="true" title="Filter">
+                <span>
+                    <i class="fa fa-filter"></i>
+                </span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+                <li role="presentation" ng-repeat="tf in timefilter" ng-click="alertsGraphTimeFilterChange(tf)">
+                    <a role="menuitem" tabindex="-1" href="#">{{tf.label}}<span  ng-if=" tf.label == 'Custom filter' ">({{customTimeMsg}})</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="gb-rule-wise-analytics-cntr" ng-class="{'no-data-found' : isNoDataFound()}">
+        <div class="gb-graph-loader" ng-show="loading"></div>
+        <div class="msg" ng-show="isNoDataFound() && !loading">Data not found</div>
+        <div class="gb-flex-column gb-lineChartContainer" id="lineChartContainer"  ng-hide="isNoDataFound()"> </div>
+        <div class="gb-flex-column gb-tileContainer"  ng-hide="isNoDataFound()">
+
+            <div class="gb-tiles gb-rule-analytics-totalalerts" id="TotalAlerts">
+                <div class="tile-icon">
+                    <i class="fa fa-bell" ></i>
+                </div>
+                <div class="alert-tile-content">
+                    <strong>{{ruleAlertCount}}</strong>
+                </div>
+                <span class="alert-tile-label">
+                    <h3>Alerts</h3>
+                </span>
+            </div>
+<!-- 
+            <div class="gb-tiles gb-rule-analytics-totalviews" id="TotalViews">
+                <i class="fa fa-eye"></i>
+            </div>
+
+            <div class="gb-tiles gb-rule-analytics-totallikes" id="TotalLikes">
+                <i class="fa fa-thumbs-up"></i>
+            </div> -->
+            <div class="gb-tiles gb-rule-analytics-percentageofalerts" id="PercentageOfAlerts">                
+                <div class="tile-icon">
+                    <i class="fa fa-percent"></i>
+                </div>
+                <div class="alert-tile-content">
+                    <strong>{{totalRuleAlertCount}}</strong>
+                </div>
+                <span class="alert-tile-label">
+                    <h4>{{rulesconstants['OF_TOTAL_ALERTS']}}</h4>
+                </span>
+            </div>
+        </div>        
+    </div>
+</div>

@@ -1,0 +1,1 @@
+Ê 2webXhr3dist/partials/rules-and-alerts/bulk_edit_rules.html

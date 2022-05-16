@@ -1,0 +1,1 @@
+<!DOCTYPE HTML><script src="/search/analytics/app/lib/xdomain/xdomain.min.js" master="http://*.glassbeam.com"></script>

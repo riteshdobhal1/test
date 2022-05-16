@@ -1,0 +1,1 @@
+æ 2webXhr-dist/partials/rules-and-alerts/test_rule.html

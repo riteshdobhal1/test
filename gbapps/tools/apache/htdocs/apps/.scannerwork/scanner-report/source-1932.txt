@@ -1,0 +1,77 @@
+<div class="gb-inline-modal" ng-hide="ctrl.info.pageLoading">
+    <div class="modal-body">
+        <div class="alert alert-danger gb-fileupload-msg" ng-repeat="error in ctrl.getUploadErrors() track by $index">
+            <span ng-bind-html="ctrl.renderHtml(error)"></span>
+        </div>
+        <div class="alert alert-success gb-fileupload-msg" sly-show="ctrl.info.uploadDone">
+            {{ctrl.getValue("file_upld_success")}}
+        </div>
+        <form class='form-horizontal' role='form'>
+            <gb-json-form json-data="ctrl.info.uploadData" upload-form="ctrl.uploadForm"></gb-json-form>
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Select file</label>
+                <div class="col-sm-8">
+							<span class="btn btn-success fileinput-button"> <i
+                                    class="glyphicon glyphicon-plus"></i> <span>Add files...</span>
+								<input type="file" name="filename" multiple="true" nv-file-select
+                                       uploader="ctrl.info.uploader" title=""/>
+							</span>
+                </div>
+            </div>
+            <div class="row gb-fileupload-filediv">
+                <table class="table gb-fileupload-files" cellpadding="0" cellspacing="0" width="100%">
+                    <tbody>
+                    <tr ng-repeat="item in ctrl.info.uploader.queue track by $index">
+                        <td class="gb-fileupload-filesize">{{$index+1}}.</td>
+                        <td class="gb-fileupload-filename" title="{{item.file.name}}">{{item.file.name|subStringToX:30}}
+                        </td>
+                        <td class="gb-fileupload-filesize" sly-show="ctrl.info.uploader.isHTML5" nowrap
+                            ng-attr-title="{{item.file.size}} B">{{ item.file.size | fileSize }}
+                        </td>
+                        <td class="gb-fileupload-progress" sly-show="ctrl.info.uploader.isHTML5">
+                            <div class="progress margin-btm-0">
+                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"
+                                     ng-class="{'zero-progress-bar': item.progress == 0}">{{item.progress}}%
+                                </div>
+                            </div>
+                        </td>
+                        <td class="gb-fileupload-status">
+                            <span sly-show="item.isSuccess"><i class="glyphicon glyphicon-ok"
+                                                               title="Success"></i></span>
+                            <span sly-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"
+                                                              title="Cancelled"></i></span>
+                            <span sly-show="item.isError"><i class="glyphicon glyphicon-remove"
+                                                             title="Failed"></i></span>
+                        </td>
+                        <td class="gb-fileupload-btn" width="21px">
+                            <button type="button" class="btn btn-default btn-s gb-fileupload-remove-btn" title="Cancel"
+                                    ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                <span class="icon-close"></span>
+                            </button>
+                        </td>
+                        <td class="gb-fileupload-btn" width="21px">
+                            <button type="button" class="btn btn-default btn-s gb-fileupload-remove-btn" title="Remove"
+                                    ng-click="ctrl.removeFile(item)" ng-disabled="item.isUploading">
+                                <span class="icon-trash"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer ">
+        <div class="gb-fileupload-footer">
+            <button type="button" class="gb-primary-btn gb-modal-btn-sm" title="Upload all" ng-click="ctrl.beginUpload()"
+                    ng-disabled="!ctrl.info.uploader.getNotUploadedItems().length">
+                <span class="glyphicon glyphicon-upload"></span> Upload all
+            </button>
+            <button type="button" class="gb-secondary-btn gb-modal-btn-sm" title="Remove all" ng-click="ctrl.removeAll()"
+                    ng-disabled="ctrl.info.uploader.isUploading || !ctrl.info.uploader.queue.length ">
+                <span class="glyphicon glyphicon-trash"></span> Remove all
+            </button>
+        </div>
+
+    </div>
+</div>

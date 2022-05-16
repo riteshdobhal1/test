@@ -1,0 +1,1 @@
+à 2webXhr7dist/partials/rules-and-alerts/manage_API_template.html

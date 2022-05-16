@@ -1,0 +1,1 @@
+ù 2webXjhr!app/partials/instance_viewer.html

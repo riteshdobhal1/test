@@ -1,0 +1,12 @@
+<div class="panel panel-primary gb-apps-pview-save-filter-popup" id="gb-explorer-event-group-confirmation-popup">
+	 <div class="panel-heading">Events Group</div>
+	<div class="panel-body">
+		<div ng-bind-html="renderHtml(logreduceMaxLimitMsg)"></div>
+	</div>
+	<div class="panel-footer">
+	  	<div class="btn-group" role="group" aria-label="...">
+		    <button type="button" class="gb-primary-btn gb-modal-btn-sm" ng-click="initiateLogReduce()">Yes</button>
+		    <button type="button" class="gb-secondary-btn gb-modal-btn-sm" ng-click="closeModal()">No</button>
+	  	</div>
+	</div>
+</div>

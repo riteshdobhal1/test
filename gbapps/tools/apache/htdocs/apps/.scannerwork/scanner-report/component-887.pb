@@ -1,0 +1,1 @@
+÷ 2webX1hrQdist/MDViz/module-thvis-v4/lib-js/amcharts/plugins/responsive/examples/gauge.html

@@ -1,0 +1,1 @@
+£ 2jsXšhrIapp/MDViz/module-Slim_Line_Temperature/lib-js/amcharts/exporting/canvg.js

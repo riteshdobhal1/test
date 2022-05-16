@@ -1,0 +1,336 @@
+<div id="end-customer-container" class="end-customer-listing-container">
+    <!-- <div class="no-endcustomers-block" ng-if="!endCustomerData.length">{{htmconstdata['NO_EC']}}!</div> -->
+    <div class="row">
+        <div class="col-md-2 pull-left endcustomer-filter-hamburger">
+            <a class="filter-btn-container" id="endcustomer-filterpanel-hamburger" title="Filter" ng-hide="showFilterPanel.endCustomer" ng-click="showFilterPanel.endCustomer = !showFilterPanel.endCustomer">
+                <span class="fa fa-filter column-filter-icon"></span>
+                <span ng-if="filterObj.endCustomerList.length" class="applied-filter-count" title="{{filterObj.endCustomerList.length}} filter(s) applied">({{filterObj.endCustomerList.length}})</span>
+            </a>
+        </div>
+        <div class="col-md-3 pull-right endcustomer-table-data-search">
+            <input type="text" class="form-control ng-pristine ng-valid" ng-model="searchText.tableSearch" placeholder="Search">
+        </div>
+    </div>
+    <div id="EndcustomerTableFilterCntr" class="filterContainer" ng-show="showFilterPanel.endCustomer" ng-class="{'col-fixed-240':showFilterPanel.endCustomer}">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 filter-panel-container">
+                    <div class="panel-heading">
+                        <span class="panel-title">
+                            <a>Filter</a>
+                            <div class="filter-action-container pull-right">
+                                <a class="fa fa-refresh" title="Clear Filter" ng-click="clearLocalFilter('endCustomer');" ng-class="{'disabled': !filterObj.endCustomerList.length}"></a>
+                                <a class="close-filter-btn fa fa-arrow-left" title="Close Filter Panel" ng-click="resetFilterExpanded('endCustomer');showFilterPanel.endCustomer = !showFilterPanel.endCustomer"></a>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="panel-group" id="endcustomer-accordian-{{filter.columnName}}">
+                        <div class="panel panel-default">
+                            <div ng-repeat="filter in endCustomerFilterGroupedData">
+                                <div class="panel-heading">
+                                    <a data-toggle="collapse" ng-init="filter.expand = false;" ng-click="filter.expand = !filter.expand"> 
+                                        <h4 class="panel-title">
+                                            <i class="indicator fa" ng-class="{'fa-angle-down': !filter.expand, 'fa-angle-up': filter.expand}" aria-hidden="true"></i>
+                                            <span data-toggle="collapse">{{filter.columnTitle}}</span>
+                                            <span ng-if="filter.appliedFilterCount > 0" class="group-filter-count pull-right">{{filter.appliedFilterCount}}</span>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <div id="endcustomer-accordian-collapse-{{filter.columnName}}" ng-class="{'panel-collapse collapse in': filter.expand, 'panel-collapse collapse': !filter.expand}" class="panel-collapse collapse">
+                                    <div class="panel-body" ng-if="filter.showSearch">
+                                        <div class="input-group margin-bottom-sm filter-search-container">
+                                            <input class="form-control" type="text" ng-model="filter.searchText" placeholder="Search">
+                                            <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                                        </div>
+                                        <div ng-repeat='filteredData in (endCustomerFilterData = (filter.data | filter: {name: filter.searchText}))'>
+                                            <div class="checkbox-cont" ng-show="filter.searchText.length && endCustomerFilterData.length">
+                                                <input type="checkbox" name="" id="" ng-model="filteredData.selected" class="gb-custom-checkbox glyphicon" ng-click="filteredData.selected = !filteredData.selected; updateDataFilter('endCustomerList', filter.columnName, filteredData.name, filteredData.selected, filter.multiselect, filter.data, filter)"/>
+                                                <span ng-bind="filteredData.label ? filteredData.label : filteredData.name" title="{{filteredData.label ? filteredData.label : filteredData.name}}"></span>
+                                            </div>  
+                                        </div>
+                                        <div class="no-data-msg" ng-if="!endCustomerFilterData.length">No Data.</div>
+                                    </div>
+                                    <div class="panel-body" ng-if="!filter.showSearch">
+                                        <div ng-repeat='filteredData in filter.data track by $index'>
+                                            <div class="checkbox-cont">
+                                                <input type="checkbox" name="" id="" ng-model="filteredData.selected" class="gb-custom-checkbox glyphicon" ng-click="filteredData.selected = !filteredData.selected; updateDataFilter('endCustomerList', filter.columnName, filteredData.name, filteredData.selected, filter.multiselect, filter.data, filter)"/>
+                                                <span ng-bind="filteredData.label ? filteredData.label : filteredData.name" title="{{filteredData.label ? filteredData.label : filteredData.name}}"></span>
+                                            </div>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive userListTableDiv" id="userListTableDiv" ng-class="{'col-offset-240':showFilterPanel.endCustomer}">
+        <div class="user-table-list" id="user-table-list-cntr"> 
+            <div class="user-table-grid-container">
+                <table class="table table-condensed table-bordered admin-panel-responsive-table end-customer-listing-table" ng-table="endCustomerParams" template-pagination="endCustomerTablePager.html">
+                    <!-- <tr class="table-bordered">
+                        <th class="checkboxcell"><input type="checkbox" class="gb-custom-checkbox glyphicon checkall" id="selectAllEndCustomer" ng-model="selectAllEndCustomers" ng-click="toggleEndCustomerSelectAll('all')"></th>
+                        <th>{{htmconstdata['EC_TITLE']}}</th>
+                        <th>Device ID</th>
+                        <th>Created By</th>
+                        <th>Modified On</th>
+                    </tr> -->
+                    <tr ng-repeat="endCustomer in endCustomerData track by $index">
+                        <td header="'headerCheckbox.html'">
+                            <input type="checkbox" ng-checked="endCustomer.selected" ng-click="toggleEndCustomerSelectAll(endCustomer)" name="selected" class="gb-custom-checkbox glyphicon">
+                        </td>
+                        <td class="end-customer-name-tabledata" data-title="'End Customer Name'" sortable="'endcustomer_name'">
+                            <span title="{{endCustomer.endcustomer_name}}">{{endCustomer.endcustomer_name}}</span>
+                        </td>
+                        <td data-title="'Device ID'" class="serial-number-tabledata">
+                            <span title="{{endCustomer.serial_number | arrayToString}}" ng-bind="endCustomer.serial_number | arrayToString"></span>
+                        </td>
+                        <td data-title="'Created By'" class="createdby-tabledata" sortable="'created_by'">
+                            <span title="{{endCustomer.created_by}}">{{endCustomer.created_by}}</span>
+                        </td>
+                        <td data-title="'Modified On'" class="end-customer-modified-on" sortable="'updated_on'">
+                            <span title="{{endCustomer.updated_on}}">{{endCustomer.updated_on}}</span>
+                            <a href="#" class="edit-end-customer btn btn-success btn-xs" data-backdrop="static" title="Edit" ng-click="editEndCustomerModal(endCustomer)">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                        <!-- <td class="RoleEndCustomerButton">
+                            <a href="#" class="btn btn-danger btn-xs" data-backdrop="static" title="Delete" ng-click="openModalPopup('#deleteEndCustomerConfModal');setEndCustomerToDelete(endCustomer)">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+                        </td> -->
+                    </tr>
+                    <tr ng-if="!endCustomerData.length">
+                        <td class="no-endcustomer-msg" colspan="5">{{htmconstdata['NO_EC']}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row margin-top-15">
+            <div class="col-md-2">
+                <a ng-class="{'disable-btn': !selectedEndCustomerToRemove}" ng-disabled="!selectedEndCustomerToRemove" class="btn btn-danger" id="endCustomerDeleteBtn" ng-click="openModalPopup('#deleteEndCustomerConfModal');setEndCustomerToDelete()" data-toggle="modal" data-target="" data-backdrop="static">
+                    <span class="glyphicon glyphicon-remove"></span> 
+                    Remove
+                </a> 
+            </div>
+            <div class="col-md-6 pagination-container" id="endCustomerListPagerLocation">
+            </div>
+            <div class="col-md-4 pull-right buttons-container">
+                <!-- <a class="btn btn-success" id="sysidListingBtn" ng-click="" data-toggle="modal" data-target="#sysIdListingModal" data-backdrop="static"> 
+                    <span>Serial Numbers</span>
+                </a> -->
+                <a class="btn btn-success margin-left-10" id="addEndCustomerUserBtn" ng-click="openModalPopup('#addEndCustomerModal'); resetPopup();" data-toggle="modal" data-target="" data-backdrop="static">
+                    <span class="glyphicon glyphicon-user"></span> 
+                    {{htmconstdata['ADD_EC']}}
+                </a>  
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- BO: ADD END CUSTOMER POPUP -->
+<div id="addEndCustomerModal" class="modal fade addEndCustomerModal endCustomerModalPopup" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="addEndCustomerModalClose" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{htmconstdata['ADD_EC']}}</h4>
+            </div>
+            <form name="addEndCustomerForm">
+                <div class="modal-body">
+                    <div class="form-group col-md-6">
+                        <label for="endcustomer_name">Customer Name:</label>
+                        <input type="text" class="form-control" name="endcustomer_name" id="endcustomer_name" ng-model="addNewEndCustomer.endCustomerName" ng-maxlength="256" required placeholder="Customer Name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="endcustomer_prodname">Product:</label>
+                        <select class="form-control" name="endcustomer_prodname" id="endcustomer_prodname" ng-model="addNewEndCustomer.prodName" ng-options="endCustomerProductList as endCustomerProductList.label for endCustomerProductList in endCustomerProductList track by endCustomerProductList.id" required ng-change="getSysIDList(addNewEndCustomer.prodName); setUnavailableSysidList(addNewEndCustomer.prodName);"></select>
+                    </div>
+                    <div ng-if="showSysIDList">
+                        <div class="form-group col-md-5 available-sysid-list" ng-class="isLoading ? 'loader' : ''">
+                            <span class="label-text">{{htmconstdata['AVAIL_SYSID']}}</span>
+                            <div class="sysid-empty-block" ng-if="sysIdList.length == 0">{{htmconstdata['NO_SYSID']}}</div>
+                            <div ng-if="showSearchBox">
+                                <input class="search-box" ng-model="searchText.val" placeholder="Search" ng-enter="getSysIDList(addNewEndCustomer.prodName)">
+                                <span class="clear-text" title="Clear" ng-click="clearSearchText(addNewEndCustomer.prodName)"><i class="fa fa-times" aria-hidden="true"></i></span>
+                            </div>
+                            <select id="add-endcustomer-sysid" class="sysid-list add-sysid-list" name="available-sysids" size="{{sysIdList.length}}" ng-model="sysIds.toAddList" multiple ng-if="!isLoading">
+                                <option class="sysid-item" ng-repeat="sysid in sysIdList | orderBy: ['selected']" value="{{sysid.name}}" ng-disabled="sysid.selected">{{sysid.name}}</option>
+                            </select>
+                            <div ng-if="!isLoading && sysIdList.length > 0">
+                                <span class="pull-left pagination-text margin-top-10" ng-bind="paginationText"></span>
+                                <div class="pull-right pagination-links-cont">
+                                    <a class="btn btn-xs btn-primary" ng-disabled="pagination.currentPage == 1" ng-click="loadPrevSet(addNewEndCustomer.prodName)">
+                                        <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                        <span>Previous</span>
+                                    </a>
+                                    <a class="btn btn-xs btn-primary margin-left-10" ng-disabled="pagination.currentPage >= pagination.noOfPages" ng-click="loadNextSet(addNewEndCustomer.prodName)">
+                                        <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                                        <span>Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2 sysid-action-container">
+                            <button id="addEndCustomerAddBtn" type="button" class="btn btn-primary add-sysids-btn" ng-click="addSysIds();resetScrollTop('add-endcustomer-sysid')" ng-disabled="sysIds.toAddList.length == 0">
+                                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                                <span class="label-text">Add</span>
+                            </button>
+                            <button id="addEndCustomerDeleteBtn" type="button" class="btn btn-primary remove-sysids-btn margin-top-10" ng-disabled="sysIds.toRemoveList.length == 0" ng-click="removeSysIds()">
+                                <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                                <span class="label-text">Remove</span>
+                            </button>
+                        </div>
+                        <div class="form-group col-md-5 selected-sysid-list">
+                            <span class="label-text">{{htmconstdata['SELECTED_SYSID']}}</span>
+                            <div class="sysid-empty-block" ng-if="selectedSysIds.length == 0">None selected</div>
+                            <select class="sysid-list remove-sysid-list" name="selected-sysids" size="{{selectedSysIds.length}}" ng-model="sysIds.toRemoveList" multiple>
+                                <option class="sysid-item" ng-repeat="sysid in selectedSysIds" value="{{sysid.name}}">{{sysid.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-6 alert alert-danger text-center" ng-if="showEndCustomerExistsError">
+                        <span>{{htmconstdata['EC_ERROR']}}!</span>
+                    </div>
+                    <div class="col-md-3 pull-right">
+                        <button type="submit" id="addEndCustomerModalSubmit" class="btn btn-primary btn-block pull-right" ng-click="addEndCustomer()" ng-disabled="addEndCustomerForm.$invalid || selectedSysIds.length == 0"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- EO: ADD END CUSTOMER POPUP -->
+
+<!-- BO: SYSID LISTING POPUP -->
+<div id="sysIdListingModal" class="modal fade addEndCustomerModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="sysIdListingModalClose" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Serial Numbers List</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-condensed table-bordered end-customer-listing-table">
+                    <tr class="table-bordered">
+                        <th>End Customer Name</th>
+                        <th>SysID</th>
+                    </tr>
+                    <tr>  
+                        <td>Group A</td>
+                        <td>sysid, sysid6, sysid9</td>
+                    </tr>
+                    <tr>
+                        <td>Group B</td>
+                        <td>sysid1, sysid3, sysid5</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-3 pull-right">
+                    <button type="submit" id="sysIdListingCloseButton" data-dismiss="modal" class="btn btn-primary btn-block pull-right">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- EO: SYSID LISTING POPUP -->
+
+<!-- BO: EDIT END CUSTOMER POPUP -->
+<div id="editEndCustomerModal" class="modal fade editEndCustomerModal endCustomerModalPopup" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="editEndCustomerModalClose" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{htmconstdata['EDIT_EC']}}</h4>
+            </div>
+            <form>
+                <div class="modal-body">
+                    <div class="form-group col-md-6">
+                        <label for="editendcustomer_name">Customer Name:</label>
+                        <input type="text" class="form-control" id="editendcustomer_name" ng-model="editEndCustomer.endCustomerName" ng-required="isRequired('endcustomer_name')" placeholder="Customer Name" ng-disabled="true">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="editendcustomer_prodname">Product Name:</label>
+                        <select class="form-control" ng-disabled="true" id="editendcustomer_prodname" ng-model="editEndCustomer.prodName" ng-options="newUsermps_defOptions as newUsermps_defOptions.label for newUsermps_defOptions in newUsermps_defOptions track by newUsermps_defOptions.id" required="true" ng-change="requiredCheck('endcustomer_prodname')"></select>
+                    </div>
+                    <div class="form-group col-md-5 available-sysid-list"  ng-class="isLoading ? 'loader' : ''">
+                        <span class="label-text">{{htmconstdata['AVAIL_SYSID']}}</span>
+                        <div class="sysid-empty-block" ng-if="sysIdList.length == 0 && !isLoading">{{htmconstdata['NO_SYSID']}}</div>
+                        <div ng-if="showSearchBox">
+                            <input class="search-box" ng-model="searchText.val" placeholder="Search" ng-enter="getSysIDList(editEndCustomer.prodName)">
+                            <span class="clear-text" title="Clear" ng-click="clearSearchText(editEndCustomer.prodName)"><i class="fa fa-times" aria-hidden="true"></i></span>
+                        </div>
+                        <select id="edit-endcustomer-sysid" class="sysid-list add-sysid-list" name="available-sysids" size="{{sysIdList.length}}" ng-model="sysIds.toAddList" multiple ng-if="!isLoading">
+                            <option class="sysid-item" ng-repeat="sysid in sysIdList | orderBy: ['selected']" value="{{sysid.name}}" ng-disabled="sysid.selected">{{sysid.name}}</option>
+                        </select>
+                        <div ng-if="!isLoading && sysIdList.length > 0">
+                            <span class="pull-left pagination-text margin-top-10" ng-bind="paginationText"></span>
+                            <div class="pull-right pagination-links-cont">
+                                <a class="btn btn-xs btn-primary" ng-disabled="pagination.currentPage == 1" ng-click="loadPrevSet(editEndCustomer.prodName)">
+                                    <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                                    <span>Previous</span>
+                                </a>
+                                <a class="btn btn-xs btn-primary margin-left-10" ng-disabled="pagination.currentPage >= pagination.noOfPages" ng-click="loadNextSet(editEndCustomer.prodName)">
+                                    <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                                    <span>Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-2 sysid-action-container">
+                        <button id="endCustomerAddBtn" type="button" class="btn btn-primary add-sysids-btn" ng-click="addSysIds();resetScrollTop('edit-endcustomer-sysid')" ng-disabled="sysIds.toAddList.length == 0">
+                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            <span class="label-text">Add</span>
+                        </button>
+                        <button id="endCustomerDeleteBtn" type="button" class="btn btn-primary remove-sysids-btn margin-top-10" ng-click="removeSysIds()" ng-disabled="sysIds.toRemoveList.length == 0">
+                            <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+                            <span class="label-text">Remove</span>
+                        </button>
+                    </div>
+                    <div class="form-group col-md-5 selected-sysid-list">
+                        <span class="label-text">{{htmconstdata['SELECTED_SYSID']}}</span>
+                        <div class="sysid-empty-block" ng-if="selectedSysIds.length == 0">None selected</div>
+                        <select class="sysid-list remove-sysid-list" name="selected-sysids" size="{{selectedSysIds.length}}" ng-model="sysIds.toRemoveList" multiple>
+                            <option class="sysid-item" ng-repeat="sysid in selectedSysIds" value="{{sysid.name}}">{{sysid.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-3 pull-right">
+                        <button type="submit" id="editEndCustomerModalSubmit" class="btn btn-primary btn-block pull-right" ng-click="updateEndCustomerDetails()" ng-disabled="selectedSysIds.length == 0"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- EO: EDIT END CUSTOMER POPUP -->
+
+<!-- BO: DELETE END CUSTOMER POPUP -->
+<div id="deleteEndCustomerConfModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" id="deleteEndCustomerConfModalClose" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">{{htmconstdata['DEL_EC']}}</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{htmconstdata['DEL_CONF_TEXT']}} <b>{{currentEndCustomerToDelete.endcustomer_name}}</b> ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="deleteEndCustomerModalCancel" class="btn btn-default pull-left" data-dismiss="modal">Cancel</button>
+                <button type="button" id="deleteEndCustomerModalYes" data-dismiss="modal" ng-click="deleteEndCustomer()" class="btn btn-danger pull-right">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- EO: DELETE END CUSTOMER POPUP -->
+
+<script type="text/ng-template" id="headerCheckbox.html">
+    <input ng-if="endCustomerData.length" id="selectAllEndCustomer" type="checkbox" ng-checked="selectAllEndCustomersAll" ng-model="selectAllEndCustomers.val" class="gb-custom-checkbox glyphicon checkall" ng-click="toggleEndCustomerSelectAll('all',selectAllEndCustomers.val)"/>
+</script>

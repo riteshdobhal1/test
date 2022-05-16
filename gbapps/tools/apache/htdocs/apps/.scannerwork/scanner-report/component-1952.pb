@@ -1,0 +1,1 @@
+  2webXPhr2app/partials/rules-and-alerts/manage_template.html

@@ -1,0 +1,52 @@
+{
+    "Status": "Success",
+    "Msg": "List of tags for siemens, siemens, podui and siemens",
+    "Data": [
+        {
+         "tag_id": 1617168168,
+            "tag_name": "CT ALERT",
+            "rules_subscribed": 5,
+            "rules_total": 10,
+            "enabled_rules": 12,
+            "disabled_rules": 5,
+         "draft_rules": 0
+        },
+        {
+            "tag_id": 16171634423,
+            "tag_name": "TUBE ALERT",
+            "rules_subscribed": 11,
+            "rules_total": 25,
+            "enabled_rules": 2,
+            "disabled_rules": 5,
+         "draft_rules": 8
+        },
+        {
+            "tag_id": 147896523,
+            "tag_name": "MRI ALERT",
+            "rules_subscribed": 11,
+            "rules_total": 25,
+            "enabled_rules": 2,
+            "disabled_rules": 5,
+         "draft_rules": 8
+        },
+        {
+            "tag_id": 125874856,
+            "tag_name": "CRITICAL ALERT",
+            "rules_subscribed": 11,
+            "rules_total": 25,
+            "enabled_rules": 2,
+            "disabled_rules": 5,
+         "draft_rules": 8
+        },
+        {
+            "tag_id": 124874585,
+            "tag_name": "FAILURE ALERT",
+            "rules_subscribed": 11,
+            "rules_total": 25,
+            "enabled_rules": 2,
+            "disabled_rules": 5,
+         "draft_rules": 8
+        }
+    ]
+ }
+ 

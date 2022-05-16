@@ -1,0 +1,3 @@
+Customer noticed Oil leak from the Gantry
+CSE checked and found Oil traces in the covers and at the bottom of the Gantry but not in rotating part. Was not sure where the Oil leak was from
+Checking the tube history we see an Oil presssure drop. The Oil leak is from the tube or cooler, Since it is a very small leak the Oil traces are not seen in the rotating part of the Gantry as it dries off.

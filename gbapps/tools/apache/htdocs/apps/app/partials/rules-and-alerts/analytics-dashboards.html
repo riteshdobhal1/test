@@ -1,0 +1,88 @@
+<!-- <div class="analytics-window-loader"></div> -->
+<div class="analyticsNavTab" class="container">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a href="#rulesGraphContainer" data-toggle="tab">Rules</a>
+        </li>
+        <li>
+            <a href="#alertsGraphContainer" data-toggle="tab">Alerts</a>
+        </li>
+    </ul>
+</div>
+<div id="ramodalbody" class="modal-body container-fluid  tab-content" ng-controller="AnalyticsCtrl">
+    <div id="rulesGraphContainer" class="tab-pane fade in active ">
+        <div class="rulesGraphContainer">
+            <div class="rulesGraphContainerFlexDiv rulesGraphContainer-pie">
+                <div class="box gb-rules-analytics-dashboards-tile" pie-chart type="status" charttitle="All Rules" ng-if="ruleAnalyticsConfig.tiles.status"></div>  
+                <div class="box gb-rules-analytics-dashboards-tile" pie-chart type="severity" charttitle="Rules By Severity" ng-if="ruleAnalyticsConfig.tiles.severity"></div>
+                <div class="box gb-rules-analytics-dashboards-tile" pie-chart type="priority" charttitle="Rules By Priority" ng-if="ruleAnalyticsConfig.tiles.priority"></div>
+            </div>
+            <div class="rulesGraphContainerFlexDiv rulesGraphContainer-bar">
+                <div class="gb-rules-analytics-dashboards-heatmap-tile" gb-heatmap type="creatorVsCategory" charttitle="Rules By Owner And Category"  ng-if="ruleAnalyticsConfig.tiles.creatorVsCategory" ></div>     
+                <div class="gb-rules-analytics-dashboards-category-bar-tile" gb-v-barchart type="category" charttitle="Rules By Category"  ng-if="ruleAnalyticsConfig.tiles.category" ></div>
+                <div class="gb-rules-analytics-dashboards-category-bar-tile" gb-v-barchart type="owner" charttitle="Rules By Owner"  ng-if="ruleAnalyticsConfig.tiles.owner" ></div>
+                <div class="gb-rules-analytics-dashboards-barChart-tile" gb-barchart type="alertIntervals" charttitle="Rules Not Triggered By Intervals" ng-if="ruleAnalyticsConfig.tiles.rulesTriggerInterval" ></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="alertsGraphContainer" class="tab-pane fade in">
+        <div class="alertsTimeAndDateBar">
+
+            <div class="gb-analytics-custom-date-cntr" ng-show="selectedTimeFilter.label == 'Custom filter'">
+                <span class="gb-analytics-custom-date-from dropdown">
+                    <span class="gb-analytics-custom-date-selected-value">{{selectedTimeFilter.startTime | date:'MM/dd/yyyy'}}</span>
+                    <button class="btn btn-info dropdown-toggle gb-cal-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Select date">
+                        <span>
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right gb-analytics-custom-date-dropdown" ng-click="$event.stopPropagation();">
+                        <datepicker ng-model="selectedTimeFilter.startTime" show-weeks="false" year-range="10" max-date="selectedTimeFilter.endTime" min-date="minFromDate"></datepicker>
+                    </ul>
+
+                </span>
+                <span class="gb-analytics-custom-date-separator">to</span>
+                <span class="gb-analytics-custom-date-to dropdown">
+                    <span class="gb-analytics-custom-date-selected-value">{{selectedTimeFilter.endTime | date:'MM/dd/yyyy'}}</span>
+                    <button class="btn btn-info dropdown-toggle gb-cal-icon" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" title="Select date">
+                        <span>
+                            <i class="fa fa-calendar"></i>
+                        </span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right gb-analytics-custom-date-dropdown" ng-click="$event.stopPropagation();">
+                        <datepicker ng-model="selectedTimeFilter.endTime" show-weeks="false" year-range="10" max-date="maxToDate"  min-date="selectedTimeFilter.startTime"></datepicker>
+                    </ul>
+                </span>
+            </div>
+
+            <button class="btn gb-analytics-alert-search-btn" ng-show="selectedTimeFilter.label == 'Custom filter'" ng-click="applyTimeFilter()" title="Search">
+                <i class="fa fa-search"></i>
+            </button>
+
+            <div class="gb-analytics-alert-filter-selected-filter" ng-hide="selectedTimeFilter.label == 'Custom filter'">{{selectedTimeFilter.label}}</div>
+
+            <div class="dropdown">
+                <button class="btn btn-info dropdown-toggle gb-analytics-alert-filter-btn" type="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="true" title="Filter">
+                    <span>
+                        <i class="fa fa-filter"></i>
+                    </span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li role="presentation" ng-repeat="tf in timefilter" ng-click="alertsGraphTimeFilterChange(tf)">
+                        <a role="menuitem" tabindex="-1" href="#">{{tf.label}}<span  ng-if=" tf.label == 'Custom filter' ">({{customTimeMsg}})</span>
+                    </li></a>
+                </ul>
+            </div>
+        </div>
+        <div class="alertsGraphContainerFlexDiv">
+            <div class="box scale-in-center gb-rules-analytics-dashboards-tile gb-rules-analytics-alertsTriggeredBySeverity" pie-chart-load type="AlertsTriggeredBySeverity" charttitle="Alerts Triggered By Severity"
+                ng-if="ruleAnalyticsConfig.tiles.triggeredVsSeverity"></div>
+            <div class="box scale-in-center gb-rules-analytics-dashboards-tile gb-rules-analytics-alertsTriggeredBySeverityByTime" gb-stackedchart type="AlertsTriggeredBySeverityByTime"
+                charttitle="Number Of Alerts by Severity by Time" ng-if="ruleAnalyticsConfig.tiles.severityVsTime"></div>
+            <div class="box scale-in-center gb-rules-analytics-dashboards-tile" gb-toprules type="TopTenRules" charttitle="Top 10 Rules"
+                ng-if="ruleAnalyticsConfig.tiles.top10"></div>
+        </div>
+    </div>
+</div>

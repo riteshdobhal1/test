@@ -1,0 +1,1 @@
+¸ 2webX]hr0app/partials/uns-rules-and-alert/upload_log.html

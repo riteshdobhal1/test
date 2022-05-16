@@ -1,0 +1,25 @@
+<div class="analytics gb-apps-container" ng-controller="AnalyticsCtrl as analyticsCtrl" id="analyticsDiv">
+    <nav class="primary-nav" ng-controller='MenuCtrl as menuCtrl'>
+        <div ng-class="{'nav-selected' : menuCtrl.getCurrentLabel() == menuItem.label}" class="primary-nav-item dropdown navbar-left"
+             ng-repeat='menuItem in menuCtrl.menu' ng-show="menuItem.features">
+            <a data-toggle="dropdown" id="urlChangeLink" class="dropdown-toggle"
+               ng-click="menuCtrl.setUrl(menuItem.link, menuItem.label)">{{menuItem.label}}<span ng-if="menuItem.features.length"
+                                                                                        class="caret"></span></a>
+            <ul role="menu" class="dropdown-menu">
+                <li ng-repeat="feature in menuItem.features">
+                    <a ng-click='menuCtrl.setUrl(feature.link, menuItem.label)'>{{feature.label}}</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class='page-loader' id="pageLoader" ng-hide="appCtrl.info.complete"></div>
+    <div ng-show="appCtrl.info.complete">
+        <div align="center" class="msg_style1">
+            <div ng-repeat="msg in analyticsCtrl.getError() track by $index">
+                <span ng-bind-html="analyticsCtrl.renderHtml(msg)"></span>
+            </div>
+        </div>
+        <ng-include src="'partials/sectionview.html'" ng-show="analyticsCtrl.isSectionTab()"></ng-include> 
+        <ng-include src="'partials/configdiff.html'" ng-show="!analyticsCtrl.isSectionTab()"></ng-include> 
+    </div>
+</div>

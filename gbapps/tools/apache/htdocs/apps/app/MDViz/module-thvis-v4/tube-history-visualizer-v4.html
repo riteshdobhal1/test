@@ -1,0 +1,1212 @@
+<html>
+<head>
+<script type="text/javascript" src="lib-js/amcharts/amcharts.js"></script>
+<script type="text/javascript" src="lib-js/amcharts/serial.js"></script>
+<script type="text/javascript" src="../tracking_user.js"></script>
+<style type="text/css">
+* {
+	font-family: helvetica, sans-serif;
+	font-size: 10pt;
+}
+table {
+	border:0px solid white;
+	border-collapse:collapse;
+	background-color: #eeeeee;
+}
+.header {
+	border:7px solid white;
+}
+.meta {
+	padding-right:13px;
+}
+.meta2 {
+	padding-right:2px;
+	padding-left:5px;
+	text-align: left;
+}
+.messageField {
+	padding-bottom:10px;
+	background-color: #ffffaa;
+}
+</style>
+<title>Tube History Visualizer v.4</title>
+</head>
+
+<body>
+
+<div id="divDebugInfo"></div>
+
+<table>
+<tr>
+<!-- part left top -->
+<td class="header">
+Tube history file:
+<input type="file" id="fileinput"/>
+</td>
+<!-- part right -->
+<td id="metadataTable" class="header" valign="top" rowspan="2" style="display:none;">
+<table border=0 cellpadding=2 height="100%">
+<tr>
+<td class="meta2">Customer</td>
+<td class="meta" id="customer" colspan="3">Customer,City,District</td>
+<td class="meta2">Tube type</td>
+<td class="meta" id="tubeType">xxx</td>
+<td class="meta2">SW version</td>
+<td class="meta" id="swVersion">Vxxxx</td>
+<td class="meta2">SW ver. prev.</td>
+<td class="meta" id="swVersionPrev">Vxxxx</td>
+</tr>
+<tr>
+<td class="meta2">System serial</td>
+<td class="meta" id="serial">00000</td>
+<td></td>
+<td></td>
+<td class="meta2">Tube system</td>
+<td class="meta" id="tubeSystem">A or B</td>
+<td class="meta2">SW installed</td>
+<td class="meta" id="instSW">0000-00-00</td>
+<td class="meta2">SW prev. inst.</td>
+<td class="meta" id="instSWprev">0000-00-00</td>
+</tr>
+<tr>
+<td class="meta2" id="labelScanSecs">Tube scan sec.</td>
+<td class="meta" id="scanSecs">000000</td>
+<td class="meta2">Installed</td>
+<td class="meta" id="installed">0000-00-00</td>
+<td class="meta2">Tube serial</td>
+<td class="meta" id="tubeSerial">00000000</td>
+<td class="meta2">KWs since inst.</td>
+<td class="meta" id="tubeKWs">0000000</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="meta2">Number of scans</td>
+<td class="meta" id="numScans">000000</td>
+<td class="meta2">Deinstalled</td>
+<td class="meta" id="deinstalled">0000-00-00</td>
+<td class="meta2">Tube revision</td>
+<td class="meta" id="tubeRevision">xxx</td>
+<td class="meta2">System scan sec.</td>
+<td class="meta" id="systemSecs">0000000</td>
+<td class="meta2">TH version</td>
+<td class="meta" id="thVersion">00</td>
+</tr>
+</table>
+</td>
+</tr>
+<!-- part left bottom -->
+<tr>
+<td id="selectTimeRange" class="header" style="display:none;">
+<table border=0 bgcolor="#ffffff">
+<tr>
+<td>Start date:</td>
+<td id="valueSlider1" width=100>(none)</td>
+<td>
+<input id="slider1" type="range" min="0" max="9" step="1" value="0" disabled
+	onchange="showSliderValue('slider1','valueSlider1');"/>
+</td>
+<td rowspan="3">
+<input id="buttonPlot" type="button" value="Plot" 
+	style="height:40px; width:50px" 
+	onclick="callbackPlotButton();" disabled>
+</td>
+</tr>
+<tr>
+<td>End date:</td>
+<td id="valueSlider2">(none)</td>
+<td>
+<input id="slider2" type="range" min="0" max="9" step="1" value="9" disabled
+	onchange="showSliderValue('slider2','valueSlider2');"/>
+</td>
+</tr>
+<tr>
+<td id="numScansSelected" colspan="3">Number of scans selected: 0</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div id="divProgress" style="display:none;">
+<progress id="progressLoadFile" value="50" max="100"></progress>
+</div>
+
+<span id="divMessage">Click on the above button to load a tube history file.</span>
+
+
+<div id="divSelectParameters" style="visibility:hidden;">
+<p>
+Parameter 1:
+<select id="tube_param1" onchange="selectParam('tube_param1', 0, chart, true);" 
+	style="background-color: #ccccff; width: 200px;" disabled>
+</select>
+&nbsp;&nbsp;&nbsp;
+2:
+<select id="tube_param2" onchange="selectParam('tube_param2', 1, chart, true);" 
+	style="background-color: #ffcccc; width: 200px;" disabled>
+</select>
+
+<!--
+&nbsp;&nbsp;&nbsp;
+Indic:
+<select id="indicator1" onchange="selectIndicator('indicator1', chart, true);" 
+	style="background-color: #ffdd77; width: 150px;" disabled>
+<option>reason_suspendedbyuser</option>
+</select>
+<span id="num_hits"></span>
+-->
+
+&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+
+Parameter 3:
+<select id="tube_param3" onchange="selectParam('tube_param3', 0, chart2, true);" 
+	style="background-color: #ccffcc; width: 200px;" disabled>
+</select>
+&nbsp;&nbsp;&nbsp;
+4:
+<select id="tube_param4" onchange="selectParam('tube_param4', 1, chart2, true);" 
+	style="background-color: #ffccff; width: 200px;" disabled>
+</select>
+</p>
+</div>
+
+<div id="divPlotArea" style="visibility:hidden;">
+<div id="divChart1" style="width: 100%; height: 100px; background-color: #eeeeee;"></div>
+<div id="divChart2" style="width: 100%; height: 100px; background-color: #eeeeee;"></div>
+</div>
+
+
+
+
+<script src="TubeHistoryFormat21.js"></script> 
+<script src="TubeHistoryFormat32.js"></script> 
+<script src="TubeHistoryFormat43.js"></script> 
+<script src="TubeHistoryFormat81.js"></script> 
+
+<script type="text/javascript">
+var indicatorValueMin = 0;
+var indicatorValueMax = 5;
+var switchAutoAdjustParameterLimits = true;
+var thFormat;
+var fileObj;
+var fileReader;
+var progressElement;
+var serial = "unknown serial";
+var chart;
+var fullData = [];
+var chartData = [];
+var listDays = [];
+var numScans = [];
+var indexDayStart = [];
+var indexDayEnd = [];
+var stopwatchStartTimestamp;
+var zoomStartDate = [];
+var zoomEndDate = [];
+var zoomStartIndexLast;
+var zoomEndIndexLast;
+var colorGraph1 = "#0000ff";
+var colorGraph2 = "#ff0000";
+var colorGraph3 = "#00aa00";
+var colorGraph4 = "#ff00ff";
+var colorIndicator1 = "#ffdd77";
+var scrollbarHeight = 40;
+var chartHeight = 400;
+// indicators[name] = [...]  array of Date()
+var indicators = {};
+var guideIndicators = {};
+
+function initializeChart() {
+    chart = new AmCharts.AmSerialChart();
+    chart.dataProvider = chartData;
+    chart.categoryField = "datetime";
+    chart.sequencedAnimation = false;
+	chart.categoryAxis.minPeriod = "ss";
+	chart.categoryAxis.parseDates = true;
+	chart.addListener("zoomed", handleZoom);
+
+    // value axis 1
+    var valueAxis1 = new AmCharts.ValueAxis();
+	valueAxis1.title = "v_ax_1";
+    valueAxis1.axisAlpha = 0.15;
+    valueAxis1.minimum = 0;
+    valueAxis1.dashLength = 3;
+	valueAxis1.color = colorGraph1;
+	valueAxis1.gridColor = colorGraph1;
+	valueAxis1.titleColor = colorGraph1;
+    chart.addValueAxis(valueAxis1);
+    // graph 1
+    var graph1 = new AmCharts.AmGraph();
+	graph1.id = "g1";
+	graph1.valueAxis = valueAxis1;
+    graph1.valueField = "oil_pressure";
+    //graph1.fillAlphas = 0.5;
+    graph1.balloonText = "[[value]] : [[kind]]";
+	graph1.lineColor = colorGraph1;
+	graph1.bulletSize = 5;
+	graph1.bullet = "round";
+	graph1.bulletBorderAlpha = 1;
+	graph1.bulletColor = "#FFFFFF";
+	graph1.hideBulletsCount = 1000;
+	graph1.useLineColorForBulletBorder = true;
+    chart.addGraph(graph1);
+
+	// value axis 2
+	var valueAxis2 = new AmCharts.ValueAxis();
+	valueAxis2.title = "v_ax_2";
+	valueAxis2.axisAlpha = 0.15;
+	valueAxis2.minimum = 0;
+	valueAxis2.dashLength = 3;
+	valueAxis2.position = "right";
+	valueAxis2.color = colorGraph2;
+	valueAxis2.gridColor = colorGraph2;
+	valueAxis2.titleColor = colorGraph2;
+	chart.addValueAxis(valueAxis2);
+	// graph 2
+	var graph2 = new AmCharts.AmGraph();
+	graph2.id = "g2";
+	graph2.valueAxis = valueAxis2;
+	graph2.valueField = "arcings_one";
+	graph2.bullet = "triangleDown";
+	graph2.balloonText = "[[value]]";
+	graph2.hideBulletsCount = 1000;
+	graph2.bulletBorderThickness = 1;
+	graph2.lineColor = colorGraph2;
+	graph2.hidden = false;
+	chart.addGraph(graph2);
+
+	var chartCursor = new AmCharts.ChartCursor();
+    chartCursor.categoryBalloonDateFormat = "MMM DD, JJ:NN:SS EEE";
+    chartCursor.cursorPosition = "mouse";
+	chart.chartCursor = chartCursor;
+
+	var chartScrollbar = new AmCharts.ChartScrollbar();
+	chartScrollbar.graph = "g1";
+	chartScrollbar.scrollbarHeight = scrollbarHeight;
+	chartScrollbar.backgroundAlpha = 0;
+	chartScrollbar.selectedBackgroundAlpha = 0.1;
+	chartScrollbar.selectedBackgroundColor = "#888888";
+	chartScrollbar.graphFillAlpha = 0;
+	chartScrollbar.graphLineAlpha = 0.5;
+	chartScrollbar.selectedGraphFillAlpha = 0;
+	chartScrollbar.selectedGraphLineAlpha = 1;
+	chartScrollbar.autoGridCount = true;
+	chartScrollbar.color = "#AAAAAA";
+	chart.chartScrollbar = chartScrollbar;
+	chart.pathToImages = "lib-js/amcharts/images/";
+
+    chart.write("divChart1");
+}
+
+function initializeChart2() {
+    chart2 = new AmCharts.AmSerialChart();
+    chart2.dataProvider = chartData;
+    chart2.categoryField = "datetime";
+    chart2.sequencedAnimation = false;
+	chart2.categoryAxis.minPeriod = "ss";
+	chart2.categoryAxis.parseDates = true;
+	chart2.addListener("zoomed", handleZoom2);
+
+    // value axis 1
+    var valueAxis1 = new AmCharts.ValueAxis();
+	valueAxis1.title = "v_ax_1";
+    valueAxis1.axisAlpha = 0.15;
+    valueAxis1.minimum = 0;
+    valueAxis1.dashLength = 3;
+	valueAxis1.color = colorGraph3;
+	valueAxis1.gridColor = colorGraph3;
+	valueAxis1.titleColor = colorGraph3;
+    chart2.addValueAxis(valueAxis1);
+    // graph 3
+    var graph3 = new AmCharts.AmGraph();
+	graph3.id = "g3";
+	graph3.valueAxis = valueAxis1;
+    graph3.valueField = "frequency";
+    //graph3.fillAlphas = 0.5;
+    graph3.balloonText = "[[value]] : [[kind]]";
+	graph3.lineColor = "#00aa00";
+	graph3.bulletSize = 5;
+	graph3.bullet = "round";
+	graph3.bulletBorderAlpha = 1;
+	graph3.bulletColor = "#FFFFFF";
+	graph3.hideBulletsCount = 1000;
+	graph3.useLineColorForBulletBorder = true;
+    chart2.addGraph(graph3);
+
+	// value axis 2
+	var valueAxis2 = new AmCharts.ValueAxis();
+	valueAxis2.title = "v_ax_1";
+	valueAxis2.axisAlpha = 0.15;
+	valueAxis2.minimum = 0;
+	valueAxis2.dashLength = 3;
+	valueAxis2.position = "right";
+	valueAxis2.color = colorGraph4;
+	valueAxis2.gridColor = colorGraph4;
+	valueAxis2.titleColor = colorGraph4;
+	chart2.addValueAxis(valueAxis2);
+	// graph 4
+	var graph4 = new AmCharts.AmGraph();
+	graph4.id = "g4";
+	graph4.valueAxis = valueAxis2;
+	graph4.valueField = "arcings_both";
+	graph4.bullet = "triangleDown";
+	graph4.balloonText = "[[value]]";
+	graph4.hideBulletsCount = 1000;
+	graph4.bulletBorderThickness = 1;
+	graph4.lineColor = "#ff00ff";
+	graph4.hidden = false;
+	chart2.addGraph(graph4);
+
+	var chartCursor = new AmCharts.ChartCursor();
+    chartCursor.categoryBalloonDateFormat = "MMM DD, JJ:NN:SS";
+    chartCursor.cursorPosition = "mouse";
+	chart2.chartCursor = chartCursor;
+
+	chart2.pathToImages = "lib-js/amcharts/images/";
+
+    chart2.write("divChart2");
+}
+
+function initializeCharts() {
+	initializeChart();
+	initializeChart2();
+	chart.autoMargins = false;
+	chart.marginLeft  = 70;
+	chart.marginRight = 70;
+	chart.marginBottom = 20;
+	chart2.autoMargins = false;
+	chart2.marginLeft = chart.marginLeft;
+	chart2.marginRight = chart.marginRight;
+	chart2.marginBottom = chart.marginBottom;
+}
+
+function handleZoom(event) {
+	var z1 = event.startDate;
+	var z2 = event.endDate;
+	zoomStartIndexLast = event.startIndex;
+	zoomEndIndexLast = event.endIndex;
+	chart2.zoomToDates(z1, z2);		// sync zoom with chart 2
+	//showMessage(zoomStartIndexLast + '-' + zoomEndIndexLast);
+}
+
+function handleZoom2(event) {
+	var z1 = event.startDate;
+	var z2 = event.endDate;
+	zoomStartIndexLast = event.startIndex;
+	zoomEndIndexLast = event.endIndex;
+	chart.zoomToDates(z1, z2);		// sync zoom with chart 1
+	//showMessage(zoomStartIndexLast + '-' + zoomEndIndexLast);
+}
+
+function loadFullData(datalines, iFirst, thFormat) {
+	//document.getElementById('divDebugInfo').innerHTML = 'loadFullData start';
+	chartData = [];
+	// -----------------------needed???
+	//AmCharts.ready(initializeChart);
+	//chart.validateData();
+	fullData = [];
+	// reverse order to sort chronologically
+	for (var i=datalines.length-1; i>=iFirst; i--) {
+		if (datalines[i].length > 0) {
+			var record = thFormat.parseDataLine(datalines[i]);
+			fullData.push(record);
+			//document.getElementById('divDebugInfo').innerHTML = datalines[i];
+			//document.getElementById('divDebugInfo').innerHTML = getKeyValuePairs(record).join('<br>');
+			//break; //####################################################
+		}
+	}
+	//document.getElementById('divDebugInfo').innerHTML = 'loadFullData end';
+}
+
+function fullDataToString(fullData) {
+	var ss = new Array(fullData.length);
+	for (var i=0; i<fullData.length; i++) {
+		var record = fullData[i];
+		var zz = new Array();
+		for (var k in record) {
+			zz.push(k + "=" + record[k]);
+		}
+		ss[i] = zz.join(", ");
+	}
+	return ss.join("<br>");
+}
+
+function formatNumberThousands(x) {
+//document.getElementById('divDebugInfo').innerHTML = x;
+	if (x < 1000) { return String(x); }
+	var z = String(x);
+	var nDigits = z.length;
+//document.getElementById('divDebugInfo').innerHTML = nDigits;
+	var suffix = '';
+	var idx = z.indexOf('.');
+	if (idx != -1) {
+		suffix = z.substring(idx, nDigits);
+		z = z.substring(0, idx);
+		nDigits = z.length;
+	}
+//document.getElementById('divDebugInfo').innerHTML = suffix;
+	var nTriplets = Math.floor(nDigits / 3);
+//document.getElementById('divDebugInfo').innerHTML = nTriplets;
+	var s = '';
+	for (var k=0; k<nTriplets; k++) {
+		if (k > 0) { s = ',' + s; }
+		var i = nDigits - (k+1)*3;
+		s = z.substr(i, 3) + s;
+	}
+	var nPrefix = nDigits - nTriplets*3;
+	if (nPrefix > 0) {
+		s = z.substr(0, nPrefix) + ',' + s;
+	}
+	s = s + suffix;
+//document.getElementById('divDebugInfo').innerHTML = s;
+	return s;
+}
+
+function colorCodeTubeScanSeconds(scanSecs) {
+	//document.getElementById('divDebugInfo').innerHTML = scanSecs;
+	var fieldScanSecs = document.getElementById('scanSecs');
+	var labelScanSecs = document.getElementById('labelScanSecs');
+	fieldScanSecs.style.backgroundColor = '#aaffaa';
+	fieldScanSecs.style.color = 'black';
+	fieldScanSecs.style.fontWeight = 'normal';
+	labelScanSecs.style.backgroundColor = '#aaffaa';
+	labelScanSecs.style.color = 'black';
+	labelScanSecs.style.fontWeight = 'normal';
+	if (scanSecs > 350000) {
+		fieldScanSecs.style.backgroundColor = 'yellow';
+		fieldScanSecs.style.color = 'black';
+		fieldScanSecs.style.fontWeight = 'normal';
+		labelScanSecs.style.backgroundColor = 'yellow';
+		labelScanSecs.style.color = 'black';
+		labelScanSecs.style.fontWeight = 'normal';
+	}
+	if (scanSecs > 600000) {
+		fieldScanSecs.style.backgroundColor = 'red';
+		fieldScanSecs.style.color = 'white';
+		fieldScanSecs.style.fontWeight = '900';
+		labelScanSecs.style.backgroundColor = 'red';
+		labelScanSecs.style.color = 'white';
+		labelScanSecs.style.fontWeight = '900';
+	}
+}
+
+function showMetadataAll(datalines, thFormat) {
+	//document.getElementById('divDebugInfo').innerHTML = 'showMetadataAll start';
+	var metadata = thFormat.readMetadata(datalines);
+	//document.getElementById('divDebugInfo').innerHTML = getKeys(metadata);
+	//document.getElementById('divDebugInfo').innerHTML = getKeyValuePairs(metadata).join('<br>');
+
+	for (var k in metadata) {
+		document.getElementById(k).innerHTML = metadata[k];
+	}
+
+	if (thFormat.numCols == 32) {
+		// Perspective tubes
+		// Tube Scan Seconds      : 200000 (199999 within eMode range)
+		// System Scan Seconds    : 200000 (199999 within eMode range)
+		var tokens = metadata.scanSecs.split(/ /);
+		var scanSecs = Number(tokens[0]);
+		var scanSecsEmode = Number(tokens[1].replace(/\(/, ''));
+		tokens = metadata.systemSecs.split(/ /);
+		var systemSecs = Number(tokens[0]);
+		var systemSecsEmode = Number(tokens[1].replace(/\(/, ''));
+
+		// color-code tube scan seconds
+		colorCodeTubeScanSeconds(scanSecs);
+
+		// format large numbers
+		document.getElementById('scanSecs').innerHTML = formatNumberThousands(scanSecs) + ' (eMode: ' + formatNumberThousands(scanSecsEmode) + ')';
+		document.getElementById('systemSecs').innerHTML = formatNumberThousands(systemSecs) + ' (eMode: ' + formatNumberThousands(systemSecsEmode) + ')';
+	}
+	else {
+		// other tubes
+		var scanSecs = Number(metadata.scanSecs);
+		var systemSecs = Number(metadata.systemSecs);
+
+		// color-code tube scan seconds
+		colorCodeTubeScanSeconds(scanSecs);
+
+		// format large numbers
+		document.getElementById('scanSecs').innerHTML = formatNumberThousands(scanSecs);
+		document.getElementById('systemSecs').innerHTML = formatNumberThousands(systemSecs);
+	}
+
+	// independent of format
+	document.getElementById('numScans').innerHTML = formatNumberThousands(Number(metadata.numScans));
+	document.getElementById('tubeKWs').innerHTML = formatNumberThousands(Number(metadata.tubeKWs));
+
+	//document.getElementById('divDebugInfo').innerHTML = 'showMetadataAll end';
+}
+
+function showMessage(text, bgcolor) {
+	var x = document.getElementById('divMessage');
+	x.innerHTML = text;
+	x.style.backgroundColor = bgcolor;
+} 
+
+function countScansPerDay(fullData) {
+	//document.getElementById('divDebugInfo').innerHTML = "start countScansPerDay";
+	//document.getElementById('divDebugInfo').innerHTML = fullData.length;
+	listDays = [];
+	numScans = [];
+	indexDayStart = [];
+	indexDayEnd = [];
+	var dateLast = '';
+	var n = 0;
+	for (var i=0; i<fullData.length; i++) {
+		var d = fullData[i].datetime.toLocaleDateString();
+		if (i == 0) {
+			listDays.push(d);
+			n = 1;
+			dateLast = d;
+			indexDayStart.push(0);
+		}
+		else {
+			if (d != dateLast) {
+				listDays.push(d);
+				numScans.push(n);
+				n = 1;
+				dateLast = d;
+				indexDayStart.push(i);
+				indexDayEnd.push(i-1);
+			}
+			else {
+				n++;
+			}
+		}
+	}
+	numScans.push(n);
+	indexDayEnd.push(fullData.length-1);
+
+	//for (var i=0; i<numScans.length; i++) { numScans[i] *= 1000; }
+	//document.getElementById('divDebugInfo').innerHTML = numScans;
+	//document.getElementById('divDebugInfo').innerHTML = listDays;
+	//document.getElementById('divDebugInfo').innerHTML = indexDayStart.toString()+'--'+indexDayEnd.toString();
+}
+
+function setSliderInitialPosition() {
+	var idxDayLast = listDays.length - 1;
+	document.getElementById('slider1').max = idxDayLast;
+	document.getElementById('slider2').max = idxDayLast;
+	document.getElementById('slider2').value = idxDayLast;
+	var idxDayFirst = 0;
+	var maxScans = 10000;
+	var sumScans = 0;
+	for (var i=idxDayLast; i>=0; i--) {
+		sumScans += numScans[i];
+		if (sumScans >= maxScans) {
+			idxDayFirst = i+1;
+			if (idxDayFirst > idxDayLast) { idxDayFirst=idxDayLast; }
+			break;
+		}
+	}
+	document.getElementById('slider1').value = idxDayFirst;
+}
+
+function showSliderValue(idSlider, idTextfield) {
+	var s = document.getElementById(idSlider);
+	var t = document.getElementById(idTextfield);
+	//t.innerHTML = s.value;
+	t.innerHTML = listDays[Number(s.value)];
+
+	var buttonPlot = document.getElementById('buttonPlot');
+
+	var i1 = Number(document.getElementById('slider1').value);
+	var i2 = Number(document.getElementById('slider2').value);
+	if (i2 >= i1) {
+		var numScansSelected = 0;
+		for (var i=i1; i<=i2; i++) {
+			numScansSelected += numScans[i];
+		}
+		buttonPlot.disabled = false;
+		document.getElementById('slider1').disabled = false;
+		document.getElementById('slider2').disabled = false;
+		showMessage('', '#ffffff');
+	}
+	else {
+		numScansSelected = 0;
+		buttonPlot.disabled = true;
+		showMessage('Please select an end date after the start date.', '#ffff00');
+	}
+	document.getElementById('numScansSelected').innerHTML = 'Number of scans selected: ' + String(numScansSelected);
+}
+
+function resetSelectElement(id) {
+	var x = document.getElementById(id);
+
+	// remove all
+	while (x.options.length) {
+		x.remove(0);
+	}
+}
+
+function resetMetadata() {
+	var keys = [
+		'thVersion',
+		'swVersionPrev',
+		'instSWprev',
+		'swVersion',
+		'instSW',
+		'tubeSystem',
+		'customer',
+		'installed',
+		'deinstalled',
+		'serial',
+		'tubeSerial',
+		'tubeRevision',
+		'tubeType',
+		'numScans',
+		'tubeKWs',
+		'scanSecs',
+		'systemSecs'
+	];
+	for (var k=0; k<keys.length; k++) {
+		document.getElementById(keys[k]).innerHTML = '';
+	}
+
+	var fieldScanSecs = document.getElementById('scanSecs');
+	var labelScanSecs = document.getElementById('labelScanSecs');
+	fieldScanSecs.style.backgroundColor = '#eeeeee';
+	fieldScanSecs.style.color = 'black';
+	labelScanSecs.style.backgroundColor = '#eeeeee';
+	labelScanSecs.style.color = 'black';
+}
+
+function fillSelectElement(id, thFormat) {
+	resetSelectElement(id);
+
+	var x = document.getElementById(id);
+
+	for (var k=0; k<thFormat.columnDef.length; k++) {
+		if (thFormat.columnDef[k].plot==1) {
+			var c = document.createElement("option");
+			c.text = thFormat.columnDef[k].id;
+			x.options.add(c);
+		}
+	}
+	x.disabled = false;
+}
+
+function addEmptyOptionToSelectElement(id) {
+	var x = document.getElementById(id);
+	var c = document.createElement("option");
+	c.text = '(none)';
+	c.selected = true;
+	x.options.add(c, 0);
+}
+
+function getKeys(struct) {
+	var keys = [];
+	for (var k in struct) {
+		keys.push(k);
+	}
+	return keys;
+}
+
+function getKeyValuePairs(struct) {
+	var pairs = [];
+	for (var k in struct) {
+		pairs.push(k + '=' + struct[k]);
+	}
+	return pairs;
+}
+
+function makeUsableAsKey(strInput) {
+	var strCleaned = '';
+	// replace any non-word character with an underscore
+	strCleaned = strInput.replace(/\W/g, '_');
+	return strCleaned;
+}
+
+function addIndicator(colName) {
+	var hash = {};
+	for (var i=0; i<fullData.length; i++) {
+		var key = makeUsableAsKey(fullData[i][colName]);
+		hash[key] = 1;
+	}
+	var listIndicatorNames = [];
+	for (var k in hash) {
+		listIndicatorNames.push(colName + '_' + k);
+	}
+	//document.getElementById('divDebugInfo').innerHTML = listIndicatorNames;
+
+	for (var i=0; i<fullData.length; i++) {
+		// add columns for indicators
+		for (var k=0; k<listIndicatorNames.length; k++) {
+			fullData[i][listIndicatorNames[k]] = 0;
+		}
+		// set 1 for actual value
+		var k0 = colName + '_' + makeUsableAsKey(fullData[i][colName]);
+		fullData[i][k0] = 1;
+	}
+	//document.getElementById('divDebugInfo').innerHTML = getKeys(fullData[0]).join("<br>");
+
+	// add indicators to column definition
+	for (var k=0; k<listIndicatorNames.length; k++) {
+		thFormat.columnDef.push(
+			{ id: listIndicatorNames[k], plot: 1, min: indicatorValueMin, max: indicatorValueMax }
+		);
+	}
+}
+
+function loadIndicatorSingle(colName) {
+	// first pass: get indicator levels
+	var hash = {};
+	for (var i=0; i<chartData.length; i++) {
+		var key = makeUsableAsKey(chartData[i][colName]);
+		hash[key] = 1;
+	}
+	var listIndicatorLevels = [];
+	for (var k in hash) {
+		listIndicatorLevels.push(colName + '_' + k);
+	}
+	//document.getElementById('divDebugInfo').innerHTML = listIndicatorLevels;
+
+	// initialize
+	for (var k=0; k<listIndicatorLevels.length; k++) {
+		indicators[listIndicatorLevels[k]] = [];
+	}
+
+	// second pass: extract timestamps for each level
+	var colNameTimestamp = thFormat.columnDef[thFormat.indexTimestamp].id;
+	for (var i=0; i<chartData.length; i++) {
+		var level = colName + '_' + makeUsableAsKey(chartData[i][colName]);
+		var ts = chartData[i][colNameTimestamp];
+		indicators[level].push(ts);
+		//document.getElementById('divDebugInfo').innerHTML = ts;
+	}
+	//document.getElementById('divDebugInfo').innerHTML = getKeys(chartData[0]).join("<br>");
+}
+
+function loadIndicatorsAll() {
+	indicators = {};
+	for (var k=0; k<thFormat.columnDef.length; k++) {
+		if (thFormat.columnDef[k].plot==2) {
+			loadIndicatorSingle(thFormat.columnDef[k].id);
+		}
+	}
+	//document.getElementById('divDebugInfo').innerHTML = getKeys(indicators).join("<br>");
+	//document.getElementById('divDebugInfo').innerHTML = indicators['region_head'];
+	//document.getElementById('divDebugInfo').innerHTML = indicators['region_body'].join("<br>");
+
+	guideIndicators = {};
+	for (var level in indicators) {
+		var listTimestamps = indicators[level];
+		var guides = [];
+		for (var i=0; i<listTimestamps.length; i++) {
+			guides.push({
+				date: listTimestamps[i],
+				lineColor: colorIndicator1,
+				lineAlpha: 1,
+				tickLength: 0
+			});
+		}
+		guideIndicators[level] = guides;
+	}
+	//document.getElementById('divDebugInfo').innerHTML = guideIndicators['region_body'].join("<br>");
+	//document.getElementById('divDebugInfo').innerHTML = guideIndicators['region_head'].join("<br>");
+}
+
+function loadTubeHistoryFormat(sampleLine) {
+	//document.getElementById('divDebugInfo').innerHTML = 'loadTubeHistoryFormat start';
+	//document.getElementById('divDebugInfo').innerHTML = sampleLine;
+	var formatCode = -1;
+	if (sampleLine.match(/\t/)) {
+		// formats 43 and 81
+		var tokens = sampleLine.split("\t");
+		formatCode = tokens.length;
+	}
+	else {
+		// formats 21 and 32
+		var s = sampleLine.replace(/^\s+/, '');
+		s = s.replace(/\s+$/, '');
+		var tokens = s.split(/\s+/);
+		if (tokens.length == 22) { formatCode = 21; }
+		if (tokens.length == 33) { formatCode = 32; }
+		//document.getElementById('divDebugInfo').innerHTML = sampleLine + '--' + tokens.length;
+		//document.getElementById('divDebugInfo').innerHTML = tokens.join('<br>') + tokens.length;
+	}
+	//document.getElementById('divDebugInfo').innerHTML = formatCode;
+
+	if (formatCode == -1) {
+		showMessage('Tube history file has unknown format.', '#ffff00');
+	}
+
+	// load format definition
+	if (formatCode == 21) { return loadTubeHistoryFormat21(); }
+	if (formatCode == 32) { return loadTubeHistoryFormat32(); }
+	if (formatCode == 43) { return loadTubeHistoryFormat43(); }
+	if (formatCode == 81) { return loadTubeHistoryFormat81(); }
+}
+
+// update min/max values for parameters based on loaded data
+function updateParameterLimits() {
+	for (var i=0; i<fullData.length; i++) {
+		var record = fullData[i];
+		for (var k=0; k<thFormat.columnDef.length; k++) {
+			if (thFormat.columnDef[k].plot==1) {
+				var colName = thFormat.columnDef[k].id;
+				var val = record[colName];
+				// update min-value
+				if (val < thFormat.columnDef[k].min) { thFormat.columnDef[k].min = val; }
+				// update max-value
+				if (val > thFormat.columnDef[k].max) { thFormat.columnDef[k].max = val; }
+			}
+		}
+	}
+}
+
+function fillSelectElementIndicator(id) {
+	var x = document.getElementById(id);
+
+	// remove all
+	while (x.options.length) {
+		x.remove(0);
+	}
+
+	for (var level in indicators) {
+		var c = document.createElement("option");
+		c.text = level;
+		x.options.add(c);
+	}
+	x.disabled = false;
+	addEmptyOptionToSelectElement(id);
+}
+
+function findFirstDataLine(datalines) {
+	var regex = /^\s*\d/;
+	var iFirst = -1;
+	for (var i=0; i<datalines.length; i++) {
+		if (datalines[i].match(regex)) {
+			iFirst = i;
+			break;
+		}
+	}
+	return iFirst;
+}
+
+function parseData(strInput) {
+	//document.getElementById('divDebugInfo').innerHTML = 'parseData start';
+	var n = strInput.length;
+	//document.getElementById('divDebugInfo').innerHTML = "length = " + String(n);
+	var datalines = strInput.split("\n");
+	var nLines = datalines.length;
+	//document.getElementById('divDebugInfo').innerHTML = "nLines = " + String(nLines);
+
+	// find first line that starts with a digit
+	var iFirst = findFirstDataLine(datalines);
+	//document.getElementById('divDebugInfo').innerHTML = iFirst;
+	//document.getElementById('divDebugInfo').innerHTML = datalines[iFirst];
+
+	if (iFirst == -1) {
+		showMessage('Cannot find a line with data in selected file.', '#ffff00');
+		//document.getElementById('divDebugInfo').innerHTML = 'Cannot find a line with data in tube history file.';
+		return 9001;
+	}
+
+	// load format definition based on first data line
+	thFormat = loadTubeHistoryFormat(datalines[iFirst]);
+	//document.getElementById('divDebugInfo').innerHTML = thFormat.columnDef[0].id;
+	//document.getElementById('divDebugInfo').innerHTML = thFormat.columnDef[19].id;
+	//document.getElementById('divDebugInfo').innerHTML = thFormat.numCols;
+
+	// show metadata
+	showMetadataAll(datalines, thFormat);
+
+	// load data
+	loadFullData(datalines, iFirst, thFormat);
+	//document.getElementById('divDebugInfo').innerHTML = fullDataToString(fullData);
+
+	if (switchAutoAdjustParameterLimits) {
+		updateParameterLimits();
+	}
+
+	// add indicators
+	var listIndicators = [];
+	for (var k=0; k<thFormat.columnDef.length; k++) {
+		if (thFormat.columnDef[k].plot==2) {
+			listIndicators.push(thFormat.columnDef[k].id);
+		}
+	}
+	for (var k=0; k<listIndicators.length; k++) {
+		addIndicator(listIndicators[k]);
+	}
+
+	// fill select elements
+	fillSelectElement('tube_param1', thFormat);
+	fillSelectElement('tube_param2', thFormat);
+	fillSelectElement('tube_param3', thFormat);
+	fillSelectElement('tube_param4', thFormat);
+	addEmptyOptionToSelectElement('tube_param1');
+	addEmptyOptionToSelectElement('tube_param2');
+	addEmptyOptionToSelectElement('tube_param3');
+	addEmptyOptionToSelectElement('tube_param4');
+
+	countScansPerDay(fullData);
+	setSliderInitialPosition();
+	showSliderValue('slider1','valueSlider1');
+	showSliderValue('slider2','valueSlider2');
+
+	return 0;
+}
+
+function getColumnIndex(thFormat, id) {
+	var idxColumn = -1;
+	for (var k=0; k<thFormat.columnDef.length; k++) {
+		if (thFormat.columnDef[k].id == id) {
+			idxColumn = k;
+			break;
+		}
+	}
+	return idxColumn;
+}
+
+function selectParam(idSelectBox, idxGraph, chart, doRefresh) {
+	var e = document.getElementById(idSelectBox);
+	var param = e.options[e.selectedIndex].value;
+
+	if (param == "(none)") {
+		chart.graphs[idxGraph].hidden = true;
+	}
+	else {
+		chart.graphs[idxGraph].valueField = param;
+		chart.graphs[idxGraph].hidden = false;
+		chart.graphs[idxGraph].valueAxis.title = param;
+
+		var idxColumn = getColumnIndex(thFormat, param);
+		//showMessage(param + "--" + idxColumn, "#ffff00");
+		chart.graphs[idxGraph].valueAxis.minimum = thFormat.columnDef[idxColumn].min;
+		chart.graphs[idxGraph].valueAxis.maximum = thFormat.columnDef[idxColumn].max;
+	}
+
+	// store zoom window because validateData() overwrites it
+	var z1 = zoomStartIndexLast;
+	var z2 = zoomEndIndexLast;
+
+	if (doRefresh) chart.validateData();
+
+	// restore zoom window
+	//if (doRefresh) chart.zoomToIndexes(zoomStartIndexLast, zoomEndIndexLast);
+	if (doRefresh) chart.zoomToIndexes(z1, z2);
+}
+
+function selectIndicator(idSelectBox, chart, doRefresh) {
+	var e = document.getElementById(idSelectBox);
+	var level = e.options[e.selectedIndex].value;
+
+	// remove guides
+	chart.categoryAxis.guides = [];
+	chart.guides = [];
+
+	var numScansText = '';
+	if (level == "(none)") {
+		//chart.guides = [];
+		//chart.categoryAxis.guides = [];
+	}
+	else {
+		chart.guides = guideIndicators[level];
+		if (chart.guides.length == 1) {
+			numScansText = '1 scan';
+		}
+		else {
+			numScansText = chart.guides.length + ' scans';
+		}
+	}
+//showMessage(level, '#ffff00');
+//showMessage(level + ':' + chart.categoryAxis.guides.length, '#ffff00');
+//showMessage(level + ':' + chart.guides.length, '#ffff00');
+//showMessage(indicators[level], '#ffff00');
+
+	document.getElementById('num_hits').innerHTML = numScansText;
+
+	// store zoom window because validateData() overwrites it
+	var z1 = zoomStartIndexLast;
+	var z2 = zoomEndIndexLast;
+
+	if (doRefresh) chart.validateData();
+
+	// restore zoom window
+	//if (doRefresh) chart.zoomToIndexes(zoomStartIndexLast, zoomEndIndexLast);
+	if (doRefresh) chart.zoomToIndexes(z1, z2);
+}
+
+function stopwatchStart() {
+	stopwatchStartTimestamp = Date.now();
+}
+
+function stopwatchEnd() {
+	return Date.now() - stopwatchStartTimestamp;
+}
+
+function preselectTubeParameter() {
+	var paramName = '';
+	if (thFormat.numCols == 21) { paramName = 'temp_Kelvin'; }
+	if (thFormat.numCols == 32) { paramName = 'UDC_Volt'; }
+	if (thFormat.numCols == 43) { paramName = 'oil_pressure'; }
+	if (thFormat.numCols == 81) { paramName = 'gantry_temp'; }
+	selectOption('tube_param1', paramName);
+}
+
+function callbackOnLoad(e) {
+	//document.getElementById('divDebugInfo').innerHTML = 'callbackOnLoad start';
+	var ret = parseData(fileReader.result);
+	document.getElementById('fileinput').disabled = false;
+	if (ret != 0) {
+		return;
+	}
+
+	var t = Number(stopwatchEnd())*1e-3;
+	t = t.toFixed(1);
+	var text = 'Finished reading file in ' + String(t) + ' sec.';
+	text = text + '<br>Select a time range and tube parameters. Then click on the <i>Plot</i> button.';
+	showMessage(text, '#ffffff');
+
+	document.getElementById('metadataTable').style.display = 'table-cell';
+	document.getElementById('selectTimeRange').style.display = 'table-cell';
+	document.getElementById('divSelectParameters').style.visibility = 'visible';
+
+	preselectTubeParameter();
+}
+
+function callbackOnLoadStart(e) {
+	document.getElementById('divPlotArea').style.visibility = 'hidden';
+	document.getElementById('divSelectParameters').style.visibility = 'hidden';
+	document.getElementById('metadataTable').style.display = 'none';
+	document.getElementById('selectTimeRange').style.display = 'none';
+	//document.getElementById('divProgress').style.visibility = 'visible';
+	document.getElementById('fileinput').disabled = true;
+
+	showMessage('Reading file ...', '#ffff00');
+	stopwatchStart();
+	// reset select menus
+	resetSelectElement('tube_param1');
+	resetSelectElement('tube_param2');
+	resetSelectElement('tube_param3');
+	resetSelectElement('tube_param4');
+	// clear plots
+	fullData = [];
+	chartData = [];
+	chart.dataProvider = [];
+	chart2.dataProvider = [];
+	chart.validateData();
+	chart2.validateData();
+	// disable GUI elements
+	document.getElementById('buttonPlot').disabled = true;
+	document.getElementById('slider1').disabled = true;
+	document.getElementById('slider2').disabled = true;
+	// reset metadata
+	resetMetadata();
+
+	//progressElement.max = 1;
+	//progressElement.value = 0;
+}
+
+function selectOption(id, name) {
+	var e = document.getElementById(id);
+	for (var i=0; i<e.options.length; i++) {
+		if (e.options[i].text == name) {
+			e.options.selectedIndex = i;
+			break;
+		}
+	}
+}
+
+function callbackPlotButton() {
+	document.getElementById('divPlotArea').style.visibility = 'visible';
+
+	//document.getElementById('divDebugInfo').innerHTML = 'Plot button pressed';
+	document.getElementById('divChart1').style.backgroundColor = '#ffffff';
+	document.getElementById('divChart2').style.backgroundColor = '#ffffff';
+	showMessage('', '#ffffff');
+
+	// copy subset
+	var k1 = Number(document.getElementById('slider1').value);
+	var k2 = Number(document.getElementById('slider2').value);
+	var i1 = indexDayStart[k1];
+	var i2 = indexDayEnd[k2];
+	chartData = fullData.slice(i1, i2+1);
+	//document.getElementById('divDebugInfo').innerHTML = i1+'--'+i2;
+
+	// add indicators
+	//loadIndicatorsAll();
+	//fillSelectElementIndicator('indicator1');
+
+	//showMessage(i1 + ' ' + i2, '#ffffff');
+	//document.getElementById('divDebugInfo').innerHTML = fullDataToString(chartData);
+
+	chart.dataProvider = chartData;
+	chart2.dataProvider = chartData;
+
+	// default selected options
+	/*
+	selectOption('tube_param1', 'oil_pressure');
+	selectOption('tube_param2', 'arcings_one');
+	selectOption('tube_param3', 'frequency');
+	selectOption('tube_param4', 'arcings_both');
+	*/
+
+	var doRefresh = false;
+	selectParam('tube_param1', 0, chart, doRefresh);
+	selectParam('tube_param2', 1, chart, doRefresh);
+	selectParam('tube_param3', 0, chart2, doRefresh);
+	selectParam('tube_param4', 1, chart2, doRefresh);
+	//selectIndicator('indicator1', chart, doRefresh);
+
+	// balloon text for primary graph
+	var scanModeId = thFormat.columnDef[thFormat.indexScanMode].id;
+	chart.graphs[0].balloonText = "[[value]] : [[" + scanModeId + "]]";
+	chart2.graphs[0].balloonText = "[[value]] : [[" + scanModeId + "]]";
+
+	chart.validateData();
+	chart2.validateData();
+
+	//chart.invalidateSize();
+}
+
+function callbackOnProgress(event) {
+	if (event.lengthComputable) {
+		progressElement.max = event.total;
+		progressElement.value = event.loaded;
+	}
+}
+
+function callbackOnLoadEnd(event) {
+	var error = event.target.error;
+	if (error != null) {
+		showMessage('Error loading file.', '#ffff00');
+	} else {
+		//progressElement.max = 1;
+		//progressElement.value = 1;
+	}
+};
+
+function readSingleFile(evt) {
+	//document.getElementById('divDebugInfo').innerHTML = 'readSingleFile start';
+	fileObj = evt.target.files[0];
+
+	if (fileObj) {
+		fileReader = new FileReader();
+		fileReader.onload = callbackOnLoad;
+		fileReader.onloadstart = callbackOnLoadStart;
+		//fileReader.onprogress = callbackOnProgress;
+		//fileReader.onloadend = callbackOnLoadEnd;
+		fileReader.readAsText(fileObj);
+	} else {
+		showMessage('Failed to load file', '#ffff00');
+	}
+}
+
+document.getElementById('divChart1').style.height = String(chartHeight) + 'px';
+document.getElementById('divChart2').style.height = String(chartHeight - scrollbarHeight) + 'px';
+//document.getElementById('divDebugInfo').innerHTML = document.getElementById('divChart2').style.height;
+
+AmCharts.ready(initializeCharts);
+document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+
+//progressElement = document.getElementById("progressLoadFile");
+
+</script>
+
+</body>
+</html>

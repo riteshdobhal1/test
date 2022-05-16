@@ -1,0 +1,53 @@
+<div class="panel panel-primary" id="gb-facet-more-popup">
+	<div class="panel-heading"><span class="icon fa fa-users"   ></span>Add/Edit Subscribers 
+		<span class="close" title="close" ng-click="modal.close()"><i class="fa fa-times" aria-hidden="true"></i></span></div>
+	<div class="panel-body gb-facet-more-popup-body">
+		<div class="gb-facet-loader" ng-show="info.subloading">
+			<div class="gb-facet-loader-body-center">
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+			</div>
+		</div>
+        <div class="gb-add-edit-subscriber-toolbar"> 
+            
+            <div class="autocomplete">
+                <textarea placeholder="Enter Email" id="searchField" ng-model = "info.emailText" class="form-control gb-subscription-email-textarea "  maxlength="2048" ng-keyup="checkemail($event)"></textarea>
+                <button type="button" ng-click="addSubscribersbtn()" class="gb-primary-btn gb-modal-btn-sm gb-autosub-add-btn">Add</button>
+            </div>
+             
+            <div class="search-remove-div">
+            <input type="text" placeholder="Search subscribers" class="gb-add-edit-subscriber-toolbar-searchInput" ng-model="info.searchEmailText" ng-change="loadSubscribers()"/> 
+            <button type="button"  ng-click="bulkRemoveSubscriers()" ng-disabled="!info.subBulkRemoveBtn" class="gb-primary-btn gb-modal-btn-sm gb-autosub-add-btn">remove</button>
+            </div>
+            
+        </div>
+
+		<div class="gb-facet-more-popup-body-contents" id="gb-facet-more-popup-body-contents">
+			<ul class="gb-add-edit-subscriber-list" id="gb-facet-more-popup-facet-list" >
+				<li ng-repeat="item in info.showSubList track by $index" ng-class="{'listTitle': item.listTitle}" 
+                 title="{{item.label}}" id="gb-facet-more-grouped-name">
+
+					
+                        <input type="checkbox" class="gb-custom-checkbox glyphicon" value="883 Police" ng-model="item.selected" ng-change="showBulkRemoveBtn()">
+
+                            <span ng-class="{'email-span-checked' :item.selected}" class="email-span">{{item.label|cut:false:40:'...'}} 
+                            <span title="Remove" class="gb-subscription-email-remove-icon" ng-click="removeFromSubscriptionList(item)"><i class="fa fa-times" aria-hidden="true"></i></span></span>
+
+                      
+                        <div class="checkboxIndicator"></div>
+					</li>
+			</ul>
+			<ul class="gb-facet-more-popup-facet-list-zero" ng-if="!ctrl.facetList.length" ng-show="info.searchEmailText && !info.showSubList.length">
+				
+				<div class="msg" style="">No data found</div>
+			</ul>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<div class="btn-group gb-show-subscriber-footer-btn" role="group" aria-label="...">
+			<button type="button" class="gb-primary-btn gb-modal-btn-sm" ng-click="modal.close()">Save</button>
+		</div>
+	</div>
+</div>

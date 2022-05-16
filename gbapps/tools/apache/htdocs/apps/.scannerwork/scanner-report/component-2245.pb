@@ -1,0 +1,1 @@
+Å 2webX{hrDapp/MDViz/module-Sensation_Temperature/Sensation_Temperature-v1.html

@@ -1,0 +1,1 @@
+¡ 2jsXŒhrGapp/MDViz/module-Slim_Line_Temperature/lib-js/SlimLineRoomTempParser.js

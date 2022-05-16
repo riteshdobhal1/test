@@ -1,0 +1,1 @@
+ç 2webXhrdist/partials/delete_view.html

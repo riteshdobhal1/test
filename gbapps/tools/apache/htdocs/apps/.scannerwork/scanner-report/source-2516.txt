@@ -1,0 +1,6 @@
+.tabAuthMastheadWorkbookAreaLinks > div:nth-child(1):nth-last-child(3) {
+	display: none !important;
+}
+.tabAuthMenuBarMenu.userMenu {
+display:none;
+}

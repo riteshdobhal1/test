@@ -1,0 +1,15 @@
+<div class="col-md-5 col-sm-6"  id="gbSelectDomainForm">
+<h3>Choose Domain</h3>
+	<div class="forgotsection">
+	 
+	<form method="post" id="" ng-controller="SelectDomainCtrl" accept-charset="UTF-8" novalidate>
+		<div>	
+			<div class="form-item form-type-textfield form-item-name">									 
+				 <select ng-model='info.customer' ng-change="loadUi()" required 
+						ng-options='option.value as option.name for option in info.domainNameList'></select>
+			</div>						 
+		</div>
+	</form>
+	</div>
+	<div class="clearfix"></div>
+</div>

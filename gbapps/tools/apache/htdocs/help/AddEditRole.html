@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="HelpNDoc Personal Edition 7.9.1.631">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="favicon.ico"/>
+
+  <title>Add/Edit Role</title>
+  <meta name="description" content="" /> 
+  <meta name="keywords" content="">
+
+
+
+  
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Add/Edit Role">
+  <meta name="twitter:description" content="">
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Add/Edit Role" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="Glassbeam Analytics" /> 
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendors/bootstrap-3.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <link href="vendors/bootstrap-3.4.1/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="vendors/html5shiv-3.7.3/html5shiv.min.js"></script>
+      <script src="vendors/respond-1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <!-- JsTree styles -->
+  <link href="vendors/jstree-3.3.10/themes/default/style.min.css" rel="stylesheet"/>
+
+  <!-- Hnd styles -->
+  <link href="css/layout.min.css" rel="stylesheet" />
+  <link href="css/effects.min.css" rel="stylesheet" />
+  <link href="css/theme-light-blue.min.css" rel="stylesheet" />
+  <link href="css/print.min.css" rel="stylesheet" media="print" />
+  <style type="text/css">nav { width: 350px} @media screen and (min-width:769px) { body.md-nav-expanded div#main { margin-left: 350px} body.md-nav-expanded header { padding-left: 364px} }</style>
+  <style type="text/css">.navigation #inline-toc { width: auto !important}</style>
+
+  <!-- Content style -->
+  <link href="css/hnd.content.css" rel="stylesheet" />
+
+  
+
+
+
+</head>
+
+<body class="md-nav-expanded">
+
+
+
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible">Skip to main content</a>
+  </div>
+
+  <header class="headroom">
+    <button class="hnd-toggle btn btn-default">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>        
+    </button>
+    <h1>Glassbeam Analytics</h1>
+    
+  </header>
+
+  <nav id="panel-left" class="md-nav-expanded">
+    <!-- Nav tabs -->
+    <ul class="tab-tabs nav nav-tabs" role="tablist">
+      <li id="nav-close"> 
+        <button class="hnd-toggle btn btn-default">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
+      </li>
+      
+	  
+        <li role="presentation" class="tab active">
+            <a href="#contents" id="tab-contents" aria-controls="contents" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-list"></i>
+                Contents
+            </a>
+        </li>
+      
+        <li role="presentation" class="tab">
+            <a href="#index" id="tab-index" aria-controls="index" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-asterisk"></i>
+                Index
+            </a>
+        </li>
+      
+        <li role="presentation" class="tab">
+            <a href="#search" id="tab-search" aria-controls="search" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-search"></i>
+                Search
+            </a>
+        </li>
+      
+    </ul>  <!-- /Nav tabs -->
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+	  
+      <div role="tabpanel" class="tab-pane active" id="contents">
+        <div id="toc" class="tree-container unselectable"
+            data-url="_toc.json"
+            data-openlvl="1"
+        >
+            
+        </div>
+      </div>  <!-- /contents-->
+      
+      <div role="tabpanel" class="tab-pane" id="index">
+        <div id="keywords" class="tree-container unselectable"
+            data-url="_keywords.json"
+            data-openlvl="1"
+        >
+            
+        </div>
+      </div>  <!-- /index-->
+      
+      <div role="tabpanel" class="tab-pane" id="search">
+        <div class="search-content">
+          <div class="search-input">
+            <form id="search-form">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="input-search" name="input-search" placeholder="Search..." />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </form>
+          </div>  <!-- /search-input -->
+          <div class="search-result">
+            <div id="search-info"></div>
+            <div class="tree-container unselectable" id="search-tree"></div>
+          </div>  <!-- /search-result -->
+        </div>  <!-- /search-content -->
+      </div>  <!-- /search-->
+      
+    </div>  <!-- /Tab panes -->
+
+  </nav>
+
+  <div id="main">
+
+    <article>
+        <div id="topic-content" class="container-fluid" 
+		  data-hnd-id="AddEditRole"
+		  data-hnd-context="335"
+		  data-hnd-title="Add/Edit Role"
+		>
+            
+                <div class="navigation">
+                    <ol class="breadcrumb">
+                        <li><a href="GettingStarted1.html">Getting Started</a></li><li><a href="WorkingwiththeAdminConsole.html">Working with the Admin Console</a></li><li><a href="RoleList.html">Role List</a></li>
+                    </ol>
+                    <div class="nav-arrows">
+                        <div class="btn-group btn-group" role="group"><a class="btn btn-default" href="RoleList.html" title="Role List" role="button"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a><a class="btn btn-default" href="RoleList.html" title="Role List" role="button"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></a><a class="btn btn-default" href="AddProduct.html" title="Add Product" role="button"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></div>
+                    </div>
+                </div> 
+            
+
+            <a id="main-content"></a>
+
+            <h2>Add/Edit Role</h2>
+
+            <div class="main-content">
+                
+<p class="rvps10"><img alt="" style="padding : 1px;" src="lib/NewItem2065.png"></p>
+<p class="rvps4"><span class="rvts11">To add a new role, click on </span><span class="rvts20">Add Role</span><span class="rvts11"> (annotated as 1 in the above screen shot) which opens the Add Role screen.</span></p>
+<p class="rvps4"><span class="rvts11">To edit an existing role, click on Edit Role (annotated as 2 in the above screen shot) which opens the Edit Role screen to facilitate the inclusion/exclusion of features for the respective role-product combination.</span></p>
+<p class="rvps10"><img alt="" style="padding : 1px;" src="lib/NewItem2357.png"></p>
+<p class="rvps4"><span class="rvts11"><br/></span></p>
+<p class="rvps4"><span class="rvts11"><br/></span></p>
+<div class="rvps12">
+<table border="1" cellpadding="4" cellspacing="0" style="border-color: #000000; border-style: solid; border-spacing: 0px;">
+ <tr valign="top">
+  <td width="90" valign="top" style="border-width : 0px; padding: 0px 7px; background-color: #c6d9f1;">
+   <p class="rvps4"><span class="rvts11">Number</span></p>
+  </td>
+  <td width="494" valign="top" style="border-width : 0px; padding: 0px 7px; background-color: #c6d9f1;">
+   <p class="rvps4"><span class="rvts11">Description</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="90" valign="top" style="border-width : 0px; padding: 0px 7px; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts11">1</span></p>
+  </td>
+  <td width="494" valign="top" style="border-width : 0px; padding: 0px 7px; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts11">Add: &nbsp;Enter a role name.</span></p>
+   <p class="rvps4"><span class="rvts11">Edit: &nbsp;Role name is not editable and hence not visible.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="90" valign="top" style="border-width : 0px; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">2</span></p>
+  </td>
+  <td width="494" valign="top" style="border-width : 0px; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Add: &nbsp;Toggle between Internal/External role types. &nbsp;By default, a role is Internal.</span></p>
+   <p class="rvps4"><span class="rvts11">Edit: &nbsp;Once a role is added as Internal/External, it is not possible to change the role type. &nbsp;Hence role type is not visibile.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="90" valign="top" style="border-width : 0px; padding: 0px 7px; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts11">3</span></p>
+  </td>
+  <td width="494" valign="top" style="border-width : 0px; padding: 0px 7px; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts11">Add: &nbsp;Drop-down list of all the products that are configured for your organization. &nbsp;You can select multiple products.</span></p>
+   <p class="rvps4"><span class="rvts11">Edit: &nbsp;Editing is always applicable to one role-product combination. &nbsp;Hence, product drop-down list is not visible.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="90" valign="top" style="border-width : 0px; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">4</span></p>
+  </td>
+  <td width="494" valign="top" style="border-width : 0px; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Add: &nbsp;For each selected product in </span><img alt="" style="padding : 1px;" src="lib/NewItem2358.png"><span class="rvts11">, a header with corresponding default feature is displayed. &nbsp;You can select/unselect other features based on licences allocated to your business.</span></p>
+   <p class="rvps4"><span class="rvts11">Edit: &nbsp;All the features that were selected/unselected for the product while adding the role are displayed. &nbsp;You can edit the feature selections based on the licences allocated to your business.</span></p>
+   <p class="rvps4"><span class="rvts20">Note</span><span class="rvts11">: &nbsp;</span></p>
+   <ol style="text-indent: 0px; padding: 0; margin: 0 0 0 24px; list-style-position: outside;">
+    <li style="margin-left: 0px" class="rvps21"><span class="rvts21">For Internal roles – the default feature for your business is pre-configured by Glassbeam Professional Services. &nbsp;</span></li>
+    <li style="margin-left: 0px" class="rvps21"><span class="rvts21">For External roles – the default feature is always </span><span class="rvts27">Health Check</span><span class="rvts21">.</span></li>
+    <li style="margin-left: 0px" class="rvps21"><span class="rvts21">The default feature (for both Internal/External roles) appears already selected.</span></li>
+    <li style="margin-left: 0px" class="rvps21"><span class="rvts21">It is not possible to unselect the default feature. &nbsp;</span></li>
+   </ol>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="90" valign="top" style="border-width : 0px; padding: 0px 7px; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts11">5</span></p>
+  </td>
+  <td width="494" valign="top" style="border-width : 0px; padding: 0px 7px; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts11">Toggle between Expand/Collapse for each of the product-features section. &nbsp;By default, the first product-features section that is displayed is expanded. &nbsp;Click on the ‘arrow’ to collapse this section. &nbsp;When you expand a product-features section, the other sections automatically collapse.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="90" valign="top" style="border-width : 0px; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">6</span></p>
+  </td>
+  <td width="494" valign="top" style="border-width : 0px; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Toggle between </span><span class="rvts20">Expand All</span><span class="rvts11">/</span><span class="rvts20">Collapse All</span><span class="rvts11"> to expand/collapse all the product-features sections together.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="90" valign="top" style="border-width : 0px; padding: 0px 7px; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts11">7</span></p>
+  </td>
+  <td width="494" valign="top" style="border-width : 0px; padding: 0px 7px; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts11">Whenever Explorer feature is selected for a product, ‘Restrict Explorer Data’ is displayed. &nbsp;This lets you restrict explorer data display at the role/product level. &nbsp;The options available for this drop-down are:</span></p>
+   <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 48px; list-style-position: outside; list-style-type: disc;">
+    <li class="rvps7"><span class="rvts21">No Restriction</span></li>
+    <li class="rvps7"><span class="rvts21">7 days</span></li>
+    <li class="rvps7"><span class="rvts21">14 days</span></li>
+    <li class="rvps7"><span class="rvts21">30 days</span></li>
+   </ul>
+   <p class="rvps4"><span class="rvts20">No Restriction</span><span class="rvts11"> for a role1/product1 combo means that when you (with role1) log in to Glassbeam application and select/land in product1, explorer data is displayed based on ‘maximum day range’ that has been configured for your organization.</span></p>
+   <p class="rvps4"><span class="rvts20">7 days</span><span class="rvts11"> for a role1/product1 combo means that when you (with role1) log in to Glassbeam application and select/land in product1, explorer data is displayed only for the last 7 days from the current date.&nbsp;</span></p>
+   <p class="rvps4"><span class="rvts20">Note</span><span class="rvts11">: &nbsp;‘Restrict Explorer Data’ is displayed if and only if Explorer feature is selected for a product.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="90" valign="top" style="border-width : 0px; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">8</span></p>
+  </td>
+  <td width="494" valign="top" style="border-width : 0px; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">If your organization is signed-up for Two-Factor authentication service, &nbsp;</span><img width="20" height="20" alt="" style="padding : 1px;" src="lib/NewItem2361.png"><span class="rvts11">and &nbsp;</span><img width="25" height="25" alt="" style="padding : 1px;" src="lib/NewItem2360.png"><span class="rvts11">are displayed under the header “Two Factor Authentication”. &nbsp;Email is a mandatory modality through which One-Time security password is sent to the user. &nbsp;You cannot uncheck Email. &nbsp;Following is the format of the One-Time security code email sent to the user (associated with this role).</span></p>
+   <p class="rvps4"><img alt="" style="padding : 1px;" src="lib/NewItem2363.png"></p>
+   <p class="rvps4"><span class="rvts11"><br/></span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="90" valign="top" style="border-width : 0px; padding: 0px 7px; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts11">9</span></p>
+  </td>
+  <td width="494" valign="top" style="border-width : 0px; padding: 0px 7px; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts11">Check here if you wish to text the One-Time security code to the user’s phone (associated with this role). &nbsp;Phone number that is set in the respective user profile is used for texting.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="90" valign="top" style="border-width : 0px; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">10</span></p>
+  </td>
+  <td width="494" valign="top" style="border-width : 0px; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Click here save the newly added role-product details or edited product details.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="90" valign="top" style="border-width : 0px; padding: 0px 7px; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts11">11</span></p>
+  </td>
+  <td width="494" valign="top" style="border-width : 0px; padding: 0px 7px; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts11">Upon click of cancel –&nbsp;</span></p>
+   <p class="rvps4"><span class="rvts11">If any changes have been made to the selection of features, the following message is displayed.</span></p>
+   <p class="rvps4"><span class="rvts11"><br/></span></p>
+   <p class="rvps4"><img alt="" style="padding : 1px;" src="lib/NewItem2364.png"></p>
+   <p class="rvps4"><span class="rvts11"><br/></span></p>
+   <p class="rvps4"><span class="rvts11">Yes –You will return to the roles list without saving the changes.</span></p>
+   <p class="rvps4"><span class="rvts11">No – You will stay on the same screen by retaining the changes.</span></p>
+   <p class="rvps4"><span class="rvts11"><br/></span></p>
+  </td>
+ </tr>
+</table>
+</div>
+<p class="rvps4"><span class="rvts11"><br/></span></p>
+<p class="rvps4"><span class="rvts20">Note</span><span class="rvts11">:</span></p>
+<ol style="text-indent: 0px; padding: 0; margin: 0 0 0 24px; list-style-position: outside;">
+ <li style="margin-left: 0px" class="rvps21"><span class="rvts21">You have a default admin role pre-configured by the Glassbeam Professional Services. &nbsp;The admin role is associated to all products that are configured for you. &nbsp;Also, all features for every product (that are relevant based on licences) are also configured.</span></li>
+ <li style="margin-left: 0px" class="rvps21"><span class="rvts21">Features have been grouped based on their dependency. For ex: If you want to assign </span><span class="rvts27">Dashboard Admin</span><span class="rvts21"> feature to a role, you first have to assign </span><span class="rvts27">Dashboards</span><span class="rvts21"> feature to the role. Similarly for a role to have </span><span class="rvts27">Workbench</span><span class="rvts21"> feature configuration, that role must have </span><span class="rvts27">Dashboard Admin</span><span class="rvts21"> feature configuration.&nbsp;</span></li>
+</ol>
+<p class="rvps21"><span class="rvts21">However, it is not necessary that a role configured with </span><span class="rvts27">Dashboard Admin</span><span class="rvts21"> feature must have </span><span class="rvts27">Workbench</span><span class="rvts21"> configured.</span></p>
+<ol style="text-indent: 0px; padding: 0; margin: 0 0 0 24px; list-style-position: outside;">
+ <li value="3" style="margin-left: 0px" class="rvps14"><span class="rvts11">In order to have </span><span class="rvts20">Rule Creator</span><span class="rvts11"> configured for a role, it is necessary to have </span><span class="rvts20">Rules &amp; Alerts</span><span class="rvts11"> configuration. &nbsp;This means that eventually user cannot become a rule creator without access to Rules &amp; Alerts feature.</span></li>
+ <li style="margin-left: 0px" class="rvps14"><span class="rvts11">External roles cannot be edited because </span><span class="rvts20">Health Check</span><span class="rvts11"> is the default and the only feature selected for an external role.</span></li>
+ <li style="margin-left: 0px" class="rvps14"><span class="rvts11">See </span><a class="rvts16" href="LicensingInformation.html">licensing information</a></li>
+</ol>
+<p class="rvps14"><span class="rvts11"></span><span class="rvts6"></span></p>
+<p class="rvps5" style="clear: both;"><span class="rvts13">Created with the Personal Edition of HelpNDoc: </span><a class="rvts14" href="https://www.helpndoc.com/help-authoring-tool">Create HTML Help, DOC, PDF and print manuals from 1 single source</a></p>
+
+            </div>
+            
+            <div id="topic_footer"><div id="topic_footer_content"></div></div>
+        </div>  <!-- /#topic-content -->
+    </article>
+
+    <footer><p class="rvps5" style="clear: both;"><span class="rvts13">Version 7.3 </span></p></footer>
+
+  </div>  <!-- /#main -->
+
+  <div class="mask" data-toggle="sm-nav-expanded"></div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="hndModal" tabindex="-1" role="dialog" aria-labelledby="hndModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="hndModalLabel"></h4>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary modal-btn-close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Splitter -->
+  <div id="hnd-splitter" style="left: 350px"></div>  
+
+  <!-- Scripts -->
+  <script src="vendors/jquery-3.5.1/jquery.min.js"></script>
+  <script src="vendors/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+  <script src="vendors/bootstrap-3.4.1/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="vendors/markjs-8.11.1/jquery.mark.min.js"></script>
+  <script src="vendors/uri-1.19.2/uri.min.js"></script>
+  <script src="vendors/imageMapResizer-1.0.10/imageMapResizer.min.js"></script>
+  <script src="vendors/headroom-0.11.0/headroom.min.js"></script>
+  <script src="vendors/jstree-3.3.10/jstree.min.js"></script>  
+  <script src="vendors/interactjs-1.9.22/interact.min.js"></script>  
+
+  <!-- HelpNDoc scripts -->
+  <script src="js/polyfill.object.min.js"></script>
+  <script src="_translations.js"></script>
+  <script src="js/hndsd.min.js"></script>
+  <script src="js/hndse.min.js"></script>
+  <script src="js/app.min.js"></script>
+
+  <!-- Init script -->
+  <script>
+    $(function() {
+      // Create the app
+      var app = new Hnd.App({
+        searchEngineMinChars: 3
+      });
+      // Update translations
+      hnd_ut(app);
+	  // Instanciate imageMapResizer
+	  imageMapResize();
+	  // Custom JS
+	  
+      // Boot the app
+      app.Boot();
+    });
+  </script>
+
+
+
+</body>
+
+</html>
+

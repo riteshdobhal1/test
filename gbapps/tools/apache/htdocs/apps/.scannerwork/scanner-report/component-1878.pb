@@ -1,0 +1,1 @@
+Ö 2webX'hr+app/partials/dashboards/bulk_edit_dash.html

@@ -1,0 +1,1 @@
+‘ 2webX§hr4app/partials/rules-and-alerts/test_rule_history.html

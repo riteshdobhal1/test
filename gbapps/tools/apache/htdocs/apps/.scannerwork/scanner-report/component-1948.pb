@@ -1,0 +1,1 @@
+œ 2webXÉhr1app/partials/rules-and-alerts/subscribe_rule.html

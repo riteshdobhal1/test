@@ -1,0 +1,1 @@
+ú 2webX=hrSdist/MDViz/module-thvis-v4/lib-js/amcharts/plugins/responsive/examples/serial2.html

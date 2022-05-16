@@ -1,0 +1,1 @@
+Ö 2webX]hrVtableau/2019.2/packages/vizportalclient.20192.19.0518.0639/public/en/embeddedAuth.html

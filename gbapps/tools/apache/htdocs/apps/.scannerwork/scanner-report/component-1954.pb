@@ -1,0 +1,1 @@
+¢ 2webX·hr6app/partials/rules-and-alerts/manage_subscription.html

@@ -1,0 +1,1 @@
+<div class="modal-header"><div class="text">Rule Analytics({{selectedRuleForRuleLabelAnalytics['rule_name']}})</div><a class="gb-ra-window-close-btn" data-dismiss="modal" ng-click="hideRuleWiseAnalyticsModal()">&times;</a></div><div class="modal-content"><rule-analytics-dashboard ng-if="showRuleWiseAnalyticsDashboard"></rule-analytics-dashboard></div>

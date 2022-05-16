@@ -1,0 +1,53 @@
+<div class="panel panel-primary" id="gb-facet-more-popup">
+	<div class="panel-heading">{{ctrl.fname}}
+		<span class="close" title="close" ng-click="ctrl.close()"><i class="fa fa-times" aria-hidden="true"></i></span></div>
+	<div class="panel-body gb-facet-more-popup-body">
+		<div class="gb-facet-loader" ng-show="ctrl.loading">
+			<div class="gb-facet-loader-body-center">
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+			</div>
+		</div>
+		<div class="gb-facet-more-popup-body-toolbar"> <input type="text" placeholder="Search facet" class="gb-facet-more-popup-searchInput"
+			 ng-model="ctrl.inlineSearchText" /><button type="button" class="btn btn-default gb-facet-more-popup-searchInput-btn"
+			 ng-click="ctrl.inlineFilter()" title="Search" ng-show="ctrl.inlineSearchText"><i class="fa fa-search" aria-hidden="true"></i></button>
+			<ul class="gb-facet-more-popup-indices" ng-class="{'gb-disabled-div': !ctrl.sortByAlpha}">
+				<li ng-repeat="(key,value) in ctrl.facetGrouped track by $index" data-item="{{key}}" ng-class="{'gb-facet-more-popup-disabled': !value.length}"
+				 ng-click="ctrl.highlightItem(key)">{{key}}</li>
+			</ul>
+			<div class="btn-group btn-group-xs gb-facet-more-popup-sort-options-cntr" role="group" aria-label="...">
+				<span class="ShowMoreLabelItem">Sort By</span>
+				<button type="button" class="btn" ng-class="{'gb-active':ctrl.sortByAlpha,'gb-disabled-div': ctrl.sortByAlpha}"
+				 ng-click="ctrl.sort('alpha')">Name</button>
+				<button type="button" class="btn" ng-class="{'gb-active': !ctrl.sortByAlpha, 'gb-disabled-div': !ctrl.sortByAlpha}"
+				 ng-click="ctrl.sort('num')">Count</button>
+			</div>
+		</div>
+		<div ng-show="ctrl.inlineSearch" class="gb-facet-more-popup-searchInput-result">Search result of
+			"{{ctrl.inlineSearch}}" <span class="gb-result-close" title="Clear filter" ng-click="ctrl.inlineSearchText='';ctrl.inlineFilter()"><i
+				 class="fa fa-times" aria-hidden="true"></i></span></div>
+		<div class="gb-facet-more-popup-body-contents" id="gb-facet-more-popup-body-contents">
+			<ul class="gb-facet-more-popup-facet-list" id="gb-facet-more-popup-facet-list" ng-show="ctrl.showBody()">
+				<li ng-repeat="item in ctrl.facetList track by $index" ng-class="{'listTitle': item.listTitle}" data-item="{{item.label}}"
+				 title="{{item.label}}" id="gb-facet-more-grouped-name-{{item.label[0]=='#'?'0':item.label[0]}}"><span ng-show="item.listTitle"
+					 class="title">{{item.label}}</span>
+					<label ng-show="!item.listTitle">
+						<input type="checkbox" class="gb-custom-checkbox glyphicon" value="883 Police" ng-model="item.selected">{{item.label|cut:false:30:'...'}}
+						<span class="count">({{item.value}})</span>
+						<div class="checkboxIndicator"></div>
+					</label></li>
+			</ul>
+			<ul class="gb-facet-more-popup-facet-list-zero" ng-if="!ctrl.facetList.length" ng-show="!ctrl.loading">
+				<!-- <li><label>No data found!</label></li> -->
+				<div class="msg" style="">No data found</div>
+			</ul>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<div class="btn-group" role="group" aria-label="...">
+			<button type="button" class="gb-primary-btn gb-modal-btn-sm" ng-click="ctrl.submit()">Submit</button>
+		</div>
+	</div>
+</div>

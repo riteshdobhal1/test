@@ -1,0 +1,1 @@
+½ 2webXhr"app/partials/confirmation_box.html

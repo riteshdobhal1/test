@@ -1,0 +1,1 @@
+’ 2webXWhr5app/partials/rules-and-alerts/rule-drill-details.html

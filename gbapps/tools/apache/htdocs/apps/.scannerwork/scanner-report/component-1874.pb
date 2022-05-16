@@ -1,0 +1,1 @@
+Ò 2webXÚhr)app/partials/instance-viewer/section.html

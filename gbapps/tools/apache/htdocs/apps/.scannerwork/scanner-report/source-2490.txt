@@ -1,0 +1,41 @@
+/* 2018 Version Styles */
+.tabAuthMenuBarHeaderArea .tabAuthMenuBarExit {
+	display:none;
+	}
+	.tabAuthMenuBarMenu.userMenu {
+	display:none;
+	}
+	.tabConnectionDialogHeaderSubtitle a {
+		display: none;
+	}
+	.tabAuthSaveProjectPicker, .tabAuthSaveProject{
+		display: none;
+	}
+	.tabAuthFirstSaveOption .tabAuthSaveOption {
+		display: block;
+	}
+	body.tundra.tableau {
+		position: fixed;
+	}
+	.tab-downloadDialog div:nth-last-child(2), .tabToolbarButton.tab-widget.alert, .tabToolbarButton.tab-widget.data, .tabToolbarButton.tab-widget.subscribe, .tabToolbarButton.tab-widget.edit, .tabToolbarButton.tab-widget.share, .tab-downloadDialog button:last-child {
+	  display:none !important;
+	}
+
+	.tabMenu {
+		max-height: 50vh !important;
+	}
+	#tabConnectionSignInDialog-Dialog-Body-Id .RelationalDialog__root .RelationalDialog__dialogTitle {
+		color:transparent;
+	}
+	/* Change Text For Tableau Login */
+	 #tabConnectionSignInDialog-Dialog-Body-Id .RelationalDialog__root .RelationalDialog__dialogTitle::before {
+		content:"Database Server";
+		color:rgba(0, 0, 0, 0.8);
+	} 
+	/* Hide all connector option other than Vertica */
+	.tabConnectorSelections .tabConnectorSelectionsItem, .helpMenu, .closeBtn, .phoneLayout, #metrics-ToolbarButton, .noCreateDataSource{
+		display:none !important;
+	}
+	.tabConnectorSelections .tabConnectorSelectionsItem:last-child{
+		display:block !important;
+	}

@@ -1,0 +1,108 @@
+[{
+	"selector": "#gb-app-nav",
+	"title" : "",
+	"msg" : "<p>These are the Glassbeam Analytics apps available for your organization.</p>",
+	"direction": "right>center"
+},{
+	"selector": ".main-container .left-nav > li.active",
+	"title" : "",
+	"msg" : "<p>Log Vault is a centralized cloud repository for all log files, giving users a single point of access and management for all their machine data.</p><p>Log Vault is integrated with other tools and solutions of Glassbeam Analytics, allowing users to launch Explorer and the section and configdiff viewer directly from the Log Vault.</p>",
+	"direction": "right>center"
+},{
+	"selector": "#gbCustomersList",
+	"title" : "",
+	"msg" : "<p>This option provides information on all the Glassbeam Analytics hosts available for your organization.</p>",
+	"direction": "down>left"
+},{
+	"selector": "#gbAccountSettings",
+	"title" : "",
+	"msg" : "<p>A username and password is provided to access Glassbeam Analytics.</p><p>Here you can change the default password, access the Administrator Console, know the log parsing status, and log out of the application.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gbtour-logvault-toolbar",
+	"title": "Toolbar",
+	"hidden" : true,
+	"msg" : "<p>Everything you need to google your log files, its right here.</p><p> The search bar to enter really complex queries, apply some time filters, and run previously saved search queries in the Saved Filters list.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gbtour-logvault-custom-daterange",
+	"title": "Time filter range",
+	"msg" : "<p>Use this option to set the start and end date for your search.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gbtour-logvault-custom-filter-dropdown",
+	"title": "Custom filters",
+	"msg" : "<p>This is a quick date filter and you can select one of the following options:</p><p><ul><li><b>Last hour</b> — Displays records in the last hour</li><li><b>Today</b> — Displays records of the day</li><li><b>Yesterday</b> — Displays records of yesterday</li><li><b>This week</b> — Displays records of the week</li><li><b>This month</b> — Displays records of the current month</li><li><b>Last 2 days</b> — Displays records for the last 2 days</li><li><b>Last 7 days</b> — Displays records for the last 7 days</li><li><b>Last 30 days</b> — Displays records for the past 30 days</li><li><b>Most recent log</b> — Displays the last uploaded log</li><li><b>Last 5 logs</b> — Displays the 5 most recent logs irrespective of time</li><li><b>Last 10 logs</b> —  Displays the 10 most recent logs irrespective of time</li></ul></p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gbtour-logvault-search",
+	"title": "",
+	"msg" : "<p>Once you’re done with setting up the date filters, click here to initiate your custom search criteria for a specific log bundles/file or just hit 'Enter' button.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gbtour-logvault-save-seach-btn",
+	"title": "Save view",
+	"msg" : "<p>You can save your log file/bundle searches as views that can be executed repeatedly.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gbtour-logvault-saved-view-list",
+	"title": "Saved view list",
+	"msg" : "<p>You can run you previously saved views here. And set a particular search view as default. In addition, you can set your view as private or public to share the view with your peers.</p><p> Also, see and execute any of your peers' saved views from here.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gbtour-logvault-reset-filter-btn",
+	"title": "Filter",
+	"msg" : "<p>You can reset your applied filters using this option.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gbtour-logvault-facets-list",
+	"title": "",
+	"msg" : "<p>This is the pane you can use to filter the indexed log files.</p><p>This pane contains customized attributes such as customer name, bundle name, bundle type, ticket number, and so on for your company's log data.</p>",
+	"direction": "right>center"
+},{
+	"selector": "#gbtour-logvault-timeline-graph",
+	"title": "",
+	"msg" : "<p>Click on a bar in the graph to filter the results based on the timeline represented by that bar.</p><p>By default, the bar graph's time is based on the UTC time format.</p>",
+	"direction": "down>left"
+},{
+	"selector" : "#gbtour-logvault-test-bundle-btn",
+	"title":"",
+	"msg":"<p>Select one or more bundles to be uploaded for testing rules.</p>",
+	"direction": "down>left"
+},{
+	"selector" : "#gbtour-logvault-gril-sorting",
+	"title":"",
+	"msg":"<p>Sort the search list in ascending or descending order.</p>",
+	"direction": "down>left"
+},{
+	"selector" : "#gbtour-logvault-gril-pagination",
+	"title":"",
+	"msg":"<p>Go a particular search results page.</p>",
+	"direction": "down>left"
+},{
+	"selector": "#gbLogvaultDataGridOption",
+	"title": "",
+	"msg" : "<p>Use this option to set the number of results you want to view. And you can also see the orginal  timestamp of the log files by a machine/system.</p><p>You can also download the raw log bundle.</p>",
+	"direction": "down>left"
+
+},{
+	"selector": "#gbLogvaultDataSearchIcon",
+	"title": "",
+	"msg" : "Use this option to search within this Log Bundle",
+	"direction": "down>left"
+},{
+	"selector": "#gbLogvaultGoAppIcon",
+	"title": "",
+	"msg" : "<p>Click this option to view changes in the log file for a selected device from a previous log generated by the same system.</p>",
+	"direction": "down>left"
+},{
+	"selector": "#gbLogvaultDataDownloadIcon",
+	"title": "",
+	"msg" : "<p>Once you have filtered the log bundles of interest, you can select one or more log bundles and download them.</p><p>Each log bundle has a download button option that can be used to download a single log bundle.</p><p>When you select more than one bundle, use the download option from the top menu.</p><p>Currently, a combined bundle size up to 100MB can be downloaded.</p>",
+	"direction": "down>left"
+},{
+	"selector": "#gbLogvaultDataNSRIcon",
+	"title": "",
+	"msg" : "<p>Open NSR Dashboard</p>",
+	"direction": "down>left"
+}]

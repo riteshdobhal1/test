@@ -1,0 +1,50 @@
+.tabToolbarButton {
+    padding-right: 10px;
+    padding-left: 10px;
+    opacity: .75;
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=75)';
+    filter: alpha(opacity=75);
+    cursor: pointer;
+    font-family: Arial,Helvetica,sans-serif !important;
+    font-size: 11px;
+    color: #4e4e4e;
+    min-width: 28px;
+    display: inline-block;
+    vertical-align: top;
+    box-shadow: none;
+    text-align: center;
+    visibility: visible;
+}
+
+.tabToolbarButton:hover {
+    opacity: 1;
+}
+
+.tabToolbarButtonImg {
+    display: inline-block;
+    padding-bottom: 0;
+    background: url('/apps/app/img/vqlweb.png') no-repeat -4425px -2px;
+    width: 20px;
+    height: 18px;
+    margin: auto;
+    cursor: pointer;
+    font-family: Arial,Helvetica,sans-serif !important;
+    font-size: 11px;
+    color: #4e4e4e;
+    text-align: center;
+    visibility: visible;   
+}
+
+.tabToolbarButtonText {
+    padding-left: 4px;
+    position: relative;
+    top: -5px;
+    margin-top: 2px;
+    cursor: pointer;
+    font-family: Arial,Helvetica,sans-serif !important;
+    font-size: 11px;
+    color: #4e4e4e;
+    text-align: center;
+    visibility: visible;
+    
+}

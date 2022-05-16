@@ -1,0 +1,1 @@
+à 2webXhr(app/partials/sectionview_reset_view.html

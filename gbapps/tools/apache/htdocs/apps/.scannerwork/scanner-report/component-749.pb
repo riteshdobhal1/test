@@ -1,0 +1,1 @@
+í 2webXhr9dist/partials/rules-and-alerts/delete_multiple_rules.html

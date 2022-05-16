@@ -1,0 +1,18 @@
+<div class="panel panel-gb-default">
+<div class="panel-heading">
+    <h3 class="panel-title">Unsubscribe from <b>{{unsubscribeCtrl.content.name}}</b><span class="glyphicon glyphicon-remove pull-right gb-close-btn" ng-click="unsubscribeCtrl.hideModal()"></span></h3>
+
+</div>
+
+    <div class="panel-body">
+        <div class="gb-font-style-1"><h5>Are you sure you want to unsubscribe from <b>{{unsubscribeCtrl.content.name}}</b></h5></div>
+    </div>
+    <div class="panel-footer height-46">
+        <button type="button" class="gb-primary-btn gb-modal-btn-sm pull-left" ng-click="unsubscribeCtrl.unsubscribe()">
+            Yes
+        </button>
+        <button type="button" class="gb-secondary-btn gb-modal-btn-sm pull-left" ng-click="unsubscribeCtrl.hideModal()">
+            No
+        </button>
+    </div>
+</div> 

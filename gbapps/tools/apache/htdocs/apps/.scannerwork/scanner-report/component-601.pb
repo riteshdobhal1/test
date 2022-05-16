@@ -1,0 +1,1 @@
+Ù 2webXhrdist/admin/managecustomer.html

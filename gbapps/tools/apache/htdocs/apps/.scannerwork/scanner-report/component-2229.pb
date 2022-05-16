@@ -1,0 +1,1 @@
+µ 2jsX´hrGapp/MDViz/module-Sensation_Temperature/lib-js/SensationDmsTempParser.js

@@ -1,0 +1,1 @@
+¿ 2jsX3hrIapp/MDViz/module-Sensation_Temperature/lib-js/callbackSensationDmsTemp.js

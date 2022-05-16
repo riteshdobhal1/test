@@ -1,0 +1,114 @@
+{
+	"Status": "Success",
+	"Msg": "Alerts count by severity",
+	"Data": [{
+			"day": "0",
+			"severitiesObject": {
+				"WARNING": 558,
+				"ERROR": 1940,
+				"HIGH": 381,
+				"LOW": 69,
+				"CRITICAL": 8,
+				"MEDIUM": 2338
+			}
+		},
+		{
+			"day": "1",
+			"severitiesObject": {
+				"WARNING": 1663,
+				"ERROR": 203,
+				"HIGH": 72,
+				"LOW": 9,
+				"CRITICAL": 3,
+				"MEDIUM": 50
+			}
+		},
+		{
+			"day": "2",
+			"severitiesObject": {
+				"WARNING": 498,
+				"ERROR": 629,
+				"HIGH": 133,
+				"LOW": 28,
+				"CRITICAL": 2,
+				"MEDIUM": 23
+			}
+		},
+		{
+			"day": "3",
+			"severitiesObject": {
+				"WARNING": 693,
+				"ERROR": 278,
+				"HIGH": 20,
+				"LOW": 98,
+				"CRITICAL": 8,
+				"MEDIUM": 90
+			}
+		},
+		{
+			"day": "4",
+			"severitiesObject": {
+				"WARNING": 2002,
+				"ERROR": 3631,
+				"HIGH": 1010,
+				"LOW": 597,
+				"CRITICAL": 33,
+				"MEDIUM": 868
+			}
+		},
+		{
+			"day": "5",
+			"severitiesObject": {
+				"WARNING": 1829,
+				"ERROR": 2728,
+				"HIGH": 972,
+				"LOW": 282,
+				"CRITICAL": 23,
+				"MEDIUM": 1696
+			}
+		},
+		{
+			"day": "6",
+			"severitiesObject": {
+				"WARNING": 859,
+				"ERROR": 897,
+				"HIGH": 806,
+				"LOW": 50,
+				"MEDIUM": 71
+			}
+		},
+		{
+			"day": "7",
+			"severitiesObject": {
+				"WARNING": 1802,
+				"ERROR": 3078,
+				"HIGH": 205,
+				"LOW": 59,
+				"CRITICAL": 9,
+				"MEDIUM": 288
+			}
+		},
+		{
+			"day": "8",
+			"severitiesObject": {
+				"WARNING": 1142,
+				"ERROR": 963,
+				"HIGH": 465,
+				"LOW": 162,
+				"CRITICAL": 20,
+				"MEDIUM": 507
+			}
+		},
+		{
+			"day": "9",
+			"severitiesObject": {
+				"WARNING": 1221,
+				"ERROR": 722,
+				"HIGH": 69,
+				"LOW": 16,
+				"CRITICAL": 2,
+				"MEDIUM": 22
+			}
+		}
+	]
+}

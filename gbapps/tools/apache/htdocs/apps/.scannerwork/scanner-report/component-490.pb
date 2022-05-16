@@ -1,0 +1,1 @@
+ê 2cssX#hr)dist/lib/font-awesome/scss/_animated.scss

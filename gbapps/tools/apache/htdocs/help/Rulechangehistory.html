@@ -1,0 +1,661 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="HelpNDoc Personal Edition 7.9.1.631">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="favicon.ico"/>
+
+  <title>Rule change history</title>
+  <meta name="description" content="" /> 
+  <meta name="keywords" content="">
+
+
+
+  
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Rule change history">
+  <meta name="twitter:description" content="">
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Rule change history" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="Glassbeam Analytics" /> 
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendors/bootstrap-3.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <link href="vendors/bootstrap-3.4.1/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="vendors/html5shiv-3.7.3/html5shiv.min.js"></script>
+      <script src="vendors/respond-1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <!-- JsTree styles -->
+  <link href="vendors/jstree-3.3.10/themes/default/style.min.css" rel="stylesheet"/>
+
+  <!-- Hnd styles -->
+  <link href="css/layout.min.css" rel="stylesheet" />
+  <link href="css/effects.min.css" rel="stylesheet" />
+  <link href="css/theme-light-blue.min.css" rel="stylesheet" />
+  <link href="css/print.min.css" rel="stylesheet" media="print" />
+  <style type="text/css">nav { width: 350px} @media screen and (min-width:769px) { body.md-nav-expanded div#main { margin-left: 350px} body.md-nav-expanded header { padding-left: 364px} }</style>
+  <style type="text/css">.navigation #inline-toc { width: auto !important}</style>
+
+  <!-- Content style -->
+  <link href="css/hnd.content.css" rel="stylesheet" />
+
+  
+
+
+
+</head>
+
+<body class="md-nav-expanded">
+
+
+
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible">Skip to main content</a>
+  </div>
+
+  <header class="headroom">
+    <button class="hnd-toggle btn btn-default">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>        
+    </button>
+    <h1>Glassbeam Analytics</h1>
+    
+  </header>
+
+  <nav id="panel-left" class="md-nav-expanded">
+    <!-- Nav tabs -->
+    <ul class="tab-tabs nav nav-tabs" role="tablist">
+      <li id="nav-close"> 
+        <button class="hnd-toggle btn btn-default">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
+      </li>
+      
+	  
+        <li role="presentation" class="tab active">
+            <a href="#contents" id="tab-contents" aria-controls="contents" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-list"></i>
+                Contents
+            </a>
+        </li>
+      
+        <li role="presentation" class="tab">
+            <a href="#index" id="tab-index" aria-controls="index" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-asterisk"></i>
+                Index
+            </a>
+        </li>
+      
+        <li role="presentation" class="tab">
+            <a href="#search" id="tab-search" aria-controls="search" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-search"></i>
+                Search
+            </a>
+        </li>
+      
+    </ul>  <!-- /Nav tabs -->
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+	  
+      <div role="tabpanel" class="tab-pane active" id="contents">
+        <div id="toc" class="tree-container unselectable"
+            data-url="_toc.json"
+            data-openlvl="1"
+        >
+            
+        </div>
+      </div>  <!-- /contents-->
+      
+      <div role="tabpanel" class="tab-pane" id="index">
+        <div id="keywords" class="tree-container unselectable"
+            data-url="_keywords.json"
+            data-openlvl="1"
+        >
+            
+        </div>
+      </div>  <!-- /index-->
+      
+      <div role="tabpanel" class="tab-pane" id="search">
+        <div class="search-content">
+          <div class="search-input">
+            <form id="search-form">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="input-search" name="input-search" placeholder="Search..." />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </form>
+          </div>  <!-- /search-input -->
+          <div class="search-result">
+            <div id="search-info"></div>
+            <div class="tree-container unselectable" id="search-tree"></div>
+          </div>  <!-- /search-result -->
+        </div>  <!-- /search-content -->
+      </div>  <!-- /search-->
+      
+    </div>  <!-- /Tab panes -->
+
+  </nav>
+
+  <div id="main">
+
+    <article>
+        <div id="topic-content" class="container-fluid" 
+		  data-hnd-id="Rulechangehistory"
+		  data-hnd-context="474"
+		  data-hnd-title="Rule change history"
+		>
+            
+                <div class="navigation">
+                    <ol class="breadcrumb">
+                        <li><a href="GlassbeamRulesandAlerts.html">Glassbeam Rules and Alerts</a></li>
+                    </ol>
+                    <div class="nav-arrows">
+                        <div class="btn-group btn-group" role="group"><a class="btn btn-default" href="GlassbeamRulesandAlerts.html" title="Glassbeam Rules and Alerts" role="button"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a><a class="btn btn-default" href="Rules-RolesandPermissions.html" title="Rules - Roles and Permissions" role="button"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></a><a class="btn btn-default" href="Examples1.html" title="Examples:" role="button"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></div>
+                    </div>
+                </div> 
+            
+
+            <a id="main-content"></a>
+
+            <h2>Rule change history</h2>
+
+            <div class="main-content">
+                
+<p class="rvps4"><span class="rvts11">Purpose: &nbsp;Rule change history captures all the changes being done to the rule from the time of its creation. Each change is tagged as a new version and changes in each version is tracked.</span></p>
+<p class="rvps7"><span class="rvts21">Click on Rule change history in the rules list page.</span></p>
+<p class="rvps16"><img alt="" style="padding : 1px;" src="lib/NewItem1532.png"></p>
+<p class="rvps11"><span class="rvts19"><br/></span></p>
+<p class="rvps7"><span class="rvts21">On click, the rules history page is displayed.</span></p>
+<p class="rvps16"><img alt="" style="padding : 1px;" src="lib/NewItem1533.png"></p>
+<p class="rvps11"><span class="rvts19"><br/></span></p>
+<p class="rvps7"><span class="rvts21"><br/></span></p>
+<ol style="text-indent: 0px; padding: 0; margin: 0 0 0 19px; list-style-position: outside;">
+ <li style="margin-left: 0px" class="rvps59"><span class="rvts21">Click here to expand the respective entry in the rule change history to view the change details.</span></li>
+ <li style="margin-left: 0px" class="rvps59"><span class="rvts21">When the No. Of attributes changed is zero, you cannot expand the entry in the rule change history.</span></li>
+ <li style="margin-left: 0px" class="rvps59"><span class="rvts21">Click here to expand all the entries in the rule change history to view the change details.</span></li>
+</ol>
+<p class="rvps59"><span class="rvts21">Below is a screen shot of the expanded change details of an entry in the rule change history.</span></p>
+<p class="rvps59"><span class="rvts21"><br/></span></p>
+<p class="rvps16"><img alt="" style="padding : 1px;" src="lib/NewItem1534.png"></p>
+<p class="rvps11"><span class="rvts19"><br/></span></p>
+<p class="rvps59"><span class="rvts21"><br/></span></p>
+<p class="rvps7"><span class="rvts21">Every entry in the rule change history tracks the following parmeters:</span></p>
+<div class="rvps62">
+<table border="1" cellpadding="4" cellspacing="-1" style="border-width: 0px; border-collapse: collapse;">
+ <tr valign="top">
+  <td width="73" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; border-right: none; border-left: none; background-color: #c6d9f1;">
+   <p class="rvps4"><span class="rvts18">Parameter</span></p>
+  </td>
+  <td width="513" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; border-right: none; border-left: none; background-color: #c6d9f1;">
+   <p class="rvps4"><span class="rvts18">Description</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="73" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; border-top: none; border-right: none; border-bottom: none; border-left: none; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts12">Version</span></p>
+  </td>
+  <td width="513" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; border-top: none; border-right: none; border-bottom: none; border-left: none; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts12">Upon creation of a rule, the first version of the rule is created. &nbsp;A new rule version is created whenever you change any field in the edit rule page.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="73" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; border-top: none; border-right: none; border-bottom: none; border-left: none;">
+   <p class="rvps4"><span class="rvts12">Date of change</span></p>
+  </td>
+  <td width="513" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; border-top: none; border-right: none; border-bottom: none; border-left: none;">
+   <p class="rvps4"><span class="rvts12">Tracks the Date and time of:</span></p>
+   <p class="rvps4"><span class="rvts12">When the new rule is created</span></p>
+   <p class="rvps4"><span class="rvts12">AND</span></p>
+   <p class="rvps4"><span class="rvts12">When the parameters of the rule are changed for the current version</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="73" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; border-top: none; border-right: none; border-bottom: none; border-left: none; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts12">Changed by</span></p>
+  </td>
+  <td width="513" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; border-top: none; border-right: none; border-bottom: none; border-left: none; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts12">Tracks the user id that makes changes to the status or other parameters of the rule.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="73" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; border-top: none; border-right: none; border-bottom: none; border-left: none;">
+   <p class="rvps4"><span class="rvts12">Type of change</span></p>
+  </td>
+  <td width="513" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; border-top: none; border-right: none; border-bottom: none; border-left: none;">
+   <p class="rvps4"><span class="rvts12">The type of change can be one of the following:</span></p>
+   <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 24px; list-style-position: outside; list-style-type: disc;">
+    <li style="margin-left: 0px" class="rvps21"><span class="rvts25"><br/></span></li>
+    <li style="margin-left: 0px" class="rvps21"><span class="rvts25">Created</span></li>
+    <li style="margin-left: 0px" class="rvps21"><span class="rvts25">State change</span></li>
+    <li style="margin-left: 0px" class="rvps21"><span class="rvts25">Logic change</span></li>
+    <li style="margin-left: 0px" class="rvps21"><span class="rvts25">Multiple changes</span></li>
+    <li style="margin-left: 0px" class="rvps21"><span class="rvts25">Metadata change</span></li>
+   </ul>
+   <p class="rvps4"><span class="rvts12">Click here to know more about the situations that cause these type of changes.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="73" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; border-top: none; border-right: none; border-bottom: none; border-left: none; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts12">No. Of attribute changes</span></p>
+  </td>
+  <td width="513" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; border-top: none; border-right: none; border-bottom: none; border-left: none; background-color: #c0c0c0;">
+   <p class="rvps4"><span class="rvts12">Tracks the number of attributes that have been changed.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="73" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; border-top: none; border-right: none; border-left: none;">
+   <p class="rvps4"><span class="rvts12">Comments</span></p>
+  </td>
+  <td width="513" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; border-top: none; border-right: none; border-left: none;">
+   <p class="rvps4"><span class="rvts12">Tracks your comments.</span></p>
+   <p class="rvps4"><span class="rvts12"><br/></span></p>
+   <p class="rvps4"><span class="rvts12">When you change rule status between ‘Enabled’ and ‘Disabled’, you must enter comments.</span></p>
+   <p class="rvps4"><span class="rvts12"><br/></span></p>
+   <p class="rvps4"><img width="509" height="192" alt="" style="padding : 1px;" src="lib/NewItem1383.jpg"></p>
+   <p class="rvps4"><span class="rvts12"><br/></span></p>
+   <p class="rvps4"><span class="rvts12"><br/></span></p>
+  </td>
+ </tr>
+</table>
+</div>
+<p class="rvps7"><span class="rvts21"><br/></span></p>
+<p class="rvps7"><span class="rvts21">The following table demonstrates the different types of change recorded in the rule change history and the impact of each of these changes.</span></p>
+<div class="rvps62">
+<table border="1" cellpadding="4" cellspacing="-1" style="border-width: 0px; border-collapse: collapse;">
+ <tr valign="top">
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; background-color: #c6d9f1;">
+   <p class="rvps4"><span class="rvts20">Action</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; background-color: #c6d9f1;">
+   <p class="rvps4"><span class="rvts20">Status</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; background-color: #c6d9f1;">
+   <p class="rvps4"><span class="rvts20">Version</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Create New</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Draft</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">1</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Test Rule - Enable</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Enabled</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">1</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Change Attributes</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Draft</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">2</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Test Rule - Enable</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Enabled</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">2</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Disable</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Disabled</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">2</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Change Attributes</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Draft</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">3</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Test Rule - Enable</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Enabled</span></p>
+  </td>
+  <td width="190" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">3</span></p>
+  </td>
+ </tr>
+</table>
+</div>
+<p class="rvps4"><a name="_Toc520452827"></a><span class="rvts11"><br/></span></p>
+<p class="rvps4"><span class="rvts11">The following table shows the types of change that are tracked in Rule Change History.</span></p>
+<div class="rvps62">
+<table border="1" cellpadding="4" cellspacing="-1" style="border-width: 0px; border-collapse: collapse;">
+ <tr valign="top">
+  <td width="228" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; background-color: #c6d9f1;">
+   <p class="rvps4"><span class="rvts20">Action</span></p>
+  </td>
+  <td width="127" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; background-color: #c6d9f1;">
+   <p class="rvps4"><span class="rvts20">Type of change</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="228" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">When the rule is first created and not enabled yet</span></p>
+  </td>
+  <td width="127" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Created</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="228" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Change any rule attribute other than logic.</span></p>
+  </td>
+  <td width="127" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Metadata change</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="228" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Change only logic of the rule.</span></p>
+  </td>
+  <td width="127" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Logic change</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="228" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Any metadata change + Logic change.</span></p>
+  </td>
+  <td width="127" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Multiple change</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="228" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Change between disabled and enabled state.</span></p>
+  </td>
+  <td width="127" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">State change</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="228" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">More than one metadata change&nbsp;</span></p>
+  </td>
+  <td width="127" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Multiple change</span></p>
+  </td>
+ </tr>
+</table>
+</div>
+<p class="rvps4"><span class="rvts11"><br/></span></p>
+<p class="rvps4"><span class="rvts11">The following table shows the tracking of rule change history after the rule is enabled for the first time.</span></p>
+<div class="rvps62">
+<table border="1" cellpadding="4" cellspacing="-1" style="border-width: 0px; border-collapse: collapse;">
+ <tr valign="top">
+  <td width="131" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; background-color: #c6d9f1;">
+   <p class="rvps4"><span class="rvts20">Current rule status</span></p>
+  </td>
+  <td width="158" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; background-color: #c6d9f1;">
+   <p class="rvps4"><span class="rvts20">Type of change / Action</span></p>
+  </td>
+  <td width="240" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px; background-color: #c6d9f1;">
+   <p class="rvps4"><span class="rvts20">What to expect</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="131" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Disabled</span></p>
+  </td>
+  <td width="158" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Logic change / Multiple change/Metadata change</span></p>
+   <p class="rvps4"><span class="rvts11">(Involving any field in the </span><a class="rvts16" href="Rulechangehistory.html#KeyFieldList">list</a><span class="rvts11"> below)</span></p>
+  </td>
+  <td width="240" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Rule moves to Draft state. &nbsp;Version is not incremented.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="131" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Disabled</span></p>
+  </td>
+  <td width="158" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Metadata change/Multiple change</span></p>
+   <p class="rvps4"><span class="rvts11">(Not involving any field in the </span><a class="rvts16" href="Rulechangehistory.html#KeyFieldList">list</a><span class="rvts11"> below)</span></p>
+  </td>
+  <td width="240" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Rule remains in the Disabled state.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="131" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Disabled</span></p>
+  </td>
+  <td width="158" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">State Change</span></p>
+  </td>
+  <td width="240" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Rule moves to the Enabled state. &nbsp;Version is not incremented.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="131" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Draft</span></p>
+  </td>
+  <td width="158" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Logic change / Multiple change / metadata change</span></p>
+  </td>
+  <td width="240" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Rule remains in the Draft state.</span></p>
+   <p class="rvps4"><span class="rvts11">When changes are saved multiple times – The changes get accumulated in the same rule version.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="131" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Draft</span></p>
+  </td>
+  <td width="158" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Test and Enable the rule</span></p>
+  </td>
+  <td width="240" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">The rule status changes to Enabled.</span></p>
+   <p class="rvps4"><span class="rvts11">Version number is not incremented.</span></p>
+   <p class="rvps4"><span class="rvts11">A new entry is not tracked for this action.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="131" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Enabled</span></p>
+  </td>
+  <td width="158" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Logic change&nbsp;</span></p>
+  </td>
+  <td width="240" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Rule moves to Draft state</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="131" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Enabled</span></p>
+  </td>
+  <td width="158" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Metadata change/Multiple change</span></p>
+   <p class="rvps4"><span class="rvts11">(Not involving any field in the </span><a class="rvts16" href="Rulechangehistory.html#KeyFieldList">list </a><span class="rvts11">below)</span></p>
+  </td>
+  <td width="240" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Rule remains in Enabled state.</span></p>
+   <p class="rvps4"><span class="rvts11">When changes are saved multiple times, new version is created for every save action.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="131" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Enabled</span></p>
+  </td>
+  <td width="158" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Metadata change/Multiple change</span></p>
+   <p class="rvps4"><span class="rvts11">(Involving any field in the </span><a class="rvts16" href="Rulechangehistory.html#KeyFieldList">list</a><span class="rvts11"> below)</span></p>
+  </td>
+  <td width="240" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Rule moves to draft state.</span></p>
+   <p class="rvps4"><span class="rvts11">A new version of the rule is created.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="131" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Enabled</span></p>
+  </td>
+  <td width="158" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">State change</span></p>
+  </td>
+  <td width="240" valign="top" style="border-width : 1px; border-color: #000000; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Rule moves to Disabled state.</span></p>
+   <p class="rvps4"><span class="rvts11">Version is not incremented. &nbsp;A new entry is created in the tracker.</span></p>
+  </td>
+ </tr>
+</table>
+</div>
+<p class="rvps4"><span class="rvts11"><br/></span></p>
+<p class="rvps4"><span class="rvts20">Note</span><span class="rvts11">: &nbsp;</span></p>
+<ul style="text-indent: 0px; padding: 0; margin: 0 0 0 48px; list-style-position: outside; list-style-type: disc;">
+ <li class="rvps7"><span class="rvts21">When a rule is in version 1 and in </span><span class="rvts27">draft</span><span class="rvts21"> status, version increment and change tracking do not happen unless the rule is enabled.</span></li>
+ <li class="rvps7"><a name="KeyFieldList"></a><span class="rvts21">List of fields that will cause change in the output or result of a rule are as follows:</span></li>
+ <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 48px; list-style-position: outside; list-style-type: circle;">
+  <li style="margin-left: 0px" class="rvps26"><span class="rvts21">Label</span></li>
+  <li style="margin-left: 0px" class="rvps26"><span class="rvts21">Email template</span></li>
+  <li style="margin-left: 0px" class="rvps26"><span class="rvts21">API template</span></li>
+  <li style="margin-left: 0px" class="rvps26"><span class="rvts21">Recommendation</span></li>
+  <li style="margin-left: 0px" class="rvps26"><span class="rvts21">Justification</span></li>
+  <li style="margin-left: 0px" class="rvps26"><span class="rvts21">Logic&nbsp;</span></li>
+  <li style="margin-left: 0px" class="rvps26"><span class="rvts21">Text</span></li>
+  <li style="margin-left: 0px" class="rvps26"><span class="rvts21">Scope</span></li>
+  <li style="margin-left: 0px" class="rvps26"><span class="rvts21">Action</span></li>
+ </ul>
+ <li class="rvps7"><span class="rvts21">For enabled/disabled rules - when Label, Text, Justification and Recommendation fields are edited and the newly edited or existing data in these fields involve attributes, the rule moves to </span><span class="rvts27">Draft</span><span class="rvts21"> state upon save. &nbsp;Otherwise, the rules will remain in the same state as is.</span></li>
+</ul>
+<p class="rvps7"><span class="rvts21"></span><span class="rvts28"></span></p>
+<p class="rvps5" style="clear: both;"><span class="rvts13">Created with the Personal Edition of HelpNDoc: </span><a class="rvts14" href="https://www.helpndoc.com/help-authoring-tool">Easy to use tool to create HTML Help files and Help web sites</a></p>
+
+            </div>
+            
+            <div id="topic_footer"><div id="topic_footer_content"></div></div>
+        </div>  <!-- /#topic-content -->
+    </article>
+
+    <footer><p class="rvps5" style="clear: both;"><span class="rvts13">Version 7.3 </span></p></footer>
+
+  </div>  <!-- /#main -->
+
+  <div class="mask" data-toggle="sm-nav-expanded"></div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="hndModal" tabindex="-1" role="dialog" aria-labelledby="hndModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="hndModalLabel"></h4>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary modal-btn-close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Splitter -->
+  <div id="hnd-splitter" style="left: 350px"></div>  
+
+  <!-- Scripts -->
+  <script src="vendors/jquery-3.5.1/jquery.min.js"></script>
+  <script src="vendors/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+  <script src="vendors/bootstrap-3.4.1/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="vendors/markjs-8.11.1/jquery.mark.min.js"></script>
+  <script src="vendors/uri-1.19.2/uri.min.js"></script>
+  <script src="vendors/imageMapResizer-1.0.10/imageMapResizer.min.js"></script>
+  <script src="vendors/headroom-0.11.0/headroom.min.js"></script>
+  <script src="vendors/jstree-3.3.10/jstree.min.js"></script>  
+  <script src="vendors/interactjs-1.9.22/interact.min.js"></script>  
+
+  <!-- HelpNDoc scripts -->
+  <script src="js/polyfill.object.min.js"></script>
+  <script src="_translations.js"></script>
+  <script src="js/hndsd.min.js"></script>
+  <script src="js/hndse.min.js"></script>
+  <script src="js/app.min.js"></script>
+
+  <!-- Init script -->
+  <script>
+    $(function() {
+      // Create the app
+      var app = new Hnd.App({
+        searchEngineMinChars: 3
+      });
+      // Update translations
+      hnd_ut(app);
+	  // Instanciate imageMapResizer
+	  imageMapResize();
+	  // Custom JS
+	  
+      // Boot the app
+      app.Boot();
+    });
+  </script>
+
+
+
+</body>
+
+</html>
+

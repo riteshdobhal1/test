@@ -1,0 +1,1 @@
+™ 2cssXhr#app/lib/font-awesome/less/core.less

@@ -1,0 +1,1 @@
+ò 2webXhr#dist/partials/confirmation_box.html

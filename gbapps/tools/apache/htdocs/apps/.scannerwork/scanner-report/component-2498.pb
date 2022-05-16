@@ -1,0 +1,1 @@
+Â 2webX\hr:tableau/2018.1/vizportalclient/public/en/embeddedAuth.html

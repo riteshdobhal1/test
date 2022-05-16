@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'iconstatistics';
+    src:    url('fonts/icomoon.eot?7qbvf9');
+    src:    url('fonts/icomoon.eot?7qbvf9#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?7qbvf9') format('truetype'),
+        url('fonts/icomoon.woff?7qbvf9') format('woff'),
+        url('fonts/icomoon.svg?7qbvf9#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="iconstatistics-"], [class*=" iconstatistics-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'iconstatistics' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.iconstatistics-info-large:before {
+    content: "\e900";
+}
+.iconstatistics-waves-outline:before {
+    content: "\e901";
+}
+.iconstatistics-layers:before {
+    content: "\e031";
+}
+.iconstatistics-graph:before {
+    content: "\f043";
+}
+.iconstatistics-info:before {
+    content: "\f059";
+}
+

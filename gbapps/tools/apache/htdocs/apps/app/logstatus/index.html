@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html ng-app="gbLogStatusApp">
+<head>
+  <meta charset="utf-8">
+  <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+  <meta HTTP-EQUIV="Expires" CONTENT="-1">
+  <meta charset="utf-8">
+  <meta name="generator" content="Glassbeam">
+  <meta name="dcterms.created" content="Mon, 17 Aug 2015 11:42:01 GMT">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Glassbeam</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+  <link rel="stylesheet" type="text/css" href="/apps/app/lib/bootstrap-3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/apps/app/logstatus/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/apps/app/css/common.css">
+	<link href="/apps/app/login/css/style.css" type="text/css" rel="stylesheet" />
+  <link href="/apps/app/logstatus/css/style.css" type="text/css" rel="stylesheet" />
+  	<!--[if IE]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  <script src="/apps/app/lib/xdomain/xdomain.js"></script>
+</head>
+
+<body ng-init = "intervalStart()" class="page-user" ng-controller="LogStatusCtrl" novalidate ng-cloak>
+  <div class="change-alert slide-in-top"  ng-show="changeAlert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    <i class="fa fa-info-circle"></i> <strong>{{changeAlertTitle}}</strong> {{changeAlertMsg}}
+  </div>
+  	<div class="container"> 
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header ">
+            <a class="navbar-brand logo-internal" ng-href="logo_url">
+              <img ng-src="{{logo}}" alt="" ng-show="logo">
+            </a>
+          </div>
+          <div class="nav navbar-nav navbar-right userInfo">
+            <span ng-bind="loggedInUsername"></span> <a href="#" ng-click="logoutUser()" title="Logout" ><span class="glyphicon glyphicon-log-out"></span></a>
+          </div>
+        </div>
+        </nav>
+        <div class='other-innerpages container' >
+
+          <div class="page-loader" id="gb-tab-loader" ng-show="historyAPILoading">
+              <div class="page-loader-body">
+                  <div class="rect rect1"></div>
+                  <div class="rect rect2"></div>
+                  <div class="rect rect3"></div>
+                  <div class="rect rect4"></div>
+                  <div class="rect rect5"></div>
+              </div>
+          </div>
+          <table class="table table-condensed table-striped" id="topTableInfo">
+              <thead>
+                <tr>
+                  <td>
+                    <i class="fa fa-cloud-upload fa-lg fa-fw" aria-hidden="true"></i> <span>Total Bundle Uploaded : </span> {{TotalBundleCount}}
+                  </td>
+                  <td>
+                    <strong><i class="fa fa-tasks fa-lg fa-fw text-primary" aria-hidden="true"></i> Queued : </strong> {{totalQueuedLogs}}
+                  </td>
+                  <td>
+                    <strong><i class="fa fa-cog fa-spin fa-lg fa-fw text-warning"></i> Processing : </strong> {{totalProcessingLogs}}
+                  </td>
+                  <td>
+                    <strong><i class="fa fa-check-circle fa-lg fa-fw text-success" aria-hidden="true"></i> Finished : </strong> {{totalFinishedLogs}}
+                  </td>
+                  <td>
+                    <strong><i class="fa fa-exclamation-circle fa-lg fa-fw text-danger" aria-hidden="true"></i> Failed : </strong> {{totalFailedLogs}}
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                  </td>
+                  <td class="connectionStatus">
+                    <span class="alert alert-success pull-right" ng-show="liveData"><i class="fa fa-link" aria-hidden="true"></i> {{liveDataDisplayed}}</span>
+                    <span class="alert alert-danger pull-right" ng-hide="liveData"><i class="fa fa-chain-broken" aria-hidden="true"></i> {{liveDataFailed}}</span>
+                   
+
+                  </td>
+                  <td class="homeTimeRangeWrap">
+                    <div class="homeTimeRange pull-right">
+                      <span>Time Range :</span>
+                      <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle btn-xs" type="button" data-toggle="dropdown">{{selectedHomeTimeRange}}
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                          <li ng-click="selectedHomeTimeRange = '24 Hrs'">24 Hrs</li>
+                          <li ng-click="selectedHomeTimeRange = '48 Hrs'">48 Hrs</li>
+                          <li ng-click="openHistoryModal()"><i class="fa fa-history" aria-hidden="true"></i> Log History</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="searchWrap">
+                    <input type="text" class="form-control ng-pristine ng-valid" ng-model="searchLogKeyword" placeholder="Search">
+                  </td>
+                </tr>
+              </thead>
+            </table>
+            <table class="table table-condensed table-bordered" ng-table="tableParams" show-filter="true" id="logStatusTableData" template-pagination="logStatusTablePager.html">
+              <thead>
+                <tr>
+                  <th ng-repeat="column in logStatusColumn" class="{{column.field}}cell"><span>{{column.title}}</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <td ng-show="noLogs" colspan="{{totalLogColumns}}" class="noLogs" ng-bind="noLogsMsg"></td>
+                <tr ng-repeat="row in tableData | filter: searchLogKeyword | orderBy:columnUser:reverse">
+                  <td class ="bundle_namecell"  title="{{row.bundle_name}}" ng-hide="enabledColumn('bundle_name')" ><span>{{row.bundle_name}}</span></td>
+                  <td class ="bundle_typecell"  title="{{row.bundle_type}}" ng-hide="enabledColumn('bundle_type')" ><span>{{row.bundle_type}}</span></td>
+                  <td class ="received_timecell"  title="{{row.received_timeDis}}" ng-hide="enabledColumn('received_time')" ><span>{{row.received_timeDis}}</span></td>
+                  <td class ="expected_timecell"  title="{{row.expected_time}}" ng-hide="enabledColumn('expected_time')" ><span>{{row.expected_time}}</span></td>
+                  <td class ="ticket_numbercell"  title="{{row.ticket_number}}" ng-hide="enabledColumn('ticket_number')" ><span>{{row.ticket_number}}</span></td>
+                  <td class ="customer_namecell"  title="{{row.customer_name}}" ng-hide="enabledColumn('customer_name')" ><span>{{row.customer_name}}</span></td>
+                  <td class ="sysidcell"  title="{{row.sysid}}" ng-hide="enabledColumn('sysid')" ><span>{{row.sysid}}</span></td>
+                  <td class ="statuscell"  title="{{row.status}}" ng-hide="enabledColumn('status')" ><span><i class="fa fa-tasks fa-lg fa-fw text-primary" ng-show="row.status == 'QUEUED'" aria-hidden="true"></i><i class="fa fa-cog fa-spin fa-lg fa-fw text-warning" ng-show="row.status == 'PROCESSING'" aria-hidden="true"></i><i class="fa fa-check-circle fa-lg fa-fw text-success" ng-show="row.status == 'COMPLETED'" aria-hidden="true"></i><i class="fa fa-exclamation-circle fa-lg fa-fw text-danger" ng-show="row.status == 'FAILED'" aria-hidden="true"></i></span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="row">
+              <div class="col-md-12" id="logstatusListPagerLocation">
+              </div>
+            </div>
+        </div>
+  	</div>
+    <div class="page-loader" id="gb-tab-loader" ng-show="data_loading">
+        <div class="page-loader-body">
+            <div class="rect rect1"></div>
+            <div class="rect rect2"></div>
+            <div class="rect rect3"></div>
+            <div class="rect rect4"></div>
+            <div class="rect rect5"></div>
+        </div>
+    </div>
+    <div id="HistoryModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">{{logHistoryTitle}}</h4>
+            <button type="button" ng-click="intervalStart()" class="btn btn-sm btn-default" data-dismiss="modal" id="historyClose">Close</button>
+            <input type="text" id="searchLogHistoryKeyword" class="form-control ng-pristine ng-valid" ng-model="searchLogHistoryKeyword" placeholder="Search">
+            <div class="timeFilter">
+                <div class="gb-event-timefilter">
+                  <span class="input-group-addon btn  icon-search gb-event-timefilter-search-icon" ng-click="eventContentApplyFilter()" ng-show="timefilter.currentValue == 'Custom time'"><i class="fa fa-search" aria-hidden="true"></i></span>
+                  <div class="btn-group">
+                    <button class="btn gb-event-timefilter-label" ng-hide="timefilter.currentValue == 'Custom time'">{{timefilter.currentValue}}</button>
+                    <custom-time-filter class="btn gb-event-timefilter-label" ng-show="timefilter.currentValue == 'Custom time'"></custom-time-filter>
+                    <button class="btn dropdown-toggle gb-event-timefilter-ddBtn" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                    <!-- dropdown menu links -->
+                      <li role="presentation" ng-repeat="tf in timefilter.quickFilters" ng-click="timefilter.currentValue=tf;eventContentApplyFilter()"><a role="menuitem" tabindex="-1" href="#">{{tf}}</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <span class="gb-event-timefilter-title" ng-class="{'gb-event-timefilter-title-with-custom-timefilter':timefilter.currentValue == 'Custom time'}">Time Range&nbsp;:</span>
+              </div>
+          </div>
+         
+          <div class="modal-body">
+            <div id ="apifail" class = "alert alert-danger fade-in-bck" ng-show="apiFail" ng-bind="data_not_available"></div>
+            <table class="table table-bordered" ng-table="tableParamsHistory" show-filter="true" id="logStatusTableDataHistory" template-pagination="logStatusHistoryTablePager.html" ng-hide="apiFail">
+              <thead>
+                <tr>
+                  <th ng-repeat="historyColumn in logStatusHistoryColumn" class="{{historyColumn.field}}cell" ng-click="sortColumn(historyColumn.field)" ng-class='sortClass(historyColumn.field)'><span>{{historyColumn.title}}</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <td ng-show="noLogHistory" colspan="{{totalLogHistoryColumns}}" class="noLogs" ng-bind="noLogsMsg" ng-hide="apiFail"></td>
+                <tr ng-repeat="rowHistory in tableHistoryData | filter: searchLogHistoryKeyword | orderBy:columnHistory:reverseHistory">
+                  <td class ="bundle_namecell"  title="{{rowHistory.bundle_name}}" ng-hide="enabledHistoryColumn('bundle_name')" ><span>{{rowHistory.bundle_name}}</span></td>
+                  <td class ="bundle_typecell"  title="{{rowHistory.bundle_type}}" ng-hide="enabledHistoryColumn('bundle_type')" ><span>{{rowHistory.bundle_type}}</span></td>
+                  <td class ="received_timecell"  title="{{rowHistory.received_timeDis}}" ng-hide="enabledHistoryColumn('received_time')" ><span>{{rowHistory.received_timeDis}}</span></td>
+                  <td class ="expected_timecell"  title="{{rowHistory.expected_time}}" ng-hide="enabledHistoryColumn('expected_time')" ><span>{{rowHistory.expected_time}}</span></td>
+                  <td class ="ticket_numbercell"  title="{{rowHistory.ticket_number}}" ng-hide="enabledHistoryColumn('ticket_number')" ><span>{{rowHistory.ticket_number}}</span></td>
+                  <td class ="customer_namecell"  title="{{rowHistory.customer_name}}" ng-hide="enabledHistoryColumn('customer_name')" ><span>{{rowHistory.customer_name}}</span></td>
+                  <td class ="sysidcell"  title="{{rowHistory.sysid}}" ng-hide="enabledHistoryColumn('sysid')" ><span>{{rowHistory.sysid}}</span></td>
+                  <td class ="statuscell"  title="{{rowHistory.status}}" ng-hide="enabledHistoryColumn('status')" ><span><i class="fa fa-tasks fa-lg fa-fw text-primary" ng-show="rowHistory.status == 'QUEUED'" aria-hidden="true"></i><i class="fa fa-cog fa-spin fa-lg fa-fw text-warning" ng-show="rowHistory.status == 'PROCESSING'" aria-hidden="true"></i><i class="fa fa-check-circle fa-lg fa-fw text-success" ng-show="rowHistory.status == 'COMPLETED'" aria-hidden="true"></i><i class="fa fa-exclamation-circle fa-lg fa-fw text-danger" ng-show="rowHistory.status == 'FAILED'" aria-hidden="true"></i></span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div id="HistoryPagerLocation" ng-hide="apiFail"></div>
+           
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="sessionModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">{{sessionTimeOutHeader}}</h4>
+          </div>
+          <div class="modal-body changepassword-body">
+            <div class="alert alert-danger">{{sessionTimeOutMessage}}</div>
+          </div>
+          <div class="changepassword-footer modal-footer">
+            <button type="button" id="sessionModalCloseBtn" class="btn btn-default" ng-click="logoutUser()">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="page-loader" id="gb-tab-loader" ng-show="data_loading">
+      <div ng-include src="'../partials/loader.html'"></div>
+  </div>
+</body>
+<!-- Jquery -->
+<script src="/apps/app/lib/jquery/jquery.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="/apps/app/lib/bootstrap-3.1/js/bootstrap.min.js"></script>
+<!-- AngularJS -->
+<script src="/apps/app/lib/angular/angular.min.js"></script>
+<script src="/apps/app/lib/ng-table/ng-table.js"></script>
+
+<!-- ngDraggable Service -->
+<script src="/apps/app/lib/ng-draggable/ngDraggable.js"></script>
+
+<!-- AngularJS Cookies -->
+<script src="/apps/app/lib/angular/angular-cookies.min.js"></script>
+
+<!-- AngularJS Animate -->
+<script src="/apps/app/lib/angular/angular-animate.min.js"></script>
+<!-- AngularJS rout -->
+<script src="/apps/app/lib/angular/angular-route.min.js"></script>
+<!-- UI Slider -->
+<script src="/apps/app/lib/slider/angular-slider.js"></script>
+<!-- Angular UI Bootstrap -->
+<script src="/apps/app/lib/bootstrap-3.1/js/ui-bootstrap-tpls-0.10.0.min.js"></script>
+
+<!-- AngularJS Animate -->
+<script src="/apps/app/logstatus/js/app.js"></script>
+<script src="/apps/app/logstatus/js/globals.js"></script>
+<!-- build:js logstatus/js/main.js -->
+<script src="/apps/app/logstatus/js/services.js"></script>
+<script src="/apps/app/logstatus/js/controller.js"></script>
+<!-- endbuild -->
+<script src="/apps/app/logstatus/js/logstatusDirective.js"></script>
+<script src="/apps/app/logstatus/js/filter.js"></script>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+ <div id="gb-first-time-loader" class="gb-first-time-loader gb-hide">
+    <div class="gb-loading">
+        <span id="gb-loader-msg" class="msg">Loading...</span>
+        <span class="bar"></span>
+    </div>
+ </div>
+<script type="text/ng-template" id="logStatusTablePager.html">
+  <div ng-include="'ng-table/pager.html'" id="logStatusTablePager" ng-cloak></div>
+</script>
+<script type="text/ng-template" id="logStatusHistoryTablePager.html">
+  <div ng-include="'ng-table/pager.html'" id="logStatusHistoryTablePager" ng-cloak></div>
+</script>
+
+</html>

@@ -1,0 +1,27 @@
+<div class="row gb-apps-lview" id="{{lview.getInstanceMD5()}}-section-container">
+	<div infinite-scroll='lview.scrollInfinite()' infinite-scroll-container='".gb-apps-lview"' infinite-scroll-distance="1" infinite-scroll-parent="true" id="gb-apps-sections-log-view-cntr">
+		<pre class="log-contents" ng-repeat="section in lview.getSectionsData() track by $index" id="{{section.section_name}}-{{instance.md5}}-section-content"><span ng-show="lview.logviewDataNotFound(section)"><b>{{sectionsCommon.getSelectedSectionLabelName(section)}}</b><br></span>{{section.content}}</pre>
+		<div ng-show="!lview.isLoading()">
+		<div class="gb-section-viewer-error-msg" ng-show="lview.getSelectedSections().length && lview.getSectionsData().length == 0">Section data not available.</div>		
+		<div class="gb-msg-center" ng-show="sections.length == 0" id="gb-apps-sections-log-view-select-atleast-cntr">
+			<span class="msg">{{selectAtleastOneSectionMsg}}</span>
+		</div>
+		</div>
+	</div>
+	<div class="section-loader" ng-show="lview.isInfiniteLoading()">
+        <div class="rect rect1"></div>
+        <div class="rect rect2"></div>
+        <div class="rect rect3"></div>
+        <div class="rect rect4"></div>
+        <div class="rect rect5"></div>
+    </div>
+    <div class="content-loader" ng-show="lview.isLoading()">
+  		<div class="content-loader-body">
+			<div class="rect rect1"></div>
+			<div class="rect rect2"></div>
+			<div class="rect rect3"></div>
+			<div class="rect rect4"></div>
+			<div class="rect rect5"></div>
+  		</div>
+	</div>
+</div>

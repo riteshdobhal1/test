@@ -1,0 +1,200 @@
+SUCCESS=0
+FAILURE=-1
+RED="\033[31m"
+GREEN="\033[32m"
+END="\033[0m"
+CYAN="\033[36m"
+bold=`tput bold`
+offbold=`tput rmso`
+INIT="_gbinstall"
+STATUS="_gbstatus"
+
+
+usage()
+{
+echo -e "Usage: ${GREEN} $0 -i <NEW/UPGRADE> -l <1/0> ${END}
+	-i [NEW/UPGRADE] (mandatory)     < NEW - fresh install  or UPGRADE - upgrade previous installation >
+	-l [0 or 1]      (optional)      < 1 to create mysql test database - GBCustomerTest >"
+#               -h [IP Address]         <Host IP>
+#               -v [GB Version]         <Glassbeam Install Version>
+
+}
+
+show_aws_syntax()
+{
+echo -e "Usage: ${GREEN} $0 -i <NEW/UPGRADE> -d <BASEDIR> ${END}
+        -i [NEW/UPGRADE]      < NEW - fresh install  or UPGRADE - upgrade previous installation >
+        -d [BASE DIRECTORY]   <Directory where glassbeam is installed. Example: /ephemeral/gb >"
+
+}
+show_all_config_syntax()
+{
+echo -e "Usage: ${GREEN} $0 <PROD/POC/DEV/QA/STAGE> ${END}
+        [PROD]     < configuration setup for production environment >
+	[POC]      < configuration setup for poc environment >
+	[DEV]      < configuration setup for development environment >
+	[QA]       < configuration setup for testing environment >
+	[STAGE]    < configuration setup for staging environment >"
+        
+
+}
+show_aws_syntax2()
+{
+echo -e "Usage: ${GREEN} $0 -d <BASEDIR> ${END}
+        -d [BASE DIRECTORY]   <Directory where glassbeam is installed. Example: /ephemeral/gb >"
+
+}
+
+show_aws_syntax3()
+{
+echo -e "Usage:   sh GBINSTALL_SET_PERM.sh -i <NEW/UPGRADE> -d <GB_INSTALL_DIR> -u <user>  -g <group>
+	 Example: sh GBINSTALL_SET_PERM.sh -i NEW -d /ephemeral/gb -u gbd  -g gbd"
+}
+
+show_maintenance_syntax()
+{
+echo -e "Usage:  sh${GREEN} $0 <on/off> ${END} 
+         [on]     < to enable maintenance page >
+	 [off]    < to disable maintenance page >"
+}
+
+exit_status()
+{
+        # $? , textmessage
+        [ $# -eq 2 ] || return $FAILURE
+        STATUS=$1
+        MESSAGE=$2
+
+        if [ $STATUS -ne 0 ];then
+                echo -e "${RED}Failed${END}"
+                echo -e -n "${bold}Error : ${offbold}"
+                echo -e "${bold}$MESSAGE ... exit${offbold}";exit 1
+        else
+                echo -e "${GREEN}Ok${END}"
+        fi
+return $SUCCESS
+}
+
+failed_status()
+{
+	[ $# -eq 1 ] || return $FAILURE
+	 MESSAGE=$1
+          echo -e "${RED}Failed${END}"
+          echo -e -n "${bold}Error : ${offbold}"
+          echo -e "${bold}$MESSAGE ... exit${offbold}";exit 1
+}
+
+ok_status(){
+	echo -e "${GREEN}Ok${END}"
+}
+
+warning_status()
+{
+        [ $# -eq 1 ] || return $FAILURE
+         MESSAGE=$1
+          echo -e "${RED}Failed${END}"
+          echo -e -n "${bold}WARNING : ${offbold}"
+          echo -e "${bold}$MESSAGE ... exit${offbold}";exit 1
+
+}
+
+message(){
+	[ $# -eq 1 ] || return $FAILURE
+	MESSAGE=$1
+	echo -e -n "${bold}$MESSAGE${offbold}"
+}
+
+fprint(){
+	MESSAGE="$1"
+	printf "% -55s ... " "$MESSAGE"
+}
+
+install_start(){
+	printf "1" > $INIT
+}
+
+install_success(){
+	mv $INIT $$_$INIT
+	mv $STATUS $$_$STATUS
+}
+
+install_status(){
+	if [ -e $INIT ];then
+		return $FAILURE
+	else
+		install_start
+		process_start
+		return $SUCCESS
+	fi
+}
+
+process_start(){
+	
+	if [ ! -e $STATUS ];then
+		touch $STATUS
+	fi
+}
+process_run(){
+	if [ -e $STATUS ];then
+		printf $1 >> $STATUS
+	fi
+}
+
+process_success(){
+	process_run $1
+	if [ -e $STATUS ];then
+		echo "|1" >> $STATUS
+	fi
+}
+
+process_fail(){
+	process_run $1
+	if [ -e $STATUS ];then
+		echo "|0" >> $STATUS
+		failed_status "$2"
+	fi
+}
+
+process_status(){
+	if [ -e $STATUS ];then
+		type=`tail -1 $STATUS | cut -d"|" -f1`
+		stat=`tail -1 $STATUS | cut -d"|" -f2`
+		#rm -f $STATUS
+		if [ -z $stat ];then return $FAILURE; fi	
+		if [ -z $type ];then return $FAILURE; fi
+		if [ $stat -eq 1 ];then
+			touch $STATUS
+			return $SUCCESS
+		fi
+		if [ $stat -eq 0 ];then
+			echo -n $type
+			return $FAILURE	
+		fi
+	fi
+
+}
+
+check_status(){
+	install_status;ret_ins=$?
+	if [ $ret_ins -ne 0 ];then
+	        #check which last process failed ..
+	        #take the last process which failed e.g process type  and return status
+	        Fail_type=`process_status`
+        	if [ $? -ne 0 ];then
+			echo -n $Fail_type
+               		return $FAILURE
+	        fi
+	else
+		echo -n 'NULL'
+		return $SUCCESS
+	fi
+}
+
+check_init(){
+	        if [ ! -e $INIT ] && [ ! -e $STATUS ];then
+                install_status;ret_ins=$?
+                return $SUCCESS
+		else
+		return $FAILURE
+		fi
+}

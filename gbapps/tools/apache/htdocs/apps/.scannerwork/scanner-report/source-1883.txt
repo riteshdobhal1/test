@@ -1,0 +1,19 @@
+<div class="panel panel-primary gb-delete-section-view update-owner-dash" >
+  <div class="panel-heading">
+    <h3 class="panel-title">Alert</h3> 
+    <i class="fa fa-times gb-close-btn gb-panel-close-btn-fix" aria-hidden="true" title="{{htmconstdata['CLOSE_MODAL']}}" ng-click="modal1.close(); info.fadeModal = false;"></i>   
+  </div>
+  
+  <div class="panel-body">
+  	<div class="gb-font-style-1 alert-message-container">
+      <!-- <h5>{{ownerConfMsg}}</h5> -->
+      <p>{{htmconstdata['CHANGE_OWNER_MSG']}}
+        <span class="gb-heading-style-1">{{ownerName}}</span>
+      </p>
+    </div>
+  </div>         
+  <div style="display: flex;"class="panel-footer">
+      <button type="button" class="gb-primary-btn gb-modal-btn-sm pull-right" ng-click="dashCtrl.updateOwner(userUpdate,bookUpdate); modal1.close(); info.fadeModal = false;">Yes</button>
+      <button type="button" class="gb-secondary-btn gb-modal-btn-sm pull-left" ng-disabled="form.$invalid" ng-click="modal1.close(); info.fadeModal = false;">No</button>
+  </div>
+</div>

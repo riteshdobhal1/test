@@ -1,0 +1,1 @@
+¨ 2webXhr5app/partials/rules-and-alerts/analytics-heat-map.html

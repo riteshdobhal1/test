@@ -1,0 +1,201 @@
+<div class="panel panel-primary gb-delete-section-view" >
+ 
+
+    <div class="panel-heading gb-panel-head-fix">
+      <span class="icon fa fa-bell wobble-hor-top"  title="Subscribe" ></span>Subscribe Rule <span class="gb-panel-header-rule-label-span">({{singleSubscribeRule.label_display}})</span> 
+      <i class="fa fa-times gb-close-btn gb-panel-close-btn-fix" aria-hidden="true" title="Press Esc to remove" ng-click="modal.close()"></i>
+    </div>
+    
+    <div class="panel-body subscribe-rule-panel-body" ng-class="{'subscription-edit-mode': !info.toggleManageSubscription}">
+      <div class="sysid-loading" ng-if="info.sysidLoading">
+        <img id="app-loader" src="/apps/app/img/loader.svg" alt="Loading ..." width="75px"/>
+      </div>
+      <div ng-if="info.toggleManageSubscription" class="gb-font-style-1"><h5 ng-bind-html="renderHtml(msg)"></h5></div>
+          <!-- Manage Sysid -->
+    <div class="manage-subscribtion-container" ng-if="!info.toggleManageSubscription">
+      <div class="available-sysid-list">
+        <div class="box-heading">
+         <span>Subscribed Devices</span> 
+        </div>
+        <div class="search-container">
+       
+          <div class="sysid-search-dropdown" id="sysid-search-dropdown-div">
+            <div class="dropdown gb-add-rule-select-dropdown" id="sysid-dropdown-container">
+              <button class="gb-primary-btn gb-sysid-multisearch-drop-btn" id="sysid-search-dropdown-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="gb-add-rule-select-name-icon">
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </span></button>
+              <ul class="user-dropdown dropdown-menu" style="font-size: 10px; width: 100%;" id="sysid-search-dropdown-menu">
+                <!-- <li class="roleAction gb-add-rule-select-li"><a class="roleSelectAll" href="#" ng-click="dashCtrl.selectAllRole(); $event.stopPropagation()">Select All</a><a class="roleClear" href="#" ng-click="dashCtrl.clearAllRole(); $event.stopPropagation()">Clear</a></li> -->
+                <li class="roleList gb-add-rule-select-li" ng-repeat="header in  info.sysIdAttributeList track by $index" ng-class="{'gb-rule-selected-tr': header.selected}"
+                  title="{{header.colName}}">
+                  <input type="checkbox" class=" gb-custom-checkbox glyphicon"
+                    style="margin: 0px !important;" ng-checked="header.selected" ng-model="header.selected"
+                    ng-change="changeSearchView(header)" id="subscribed-list-item-checkbox-{{$index+1}}" >
+                  <span id="subscribed-list-item-{{$index+1}}" class="roleName gb-add-rule-select-li-span" ng-click="header.selected = !header.selected; changeSearchView(header)">{{header.colLabel}}</span>
+                </li>
+                <!-- <button class="assignRoleBtn"  ng-click="dashCtrl.addRoleConf()" id="gbTourDasboardAssignRoleBtn">DONE</button> -->
+              </ul>
+            </div>
+          </div>
+          <div class="sysid-search-box gb-custom_scroll-bar-horizontal">
+     
+            <div ng-repeat="header in  info.selectedSearchAttrList" class="sysid-search-input gb-custom_scroll-bar-horizontal">
+              <span class="text-nowrap ml-2">{{header.colLabel}}: </span>
+              <input class="mr-2" type="text" name="attribute" id="searchAttr_{{header.colName}}" placeholder=""
+                ng-model="header.value" ><br>
+            </div>
+           
+          </div>
+          <div class="sysid-search-action" id="sysid-search-action">
+            <button class="gb-primary-btn gb-primary-sm-btn gb-sysid-search-icon" ng-click="callsysid()" ng-disabled="searchDisbledButtonState()"><i class="fa fa-search" aria-hidden="true"></i> </button>
+            <button class="gb-primary-btn gb-primary-sm-btn gb-sysid-clear-icon" ng-click="clearSearchText()" ng-disabled="searchDisbledButtonStateForCancel()"><i class="fa fa-times" aria-hidden="true"></i> </button>
+          </div>
+        </div>
+        <div class="search-note">
+
+        </div>
+        <div class="sysid-empty-block" id="sysid-empty-block" ng-if="info.sysIdList.length == 0">No Sysid(s) available</div>
+        <div class="sysid-list-wrapper">
+          <div class=" gb-div-table">
+
+            <div
+              class="  gb-table-head font-weight-bold border border-left-0 border-right-0 border-top-0 gb-sysid-header-label">
+              <div class=" mt-2 mb-2 sysid-table-header" ng-repeat="header in info.sysIdAttributeList">
+                <span class="">{{header.colLabel}}</span>
+              </div>
+            </div>
+
+            <div class="sysid-list gb-custom_scroll-bar" id="subscribed_sysid_list">
+              <div ng-repeat="sysid in info.sysIdList track by $index" id="SubscribedSysId_value_row_{{$index+1}}"
+                class=" sysid-table-row border border-left-0 border-right-0 border-top-0"
+                ng-class="{'selected': sysid.selected, 'disabled': sysid.disabled}"
+                ng-click="rowClick($event,sysid, info.sysIdList); addRmoveBtnState('add')">
+                <div ng-repeat="sysCol in info.sysIdAttributeList  track by $index"
+                  id="availableSysId_value_{{$index}}_{{sysCol.colName}}"
+                  class=" mt-2 mb-2 text-truncate sysid-col-value">
+                  <span class="" title="{{sysid[sysCol.colName]}}">{{sysid[sysCol.colName]}}</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="sysid-pagination" id="sysid-pagination">
+          <div class="gb-pagination-text-div">
+            <span class="pagination-text"
+            ng-if="info.totalSysidCount">{{info.sysidPagination.paginationText}}</span>
+            <input type = "button" id="subscribed-selectall-btn" class="btn gb-primary-btn gb-primary-sm-btn btn-sm btn-outline-primary gb-sysid-selectall-btn" type="button"
+             ng-click="info.availableSelectall = !info.availableSelectall;selectAllSysid() " ng-disabled="selectallBtnState()" ng-model="info.availableSelectall"  value="select all">
+          </input> 
+          </div>
+          <div class="pagination-links-cont" ng-if="info.totalSysidCount > info.sysidPagination.pageSiz">
+            <button id="sysidPrevBtn" class="btn gb-primary-btn gb-primary-sm-btn btn-sm btn-outline-primary gb-sysId-page-btn" type="button"
+              ng-disabled="info.sysidPagination.currentPage == 1" ng-click="loadPrevSet()">Previous
+            </button>
+            <button id="sysidNextBtn" class="btn gb-primary-btn gb-primary-sm-btn btn-sm btn-outline-primary gb-sysId-page-btn" type="button"
+              ng-disabled="info.sysidPagination.currentPage >= info.sysidPagination.noOfPages" ng-click="loadNextSet()">
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="sysid-action-container">
+        <button title="click to unsubscribe devices" class=" gb-primary-btn gb-primary-sm-btn unsubscribe-sysid" ng-disabled="!info.tempAddSysIdList.length"
+          ng-click="addSysIds(); resetScrollTop('subscribed_sysid_list')"  id="sysid-unsubscribe-btn">Unsubscribe</button>
+        <button title="click to subscribe devices" class="gb-primary-btn gb-primary-sm-btn subscribe-sysid" ng-disabled="!info.tempRemoveSysIdList.length"
+          ng-click="removeSysIds()"  id="sysid-subscribe-btn">Subscribe</button>
+      </div>
+      <div class="selected-sysid-list sysid-list-wrapper">
+        <div class="box-heading">
+          <span>Unsubscribed Devices</span>  
+        </div>
+        <div class="search-container" id="unsubscribed-search-container">
+          <div class="sysid-search-dropdown" id="unsubscribed-sysid-search-dropdown">
+            <div class="dropdown gb-add-rule-select-dropdown">
+              <button id="uns-sysid-search-dropdown-icon" class="gb-primary-btn gb-sysid-multisearch-drop-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <span class="gb-add-rule-select-name-icon">
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                </span></button>
+              <ul id="unsubscribed-sysid-search-dropdown-menu"class="user-dropdown dropdown-menu" style="font-size: 10px; width: 100%;">
+                <li class="roleList gb-add-rule-select-li" ng-repeat="header in  info.sysIdAttributeListUnsubscribed track by $index" ng-class="{'gb-rule-selected-tr': header.selected}" id="dropdown-{{header.colName}}"
+                  title="{{header.colName}}" id="unsubscribed-sysid-search-dropdown-li-{{header.colName}}">
+                  <input type="checkbox" class=" gb-custom-checkbox glyphicon"
+                    style="margin: 0px !important;" ng-checked="header.selected" ng-model="header.selected"
+                    ng-change="changeSearchViewUnsubscribed(header)" id="unsubscribed-sysid-search-dropdown-checkbox" id="dropdown-input-{{header.colName}}" >
+                  <span id="unsubscribed-list-item-{{$index+1}}" class="roleName gb-add-rule-select-li-span" ng-click="header.selected = !header.selected; changeSearchViewUnsubscribed(header)" id="unsubscribed-sysid-dropdown-{{header.colLabel}}">{{header.colLabel}}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- unsubscribed sysid attribute search div -->
+          <div class="sysid-search-box gb-custom_scroll-bar-horizontal" id="unsubscribed-sysid-attribute-search-box">
+            <div ng-repeat="header in  info.selectedSearchAttrListUnsubscribed" class="sysid-search-input gb-custom_scroll-bar-horizontal" id="unsubscribed-sysid-attribute-{{header.colLabel}}">
+              <span class="text-nowrap ml-2">{{header.colLabel}}: </span>
+              <input class="mr-2" type="text" name="attribute" id="unsubscribed-searchAttr_{{header.colName}}" 
+                ng-model="header.value" ><br>
+            </div>
+          </div>
+
+          <!-- sysid search action div -->
+          <div class="sysid-search-action" id="unsubscribed-sysid-search-action">
+            <button class="gb-primary-btn gb-primary-sm-btn gb-sysid-search-icon" ng-click="searchUnsubscribedSysid()" ng-disabled="searchDisbledButtonStateUnsubscribed()" id="unsubscribed-sysid-search-icon"><i class="fa fa-search" aria-hidden="true"></i> </button>
+            <button class="gb-primary-btn gb-primary-sm-btn gb-sysid-clear-icon" ng-click="clearSearchTextUnsubscribed()" ng-disabled="searchDisbledButtonStateForCancelUnsubscribed()" id="unsubscribed-sysid-clear-icon"><i class="fa fa-times" aria-hidden="true"></i> </button>
+          </div>
+        </div>
+        <div class="gb-div-table">
+            <div class=" gb-table-head font-weight-bold border border-left-0 border-right-0 border-top-0 gb-sysid-header-label">
+              <div class="sysid-empty-block" ng-if="info.selectedSysIds.length == 0 && info.inSearchViewUnsubscribed" id="sysid-empty-block">No Sysid(s) available</div>
+              <div class=" mt-2 mb-2 sysid-table-header" ng-repeat="header in info.sysIdAttributeList">
+                <span class="">{{header.colLabel}}</span>
+              </div>
+            </div>
+          <div class="sysid-list gb-custom_scroll-bar">
+              <div ng-repeat="sysid in info.selectedSysIds  track by $index" id="UnsubscribedSysId_value_row{{$index+1}}"
+                class=" sysid-table-row border border-left-0 border-right-0 border-top-0"
+                ng-class="{'selected': sysid.selected}"
+                ng-click="rowClick($event,sysid, info.selectedSysIds); addRmoveBtnState('remove')">
+                <div ng-repeat="sysCol in info.sysIdAttributeList  track by $index"
+                  id="availableSysId_value_{{$index}}_{{sysCol.colName}}" class="mt-2 mb-2 text-truncate sysid-col-value">
+                  <span class="" title="{{sysid[sysCol.colName]}}">{{sysid[sysCol.colName]}}</span>
+                </div>
+              </div>
+            
+          </div>
+          <div>
+            <input type = "button" id="unsubscribed-selectall-btn" class="btn gb-primary-btn gb-primary-sm-btn btn-sm btn-outline-primary gb-sysid-selectall-btn" type="button"
+            ng-click="info.selectedSelectall = !info.selectedSelectall;selectAllSysidSelected() " ng-disabled="selectallBtnStateSelected()" ng-model="info.selectedSelectall"  value="select all">
+          </div>
+        </div>
+      </div>
+    
+      <div class="gb-sub-and-save-container" id="gb-sub-and-save-container">
+        <div class="gb-manage-sysid-switch" ng-if="!info.toggleManageSubscription" >
+          <!-- <span class="gb-switch filter-btn" ng-click="info.toggleManageSubscription = !info.toggleManageSubscription; showManageSubscription('add')" ng-class="{'active':  info.toggleManageSubscription }">
+            <div class="gb-switch-handle"></div>
+          </span> -->
+          <!-- <span class="manage-sysid-switch-msg"  ng-click="info.toggleManageSubscription = !info.toggleManageSubscription; showManageSubscription('add')" >Click here to subscribe to all the systems</span> -->
+        </div>
+        <button class="gb-primary-btn gb-primary-sm-btn" ng-click="subscribeFromUiConfirm()"id="gb-subscribe-final-subscribe-btn">Subscribe</button>
+      </div>
+    </div>
+    </div>         
+    <div class="panel-footer gb-panel-footer-flex gb-add-subscription-modal-footer" ng-if="info.toggleManageSubscription" id="gb-subscribe-modal-footer">
+      <div>
+        <span class="manage-sysid-switch-msg" id="gb-subscribe-configure-msg" >You will be recieving alerts for all the systems. Click customize to configure your subscription</span>
+      </div>
+      <div>
+        <button type="button" class="gb-primary-btn gb-modal-btn-sm pull-left" ng-click="subscribeFromUiConfirm(); modal.close()" id="gb-subscribe-yes-btn">
+          Yes
+        </button>
+        <button type="button" class="gb-primary-btn gb-modal-btn-sm pull-left" ng-click="info.toggleManageSubscription = !info.toggleManageSubscription; showManageSubscription('add')" id="gb-subscribe-customize-btn"> 
+          Customize
+        </button>
+        <button type="button" title="Press Esc to remove" class="gb-secondary-btn gb-modal-btn-sm pull-left" data-dismiss="modal" ng-click="modal.close()" id="gb-subscribe-no-btn">
+          No
+        </button>
+      </div>
+      
+    </div>
+  
+
+  </div>

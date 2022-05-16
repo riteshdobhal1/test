@@ -1,0 +1,22 @@
+<div class="gbtourMask" id="gbtourExposeDiv"></div>
+<div class="gbtourMask" id="gbtourMaskLeftDiv"></div>
+<div class="gbtourMask" id="gbtourMaskTopDiv"></div>
+<div class="gbtourMask" id="gbtourMaskRightDiv"></div>
+<div class="gbtourMask" id="gbtourMaskBottomDiv"></div>
+<gbtour class="gbtour center" id="gbtour">
+	<div class="body">
+		<gtitle class="title"><span class="msg" id="gbtourTitleMsg">{{title}}</span>
+			<!-- <span class="btn-close" ng-click="hideTour();" title="Close">x</span> -->
+		</gtitle>
+		<gbody class="msg" id="gbtourBodyMsg"></gbody>
+	</div>
+	<div class="footer" ng-show="info.started">
+		<span ng-click="done();" class="gbtour-btn done-btn" title="Close">Close</span>
+		<span ng-click="next();" class="gbtour-btn next-btn" ng-class="{'disabled':!nextIsEnable()}">Next</span>
+		<span class="gbtour-btn-spacer pull-right">&nbsp;</span>
+		<span ng-click="back();" class="gbtour-btn back-btn"ng-class="{'disabled':!backIsEnable()}">Back</span>
+	</div>
+	<div class="footer" ng-show="!info.started">
+		<span ng-click="start();" class="gbtour-btn" >Start</span>
+	</div>
+</gbtour>

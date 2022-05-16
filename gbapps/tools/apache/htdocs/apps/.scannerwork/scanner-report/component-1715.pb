@@ -1,0 +1,1 @@
+³ 2cssXhr'app/lib/font-awesome/scss/_stacked.scss

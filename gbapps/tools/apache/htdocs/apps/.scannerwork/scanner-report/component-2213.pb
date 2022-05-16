@@ -1,0 +1,1 @@
+¥ 2jsX–hrQapp/MDViz/module-Slim_Line_Temperature/lib-js/amcharts/exporting/amexport.orig.js

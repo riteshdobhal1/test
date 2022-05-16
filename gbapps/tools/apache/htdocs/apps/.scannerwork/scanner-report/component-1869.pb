@@ -1,0 +1,1 @@
+Í 2webXhr!app/partials/show_info_modal.html

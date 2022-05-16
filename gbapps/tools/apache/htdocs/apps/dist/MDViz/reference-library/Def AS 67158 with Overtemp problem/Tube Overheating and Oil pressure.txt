@@ -1,0 +1,5 @@
+Unit had resets due to Tube temeprature
+MDViz tool shows increase in Oil pressure and at the same time increase in Oil temperature
+No service was done on the unit during the time increase in Oil pressure seen
+Problem maybe obstruction to oil flow, resulting in higher Oil pressure and lower efficiency in cooling.
+Replaced tube cooler, did not help. Tube replaced.

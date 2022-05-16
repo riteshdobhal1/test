@@ -1,0 +1,1 @@
+­ 2webX+hr1app/partials/rules-and-alerts/datapath_modal.html

@@ -1,0 +1,56 @@
+[{
+	"selector": "#gb-app-nav",
+	"title" : "",
+	"msg" : "<p>These are the Glassbeam Analytics apps available for your organization.</p>",
+	"direction": "right>center"
+},{
+	"selector": ".main-container .left-nav > li.active",
+	"title" : "",
+	"msg" : "<p>Glassbeam Workbench uses a workbook and sheet file structure, much like Microsoft Excel.</p><p>A workbook contains worksheets.</p><p>A worksheet contains a single view along with shelves, legends, and the data pane.</p><p>Within a workbook, you can create new worksheets, clear an entire worksheet, duplicate worksheets, hide or show a worksheet, and delete a worksheet.</p><p>Glassbeam Workbench has several ways to view and organize the worksheets in your workbook.</p>",
+	"direction": "right>center"
+},{
+	"selector": "#gbCustomersList",
+	"title" : "",
+	"msg" : "<p>This option provides information on all the Glassbeam Analytics hosts available for your organization.</p>",
+	"direction": "down>left"
+},{
+	"selector": "#gbAccountSettings",
+	"title" : "",
+	"msg" : "<p>A username and password is provided to access Glassbeam Analytics.</p><p>Here you can change the default password, access the Administrator Console, know the log parsing status, and log out of the application.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gb-workbench-add-tag-dd-container",
+	"title": "",
+	"msg": "<p>Add tags to the selected datasurces</p><p> Select data source and add tag.</p>",
+	"direction": "down>right"
+},{
+	"selector" :"#gbtour-workbench-search-datasource-tag",
+	"title": "",
+	"msg": "<p>Search Data sources or data sources which matches its tag name.</p>",
+	"direction": "down>left"
+},{
+	"selector": "#gbtour-workbench-selectall-datasources",
+	"title": "",
+	"msg": "<p>Select all available data sources and add tags to them.</p>",
+	"direction": "down>right"
+},{
+	"selector" :"#gbtour-workbench-sources-column-header",
+	"title": "",
+	"msg" : "<p>Data source is a custom database view of related attributes of parsed machine data.</p><p>Let’s assume a storage device that is made up of physical components like disks, shelves, controller and logical components like RAID group and volume.</p><p>Consider a log file generated from this device that has details for each component in it, in a log file.</p><p>Once the log data is parsed, the data is stored in the backend in a data store.</p><p>Data in this data store can be exposed to the user in the workbench as data sources.</p><p>We can create one data source per component as defined in the log file or can create a data source by combining multiple related attributes across different components.</p>",
+	"direction": "down>right"
+},{
+	"selector" :"#gbtour-workbench-tags-column-header",
+	"title": "",
+	"msg": "<p>Show list of tags for each dashboard.</p>",
+	"direction": "down>right"
+},{
+	"selector" :"#gbtour-workbench-pagesize",
+	"title": "",
+	"msg": "<p>Change page size, how much rows per page.</p>",
+	"direction": "down>right"
+},{
+	"selector" :"#gbtour-workbench-pagination",
+	"title": "",
+	"msg": "<p>Navigation option to go a specific page.</p>",
+	"direction": "down>right"
+}]

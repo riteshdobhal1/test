@@ -1,0 +1,1 @@
+Ö 2jsX–hrOapp/MDViz/module-Slim_Line_GantryRoomTemp/lib-js/amcharts/exporting/amexport.js

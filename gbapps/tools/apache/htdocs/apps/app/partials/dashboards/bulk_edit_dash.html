@@ -1,0 +1,39 @@
+<div class="panel panel-primary gb-dash-bulk-edit" >
+    <div class="panel-heading gb-panel-head-fix">
+        <h3 class="panel-title">Bulk Edit Dashboards</h3>
+        <i class="fa fa-times gb-close-btn gb-panel-close-btn-fix" aria-hidden="true" title="Press Esc to remove" ng-click="modalInstance.close(); dashCtrl.filterLoading = false;"></i>
+    </div>
+    <div class="gb-notification-header-small">
+        <h5>
+            <span class="gb-sub"></span>
+        </h5>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Owner</label>
+                    <select class="form-control" id="ownerBulkSelect" ng-model="dashCtrl.bulkOwnerEmail">
+                            <option value="{{dashCtrl.BulkOwnerDropElement}}">{{dashCtrl.BulkOwnerDropElement}}</option>
+                            <option ng-repeat="x in dashCtrl.getBulkOwnerList()" value="{{x}}">{{x.email}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Visibility <span class="visDisableInfo" ng-show="dashCtrl.getBulkVisDisablity()" title="{{dashCtrl.visDisableInfo}}"><i class="icon-info"></i></span></label>
+                    <select class="form-control" id="VisibilityBulkSelect" ng-disabled = "dashCtrl.getBulkVisDisablity()" ng-model="dashCtrl.bulkVisibility">
+                        <option ng-repeat="vis in dashCtrl.BulkVisibilityDropElement" value="{{vis.value}}">{{vis.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" style="display: flex;flex-direction: row-reverse;">
+                <div class="form-group">
+                    <button type="button" id="gb-bulk-edit-dash-submit" class="gb-primary-btn ng-binding" ng-disabled="dashCtrl.bulkOwnerEmail == 'Select Owner' && dashCtrl.bulkVisibility == 'Select Visibility'" ng-click="dashCtrl.bulkEditApply()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

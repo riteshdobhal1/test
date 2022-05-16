@@ -1,0 +1,5 @@
+{
+    "Status": "Success",
+    "Msg": "Relavant Message",
+    "Data": ["Last Hour", "Last 12 Hour", "Yesterday", "Last 2 Days", "This Week", "This Month"]
+}

@@ -1,0 +1,45 @@
+<div class="panel panel-primary  gb-delete-section-view gb-delete-rules-window" >
+    <div class="panel-heading gb-panel-head-fix">
+      <h3 class="panel-title">Subscribe Rule(s)</h3>
+      <i class="fa fa-times gb-close-btn gb-panel-close-btn-fix" aria-hidden="true" title="Press Esc to remove" ng-click="modal.close()"></i>
+      
+    </div>  
+    <div class="panel-body">
+      <div class="gb-font-style-1"><h5 ng-bind-html="renderHtml(msg)"></h5></div>
+      <div class="grid">
+      <table class="table table-bordered gb-delete-rules-grid">
+        <thead>
+          <tr>
+            <th>{{rulesconstants['LABEL']}}</th>
+            <th>{{rulesconstants['DESCRIPTION']}}</th>
+            <th>{{rulesconstants['AUTHOR']}}</th>
+            <th>{{rulesconstants['STATUS']}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="i in rulesToSubscribe" >
+            <td title="{{i.label_display}}"><div class="uploadLogvaultStatusDiv">{{i.label_display}}</div></td>
+            <td title="{{i.description}}"><div class="uploadLogvaultStatusDiv">{{i.description}}</div></td>
+            <td title="{{i.author}}"><div class="uploadLogvaultStatusDiv">{{i.author}}</div></td>
+            <td title="{{i.status}}"><div class="uploadLogvaultStatusDiv">{{i.status}}</div></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>         
+    <div class="panel-footer gb-panel-footer-flex">
+      <!-- <div> 
+        <input type="checkbox" class=" gb-custom-checkbox glyphicon"
+        style="margin: 0px !important;" ng-checked="true" ng-model="header.selected"
+         id="subscribed-list-item-checkbox-{{$index+1}}" >
+        <span class="manage-sysid-switch-msg" id="gb-subscribe-configure-msg" >Receive alerts for these tags in future</span>
+      </div> -->
+      <button type="button" class="gb-primary-btn pull-left" ng-click="bulkSubscribeConfirm(); modal.close()">
+        Subscribe
+      </button>
+      <button type="button" title="Press Esc to remove" class="gb-secondary-btn pull-left" data-dismiss="modal" ng-click="modal.close()">
+        Cancel
+    
+      </div>
+    </div>
+  </div>

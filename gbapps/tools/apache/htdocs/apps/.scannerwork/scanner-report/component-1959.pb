@@ -1,0 +1,1 @@
+§ 2webXªhr-app/partials/rules-and-alerts/rules_list.html

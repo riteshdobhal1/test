@@ -1,0 +1,515 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="HelpNDoc Personal Edition 7.9.1.631">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="favicon.ico"/>
+
+  <title>Add new form</title>
+  <meta name="description" content="" /> 
+  <meta name="keywords" content="">
+
+
+
+  
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Add new form">
+  <meta name="twitter:description" content="">
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Add new form" />
+  <meta property="og:type" content="article" />
+  <meta property="og:description" content="" />
+  <meta property="og:site_name" content="Glassbeam Analytics" /> 
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendors/bootstrap-3.4.1/css/bootstrap.min.css" rel="stylesheet"/>
+
+  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+  <link href="vendors/bootstrap-3.4.1/css/ie10-viewport-bug-workaround.css" rel="stylesheet"/>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="vendors/html5shiv-3.7.3/html5shiv.min.js"></script>
+      <script src="vendors/respond-1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <!-- JsTree styles -->
+  <link href="vendors/jstree-3.3.10/themes/default/style.min.css" rel="stylesheet"/>
+
+  <!-- Hnd styles -->
+  <link href="css/layout.min.css" rel="stylesheet" />
+  <link href="css/effects.min.css" rel="stylesheet" />
+  <link href="css/theme-light-blue.min.css" rel="stylesheet" />
+  <link href="css/print.min.css" rel="stylesheet" media="print" />
+  <style type="text/css">nav { width: 350px} @media screen and (min-width:769px) { body.md-nav-expanded div#main { margin-left: 350px} body.md-nav-expanded header { padding-left: 364px} }</style>
+  <style type="text/css">.navigation #inline-toc { width: auto !important}</style>
+
+  <!-- Content style -->
+  <link href="css/hnd.content.css" rel="stylesheet" />
+
+  
+
+
+
+</head>
+
+<body class="md-nav-expanded">
+
+
+
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible">Skip to main content</a>
+  </div>
+
+  <header class="headroom">
+    <button class="hnd-toggle btn btn-default">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>        
+    </button>
+    <h1>Glassbeam Analytics</h1>
+    
+  </header>
+
+  <nav id="panel-left" class="md-nav-expanded">
+    <!-- Nav tabs -->
+    <ul class="tab-tabs nav nav-tabs" role="tablist">
+      <li id="nav-close"> 
+        <button class="hnd-toggle btn btn-default">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
+      </li>
+      
+	  
+        <li role="presentation" class="tab active">
+            <a href="#contents" id="tab-contents" aria-controls="contents" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-list"></i>
+                Contents
+            </a>
+        </li>
+      
+        <li role="presentation" class="tab">
+            <a href="#index" id="tab-index" aria-controls="index" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-asterisk"></i>
+                Index
+            </a>
+        </li>
+      
+        <li role="presentation" class="tab">
+            <a href="#search" id="tab-search" aria-controls="search" role="tab" data-toggle="tab">
+                <i class="glyphicon glyphicon-search"></i>
+                Search
+            </a>
+        </li>
+      
+    </ul>  <!-- /Nav tabs -->
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+	  
+      <div role="tabpanel" class="tab-pane active" id="contents">
+        <div id="toc" class="tree-container unselectable"
+            data-url="_toc.json"
+            data-openlvl="1"
+        >
+            
+        </div>
+      </div>  <!-- /contents-->
+      
+      <div role="tabpanel" class="tab-pane" id="index">
+        <div id="keywords" class="tree-container unselectable"
+            data-url="_keywords.json"
+            data-openlvl="1"
+        >
+            
+        </div>
+      </div>  <!-- /index-->
+      
+      <div role="tabpanel" class="tab-pane" id="search">
+        <div class="search-content">
+          <div class="search-input">
+            <form id="search-form">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="input-search" name="input-search" placeholder="Search..." />
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </form>
+          </div>  <!-- /search-input -->
+          <div class="search-result">
+            <div id="search-info"></div>
+            <div class="tree-container unselectable" id="search-tree"></div>
+          </div>  <!-- /search-result -->
+        </div>  <!-- /search-content -->
+      </div>  <!-- /search-->
+      
+    </div>  <!-- /Tab panes -->
+
+  </nav>
+
+  <div id="main">
+
+    <article>
+        <div id="topic-content" class="container-fluid" 
+		  data-hnd-id="Addnewform"
+		  data-hnd-context="378"
+		  data-hnd-title="Add new form"
+		>
+            
+                <div class="navigation">
+                    <ol class="breadcrumb">
+                        <li><a href="GlassbeamRulesandAlerts.html">Glassbeam Rules and Alerts</a></li><li><a href="Createnewrules.html">Create new rules</a></li><li><a href="SettinguprulesusingtheRulesAlert.html">Setting up rules using the Rules &amp; Alerts App</a></li>
+                    </ol>
+                    <div class="nav-arrows">
+                        <div class="btn-group btn-group" role="group"><a class="btn btn-default" href="SettinguprulesusingtheRulesAlert.html" title="Setting up rules using the Rules &amp; Alerts App" role="button"><span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span></a><a class="btn btn-default" href="UnderstandingSectionsandAttribut.html" title="Understanding Sections and Attributes" role="button"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></a><a class="btn btn-default" href="MoreaboutSUMAVGMINMAX.html" title="More about SUM, AVG, MIN, MAX" role="button"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></div>
+                    </div>
+                </div> 
+            
+
+            <a id="main-content"></a>
+
+            <h2>Add new form</h2>
+
+            <div class="main-content">
+                
+<ol style="text-indent: 0px; padding: 0; margin: 0 0 0 19px; list-style-position: outside;">
+ <li value="1" style="margin-left: 0px" class="rvps44"><span class="rvts11">Follow the table as you walk through each of the options in the form.&nbsp;</span></li>
+</ol>
+<div class="rvps62">
+<table width="602" border="1" cellpadding="4" cellspacing="-1" style="border-width: 0px; border-collapse: collapse;">
+ <tr valign="top">
+  <td width="112" height="33" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px; background-color: #c6d9f1;">
+   <p class="rvps4"><span class="rvts20">Item</span></p>
+  </td>
+  <td width="461" height="33" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px; background-color: #c6d9f1;">
+   <p class="rvps4"><span class="rvts20">What you should do</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="75" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Label</span></p>
+  </td>
+  <td width="461" height="75" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Provide a descriptive name to identify rule.&nbsp;</span></p>
+   <p class="rvps4"><span class="rvts11">Choose a name or Label for your alert. The name will be returned with any alert that is triggered.</span></p>
+   <p class="rvps4"><span class="rvts11">You can enter label in the following formats:</span></p>
+   <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 48px; list-style-position: outside; list-style-type: disc;">
+    <li class="rvps7"><span class="rvts21">Any text</span></li>
+   </ul>
+   <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 48px; list-style-position: outside; list-style-type: disc;">
+    <li class="rvps7"><span class="rvts21">{sec.attributes}</span></li>
+   </ul>
+   <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 48px; list-style-position: outside; list-style-type: disc;">
+    <li class="rvps7"><span class="rvts21">JSON. &nbsp;Click </span><a class="rvts17" href="JSONsupport1.html">here</a><span class="rvts21"> to know more about JSON support.</span></li>
+   </ul>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="74" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Description</span></p>
+  </td>
+  <td width="461" height="74" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Enter a description.&nbsp;</span></p>
+   <p class="rvps4"><span class="rvts11">It could be a message that appropriately describes a rule so that you can remember why you wanted this rule.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="95" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Category</span></p>
+  </td>
+  <td width="461" height="95" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Choose an appropriate category. If you want to setup a new category, then add a new category.&nbsp;</span></p>
+   <p class="rvps4"><span class="rvts11">Select a category to which the rule will cater, or add a new category to which the rule must belong. For details, see the section “</span><span class="rvts44">To add a new category”</span><span class="rvts11">.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="28" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Author</span></p>
+  </td>
+  <td width="461" height="28" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">This is the name of the user who is creating the Rule. This is for your peers to know, who created the rule, so that they can contact the creator if needed. &nbsp;</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="59" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Severity</span></p>
+  </td>
+  <td width="461" height="59" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Set the severity for a given rule. Setting the right severity is important as it helps the users who view the alert to understand its severity or importance. All rules that are set to the highest severity are displayed at on top of the Rules List page.&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="56" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Priority</span></p>
+  </td>
+  <td width="461" height="56" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Set the priority for a given rule. Setting the right priority is important as it helps the users who view the alert to understand its priority or importance.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="155" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Scope</span></p>
+  </td>
+  <td width="461" height="155" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <div class="rvps74">
+   <table width="467" border="1" cellpadding="4" cellspacing="-1" style="border-width: 0px; border-collapse: collapse;">
+    <tr valign="top">
+     <td width="98" height="30" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px; background-color: #c6d9f1;">
+      <p class="rvps4"><span class="rvts20">Option</span></p>
+     </td>
+     <td width="146" height="30" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px; background-color: #c6d9f1;">
+      <p class="rvps4"><span class="rvts20">Rule Criteria</span></p>
+     </td>
+     <td width="180" height="30" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px; background-color: #c6d9f1;">
+      <p class="rvps4"><span class="rvts20">Trigger Criteria</span></p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td width="98" height="73" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+      <p class="rvps4"><span class="rvts11">Row</span></p>
+     </td>
+     <td width="146" height="73" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+      <p class="rvps4"><span class="rvts11">When the condition of the rule is within a single line in the log</span></p>
+     </td>
+     <td width="180" height="73" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+      <p class="rvps4"><span class="rvts11">When you want to trigger the rule on every line if it meets the condition</span></p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td width="98" height="90" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+      <p class="rvps4"><span class="rvts11">File</span></p>
+     </td>
+     <td width="146" height="90" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+      <p class="rvps4"><span class="rvts11">When the condition of the rule is across multiple lines in the log, but those lines are within a given file.</span></p>
+      <p class="rvps4"><span class="rvts11">You should use multiple Count function for multi sections. For example,</span></p>
+      <p class="rvps4"><span class="rvts11">count(section1.name="name1") &gt; 0 AND/OR count(section2.name="name2") &gt; 1</span></p>
+     </td>
+     <td width="180" height="90" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+      <p class="rvps4"><span class="rvts11">When you want to trigger the rule, only once per file, even if it occurs more than once</span></p>
+     </td>
+    </tr>
+    <tr valign="top">
+     <td width="98" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+      <p class="rvps4"><span class="rvts11">Bundle</span></p>
+     </td>
+     <td width="146" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+      <p class="rvps4"><span class="rvts11">When the condition of the rule is across multiple lines in the log and those lines are across different files within the bundle</span></p>
+      <p class="rvps4"><span class="rvts11">You should use multiple Count function for multi sections. For example,</span></p>
+      <p class="rvps4"><span class="rvts11">count(section1.name="name1") &gt; 0 AND/OR count(section2.name="name2") &gt; 1</span></p>
+     </td>
+     <td width="180" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+      <p class="rvps4"><span class="rvts11">When you want to trigger the rule only once per bundle, even if it occurs more than once</span></p>
+     </td>
+    </tr>
+   </table>
+   </div>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="95" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Action</span></p>
+  </td>
+  <td width="461" height="95" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">What to do when an alert is triggered.&nbsp;</span></p>
+   <p class="rvps4"><span class="rvts20">Persist</span><span class="rvts11">: &nbsp;When the Action is set to </span><span class="rvts20">Persist</span><span class="rvts11">, the alert will be persisted in the database for the user to view the alerts through an application/dashboard.&nbsp;</span></p>
+   <p class="rvps4"><span class="rvts20">Persist and e-mail</span><span class="rvts11">: &nbsp;If the Action is set to </span><span class="rvts20">Persist and e-mail</span><span class="rvts11">, then along with persistence, an E-Mail will also be sent based on the template attached to this rule and the subscription list. &nbsp;</span><a class="rvts16" href="RuleSubscription.html">Click here to know more about rule subscription.</a><span class="rvts11">&nbsp;</span></p>
+   <p class="rvps4"><span class="rvts20">Persist and Call API</span><span class="rvts11">: &nbsp;If the action is set to </span><span class="rvts20">Persist and Call API</span><span class="rvts11">, the alerts persist in the database. &nbsp;Also, the API (associated with API template) is called and the </span><span class="rvts20">payload data</span><span class="rvts11"> is also passed to the API.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="59" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Email Template</span></p>
+  </td>
+  <td width="461" height="59" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Select the mail template or create a new template by clicking the Manage Templates button. See the “Creating an Email Template” section on how to create the content for setting up the alert message.&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="74" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">API Template</span></p>
+  </td>
+  <td width="461" height="74" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">List of all the API templates created. &nbsp;Click here to select an API template from the drop down list.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="74" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Max Alerts (email)</span></p>
+  </td>
+  <td width="461" height="74" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">By default it is 100. This is the maximum number of email messages per log bundle per rule that is sent whenever the condition (logic) is met. Therefore, there can a maximum 100 email messages if even the logic condition exceeds 100 times for a rule in a given log bundle. This is done to limit E-mail blast. If a rule is not set correctly, it will end up sending thousands of mails.&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="77" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Max Alert (View)</span></p>
+  </td>
+  <td width="461" height="77" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">This is a number that can be set per rule, which decides how many alerts need to be shown in the dashboard and also when exported. The rule metadata just stored this information per rule and it is the responsibility of the App layer to make use of it.</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="77" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">KB Link</span></p>
+  </td>
+  <td width="461" height="77" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Link to an internal or external knowledge base article to help peers get more information on the cause or effect of the rule. This field can be used by the author of the rule to provide more details about the problem and its resolution for which the rule was set.&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="56" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Recommendation</span></p>
+  </td>
+  <td width="461" height="56" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Enter the remedial action your peers should take to rectify the system issues at hand when they see this alert. &nbsp;You can enter recommendation in the following formats:</span></p>
+   <p class="rvps4"><span class="rvts11"><br/></span></p>
+   <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 48px; list-style-position: outside; list-style-type: disc;">
+    <li class="rvps7"><span class="rvts21">Link to external source</span></li>
+    <li class="rvps7"><span class="rvts21">Any text</span></li>
+    <li class="rvps7"><span class="rvts21">{sec.attributes} / {evt.attributes}</span></li>
+    <li class="rvps7"><span class="rvts21">JSON. &nbsp;Click </span><a class="rvts17" href="JSONsupport1.html">here</a><span class="rvts21"> to know more about JSON support.</span></li>
+   </ul>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="28" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Justification&nbsp;</span></p>
+  </td>
+  <td width="461" height="28" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">This attribute allows Rule creators to explain the justification for the triggered alert.&nbsp;</span></p>
+   <p class="rvps4"><span class="rvts11">You can enter justification in the following formats:</span></p>
+   <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 48px; list-style-position: outside; list-style-type: disc;">
+    <li class="rvps7"><span class="rvts21">Link to external source</span></li>
+    <li class="rvps7"><span class="rvts21">Any Text</span></li>
+    <li class="rvps7"><span class="rvts21">{sec.attributes} / {evt.attributes}</span></li>
+    <li class="rvps7"><span class="rvts21">JSON. &nbsp;Click </span><a class="rvts17" href="JSONsupport1.html">here </a><span class="rvts21">to know more about JSON support.</span></li>
+   </ul>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="28" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Logic</span></p>
+  </td>
+  <td width="461" height="28" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">Use the Operators, Functions, and Attributes list items to create conditions that need to assess in a log file.</span></p>
+   <p class="rvps4"><span class="rvts11">For instance: “{Show whitelist-dbcpsec-status.Unapproved entries} &gt; 0 OR {Show whitelist-dbcpsec-status.Certified hold entries} &gt; 0 OR {Show whitelist-dbcpsec-status.Revoked entries} &gt; 0”</span></p>
+   <p class="rvps4"><span class="rvts11">In the above logic construction, the green entries are attributes items that are part of the log sections. Rest of the computation is part of the validation logic to compute the values of the attributes against other entries in the log sections. These can be accomplished using simple mathematical operators and functions, available in the left panel.&nbsp;</span></p>
+  </td>
+ </tr>
+ <tr valign="top">
+  <td width="112" height="28" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts20">Text</span></p>
+  </td>
+  <td width="461" height="28" valign="top" style="border-width : 1px; border-color: #4f81bd; border-style: solid; padding: 0px 7px;">
+   <p class="rvps4"><span class="rvts11">This field is used to define the format and the fields that you would like to see in the alert, when this rule is triggered. For instance, whenever the condition is met, you may want to describe the actual problem in the alert, you might want to pick other attributes and their values that can be used by troubleshooters to identify the condition in the machine. &nbsp;</span></p>
+   <p class="rvps4"><span class="rvts11">For instance, when the above logic is executed. This can be the possible alert condition to trigger:</span></p>
+   <p class="rvps4"><span class="rvts11">Show whitelist-dbcpsec status :: CPSEC: APs are not coming up because of either Unapproved entries or Certified hold entries or Revoked entries have non Zero value : Current State is - Unapproved entries = {Show whitelist-dbcpsec-status.Unapproved entries}, Certified hold entries = {Show whitelist-dbcpsec-status.Certified hold entries}, Revoked entries = {Show whitelist-dbcpsec-status.Revoked entries}</span></p>
+   <p class="rvps4"><span class="rvts11">Note: The text inside {} is the extracted column, whose value will be replaced in the text.&nbsp;</span></p>
+   <p class="rvps4"><span class="rvts11">This text content with the values extracted from the troubling log is displayed as the alert condition in the Rules List and the email message alert.</span></p>
+   <p class="rvps4"><span class="rvts11">&nbsp;You can enter text in the following formats:</span></p>
+   <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 48px; list-style-position: outside; list-style-type: disc;">
+    <li class="rvps7"><span class="rvts21">Any Text</span></li>
+   </ul>
+   <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 48px; list-style-position: outside; list-style-type: disc;">
+    <li class="rvps7"><span class="rvts21">{sec.attributes}</span></li>
+   </ul>
+   <ul style="text-indent: 0px; padding: 0; margin: 0 0 0 48px; list-style-position: outside; list-style-type: disc;">
+    <li class="rvps7"><span class="rvts21">JSON. &nbsp;Click </span><a class="rvts17" href="JSONsupport1.html">here</a><span class="rvts21"> to know more about JSON support.</span></li>
+   </ul>
+  </td>
+ </tr>
+</table>
+</div>
+<p class="rvps10"><span class="rvts11">Once you have completed all of the mandatory entries, check again for the Logic and Text field for its appropriateness and accuracy before you click the Submit. &nbsp;Once you click Submit, you will get the “Rule added successfully as draft. ID is “Rule_xxxxxxxx”” messaged displayed on the top of the page.&nbsp;</span></p>
+<p class="rvps10"><img alt="" style="padding : 1px;" src="lib/NewItem1506.png"></p>
+<p class="rvps11"><span class="rvts19"><br/></span></p>
+<p class="rvps4"><span class="rvts11">Now, the rule needs to be tested for its accuracy. This can be completed in the next stage of the Rules creation stages. </span><span class="rvts6"></span></p>
+<p class="rvps5" style="clear: both;"><span class="rvts13">Created with the Personal Edition of HelpNDoc: </span><a class="rvts14" href="https://www.helpndoc.com/create-epub-ebooks">Full-featured EPub generator</a></p>
+
+            </div>
+            
+            <div id="topic_footer"><div id="topic_footer_content"></div></div>
+        </div>  <!-- /#topic-content -->
+    </article>
+
+    <footer><p class="rvps5" style="clear: both;"><span class="rvts13">Version 7.3 </span></p></footer>
+
+  </div>  <!-- /#main -->
+
+  <div class="mask" data-toggle="sm-nav-expanded"></div>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="hndModal" tabindex="-1" role="dialog" aria-labelledby="hndModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="hndModalLabel"></h4>
+        </div>
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary modal-btn-close" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Splitter -->
+  <div id="hnd-splitter" style="left: 350px"></div>  
+
+  <!-- Scripts -->
+  <script src="vendors/jquery-3.5.1/jquery.min.js"></script>
+  <script src="vendors/bootstrap-3.4.1/js/bootstrap.min.js"></script>
+  <script src="vendors/bootstrap-3.4.1/js/ie10-viewport-bug-workaround.js"></script>
+  <script src="vendors/markjs-8.11.1/jquery.mark.min.js"></script>
+  <script src="vendors/uri-1.19.2/uri.min.js"></script>
+  <script src="vendors/imageMapResizer-1.0.10/imageMapResizer.min.js"></script>
+  <script src="vendors/headroom-0.11.0/headroom.min.js"></script>
+  <script src="vendors/jstree-3.3.10/jstree.min.js"></script>  
+  <script src="vendors/interactjs-1.9.22/interact.min.js"></script>  
+
+  <!-- HelpNDoc scripts -->
+  <script src="js/polyfill.object.min.js"></script>
+  <script src="_translations.js"></script>
+  <script src="js/hndsd.min.js"></script>
+  <script src="js/hndse.min.js"></script>
+  <script src="js/app.min.js"></script>
+
+  <!-- Init script -->
+  <script>
+    $(function() {
+      // Create the app
+      var app = new Hnd.App({
+        searchEngineMinChars: 3
+      });
+      // Update translations
+      hnd_ut(app);
+	  // Instanciate imageMapResizer
+	  imageMapResize();
+	  // Custom JS
+	  
+      // Boot the app
+      app.Boot();
+    });
+  </script>
+
+
+
+</body>
+
+</html>
+

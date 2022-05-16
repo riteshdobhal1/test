@@ -1,0 +1,553 @@
+<div class="container-fluid padding-0" ng-controller="RulesListCtrl">
+	<div class="page-loader-white-gb" ng-show="info.rulesLoading">
+		<div class="page-loader-body">
+			<div class="rect rect1"></div>
+			<div class="rect rect2"></div>
+			<div class="rect rect3"></div>
+			<div class="rect rect4"></div>
+			<div class="rect rect5"></div>
+		</div>
+	</div>
+	<!-- <div class="row-fluid"> -->
+	<div id="rulesListTableFilterCntr" ng-show="showColumnFilterPanel" ng-class="{'col-fixed-240':showColumnFilterPanel}">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 gb-rule-list-filter-panel">
+					<div id="accordion" class="panel panel-primary behclick-panel">
+						<div class="panel-heading">
+							<span class="panel-title">{{rulesconstants['COLUMNS_FILTER']}}</span>
+							<a class="pull-right clear-filter-icon" ng-class="{'pagination-icon-disabled': !checkAppliedFilters()}" title="Clear Applied Filters" ng-click="clearAppliedFilters()">
+								<span class="icon-loop2"></span>
+							</a>
+							<a class="gb-rules-side-filter-close-btn fa fa-arrow-left" title="Close filter panel" ng-click="showColumnFilterPanel = !showColumnFilterPanel; showFilterCount()"></a>
+						</div>
+						<div class="gb-facet-loader" ng-show="showColumnFilterPanelLoading">
+							<div class="gb-facet-loader-body">
+								<div class="box"></div>
+								<div class="box"></div>
+								<div class="box"></div>
+								<div class="box"></div>
+							</div>
+						</div>
+						<div class="panel-body" ng-hide="showColumnFilterPanelLoading"> 
+							<div ng-repeat="column in groupedFilterData track by $index">
+								<!-- <div class="panel-heading" ng-class="{'active':column.expanded}" ng-if="column.data.length" ng-show="column.enabled"> -->
+								<div class="panel-heading" ng-class="{'active':column.expanded}"  ng-show="column.enabled">
+									<h4 class="panel-title">
+										<a data-toggle="collapse" href="#{{column.field+$index}}" ng-click="column.expanded = !column.expanded">
+											<i class="indicator fa fa-angle-down" aria-hidden="true"></i>
+											<span>{{column.title}}</span>
+											<span class="pull-right glyphicon gb-check-box" ng-class="{'glyphicon-check':column.selected,'glyphicon-unchecked':!column.selected}"
+											 ng-click="showHideColumn(column,$event)" ng-hide = "column.field == 'mySubscriedRule'"></span>
+											<span class="filter-count pull-right" ng-show="info.filter[column.field] && column.field != 'label_display' && column.field != 'description' && column.field != 'author' && column.field != 'rule_name'  && column.field != 'created_ts' && column.field != 'modified_ts'">{{info.filter[column.field].length}}</span>
+											<span class="filter-count pull-right" ng-show="info.filter[column.field] && (column.field == 'label_display' || column.field == 'description' || column.field == 'author' || column.field == 'rule_name' || column.field == 'created_ts' || column.field == 'modified_ts')">1</span>											
+										</a>
+									</h4>
+								</div>
+								<div id="{{column.field+$index}}"  ng-class="{'panel-collapse collapse gb-column-filter-drop in':column.expanded,'panel-collapse collapse gb-column-filter-drop':!column.expanded}" >
+									<ul class="list-group" ng-if="column.field != 'label_display' && column.field != 'description' && column.field != 'author' && column.field != 'rule_name'  && column.field != 'created_ts' && column.field != 'modified_ts'">
+										<li class="list-group-item" ng-repeat="listvalue in column.data track by $index">
+											<div class="checkbox">
+												<label>
+													<!-- <input type="checkbox" class = "gb-custom-checkbox glyphicon" ng-model="info[column.field][listvalue]" ng-change="changeFilter(column, listvalue)"> -->
+													<input type="checkbox" class = "gb-custom-checkbox glyphicon" ng-model="listvalue.selected" ng-change="info[column.field][listvalue.label]=listvalue.selected;changeFilter(column, listvalue.label)">
+													<span title="{{listvalue.label}}">{{listvalue.label}}</span> 
+												</label>
+											</div>
+										</li>
+									</ul>
+									<div class="white-space-normal search-panel-body" ng-if="column.field == 'label_display' || column.field == 'description' || column.field == 'author' || column.field == 'rule_name'">
+										<input type="text" class="search" ng-model="info[column.field]" ng-change="searchRule(column.field)" placeholder="Search {{column.title}}"
+										/>
+									</div>
+									<div class="white-space-normal search-panel-body" ng-if="column.field == 'created_ts' || column.field == 'modified_ts'">
+										<!-- <input type="text" class="search" ng-model="info[column.field]" ng-change="searchRule(column.field)" placeholder="Search {{column.title}}"
+										/> -->
+										<!-- <div class="panel gb-ra-inline-datetime-picker">
+											<div class="panel-header">
+												<input type="text" readonly class="search" placeholder="Search {{column.title}}" ng-model="info[column.field]">
+											</div>
+											<div class="panel-body gb-custom_scroll-bar">
+												<div moment-picker="info[column.field]" format="YYYY-MM-DD" inline="true" set-on-select="true"></div>
+											</div>
+											<div class="panel-footer">
+												<button type="button" class="gb-primary-btn gb-modal-btn-sm" ng-click="searchRule(column.field)">
+												  Search
+												</button>
+												<button type="button" class="gb-secondary-btn gb-modal-btn-sm" ng-click="searchRule(column.field, true)">
+												  Clear
+												</button>
+											  </div>
+										</div> -->
+										<!-- <ul class="list-group">
+											<li class="list-group-item" ng-repeat="listvalue in column.allValueList track by $index">
+												<div class="checkbox">
+													<label>
+														<input type="checkbox" class = "gb-custom-checkbox glyphicon" ng-model="info[column.field][listvalue]" ng-change="changeFilter(column, listvalue)">
+														<span title="{{listvalue}}">{{listvalue | cut:false:30:'...'}}</span>
+													</label>
+												</div>
+											</li>
+										</ul>
+										<ul class="list-group">
+											<li class="list-group-item" ng-repeat='listvalue in column.allValueList track by $index'>
+												<div class="checkbox" ng-init="dashCtrl.info.selected.createdBy[duser] = false" ng-click="dashCtrl.info.selected.createdBy[duser] = !dashCtrl.info.selected.createdBy[duser];">
+													<label>
+														<span class="applied-filter-indicator" ng-show="dashCtrl.info.createdBy == duser"><i class="fa fa-check" aria-hidden="true"></i></span>                                                
+														<span class="gb-wrap-ellipsis" title="{{duser}}">{{duser}}</span>
+													</label>
+												</div>
+											</li>
+										</ul> -->
+
+										<ul class="list-group gb-raa-time-filter">
+											
+											<li class="list-group-item" role="presentation" ng-repeat="tf in timefilter" ng-click="ruleListTimeFilterChange(column,tf)" ng-class="{'gb-raa-timefilter-active': selectDateFilterItem(column,tf)}" ng-if="tf.display">
+												<div class="gb-tf-div">
+													<span class="gb-tf-span" ng-show="selectDateFilterItem(column,tf)"> <i class="fa fa-check"></i> </span>
+													<span class="gb-tf-name">{{tf.label}}</span>
+												</div>
+												
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-12 table-responsive" id="rulesListTableDiv" ng-class="{'col-offset-240':showColumnFilterPanel}">
+			<div class="gb-toolbar-item gb-rule-change-global-div" id="inline-help-rules-type-filter">
+					<div id="gb-change-rule-type-dd" class="btn-group gb-change-rules-type-btn" role="group" aria-label="..." ng-show="hasAccessToUnsupportedRules" ng-class="{'gb-rule-change-global-btn-width':showColumnFilterPanel}" >
+						<button type="button" class="btn btn-default gb-rule-change-global-btn" ng-class="{'active' : isInSupportedRuleListPage()}" ng-click="rulesTypeChange(rulesType[0])">{{rulesconstants['USR_CREATED_RULES']}}</button>
+						<button type="button" class="btn btn-default gb-rule-change-global-btn" ng-class="{'active' : !isInSupportedRuleListPage()}" ng-click="rulesTypeChange(rulesType[1])">{{rulesconstants['CUSTOM_RULES']}}</button>
+					</div>
+					<div class="gb-select-all-notifi-div" ng-show="showSelectNotify"> 
+						<div class="gb-selectall-noti-container"> 
+						<span class="span1" id="gb-selected-rules-count" > <span ng-show = "info.page['total'] == currentSelected" >All </span> <b>{{currentSelected}}</b> Rule(s)  selected</span>
+						<span class="span2" id="gb-select-all"  tabindex="0" role="link" ng-click="info.selectAll = !info.selectAll;checkSelectAll()" ng-hide="info.page['total'] == currentSelected" title = "Select all Rules" >Select all <b>{{info.page['total']}}</b> Rules </span>
+						<span class="span3" id="gb-clear-selected-rules"  tabindex="0" role="link" ng-click="clearselected()" title = "Clear all selection"> Clear all</span>
+						</div> 
+					</div>
+					<div class="gb-flashMessageDash" id="flashMessageDash" ng-show="info.actionMessageFlag">{{info.actionMessage}}</div>
+			</div>
+		<div class="gb-rules-msg-block" ng-if="!!info.rulesListMsg['type']" gb-outside-click="clearMessage()">
+			<div class="alert padding-0 text-align-center margin-btm-0" ng-class="{'alert-success': info.rulesListMsg['type'] == 'success', 'alert-danger': info.rulesListMsg['type'] == 'failure'}"
+			 ng-bind-html="renderHtml(info.rulesListMsg['msg'])"></div>
+		</div>
+		<div class="gb-page-toolbar">
+			<div class="gb-toolbar-item" id="inline-help-rules-list-column-filter">
+				<a class="gb-rules-list-analyzer-btn" id="gb-rules-filterpanel-hamburger" title="Column filter" ng-hide="showColumnFilterPanel"
+				 ng-click="loadFilterPanelData()">
+					<span class="fa fa-filter column-filter-icon"></span>
+					<span ng-if="filterCount > 0" class="applied-filter-count" title="{{filterCount}} filter(s) applied">({{filterCount}})</span>
+				</a>
+			</div>
+			<div class="gb-toolbar-item gb-rules-list-status-circle-cntrgb-toolbar-item gb-rules-list-status-circle-cntr" id="inline-help-rules-list-rule-status">
+				<div class="margin-left-3">
+					<span id="gb-rules-status-switch-draft" class="gb-switch filter-btn gb-switch-medium" ng-click="info['status']['DRAFT'] = !info['status']['DRAFT']; filterListBasedOnStatus('DRAFT');"
+					ng-class="{'active':info['status']['DRAFT']}" title="{{info['status']['DRAFT'] ? 'Hide' : 'Show'}} draft rules">
+						<span class="gb-switch-label">{{rulesconstants['DRAFT']}}</span>
+						<div class="gb-switch-handle">{{countListBasedOnStatus('draft')}}</div>
+					</span>
+					<span id="gb-rules-status-switch-enabled" class="gb-switch filter-btn gb-switch-medium" ng-click="info['status']['ENABLED'] = !info['status']['ENABLED']; filterListBasedOnStatus('ENABLED');"
+					ng-class="{'active':info['status']['ENABLED']}" title="{{info['status']['ENABLED'] ? 'Hide' : 'Show'}} enabled rules">
+						<span class="gb-switch-label">{{rulesconstants['ENABLED']}}</span>
+						<div class="gb-switch-handle">{{countListBasedOnStatus('enabled')}}</div>
+					</span>
+					<span id="gb-rules-status-switch-disabled" class="gb-switch filter-btn gb-switch-medium" ng-click="info['status']['DISABLED'] = !info['status']['DISABLED']; filterListBasedOnStatus('DISABLED');"
+					ng-class="{'active':info['status']['DISABLED']}" title="{{info['status']['DISABLED'] ? 'Hide' : 'Show'}} disabled rules">
+						<span class="gb-switch-label">{{rulesconstants['DISABLED']}}</span>
+						<div class="gb-switch-handle">{{countListBasedOnStatus('disabled')}}</div>
+					</span>
+				</div>
+			</div>
+			<div class="gb-toolbar-item gb-toolbar-lastitem"  >
+				<div class="btn-group" role="group" style="padding-right: 20px;"  id="inline-help-rules-list-bulk-subscribe-unsubscribe" >
+					<button type="button" class="margin-left-10" id="gbtour-aAr-bulk-subscribe-rules-button" 
+					title="{{ showBulkSubscribe() ? ('Subscribe')  : ('select rules to bulk subscribe') }}" 
+					ng-click="openBulkSubscribe()" 
+					ng-class="{'btn btn-outline-info gb-multiple-owner-change-btn':showBulkSubscribe(), 'btn btn-outline-info gb-multiple-owner-change-btn-disabled':!showBulkSubscribe()}">
+						<span class=" fa fa-bell-o gb-multiple-owner-change-icon" ng-hide="!showBulkSubscribe()"></span>
+						<span class=" fa fa-bell-o gb-multiple-owner-change-icon" ng-show="!showBulkSubscribe()"
+						title="{{ showBulkSubscribe() ? ('Subscribe ')  : ('select rules to bulk subscribe') }}"
+						style="pointer-events: visible;"  ></span>
+					</button>
+				
+					<button type="button" class="margin-left-10" id="gbtour-aAr-bulk-unsubscribe-rules-button"  
+					title="{{ showBulkUnsubscribe() ? ('Unsubscribe')  : ('select rules to bulk unsubscribe') }}"
+					 ng-click="openBulkUnsubscribe()" 
+					 ng-class="{'btn btn-outline-info gb-multiple-owner-change-btn':showBulkUnsubscribe(), 'btn btn-outline-info gb-multiple-owner-change-btn-disabled':!showBulkUnsubscribe()}">
+						<span class=" fa fa-bell-slash-o gb-multiple-owner-change-icon"  ng-hide="!showBulkUnsubscribe()" ></span>
+						<span class=" fa fa-bell-slash-o gb-multiple-owner-change-icon" ng-show="!showBulkUnsubscribe()"
+						title="{{ showBulkUnsubscribe() ? ('Unsubscribe')  : ('select rules to bulk unsubscribe') }}"
+						style="pointer-events: visible;"
+						></span>
+					</button>
+
+					<button type="button" class="margin-left-10" id="gbtour-aAr-bulk-associate-tag-button" ng-if= "info.clinsightFlag"  ng-hide="!amIAdmin && !amIRuleCreator"
+					title="{{ showTagSubscribe() ? ('Associate Tag')  : ('select rules to associate tags') }}"
+					 ng-click="openTaggingModal()" 
+					 ng-class="{'btn btn-outline-info gb-multiple-owner-change-btn':showTagSubscribe(), 'btn btn-outline-info gb-multiple-owner-change-btn-disabled':!showTagSubscribe()}">
+						<span class=" fa fa-tags gb-multiple-owner-change-icon"  ng-hide="!showTagSubscribe()" ></span>
+						<span class=" fa fa-tags gb-multiple-owner-change-icon" ng-show="!showTagSubscribe()"
+						title="{{ showTagSubscribe() ? ('Associate Tag')  : ('select rules to associate tags') }}"
+						style="pointer-events: visible;"></span>
+					</button>
+				</div>
+				<div class="btn-group" role="group" style="padding-right: 20px;"  id="inline-help-rules-list-last-item" ng-show="rulesTypeSelected == 'supported'"> 
+
+					<!-- <button type="button" class="margin-left-10" ng-class="{'btn btn-outline-info gb-multiple-owner-change-btn':checkSelectedRules(), 'btn btn-outline-info gb-multiple-owner-change-btn-disabled':!checkSelectedRules()}"
+					 id="gbtour-aAr-multiple-owner-change-button" title="Change Rule Ownership" ng-click="changeMultipleRuleOwnership()">
+						<span class="fa fa-user-plus gb-multiple-owner-change-icon" ng-hide="!checkSelectedRules()" ></span>
+						<span class="fa fa-user-plus gb-multiple-owner-change-icon" title="Select Rules to Change Ownership" ng-show="!checkSelectedRules()" style="
+						pointer-events: visible;"></span>
+					</button> -->
+					<button ng-hide="!amIAdmin && !amIRuleCreator" type="button" class="margin-left-10" ng-class="{'btn btn-outline-info gb-multiple-owner-change-btn':checkfilter(), 'btn btn-outline-info gb-multiple-owner-change-btn-disabled':!checkfilter()}" ng-hide="!amIAdmin && !amIRuleCreator"
+					 id="gbtour-aAr-bulk-edit-rules-button" title="{{info.bulkTitle}}" ng-click="bulkEditRules()">
+						<span class="fa fa-pencil-square-o gb-multiple-owner-change-icon" ng-hide="!checkfilter()" ></span>
+						<span class="fa fa-pencil-square-o gb-multiple-owner-change-icon" title="{{info.bulkTitle}}"  style="
+						pointer-events: visible;" ng-show="!checkfilter()"></span>
+					</button>
+
+					<button ng-hide="!amIAdmin && !amIRuleCreator" type="button" ng-class="{'btn btn-outline-info gb-multiple-owner-change-btn':checkSelectedRules(), 'btn btn-outline-info gb-multiple-owner-change-btn-disabled':!checkSelectedRules()}" ng-hide="!amIAdmin && !amIRuleCreator"
+					  id="gbtour-aAr-test-rules-button" title="Test Rule" ng-click="goToTestRule()">
+						<span class="icon icon-lab gb-multiple-owner-change-icon" ng-hide="!checkSelectedRules()" ></span>
+						<span class="icon icon-lab gb-multiple-owner-change-icon" title="Select Rules to Test" ng-show="!checkSelectedRules()" style="
+						pointer-events: visible;"></span>
+					</button>
+
+					<button ng-hide="!amIAdmin && !amIRuleCreator" type="button" ng-class="{'btn btn-outline-info gb-multiple-owner-change-btn':checkSelectedRules(), 'btn btn-outline-info gb-multiple-owner-change-btn-disabled':!checkSelectedRules()}" ng-hide="!amIAdmin && !amIRuleCreator"
+					  id="gbtour-aAr-delete-rules-button" title="Delete Rules" ng-click="deleteMultipleRulesConfirm()">
+						<span class="fa fa-trash-o gb-multiple-owner-change-icon" ng-hide="!checkSelectedRules()" ></span>
+						<span class="fa fa-trash-o gb-multiple-owner-change-icon" title="Select Rules to Delete" ng-show="!checkSelectedRules()" style="
+						pointer-events: visible;"></span>
+					</button> 
+
+					
+				</div>
+				<!-- <div class="btn-group" role="group" style="padding-right: 20px;">
+					<button type="button" class="btn btn-outline-info gb-multiple-owner-change-btn" ng-click="goToTestRuleHistory()" id="gbtour-aAr-history-rules-button"
+					 title="Test History">
+						<span class=" fa fa-history gb-multiple-owner-change-icon"></span>
+					</button>
+				</div> -->
+				<!-- <a class="gb-rules-list-analyzer-btn" title="gb-rules-list-manage-dd-menus-item" id="mainAnalyticsBtn" ng-click="showAnalyicsModal()"
+				 ng-show="ruleAnalyticsConfig.showMainDashboard">
+					<span  class="fa fa-pie-chart"></span>
+					
+				</a>-->
+
+				<!-- <div class="btn-group gb-admin-config-icon" role="group" > 
+					<button type="button" class="btn btn-outline-info gb-multiple-owner-change-btn" ng-click="openApiAdminConfig()" id="gbtour-aAr-history-rules-button"  title="API admin config">
+						<span class="fa fa-user gb-multiple-owner-change-icon"></span>
+					</button>
+				</a>  -->
+				<div class=" dropdown gb-rules-list-manage-dd-cntr" id="gb-rules-list-manage-dd-cntr" ng-hide="!amIAdmin && !amIRuleCreator">
+					<a class="gb-icon-btn dropdown-toggle margin-left-10" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<span class="icon fa fa fa-ellipsis-v"></span>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-right" ng-click="$event.stopPropagation()">
+						<li class="gb-rules-list-manage-dd-menus-item-cntr">
+							<a class="gb-rules-list-manage-dd-menus-item" ng-click="showAnalyicsModal()" id="mainAnalyticsBtn" ng-show="ruleAnalyticsConfig.showMainDashboard" title="Rules and alerts analytics"> {{rulesconstants['RA_ANALYTICS']}}</a>
+						</li>
+						<li class="gb-rules-list-manage-dd-menus-item-cntr">
+							<a class="gb-rules-list-manage-dd-menus-item" ng-click="goToTestRuleHistory()" id="gbtour-aAr-history-rules-button"	title="Test History">{{rulesconstants['VIEW_TEST_HISTORY']}}</a>
+						</li>
+						<li class="gb-rules-list-manage-dd-menus-item-cntr" ng-show="amIAdmin || amIRuleCreator">
+							<a class="gb-rules-list-manage-dd-menus-item" ng-click="goToManageEmailTemplatePage()" id="gb-rules-list-managel-manage-email-template-option" href="" title="Manage E-mail Templates">{{rulesconstants['MANAGE_EMAIL_TEMP']}}</a>
+						</li>
+						<!-- <li class="gb-rules-list-manage-dd-menus-item-cntr" ng-hide="amIAdmin || amIRuleCreator">
+							<a class="gb-rules-list-manage-dd-menus-item disabled" id="gb-rules-list-managel-manage-email-template-option-disabled" href="">Manage E-mail Templates</a>
+						</li> -->
+						<li class="gb-rules-list-manage-dd-menus-item-cntr" ng-show="showAlertApiFeature && (amIAdmin || amIRuleCreator)">
+							<a class="gb-rules-list-manage-dd-menus-item" ng-click="goToManageAPITemplatePage()" id="gb-rules-list-managel-manage-api-template-option" href="" title="Manage API Templates">{{rulesconstants['MANAGE_API_TEMP']}}</a>
+						</li>
+						<!-- <li class="gb-rules-list-manage-dd-menus-item-cntr" ng-hide="showAlertApiFeature && (amIAdmin || amIRuleCreator)">
+							<a class="gb-rules-list-manage-dd-menus-item disabled" id="gb-rules-list-managel-manage-api-template-option-disabled" href="" >Manage API Templates</a>
+						</li> -->
+						<li class="gb-rules-list-manage-dd-menus-item-cntr" ng-show="amIAdmin || amIRuleCreator">
+							<a class="gb-rules-list-manage-dd-menus-item" ng-click="goToManageCategoryPage()" id="gb-rules-list-managel-manage-category-template-option" href="" title="Manage Category">{{rulesconstants['MANAGE_CATEGORY']}}</a>
+						</li>
+						<!-- <li class="gb-rules-list-manage-dd-menus-item-cntr" ng-hide="amIAdmin || amIRuleCreator">
+							<a class="gb-rules-list-manage-dd-menus-item disabled" id="gb-rules-list-managel-manage-category-template-option-disabled" href="" >Manage Category</a>
+						</li> -->
+						<li class="gb-rules-list-manage-dd-menus-item-cntr" id="inline-help-admin-api-config" ng-show="showAlertApiFeature && amIAdmin">
+							<a class="gb-rules-list-manage-dd-menus-item" ng-click="openApiAdminConfig()" id="gb-rules-list-managel-manage-category-template-option" href="" title="API Admin Config">{{rulesconstants['API_ADMIN_CONFIG']}}</a>
+						</li>
+						<li class="gb-rules-list-manage-dd-menus-item-cntr" >
+							<a class="gb-rules-list-manage-dd-menus-item" id="gb-rules-list-export-menu-item" href="" ng-click="exportRules()">Export</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="gb-rules-table-list" id="gb-rules-table-list-cntr">
+			<table ng-table="tableParams" show-filter="true" class="table table-hover table-bordered margin-btm-0">
+				<thead class="font-size-10" id="gbtour-rAa-list-rules">
+					<tr ng-class="{'border-btm-ddd': tableParams.data.length == 0}">
+						<th width="30" style="text-align:left">
+								<input type="checkbox" class="margin-0 gb-custom-checkbox glyphicon checkall"  ng-model = "info.selectAllCurrentPage" title="{{!!info.selectAll ? 'Unselect All' : 'Select All'}}"
+								ng-change="selectcurrentpage($data)" ng-checked="info.selectAllCurrentPage"  /> 
+
+
+								<!-- <input type="checkbox" class="margin-0 gb-custom-checkbox glyphicon checkall ng-pristine ng-valid ng-touched" ng-model="info.selectAll" title="Select All" ng-change="checkSelectAll()" ng-checked="info.selectAll" ng-show="rulesTypeSelected == 'supported'"> -->
+
+							
+						</th>
+						<th class="sortable" ng-repeat="column in groupedFilterData | filter:{'selected': true} track by $index" ng-click="sortColumn(column.field)"
+						 ng-class="{
+							'sort-asc': tableParams.isSortBy(column.field, 'asc'),
+							'sort-desc': tableParams.isSortBy(column.field, 'desc'),
+							'owner-column': column.field == 'rule_owner',
+							'status-column': column.field == 'status',
+							'modified-column': column.field == 'modified_ts',
+							'tags_column': column.field == 'tags'
+							}" style="text-align:left" id="inline-help-rules-list-{{column.title.toLowerCase()}}">
+							<div class="gb-inline-flex width-100-per">
+								<span>{{column.title}}</span>
+							</div>
+						</th>
+						<th class="subscriber-count-column">Subscription</th>
+						<th class="action-column">{{rulesconstants['ACTION']}}</th>
+					</tr>
+				</thead>
+				<tbody class="font-size-10">
+					<tr class="empty-row">
+						<td colspan="14" class="empty-cell">&nbsp;</td>
+					</tr>
+					<tr ng-repeat-start="rule in $data track by $index" ng-class="{'gb-rule-selected-tr': rule.selected}" >
+						<td>
+							<input type="checkbox" class="margin-0 gb-custom-checkbox glyphicon " ng-model="rule.selected" ng-change="checkRulesSelection(rule)" 
+							/>
+						</td>
+						<td ng-repeat="column in groupedFilterData | filter:{'selected': true} track by $index" ng-class="{'gb-rules-list-action-cell':column.field == 'rule_owner','gb-rule-list-subscriber-count-cell':column.field == 'subscriber_count',
+						'gb-tags-td': column.field == 'tags'}">
+							<span ng-if="column.field != 'rule_owner' && column.field != 'status' && column.field != 'created_ts' && column.field != 'modified_ts' && column.field != 'subscriber_count' && column.field != 'tags'"
+							 title="{{rule[column.field]}}">{{rule[column.field]}}</span>
+							<span ng-if="column.field == 'status'">{{rule['status'] == info.supportedStatus.Enabled?'Enabled':(rule['status'] == info.supportedStatus.Disabled?'Disabled':(rule['status']
+								== info.supportedStatus.Draft?'Draft':''))}}</span>
+							<span ng-if="column.field == 'created_ts'"  title="{{rule[column.field]}}">{{rule['created_ts']}}</span>
+							<span ng-if="column.field == 'modified_ts'"  title="{{rule[column.field]}}">{{rule['modified_ts']}}</span>
+							<!-- <span class="gb-rule-list-subscriber-count-span"  ng-click="showSubscriberList(rule)" ng-if="column.field == 'subscriber_count'"  title="{{rule[column.field]}}">{{rule['subscriber_count']}}</span> -->
+							<!-- Split button -->
+							<div class="btn-group gb-rules-drid-split-btn" ng-if="column.field == 'rule_owner'">
+								<span class="gb-list-ownername" title="{{rule['rule_owner']}}" ng-hide="showHideOwnerList(rule)">{{rule['rule_owner']}}</span>
+								<button type="button" class="btn btn-danger gb-list-ownername" title="{{rule['rule_owner']}}" ng-show="showHideOwnerList(rule)">{{rule['rule_owner']}}</button>
+								<button type="button" title="Click to change ownership" class="btn dropdown-toggle ownerChangeBtn" data-toggle="dropdown" aria-haspopup="true"
+								 aria-expanded="false" ng-show="showHideOwnerList(rule)" ng-click="showOwnersDropDown()">
+									<span class="fa fa-user-plus"></span>
+									<span class="sr-only">{{rulesconstants['TOGGLE_DROPDOWN']}}</span>
+								</button>
+								<ul class="dropdown-menu gb-rules-list-owner-dd" ng-show="availableRulesOwnerList.length">
+									<li>
+										<input class="col-sm-12 gb-inline-search-text-input" type="text" placeholder="Search" ng-model="rule.ownerInlineFilter"
+										/>
+									</li>
+									<!-- <li>
+										<ul class="gb-rules-list-owner-sub-dd"> -->
+									<!-- <li ng-repeat="owner in availableRulesOwnerList | filter: { 'email': '!'+rule['rule_owner']} | filter: { 'email': rule.ownerInlineFilter}"
+									 ng-click="changeRuleOwnership(rule, owner.email)">
+										<a>{{owner.email}}</a>
+									</li> -->
+									<li ng-repeat="owner in filterOwnerListByRule(rule['rule_owner'], rule.ownerInlineFilter)"
+									 ng-click="changeRuleOwnership(rule, owner.email)">
+										<a>{{owner.email}}</a>
+									</li>
+									<!-- </ul>
+									</li> -->
+								</ul>
+							</div>
+							<div class="gb-tag-dd-wrapper dropdown" ng-if="column.field == 'tags'" id="gb-tags-list-container">
+								<div class="moreWrapper" id="gb-tags-list-body">
+								  <span class="gb-grid-cell-tags" ng-repeat="tag in rule[column.field] track by $index" ng-click="checkHorizontalOverflow($event)" id="gb-tags-list-span-container">
+									<span class="text" id="gb-tags-list-label" title="{{tag.label}}">{{tag.label | cut:false:9:'..'}}</span>
+									<span class="remove-tag icon-close" title="Remove tag" ng-click="removeTag(tag,rule)" id="gb-tags-list-remove-btn" ng-show = "amIAdmin || (rule.rule_owner == myEmail) "></span>
+								  </span>
+								</div>
+								<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" ng-if="rule[column.field].length>2" id="gb-tags-list-dropdown-btn"
+								  title="Show More"><i class="fa fa-tags" aria-hidden="true"></i></button>
+								<div class="dropdown-menu gb-custom_scroll-bar" id="gb-tags-list-dropdown-container">
+									<span class="gb-grid-cell-tags" ng-repeat="tag in rule[column.field] track by $index" id="gb-tags-list-dropdown-body-{{$index+1}}">
+										<span class="text" id="gb-tags-list-dropdown-label" title="{{tag.label}}">{{tag.label | cut:false:15:'..'}}</span>
+										<span class="remove-tag icon-close" title="Remove tag" ng-click="removeTag(tag,rule)" id="gb-tags-list-dropdown-remove-btn"  ng-show = "amIAdmin || (rule.rule_owner == myEmail) "></span>
+									</span>
+								</div>
+							</div>
+
+						</td>
+						<td class="gb-rule-list-subscriber-count-cell" ng-show="rule['status'] == info.supportedStatus.Enabled">
+							<div class="gb-rna-list-subscription-action-items" id="gb-rna-list-subscription-action-items">
+							<a class="gb-rna-list-action-icon trash action-dd-menus-item" id="gb-rule-level-subscribe-action-btn" href=""  ng-if="rule['subscribeIcon']   && rule['status'] == info.supportedStatus.Enabled" >
+								<span id="gb-rule-level-subscribe-btn" class="icon fa fa-bell-o" ng-click="subscribeFromUi(rule)" title="Subscribe" ng-show="rule['subscribeIcon']   && rule['status'] == info.supportedStatus.Enabled "></span>
+							</a>
+
+							<a class="gb-rna-list-action-icon trash action-dd-menus-item" id="gb-rule-level-unsubscribe-btn" href=""  ng-if="rule['subscribeIcon'] == false && rule.subscriberCount > 0" >
+								<span id="gb-rule-level-unsubscribe-action-btn" class="icon fa fa-bell-slash-o" ng-click="unsubscribeFromUi(rule)" title="Unsubscribe" ng-show="!rule['subscribeIcon'] && rule.subscriberCount > 0"></span>
+							</a>
+
+
+							<a class="gb-rna-list-action-icon trash action-dd-menus-item" id="gb-rule-level-manage-subscription-btn" href=""  ng-if="rule['subscribeIcon'] == false && rule.subscriberCount > 0" >
+								
+								<span  class="icon fa fa-edit" ng-click="openSubscriptionModal(rule, 'edit')" title="Edit Subscription" ng-show="rule['subscribeIcon'] == false && rule.subscriberCount > 0"></span>
+							</a>
+							<span class="gb-rule-list-subscriber-count-span" id="gb-rule-level-subscriber-count-btn"  ng-click="showSubscriberList(rule)"   title="{{rule['subscriberCount']}} Subscribed User(s)" ng-if="rule.subscriberCount">{{rule['subscriberCount']}}</span>
+							<span   title="" ng-if="!rule.subscriberCount"></span>
+							</div>
+						</td>
+						<td class="gb-rule-list-subscriber-count-cell" ng-hide="rule['status'] == info.supportedStatus.Enabled"> </td>
+						<td class="action-column-value">								
+							<div class="gb-rna-list-action-items">
+								<a class="gb-rna-list-action-icon" id="gb-rule-level-status-btn" href="" title="{{rule['status'] == info.supportedStatus.Enabled? 'Disable':'Enable'}}"
+								 ng-class="{'gb-rna-icon-disabled': !(showHideActionItem(rule) && !(rule['status'] == info.supportedStatus.Draft))}">
+									<span class="gb-switch filter-btn" ng-click="enableDisableRule(rule, 'status')" ng-class="{'active':  rule['status'] == info.supportedStatus.Enabled}">
+										<div class="gb-switch-handle"></div>
+									</span>
+								</a>
+								
+								<a class="gb-rna-list-action-icon" id="gb-rule-level-edit-btn" href="" title="Edit" ng-class="{'gb-rna-icon-disabled':!showHideActionItem(rule)}" ng-if="showHideActionItem(rule)">
+									<span class="icon fa fa-edit" ng-click="editRule(rule)"></span>
+								</a>
+								<a class="gb-rna-list-action-icon" id="gb-rule-level-info-btn" href="" title="View Info" ng-if="!showHideActionItem(rule)">
+									<span class="icon fa fa-eye" ng-click="ruleReadOnlyInfo(rule)"></span>
+								</a>
+								<a class="gb-rna-list-action-icon" id="gb-rule-level-test-btn" href="" title="Test" ng-class="{'gb-rna-icon-disabled': rule['status'] == info.supportedStatus.Disabled, 'gb-rna-icon-disabled2': !showHideActionItem(rule) && !amIRuleCreator, 'gb-rna-icon-disabled3': rulesTypeSelected != 'supported' }">
+									<span class="icon icon-lab" ng-click="testRule(rule)"></span>
+								</a>	
+								<!-- <a class="gb-rna-list-action-icon trash action-dd-menus-item" id="gb-rule-level-subscribe-action-btn" href=""  ng-if="rule['status'] == info.supportedStatus.Enabled && rule['subscription_enabled'] " >
+									<span id="gb-rule-level-subscribe-btn" class="icon fa fa-bell-o" ng-click="subscribeFromUi(rule)" title="Subscribe" ng-show="rule['subscribeIcon']   && rule['status'] == info.supportedStatus.Enabled"></span>
+									<span id="gb-rule-level-unsubscribe-action-btn" class="icon fa fa-bell-slash-o" ng-click="unsubscribeFromUi(rule)" title="Unsubscribe" ng-show="!rule['subscribeIcon'] && rule['status'] == info.supportedStatus.Enabled"></span>
+								</a> -->
+							
+							</div>
+							<div class="dropdown action-dd-cntr" id="gb-rule-level-action-dd-cntr" >
+								<button class="btn btn-default dropdown-toggle action-dd-icon" type="button" id="gb-rule-level-action-dd-icon" title="More action" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+									<span class="icon fa fa fa-ellipsis-v"></span>
+								</button>
+								<div class="dropdown-menu action-dd-menus-cntr" aria-labelledby="gb-rule-level-action-dd-icon">									
+									<div class="action-dd-menus-item-cntr">
+										<a class="gb-rna-list-action-icon action-dd-menus-item" id="gb-rule-level-history-btn" href="" title="Rule Change History">
+											<span class="icon fa fa-history" ng-click="ruleDrillDetails(rule)" ></span>
+										</a>
+										<a class="gb-rna-list-action-icon action-dd-menus-item" id="gb-rule-level-analytics-btn" href="" title="Rule Analyzer" ng-show="ruleAnalyticsConfig.showRuleDashboard">
+											<span class="icon iconnew-stats" ng-click="showRuleWiseAnalyticsModal(rule)"></span>
+										</a>
+										<a class="gb-rna-list-action-icon trash action-dd-menus-item" id="gb-rule-level-delete-btn" href="" title="Delete" ng-class="{'gb-rna-icon-disabled':!(showHideActionItem(rule) && rulesTypeSelected == 'supported')}">
+											<span class="icon glyphicon glyphicon-trash" ng-click="deleteRule(rule)"></span>
+										</a>
+										
+										
+									</div>
+								</div>
+							</div>
+							<!-- <span ng-show="rule.myRule">
+									<a href="" title="{{rule['status'] == info.supportedStatus.Enabled? 'Disable':'Enable'}}" 
+										ng-hide="rule['status'] == info.supportedStatus.Draft" 
+										ng-click="enableDisableRule(rule, 'status')">
+											<span class="icon" 
+												ng-class="{'fa fa-ban gb-red-color': rule['status'] == info.supportedStatus.Enabled, 'fa fa-check-circle': rule['status'] != info.supportedStatus.Enabled}">
+											</span></a>
+									<a href="" title="Rule Analyzer"><span class="icon iconnew-stats" ng-click="showRuleWiseAnalyticsModal(rule)" data-toggle="modal" data-target="#RuleAnalyticsCntr" data-backdrop="static" ng-show="ruleAnalyticsConfig.showRuleDashboard"></span></a>
+									<a href="" title="Test" ng-click="testRule(rule)" ng-show="rulesTypeSelected == 'supported' && rule.status != info.supportedStatus.Disabled"><span class="icon icon-lab"></span></a>
+									<a href="" title="Edit" ng-click="editRule(rule)"><span class="icon fa fa-edit"></span></a>
+									<a href="" title="Delete" class="trash" ng-click="deleteRule(rule)" ng-show="rulesTypeSelected == 'supported'"><span class="icon glyphicon glyphicon-trash"></span></a>						
+								</span>
+								<span ng-show="!rule.myRule && amIRuleCreator">
+									<a href="" title="Rule Analyzer"><span class="icon iconnew-stats"></span></a>
+									<a href="" title="Test" ng-click="testRule(rule)" ng-show="rulesTypeSelected == 'supported' && rule.status != info.supportedStatus.Disabled"><span class="icon icon-lab"></span></a>
+								</span>
+								<span ng-show="!rule.myRule && !amIRuleCreator">
+									<a href="" title="Rule Analyzer"><span class="icon iconnew-stats"></span></a>									
+								</span> -->
+						</td>
+					</tr>
+					<tr ng-repeat-end class="empty-row">
+						<td colspan="14" class="empty-cell">&nbsp;</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="font-size-12 font-weight-bold padding-btm-150 padding-top-150 text-align-center " ng-if="tableParams.data.length == 0">
+				{{rulesconstants['NO_RECORDS_FOUND']}}
+			</div>
+		</div>
+		<div class="row-fluid" ng-hide="info.rulesLoading">
+			<div class="col-sm-12 gb-rules-table-footer">
+				<div class="padding-top-3">
+					<span class="page-count-list font-size-10" ng-if="!!tableParams.data.length"> Show
+						<div class="form-inline page-count-form" id="gbtour-rAa-list-rules-page-size">
+							<select class="input-xs page-count-box margin-left-0" ng-model="info.page.count" ng-change="changePageSize()">>
+								<option value="10" ng-disabled="info.page['total'] < 10">10</option>
+								<option value="20" ng-disabled="info.page['total'] <= 10">20</option>
+								<option value="30" ng-disabled="info.page['total'] <= 20">30</option>
+								<option value="40" ng-disabled="info.page['total'] <= 30">40</option>
+								<option value="50" ng-disabled="info.page['total'] <= 40">50</option>
+								<option value="100" ng-disabled="info.page['total'] <= 50">100</option>
+							</select>
+						</div>
+					</span>
+					<a ng-if="!!tableParams.data.length" class="margin-left-20" ng-class="{'pagination-icon-disabled': !checkAppliedFilters()}" title="Clear Applied Filters" ng-click="clearAppliedFilters()">
+						<span class="icon-loop2"></span>
+					</a>
+
+					<span class="gb-pagination display-inline-block gb-rules-pagination margin-left-13" id="gbtour-rAa-pagination" ng-if="!!tableParams.data.length"> 
+						<a class="icon-previous2 pagination-icon" title="First Page" ng-click="firstPage()" ng-class="{'pagination-icon-disabled': (info.page['current'] <= 1)}"></a>
+						<a class="icon-arrow-left7 pagination-icon" title="Previous Page" ng-click="prevPage()" ng-class="{'pagination-icon-disabled': (info.page['current'] <= 1)}"></a>
+						<!-- <pre class="gb-pagination-msg">1 - 100 of 100</pre> -->
+						<pre class="gb-pagination-msg" ng-show="info.page['current'] < info.page['pages']">{{(info.page['current'] - 1) * info.page['count'] + 1}} - {{(info.page['current'] - 1) * info.page['count'] + info.page['count']}} of {{info.page['total']}}</pre>
+						<pre class="gb-pagination-msg" ng-show="info.page['current'] == info.page['pages']">{{(info.page['current'] - 1) * info.page['count'] + 1}} - {{info.page['total']}} of {{info.page['total']}}</pre>
+						<a class="icon-arrow-right7 pagination-icon" title="Next Page" ng-click="nextPage()" ng-class="{'pagination-icon-disabled': (info.page['current'] >= info.page['pages'])}"></a>
+						<a class="icon-next2 pagination-icon" title="Last Page" ng-click="lastPage()" ng-class="{'pagination-icon-disabled': (info.page['current'] >= info.page['pages'])}"></a>
+					</span>
+					<span class="pull-right" ng-hide="!amIAdmin && !amIRuleCreator">
+						<span class="pull-right" ng-show="rulesTypeSelected == 'supported'" id="inline-help-add-rules-button">
+							<!-- <button type="button" class="btn-primary input-sm border-width-1 gb-rules-btn" ng-click="goToTestRuleHistory()" id="gbtour-aAr-history-rules-button">
+								Test History
+							</button> -->
+							<!-- <button type="button" class="btn-primary input-sm border-width-1 gb-rules-btn" ng-if="checkSelectedRules()" ng-click="goToTestRule()"
+							 id="gbtour-aAr-test-rules-button">
+								Test Rules
+							</button>
+							<button type="button" class="btn-primary input-sm border-width-1 gb-rules-btn-disabled" ng-hide="checkSelectedRules()" id="gbtour-aAr-test-rules-button-disabled">
+								Test Rules
+							</button> -->
+							<button type="button" class="gb-primary-btn add-rule-btn" ng-click="addNewRule()" id="gbtour-aAr-add-rules-button" ng-if="rulesTypeSelected == 'supported'">
+								Add New
+							</button>
+							<!-- <button type="button" class="btn-primary input-sm border-width-1 gb-rules-delete-btn" ng-click="deleteMultipleRulesConfirm()"
+							 id="gbtour-aAr-delete-rules-button" ng-class="{'gb-rules-btn':checkSelectedRules(), 'gb-rules-btn-disabled':!checkSelectedRules()}">
+								Delete Rules
+							</button> -->
+						</span>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- </div> -->
+	<!-- <div id="mainAnalyticsCntr" class="modal fade" role="dialog" >
+		<div class="modal-dialog modal-lg nonModal">
+			<div class="modal-content">
+				<div class="gb-modal-header">
+					<div class="text">Rules and Alerts Analytics</div>
+					<a class="gb-ra-window-close-btn" data-dismiss="modal" ng-click="hideAnalyticsModal()">&times;</a>
+				</div>
+				<analytics-dashboards ng-if="showAnalyticsDashboards"></analytics-dashboards>
+			</div>
+		</div>
+	</div> -->
+
+	<!-- <div id="RuleAnalyticsCntr" class="modal fade" role="dialog" >
+		<div class="modal-dialog nonModal">
+			<div class="modal-header">
+				<div class="text">Rule Analytics({{selectedRuleForRuleLabelAnalytics['rule_name']}})</div>
+				<a class="gb-ra-window-close-btn" data-dismiss="modal" ng-click="hideRuleWiseAnalyticsModal()">&times;</a>
+			</div>
+			<div class="modal-content">
+				<rule-analytics-dashboard ng-if="showRuleWiseAnalyticsDashboard"></rule-analytics-dashboard>
+			</div>
+		</div>
+	</div> -->
+</div>

@@ -1,0 +1,41 @@
+{
+	"Status": "Success",
+	"Msg": "Alerts count by severity",
+	"Data": [{
+				"ruleId":   "1597280383408",
+				"emailId": ["siemensqa@glassbeam.com"],
+				"allow_subscription": true,
+				"subscriberCount": 1
+			  },
+			  {
+				"ruleId":   "1597280271938",
+				"emailId": ["nodashboard@glassbeam.com", "explorer@glassbeam.com", "siemens_support@glassbeam.com", "siemensqa@glassbeam.com"],
+				"allow_subscription": false,
+				"subscriberCount": 4
+			  },
+			  {
+				"ruleId":   "1597280156976",
+				"emailId": ["siemens_support@glassbeam.com"],
+				"allow_subscription": true,
+				"subscriberCount": 1
+			  },
+			  {
+				"ruleId":   "1597280045008",
+				"emailId": ["nodashboard@glassbeam.com", "explorer@glassbeam.com", "siemens_support@glassbeam.com", "nish@gmail.com", "gg@gmail.com"],
+				"allow_subscription": false,
+				"subscriberCount": 5
+			  },
+			  {
+				"ruleId":   "1597279939134",
+				"emailId": ["external@somemail.com","none@support.com"],
+				"allow_subscription": true,
+				"subscriberCount": 1
+			  },
+			  {
+				"ruleId":   "1597279832804",
+				"emailId": ["nodashboard@glassbeam.com", "explorer@glassbeam.com", "siemens_support@glassbeam.com"],
+				"allow_subscription": false,
+				"subscriberCount": 3
+			  }
+	]
+}

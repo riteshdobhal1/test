@@ -1,0 +1,1 @@
+© 2webX1hrAapp/partials/rules-and-alerts/delete_email_template_multiple.html

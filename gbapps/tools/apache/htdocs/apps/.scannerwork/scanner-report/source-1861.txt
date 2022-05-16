@@ -1,0 +1,131 @@
+<div class="container-fluid gb-apps-view" id="gb-apps-view-{{getInstanceMD5()}}">
+	<div class="row"> 
+		<div class="col-sm-2 col-md-2 sidebar" id="gb-apps-sections-panel-{{getInstanceMD5()}}">
+			<div class="row gb-apps-select-view-cntr" id="gbtour-apps-saved-views-dd-btn" ng-show="showFilterPanel()">
+				<div class="row gb-apps-select-view-btn">
+					<div class="dropdown">
+					  <button id="instance-viewer-selectview" class="btn btn-default gb-explorer-saved-filters-btn dropdown-toggle" type="button" data-toggle="dropdown" ng-click="filter.showList()">Select View
+					  <span class="caret" id="gb-apps-view-drop-down-btn"></span></button>
+					  <div class="dropdown-menu gb-apps-select-view-list" saved-view-popup id="gb-apps-view-list-cntr">
+					  </div>
+					</div>
+				</div>
+				<div class="row gb-apps-selected-view-name" ng-show="filter.appliedView">
+					<div class="view-name" id="gb-apps-applyd-view-name-cntr">
+						<div class="text" title="{{filter.appliedView['name']}}">{{filter.appliedView['name']}}</div>
+						<div class="close-icon">
+							<a class="fa fa-external-link" aria-hidden="true" title="Open link in new window" ng-click="filter.openKblink()" ng-show="filter.showKbaseLink()"></a>
+							<a class="glyphicon glyphicon-remove" ng-click="filter.clearAppliedView()" title="close"></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="gb-apps-sections-cntr" ng-class="{'app-parsed-view-no-view-selected': !filter.appliedView, 'app-parsed-view-tab-not-selected': !showFilterPanel()}">
+				<div class="gb-facet-loader" ng-show="isSectionsLoading();">
+					<div class="gb-facet-loader-body gb-top-50-percentage">
+						<div class="box"></div>
+						<div class="box"></div>
+						<div class="box"></div>
+						<div class="box"></div>
+					</div>
+				</div>
+				<div class="gb-apps-sections-title">Select Section</div>
+				<div class="gb-apps-sections-content">
+					<div class="gb-apps-sections-list" ng-class="{'gb-apps-sections-list-with-sysid2':isSysId2Available()}">
+						<div class="gb-apps-sections-inline-search">
+							<input type="text" placeholder="Search sections" ng-model="sectionFilter" id="gb-apps-sections-inline-search-text">
+						</div>
+						<div class="gb-apps-sections-select-all" ng-click="selectAll()" ng-show="isinLogView()" id="gb-apps-sections-select-all-option">
+							<span class="glyphicon" ng-class="{'glyphicon-check':selectAllSection,'glyphicon-unchecked':!selectAllSection}"></span>
+							<span>Select All</span>
+						</div>
+						<ul ng-class="{'with-out-select-all-option': !isinLogView()}" ng-show="!isNoSectionsFound()" id="gb-apps-sections-list-cntr">
+							<li ng-repeat="n in getAllSections() track by $index" id="section-name-list-{{$index}}" ng-click="changeSelectionForFacet(n)" ng-class="{'gb-apps-sections-selected':n.selected,'gb-apps-sections-provisional-selected':n.provisionalSelected}" title="{{n.label}}">
+								<span id="section-name-checkbox-{{$index}}" class="glyphicon " ng-class="{'glyphicon-check':n.selected,'glyphicon-unchecked':!n.selected}"></span>
+								<span id="section-name-label-{{$index}}"></span>{{n.label}}</span>
+							</li>
+						</ul>
+						<div class="gb-msg-center" ng-show="isNoSectionsFound()" id="gb-apps-sections-data-not-found-msg">
+							<span class="msg">No Section Found!!!</span>
+						</div>
+					</div>
+					<div class="gb-apps-section-sysid2-cntr" ng-show="isSysId2Available()">
+						<div class="gb-apps-section-sysid2-lable">
+							<label>{{getSysId2Label()}}</label>
+						</div>
+						<div class="dropup gb-apps-section-sysid2-dd">
+							<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" title="{{sysId2}}">
+								<span class="dd-lable">{{sysId2}}</span>
+								<span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li ng-repeat="s2 in sysId2List" ng-click="setSysId2(s2)" title="{{s2}}"><a href="#">{{s2}}</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="gb-apps-section-filter-btn">
+						<div class="show-filter-btn" ng-click="showSections()" id="gb-apps-sections-apply-btn">
+							<span class="glyphicon glyphicon-saved"></span>
+							<span class="msg">Show</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="gb-splitter-handle tipsy-enabled">
+				<div class="gb-splitter-handle-highlight" id="gb-apps-sections-panel-splitter-{{getInstanceMD5()}}">
+					<i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 gb-apps-tabs" id="gb-apps-top-tabs-{{getInstanceMD5()}}">
+			<ul class="nav nav-tabs" id="gb-apps-sections-main-tabs-btns">
+			  <li ng-class="{'active' : activeMenu=='pview'}" ng-click="changeView('pview')" id="gbtour-apps-table-view-tab-btn"><a href="#">Table view</a></li>
+			  <li ng-class="{'active' : activeMenu=='lview'}" ng-click="changeView('lview')" id="gbtour-apps-log-view-tab-btn"><a href="#">Log View</a></li>
+			  <li ng-class="{'active' : activeMenu=='dview'}" ng-click="changeView('dview')" id="gbtour-apps-diff-view-tab-btn"><a href="#">Diff</a></li>
+			</ul>
+			<div class="gb-apps-instance-viewer-info"  id="gbtour-apps-instance-viewer-info-btn">
+				<div class="gb-dropdown">
+				  <div class="gb-dropbtn"><i class="fa fa-info" aria-hidden="true"></i></div>
+				  <div class="gb-dropdown-content">
+				    <a href="#" title="{{bundleSerialNumber}}" ng-if="bundleSerialNumber"><span>Serial Number:</span> {{bundleSerialNumber}}</a>
+				    <a href="#" title="{{bundleName}}" ng-if="bundleName"><span>Bundle Name:</span> {{bundleName}}</a>
+				    <a href="#" title="{{bundleObservation}}" ng-if="bundleObservation"><span>Observation:</span> {{bundleObservation}}</a>
+				  </div>
+				</div>
+			</div>
+			<div class="btn-group gb-page-common-tools-top" role="group" aria-label="...">
+				<button type="button" class="btn btn-default" ng-class="{'disabled': activeMenu!='pview'}" title="Multiple section's attribute filter" id="gb-apps-sections-multiple-attribute-filter-btn" ng-click="showMultipleAttributeFilter()">
+					<span class="fa fa-tasks"></span>
+				</button>
+				<button type="button" class="btn btn-default" ng-class="{'disabled': activeMenu!='pview'}" ng-click="showSaveModal()" title="Save view" id="gb-apps-sections-save-view-btn">
+					<span class="icon-disk tool"></span>
+				</button>
+				<button type="button" class="btn btn-default" ng-class="{'disabled': activeMenu!='pview'}" ng-click="exportAllPDF()" title="Download All as PDF" id="gb-apps-sections-download-pdf-btn">
+					<span class="icon-file-pdf tool"></span>
+				</button>
+				<button type="button" class="btn btn-default" title="Reset" ng-click="showViewClearConfirm()" id="gb-apps-sections-refresh-btn">
+					<span class="glyphicon glyphicon-refresh"></span>
+				</button>
+				<button type="button" class="btn btn-default" ng-click="downloadBundle()" title="Download log bundle" id="gb-apps-sections-download-btn">
+					<span class="glyphicon glyphicon-download-alt tool"></span>
+				</button>
+			</div>
+		</div>
+		<div class="col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 main" id="gb-apps-section-data-panel-{{getInstanceMD5()}}" ng-hide="loading">
+			
+			<apps-parsed-view ng-show="menuIsActive('pview')" id="gb-apps-sections-talbe-view-cntr"></apps-parsed-view>
+			<apps-log-view ng-show="menuIsActive('lview')" id="gb-apps-sections-log-view-cntr"></apps-log-view>
+			<apps-diff-view ng-show="menuIsActive('dview')"id="gb-apps-sections-diff-view-cntr"></apps-diff-view>
+		</div>
+		<div class="col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 main" ng-show="loading">
+			<div class="content-loader">
+	  		<div class="content-loader-body">
+				<div class="rect rect1"></div>
+				<div class="rect rect2"></div>
+				<div class="rect rect3"></div>
+				<div class="rect rect4"></div>
+				<div class="rect rect5"></div>
+	  		</div>
+			</div>
+		</div>
+	</div>
+</div>

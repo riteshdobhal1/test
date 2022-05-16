@@ -1,0 +1,1 @@
+ž 2webX-hr1app/partials/rules-and-alerts/bulk_subscribe.html

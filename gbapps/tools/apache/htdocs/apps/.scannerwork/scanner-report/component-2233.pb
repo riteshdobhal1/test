@@ -1,0 +1,1 @@
+¹ 2jsXéhrMapp/MDViz/module-Sensation_Temperature/lib-js/amcharts/exporting/filesaver.js

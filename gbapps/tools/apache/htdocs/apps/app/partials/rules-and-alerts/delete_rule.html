@@ -1,0 +1,18 @@
+<div class="panel panel-primary gb-delete-section-view" >
+  <div class="panel-heading gb-panel-head-fix">
+    <h3 class="panel-title">{{rulesconstants['DEL_RULE']}}</h3>
+    <i class="fa fa-times gb-close-btn gb-panel-close-btn-fix" aria-hidden="true" title="Press Esc to remove" ng-click="modal.close()"></i>
+  </div>
+  
+  <div class="panel-body">
+    <div class="gb-font-style-1"><h5 ng-bind-html="renderHtml(msg)"></h5></div>
+  </div>         
+  <div class="panel-footer gb-panel-footer-flex">
+    <button type="button" class="gb-primary-btn gb-modal-btn-sm pull-left" ng-click="deleteRuleRequest(); modal.close()">
+      Yes
+    </button>
+    <button type="button" title="Press Esc to remove" class="gb-secondary-btn gb-modal-btn-sm pull-left" data-dismiss="modal" ng-click="modal.close()">
+      No
+    </button>
+  </div>
+</div>

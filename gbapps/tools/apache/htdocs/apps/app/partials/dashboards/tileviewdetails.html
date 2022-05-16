@@ -1,0 +1,27 @@
+<div class="gb-dashboard-sub-tool-bar">
+  <a ng-click="dashCtrl.changeView('thumbnail')"> 
+      <i class="fa fa-reply" aria-hidden="true" ></i>
+      <i>{{dashCtrl.getNameOfDashboard(dashCtrl.info.currentBook)}}</i>
+  </a>                        
+</div>
+<div>
+  <div class="col-xs-10 col-sm-3 col-md-2" ng-repeat="book in dashCtrl.info.currentBook.reports track by $index">
+      <a ng-if="dashCtrl.internalDashboards()" class="thumbnail gb-sheet-thumbnail"  ng-click="dashCtrl.addInstance(dashCtrl.info.currentBook, book, book.owner)">
+
+        <img ng-src="{{book.thumbnailImgSrc}}" alt="Dashboard" style="width:100%" onerror="this.src='/apps/app/img/dashboard1.png'" onload="dashboardTileImageLoad(this)">
+        <div class="gb-data-loading-center gb-thumbnail-loading"></div>
+        <div class="caption">
+          <p class="gb-dashboard-sheet-label">{{book.rname}}</p>
+        </div>
+      </a>
+      <a ng-if="dashCtrl.info.currentBook.views" class="thumbnail gb-sheet-thumbnail" 
+          ng-click="dashCtrl.addInstance(dashCtrl.info.currentBook, book, book.owner);dashCtrl.logActivity('Tableau Dashboard', 'InstanceViewer', '{\''+book.name+'.'+book.name+'\'}');" > 
+
+        <img ng-src="{{book.thumbnailImgSrc}}" alt="Dashboard" style="width:100%" onerror="this.src='/apps/app/img/dashboard1.png'" onload="dashboardTileImageLoad(this)">
+        <div class="gb-data-loading-center gb-thumbnail-loading"></div>
+        <div class="caption">
+          <p class="gb-dashboard-sheet-label">{{book.rname}}</p>
+        </div>
+      </a>
+  </div>
+</div>

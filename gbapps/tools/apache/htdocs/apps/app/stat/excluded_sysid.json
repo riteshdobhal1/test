@@ -1,0 +1,18 @@
+{
+  "Status": "Success",
+  "Msg": "List of alerts filters",
+  "Data": [
+    {
+      "mfr": "siemens",
+      "prod": "siemens",
+      "sch": "podui",
+      "ruleId": "123",
+      "email": "ext_new1@glassbeam.com",
+      "group": "shubham_g3",
+      "excSysIds": [
+        "CT105024","CT105060"
+      ]
+    }
+  ]
+ }
+ 

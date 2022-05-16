@@ -1,0 +1,1 @@
+š 2webXVhr/app/partials/rules-and-alerts/add_category.html

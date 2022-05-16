@@ -1,0 +1,1 @@
+þ 2webXhr3app/partials/explorer/event_group_confirmation.html

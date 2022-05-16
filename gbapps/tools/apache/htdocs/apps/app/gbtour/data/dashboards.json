@@ -1,0 +1,132 @@
+[{
+	"selector": "#gb-app-nav",
+	"title" : "",
+	"msg" : "<p>These are the Glassbeam Analytics apps available for your organization.</p>",
+	"direction": "right>center"
+},{
+	"selector": ".main-container .left-nav > li.active",
+	"title" : "",
+	"msg" : "<p>All dashboards/reports (created by users of Glassbeam using Workbench, or created by the Professional Services team of Glassbeam as custom dashboards) are listed under the Dashboards tab.</p><p>Each dashboard contains panels, each of which contains visualizations such as charts, tables, lists.</p>",
+	"direction": "right>center"
+},{
+	"selector": "#gbCustomersList",
+	"title" : "",
+	"msg" : "<p>This option provides information on all the Glassbeam Analytics hosts available for your organization. </p>",
+	"direction": "down>left"
+},{
+	"selector": "#gbAccountSettings",
+	"title" : "",
+	"msg" : "<p>A username and password is provided to access Glassbeam Analytics.</p><p>Here you can change the default password, access the Administrator Console, know the log parsing status, and log out of the application.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gbDashbordSelectAllDashboard",
+	"title": "",
+	"msg" : "<p>Use this option to add descriptive tags all the selected reports.</p>",
+	"direction": "down>right"
+},{
+	"selector" :"#inline-help-dashboard-list-column-filter",
+	"title": "",
+	"msg" : "<p>Click here to filter data based on values of the following columns:</p><ul><li>Name</li><li>Type</li><li>Owner</li><li>Data Sources</li><li>Last Modified</li><li>Tags (Only if at least one of the dashboards has been tagged)</li></ul>",
+	"direction": "down>right"
+},{
+	"selector" :"#gb-inline-help-type-filter",
+	"title": "",
+	"msg" : "<p>Choose between types of dashboards available in Glassbeam Analytics:</p><p><ul><li>All - Lists all the Dashboards (internal and User created).</li><li>Internal - Lists Dashboards created by Glassbeam Professional Services.</li><li>User created - Lists Dashboards created using Workbench App.</li></ul></p>",
+	"direction": "down>right"
+},{
+	"selector" :"#gbDashboardAddTags",
+	"title": "",
+	"msg" : "<p>Add tags to the selected dashboards</p><p> Select dashboards and add tag.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gbTourDashboardFilterByOwner",
+	"title": "",
+	"msg" : "<p>Filter by dashboard created by.</p>",
+	"direction": "down>right"
+},{
+	"selector" :"#gbTourDashboardFilterByDatasource",
+	"title": "",
+	"msg" : "<p>Filter by dashboard's data sources.</p>",
+	"direction": "down>right"
+},{
+	"selector" :"#gb-inline-help-assign-role-button",
+	"title": "",
+	"msg" : "<p>Click here to expand the accessibility of the selected dashboards to the selected roles.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gbTourBulkEdit",
+	"title": "",
+	"msg" : "<p>Click here to edit multiple dashboards and update the following in bulk:</p><ul><li>Dashboard Owner</li><li>Visibility (Public/Private)</li></ul>",
+	"direction": "down>left"
+},{
+	"selector" :"#gb-inline-help-show-users-button",
+	"title": "",
+	"msg" : "<p>Click here to list all the users corresponding to the assigned roles for the selected dashboards.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gbTourDasboardListview",
+	"title": "",
+	"msg" : "<p>Switch to list view.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gbTourDasboardThumbnailview",
+	"title": "",
+	"msg" : "<p>Switch thumbnail view.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"tr td.dnameNew",
+	"title": "",
+	"msg" : "<p>Select a dashboard.</p>",
+	"direction": "down>right"
+},{
+	"selector" :".changeOwnerBtn",
+	"title": "",
+	"msg" : "<p>Click to Change Owner</p>",
+	"direction": "down>right"
+},{
+	"selector" :".visBtn",
+	"title": "",
+	"msg" : "<p>Click to Change visibility to Public</p>",
+	"direction": "down>left"
+},{
+	"selector" :".visBtn2",
+	"title": "",
+	"msg" : "<p>Click to Change visibility to Private</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gb-dashboard-access-icon",
+	"title": "",
+	"msg" : "<p>Click here to toggle between public and private.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gb-dashboard-role-view-access-icon",
+	"title": "",
+	"msg" : "<p>Click here to view the list of roles that can view the dashboard.</p>",
+	"direction": "down>left"
+},{
+	"selector" :".gb-dashboard-tab-icon",
+	"title": "",
+	"msg" : "<p>Click to show all tabs for this dashboard.</p>",
+	"direction": "down>left"
+},{
+	"selector" :".gb-rules-delete-icon",
+	"title": "",
+	"msg" : "<p>Click to delete this dashboard.</p>",
+	"direction": "down>left"
+},{
+	"selector" :".gb-dashboard-remove-tag",
+	"title": "",
+	"msg" : "<p>Click to delete this tag.</p>",
+	"direction": "down>left"
+},{
+	"selector" :"#gbtour-dash-list-rules-page-size",
+	"title": "",
+	"msg" : "<p>Option to change the number of Dashboards you want to display.</p>",
+	"direction": "down>right"
+},{
+	"selector" :".gb-pagination",
+	"title": "",
+	"msg" : "<p>Control pagination from this area.</p>",
+	"direction": "top>left"
+}]
+

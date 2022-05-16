@@ -1,0 +1,26 @@
+
+/* 2018 Version Styles */
+.tabAuthMenuBarHeaderArea .tabAuthMenuBarExit {
+display:none;
+}
+.tabAuthMenuBarMenu.userMenu {
+display:none;
+}
+.tabAuthToolbar .tabToolbarButton.save, .tabAuthMenuBarMenu.helpMenu {
+	display: none;
+}
+.tabAuthSaveProjectPicker, .tabAuthSaveProject, .tabAuthSaveOption {
+	display: none;
+}
+.tabAuthFirstSaveOption .tabAuthSaveOption {
+	display: block;
+}
+body.tundra.tableau {
+	position: fixed;
+}
+.tab-downloadDialog div:nth-last-child(2), .tabToolbarButton.tab-widget.alert, .tabToolbarButton.tab-widget.subscribe, .tabToolbarButton.tab-widget.edit, .tabToolbarButton.tab-widget.share {
+  display:none !important;
+}
+.tabMenu {
+	max-height: none !important;
+}

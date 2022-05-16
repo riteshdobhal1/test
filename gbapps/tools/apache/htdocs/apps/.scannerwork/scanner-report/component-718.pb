@@ -1,0 +1,1 @@
+Î 2webXhr.dist/partials/rules-and-alerts/upload_log.html

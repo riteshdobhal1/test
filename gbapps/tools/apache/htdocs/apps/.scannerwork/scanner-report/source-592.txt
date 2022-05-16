@@ -1,0 +1,33 @@
+<!DOCTYPE html><html class="no-js" lang="en" ng-app="gbApp"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title></title><link rel="stylesheet" type="text/css" href="lib/bootstrap-3.1/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="lib/bootstrap-3.1/fonts/icomoon/style.css"><link href="css/error.css" rel="stylesheet" type="text/css"></head><body class="page-user" onload="showerror()"><div class="error-frame"><div class="error-text"><span id="dasherror"></span></div></div></body><script language="javascript">function getCookie(c_name)
+    {
+        var i,x,y,ARRcookies=document.cookie.split(";");
+        for (i=0;i<ARRcookies.length;i++)
+        {
+            x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+            y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+            x=x.replace(/^\s+|\s+$/g,"");
+            if (x==c_name)
+                {
+                    return (y);
+                }
+        }
+    }
+function showerror(){
+
+var err_url = getCookie("summaryDashboardUrl");
+var err_code = err_url.split("?");
+var err_code_str = err_code[1].split("=");
+var err = err_code_str[1];
+
+if(err == "NA"){
+	
+document.getElementById("dasherror").innerHTML = "You are not authorized to view this Dashboard";
+
+}else if(err == "DNF"){
+document.getElementById("dasherror").innerHTML = "Dashboard Not Found";
+
+}else{
+
+}
+
+}</script></html>

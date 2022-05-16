@@ -1,0 +1,70 @@
+<div class="panel panel-primary gb-apps-pview-save-filter-popup">
+	 <div class="panel-heading">{{facetStats}}</div>
+	<div class="panel-body">
+		<div>
+			<div class="row facetStatsContainer">
+				<div class="row">
+					<div class="col-md-6" id="facettop10">
+						<div class="paddingLeftRight">
+							<table class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th class="facetName"><span>Top 10 Values</span></th>
+										<th class="facetCount"><span>Count</span></th>
+										<th class="facetperc"><span>%</span></th>
+										<th class="percProgress"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="x in top10facet">
+										<td class="facetName" title="{{x.label}}"><span>{{x.label}}</span></td>
+										<td class="facetCount" title="{{x.value}}"><span>{{x.value}}</span></td>
+										<td class="facetperc" title="{{x.perc}}"><span>{{x.perc}}</span></td>
+										<td class="percProgress">
+											<div class="progress">
+												<div class="bar" ng-style="{width:{{((x.value / facetValueSum) * 100)}} + '%'}">
+												<span class="percent" ng-show="((x.value / facetValueSum) * 100) > 100">100%</span>
+											</div>
+										</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col-md-6" id="facetbottom10">
+						<div class="paddingLeftRight">
+							<table class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th class="facetName"><span>Bottom 10 Values</span></th>
+										<th class="facetCount"><span>Count</span></th>
+										<th class="facetperc"><span>%</span></th>
+										<th class="percProgress"></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="x in bottom10facet">
+										<td class="facetName" title="{{x.label}}"><span>{{x.label}}</span></td>
+										<td class="facetCount" title="{{x.value}}"><span>{{x.value}}</span></td>
+										<td class="facetperc" title="{{x.perc}}"><span>{{x.perc}}</span></td>
+										<td class="percProgress">
+											<div class="progress">
+												<div class="bar" ng-style="{width:{{((x.value / facetValueSum) * 100)}} + '%'}">
+												<span class="percent" ng-show="((x.value / facetValueSum) * 100) > 100">100%</span>
+											</div>
+										</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="panel-footer clearfix">
+	    <button id="facetStatsExplorerClose" type="button" class="gb-primary-btn gb-modal-btn-sm pull-right" ng-click="closeModal()">Close</button>
+	</div>
+</div>

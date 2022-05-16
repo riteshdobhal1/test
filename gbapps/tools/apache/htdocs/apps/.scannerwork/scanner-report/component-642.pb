@@ -1,0 +1,1 @@
+‚ 2webXhr"dist/partials/show_info_modal.html

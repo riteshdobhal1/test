@@ -1,0 +1,30 @@
+* {
+	font-family: helvetica, sans-serif;
+	font-size: 10pt;
+}
+table {
+	border:0px solid white;
+	border-collapse:collapse;
+	background-color: #eeeeee;
+}
+.header {
+	border:7px solid white;
+}
+.meta {
+	padding-right:13px;
+}
+.meta2 {
+	padding-right:2px;
+	padding-left:5px;
+	text-align: left;
+}
+.messageField {
+	padding-bottom:10px;
+	background-color: #ffffaa;
+}
+#tableAborts td {
+	padding-right:5px;
+	padding-left:5px;
+	padding-top:3px;
+	padding-bottom:3px;
+}

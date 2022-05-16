@@ -1,0 +1,12 @@
+{
+	"Status": "Success",
+	"Msg": "",
+	"Data": {
+		"bundles": [
+			{
+				"bundle_name": "/temp/glass/glass/linux_apache/gb_linux_apache_pod/GB_data-2014_02_24_04_14_57.tar.gz",
+				"files": ["s3://gb-s3-test/glass/glass/linux_apache/gb_linux_apache_pod/GB_data-2014_02_24_04_14_57.70/GB_linux_wtmp.log", "s3://gb-s3-test/glass/glass/linux_apache/gb_linux_apache_pod/GB_data-2014_02_24_04_14_57.70/GB_linux_top", "s3://gb-s3-test/glass/glass/linux_apache/gb_linux_apache_pod/GB_data-2014_02_24_04_14_57.70/GB_linux_slabinfo", "s3://gb-s3-test/glass/glass/linux_apache/gb_linux_apache_pod/GB_data-2014_02_24_04_14_57.70/GB_linux_secure.log", "s3://gb-s3-test/glass/glass/linux_apache/gb_linux_apache_pod/GB_data-2014_02_24_04_14_57.70/GB_linux_ps_ax", "s3://gb-s3-test/glass/glass/linux_apache/gb_linux_apache_pod/GB_data-2014_02_24_04_14_57.70/GB_linux_messages.log", "s3://gb-s3-test/glass/glass/linux_apache/gb_linux_apache_pod/GB_data-2014_02_24_04_14_57.70/GB_linux_lsof", "s3://gb-s3-test/glass/glass/linux_apache/gb_linux_apache_pod/GB_data-2014_02_24_04_14_57.70/GB_linux_lastlog", "s3://gb-s3-test/glass/glass/linux_apache/gb_linux_apache_pod/GB_data-2014_02_24_04_14_57.70/GB_linux.log"]
+			}
+		]
+	}
+}

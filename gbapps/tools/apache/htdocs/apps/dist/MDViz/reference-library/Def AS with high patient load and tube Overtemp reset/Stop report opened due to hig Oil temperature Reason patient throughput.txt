@@ -1,0 +1,5 @@
+This unit was detected by Guardian as having resets due to tube OIl temperature.
+CT_DCA_16 error Stop report loop opened.
+CSE informed this is a very high throughput site and that maybe the reason.
+Checked previous tube and found that the previous tube also had overheating problem.
+Conclusion no problem onsite and the customer workflow is overheating the tube.

@@ -1,0 +1,952 @@
+<html><head><script type="text/javascript" src="lib-js/amcharts/amcharts.js"></script><script type="text/javascript" src="lib-js/amcharts/serial.js"></script><script type="text/javascript" src="../tracking_user.js"></script><style type="text/css">* {
+	font-family: helvetica, sans-serif;
+	font-size: 10pt;
+}
+table {
+	border:1px solid white;
+	border-collapse:collapse;
+	background-color: #eeeeee;
+}</style><title>Tube History Visualizer</title></head><body><div id="divDebugInfo"></div><table><tr><td bgcolor="#ffffff"><table border="0" bgcolor="#ffffff"><tr><td>Tube History file: <input type="file" id="fileinput"></td></tr><tr><td><table border="0" bgcolor="#ffffff"><tr><td>Start date:</td><td id="valueSlider1" width="100">(none)</td><td><input id="slider1" type="range" min="0" max="9" step="1" value="0" onchange="showSliderValue('slider1','valueSlider1');"></td><td rowspan="3"><input id="buttonPlot" type="button" value="Plot" style="height:40px; width:50px" onclick="callbackPlotButton();"></td></tr><tr><td>End date:</td><td id="valueSlider2">(none)</td><td><input id="slider2" type="range" min="0" max="9" step="1" value="9" onchange="showSliderValue('slider2','valueSlider2');"></td></tr><tr><td id="numScansSelected" colspan="3">Number of scans found: 0</td></tr></table></td></tr></table></td><td><span style="padding-left:0px"></span></td><td bgcolor="#ffffff"><table border="0" cellpadding="5"><tr><td id="serial">System Serial Number : 99999</td><td id="customer">Customer,City,District : XXX#, XXX#, XXX</td><td id="swVersion">Software version : VA44A</td><td id="numScans">Number of Scans : 99999</td></tr><tr><td id="scanSecs">Tube Scan Seconds : 999999</td><td id="installed">Date of Installation : 2000-01-01 00:00:00</td><td id="tubeSerial">Tube Serial Number : 99999999</td><td id="tubeKWs">KWs Since Tube Inst. : 999</td></tr><tr><td id="tubeSystem">Tube system : A or B</td><td id="deinstalled">Date of Deinstallation : 2000-01-01 00:00:00</td><td id="tubeType">Tube Type : XXX</td><td id="systemSecs">System Scan Seconds : 999</td></tr></table></td></tr></table><span id="divMessage"></span><p>Parameter 1: <select id="tube_param1" onchange="selectParam('tube_param1', 0, chart, true);" style="background-color: #ccccff; width: 200px;" disabled="disabled"></select> &nbsp;&nbsp;&nbsp; 2: <select id="tube_param2" onchange="selectParam('tube_param2', 1, chart, true);" style="background-color: #ffcccc; width: 200px;" disabled="disabled"></select> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 3: <select id="tube_param3" onchange="selectParam('tube_param3', 0, chart2, true);" style="background-color: #ccffcc; width: 200px;" disabled="disabled"></select> &nbsp;&nbsp;&nbsp; 4: <select id="tube_param4" onchange="selectParam('tube_param4', 1, chart2, true);" style="background-color: #ffccff; width: 200px;" disabled="disabled"></select></p><div id="divChart1" style="width: 100%; height: 400px; background-color: #eeeeee;"></div><div id="divChart2" style="width: 100%; height: 360px; background-color: #eeeeee;"></div><script src="TubeHistoryFormat43.js"></script><script src="TubeHistoryFormat81.js"></script><script type="text/javascript">var indicatorValueMin = 0;
+var indicatorValueMax = 5;
+var switchAutoAdjustParameterLimits = true;
+var thFormat;
+var fileObj;
+var fileReader;
+var serial = "unknown serial";
+var chart;
+var fullData = [];
+var chartData = [];
+var listDays = [];
+var numScans = [];
+var indexDayStart = [];
+var indexDayEnd = [];
+var stopwatchStartTimestamp;
+var zoomStartDate = [];
+var zoomEndDate = [];
+var zoomStartIndexLast;
+var zoomEndIndexLast;
+var colorGraph1 = "#0000ff";
+var colorGraph2 = "#ff0000";
+var colorGraph3 = "#00aa00";
+var colorGraph4 = "#ff00ff";
+var colorIndicator1 = "#ffdd77";
+
+function myballoon(d) {
+	return d.toUTCString();
+}
+
+function initializeChart() {
+    chart = new AmCharts.AmSerialChart();
+    chart.dataProvider = chartData;
+    chart.categoryField = "datetime";
+    chart.sequencedAnimation = false;
+	chart.categoryAxis.minPeriod = "ss";
+	chart.categoryAxis.parseDates = true;
+	chart.addListener("zoomed", handleZoom);
+
+    // value axis 1
+    var valueAxis1 = new AmCharts.ValueAxis();
+	valueAxis1.title = "v_ax_1";
+    valueAxis1.axisAlpha = 0.15;
+    valueAxis1.minimum = 0;
+    valueAxis1.dashLength = 3;
+	valueAxis1.color = colorGraph1;
+	valueAxis1.gridColor = colorGraph1;
+	valueAxis1.titleColor = colorGraph1;
+    chart.addValueAxis(valueAxis1);
+    // graph 1
+    var graph1 = new AmCharts.AmGraph();
+	graph1.id = "g1";
+	graph1.valueAxis = valueAxis1;
+    graph1.valueField = "oil_pressure";
+    //graph1.fillAlphas = 0.5;
+    graph1.balloonText = "[[value]] : [[kind]]";
+	graph1.lineColor = colorGraph1;
+	graph1.bulletSize = 5;
+	graph1.bullet = "round";
+	graph1.bulletBorderAlpha = 1;
+	graph1.bulletColor = "#FFFFFF";
+	graph1.hideBulletsCount = 1000;
+	graph1.useLineColorForBulletBorder = true;
+    chart.addGraph(graph1);
+
+	// value axis 2
+	var valueAxis2 = new AmCharts.ValueAxis();
+	valueAxis2.title = "v_ax_2";
+	valueAxis2.axisAlpha = 0.15;
+	valueAxis2.minimum = 0;
+	valueAxis2.dashLength = 3;
+	valueAxis2.position = "right";
+	valueAxis2.color = colorGraph2;
+	valueAxis2.gridColor = colorGraph2;
+	valueAxis2.titleColor = colorGraph2;
+	chart.addValueAxis(valueAxis2);
+	// graph 2
+	var graph2 = new AmCharts.AmGraph();
+	graph2.id = "g2";
+	graph2.valueAxis = valueAxis2;
+	graph2.valueField = "arcings_one";
+	graph2.bullet = "triangleDown";
+	graph2.balloonText = "[[value]]";
+	graph2.hideBulletsCount = 1000;
+	graph2.bulletBorderThickness = 1;
+	graph2.lineColor = colorGraph2;
+	graph2.hidden = false;
+	chart.addGraph(graph2);
+
+	var chartCursor = new AmCharts.ChartCursor();
+    chartCursor.categoryBalloonDateFormat = "MMM DD, JJ:NN:SS EEE";
+    chartCursor.cursorPosition = "mouse";
+//chartCursor.categoryBalloonFunction = myballoon;
+	chart.chartCursor = chartCursor;
+
+	var chartScrollbar = new AmCharts.ChartScrollbar();
+	chartScrollbar.graph = "g1";
+	chartScrollbar.scrollbarHeight = 40;
+	chartScrollbar.backgroundAlpha = 0;
+	chartScrollbar.selectedBackgroundAlpha = 0.1;
+	chartScrollbar.selectedBackgroundColor = "#888888";
+	chartScrollbar.graphFillAlpha = 0;
+	chartScrollbar.graphLineAlpha = 0.5;
+	chartScrollbar.selectedGraphFillAlpha = 0;
+	chartScrollbar.selectedGraphLineAlpha = 1;
+	chartScrollbar.autoGridCount = true;
+	chartScrollbar.color = "#AAAAAA";
+	chart.chartScrollbar = chartScrollbar;
+	chart.pathToImages = "lib-js/amcharts/images/";
+
+    chart.write("divChart1");
+}
+
+function initializeChart2() {
+    chart2 = new AmCharts.AmSerialChart();
+    chart2.dataProvider = chartData;
+    chart2.categoryField = "datetime";
+    chart2.sequencedAnimation = false;
+	chart2.categoryAxis.minPeriod = "ss";
+	chart2.categoryAxis.parseDates = true;
+	chart2.addListener("zoomed", handleZoom2);
+
+    // value axis 1
+    var valueAxis1 = new AmCharts.ValueAxis();
+	valueAxis1.title = "v_ax_1";
+    valueAxis1.axisAlpha = 0.15;
+    valueAxis1.minimum = 0;
+    valueAxis1.dashLength = 3;
+	valueAxis1.color = colorGraph3;
+	valueAxis1.gridColor = colorGraph3;
+	valueAxis1.titleColor = colorGraph3;
+    chart2.addValueAxis(valueAxis1);
+    // graph 3
+    var graph3 = new AmCharts.AmGraph();
+	graph3.id = "g3";
+	graph3.valueAxis = valueAxis1;
+    graph3.valueField = "frequency";
+    //graph3.fillAlphas = 0.5;
+    graph3.balloonText = "[[value]] : [[kind]]";
+	graph3.lineColor = "#00aa00";
+	graph3.bulletSize = 5;
+	graph3.bullet = "round";
+	graph3.bulletBorderAlpha = 1;
+	graph3.bulletColor = "#FFFFFF";
+	graph3.hideBulletsCount = 1000;
+	graph3.useLineColorForBulletBorder = true;
+    chart2.addGraph(graph3);
+
+	// value axis 2
+	var valueAxis2 = new AmCharts.ValueAxis();
+	valueAxis2.title = "v_ax_1";
+	valueAxis2.axisAlpha = 0.15;
+	valueAxis2.minimum = 0;
+	valueAxis2.dashLength = 3;
+	valueAxis2.position = "right";
+	valueAxis2.color = colorGraph4;
+	valueAxis2.gridColor = colorGraph4;
+	valueAxis2.titleColor = colorGraph4;
+	chart2.addValueAxis(valueAxis2);
+	// graph 4
+	var graph4 = new AmCharts.AmGraph();
+	graph4.id = "g4";
+	graph4.valueAxis = valueAxis2;
+	graph4.valueField = "arcings_both";
+	graph4.bullet = "triangleDown";
+	graph4.balloonText = "[[value]]";
+	graph4.hideBulletsCount = 1000;
+	graph4.bulletBorderThickness = 1;
+	graph4.lineColor = "#ff00ff";
+	graph4.hidden = false;
+	chart2.addGraph(graph4);
+
+	var chartCursor = new AmCharts.ChartCursor();
+    chartCursor.categoryBalloonDateFormat = "MMM DD, JJ:NN:SS";
+    chartCursor.cursorPosition = "mouse";
+	chart2.chartCursor = chartCursor;
+
+/*
+	var chartScrollbar = new AmCharts.ChartScrollbar();
+	chartScrollbar.graph = "g3";
+	chartScrollbar.scrollbarHeight = 40;
+	chartScrollbar.backgroundAlpha = 0;
+	chartScrollbar.selectedBackgroundAlpha = 0.1;
+	chartScrollbar.selectedBackgroundColor = "#888888";
+	chartScrollbar.graphFillAlpha = 0;
+	chartScrollbar.graphLineAlpha = 0.5;
+	chartScrollbar.selectedGraphFillAlpha = 0;
+	chartScrollbar.selectedGraphLineAlpha = 1;
+	chartScrollbar.autoGridCount = true;
+	chartScrollbar.color = "#AAAAAA";
+	chartScrollbar.oppositeAxis = false;
+	chart2.chartScrollbar = chartScrollbar;
+*/
+
+	chart2.pathToImages = "lib-js/amcharts/images/";
+
+    chart2.write("divChart2");
+}
+
+function initializeCharts() {
+	initializeChart();
+	initializeChart2();
+	chart.autoMargins = false;
+	chart.marginLeft  = 70;
+	chart.marginRight = 70;
+	chart.marginBottom = 20;
+	chart2.autoMargins = false;
+	chart2.marginLeft = chart.marginLeft;
+	chart2.marginRight = chart.marginRight;
+	chart2.marginBottom = chart.marginBottom;
+}
+
+function handleZoom(event) {
+	var z1 = event.startDate;
+	var z2 = event.endDate;
+	zoomStartIndexLast = event.startIndex;
+	zoomEndIndexLast = event.endIndex;
+	chart2.zoomToDates(z1, z2);		// sync zoom with chart 2
+	//showMessage(zoomStartIndexLast + '-' + zoomEndIndexLast);
+}
+
+function handleZoom2(event) {
+	var z1 = event.startDate;
+	var z2 = event.endDate;
+	zoomStartIndexLast = event.startIndex;
+	zoomEndIndexLast = event.endIndex;
+	chart.zoomToDates(z1, z2);		// sync zoom with chart 1
+	//showMessage(zoomStartIndexLast + '-' + zoomEndIndexLast);
+}
+
+function findHeaderLine(datalines) {
+	var n = datalines.length;
+	var i;
+	var idx = -1;
+	for (i=0; i<n; i++) {
+		if (datalines[i].charAt(0) != '#') {
+			idx = i-1;
+			break;
+		}
+	}
+	return idx;
+}
+
+function editColumnNames(columnNames) {
+	for (var k=0; k<columnNames.length; k++) {
+		var s = columnNames[k];
+		s = s.replace(/ /g, "_");
+		s = s.replace(/\./g, "");
+		s = s.replace(/\//g, "");
+		columnNames[k] = s;
+	}
+}
+
+function findNumericColumns(columnNames, sampleLine, delim) {
+	var isNumeric = new Array(columnNames.length);
+	var re = /[\d\.]+/;
+	var re2 = /:/;
+	var tokens = sampleLine.split(delim);
+	for (var k=0; k<columnNames.length; k++) {
+		if (tokens[k].match(re)) {
+			isNumeric[k] = true;
+		}
+		else {
+			isNumeric[k] = false;
+		}
+		if (tokens[k].match(re2)) {
+			isNumeric[k] = false;
+		}
+
+		if (columnNames[k] == "system_ser_no") {
+			isNumeric[k] = false;
+		}
+		if (columnNames[k] == "tube_ser_no") {
+			isNumeric[k] = false;
+		}
+		if (columnNames[k] == "Scan_count") {
+			isNumeric[k] = false;
+		}
+		if (columnNames[k] == "TimeDiffToUTC_Time") {
+			isNumeric[k] = false;
+		}
+	}
+	return isNumeric;
+}
+
+function countNumericColumns(isNumeric) {
+	var nColsNumeric = 0;
+	for (var k=0; k<isNumeric.length; k++) {
+		if (isNumeric[k]) {
+			nColsNumeric++;
+		}
+	}
+	return nColsNumeric;
+}
+
+function showIsNumeric(columnNames, isNumeric) {
+	var ss = new Array(columnNames.length);
+	for (var k=0; k<columnNames.length; k++) {
+		ss[k] = columnNames[k] + " : " + String(isNumeric[k]);
+		//ss[k] = String(k) + " : " + String(isNumeric[k]);
+		//ss[k] = columnNames[k];
+	}
+	return ss.join("<br>");
+}
+
+function makeSelector(idDiv, strSelectTag, columnNames, isNumeric, firstOption) {
+	var ss = new Array();
+	ss.push('<form>Tube parameter: ');
+	ss.push(strSelectTag);
+	ss.push(firstOption);
+	for (var k=0; k<columnNames.length; k++) {
+		if (isNumeric[k]) {
+			ss.push('<option value="' + columnNames[k] + '" onchange="">' 
+				+ columnNames[k] + '</option>');
+		}
+	}
+	ss.push('</select></form>');
+	document.getElementById(idDiv).innerHTML = ss.join("");
+}
+
+function parseTimestamp(s) {
+	// 2016-01-17 12:20:46.943991
+	// 01234567890123456789012345
+	var yy = Number(s.substr(0,4));
+	var mm = Number(s.substr(5,2))-1;	// amCharts start months with 0
+	var dd = Number(s.substr(8,2));
+	var HH = Number(s.substr(11,2));
+	var MM = Number(s.substr(14,2));
+	var SS = Number(s.substr(17,9));
+	return new Date(yy,mm,dd,HH,MM,SS);
+}
+
+function loadFullData(datalines, idxStart, thFormat) {
+	chartData = [];
+	// -----------------------needed???
+	//AmCharts.ready(initializeChart);
+	//chart.validateData();
+	fullData = [];
+	// reverse order to sort chronologically
+	for (var i=datalines.length-1; i>=idxStart; i--) {
+		if (datalines[i].length > 0) {
+			var tokens = datalines[i].split(thFormat.delim);
+			var record = {};
+			for (k=0; k<thFormat.columnDef.length; k++) {
+				var colname = thFormat.columnDef[k].id;
+				if (k == thFormat.indexTimestamp) {
+					// read timestamp
+					record[colname] = thFormat.parseTimestamp(tokens[k]);
+				}
+				else {
+					if (thFormat.columnDef[k].plot==1) {
+						// convert to number
+						record[colname] = Number(tokens[k]);
+					}
+					else {
+						// keep as string
+						record[colname] = tokens[k];
+					}
+				}
+			}
+			fullData.push(record);
+		}
+	}
+}
+
+function fullDataToString(fullData) {
+	var ss = new Array(fullData.length);
+	for (var i=0; i<fullData.length; i++) {
+		var record = fullData[i];
+		var zz = new Array();
+		for (var k in record) {
+			zz.push(k + "=" + record[k]);
+		}
+		ss[i] = zz.join(", ");
+	}
+	return ss.join("<br>");
+}
+
+function showMetadataRecord(s, id) {
+	var z = '';
+	if (s.charAt(0) == '#') {
+		z = s.replace('#', '');
+	}
+	else {
+		z = 'Bad record';
+	}
+	document.getElementById(id).innerHTML = z;
+	//document.getElementById('divDebugInfo').innerHTML = z;
+}
+
+function showMetadataAll(datalines) {
+	//document.getElementById('divDebugInfo').innerHTML = "start showMetadataAll";
+	showMetadataRecord(datalines[0], 'swVersion');
+	showMetadataRecord(datalines[1], 'tubeSystem');
+	showMetadataRecord(datalines[2], 'customer');
+	showMetadataRecord(datalines[3], 'installed');
+	showMetadataRecord(datalines[4], 'deinstalled');
+	showMetadataRecord(datalines[5], 'serial');
+	showMetadataRecord(datalines[6], 'tubeSerial');
+	showMetadataRecord(datalines[7], 'tubeType');
+	showMetadataRecord(datalines[8], 'numScans');
+	showMetadataRecord(datalines[9], 'tubeKWs');
+	showMetadataRecord(datalines[10], 'scanSecs');
+	showMetadataRecord(datalines[11], 'systemSecs');
+
+	// get tube scan seconds
+	var tokens = datalines[10].split(' ');
+	var scanSecs = Number(tokens[tokens.length-1]);
+	//document.getElementById('divDebugInfo').innerHTML = scanSecs;
+	var fieldScanSecs = document.getElementById('scanSecs');
+	fieldScanSecs.style.backgroundColor = '#aaffaa';
+	fieldScanSecs.style.color = 'black';
+	if (scanSecs > 350000) {
+		fieldScanSecs.style.backgroundColor = 'yellow';
+		fieldScanSecs.style.color = 'black';
+	}
+	if (scanSecs > 600000) {
+		fieldScanSecs.style.backgroundColor = 'red';
+		fieldScanSecs.style.color = 'white';
+	}
+	//document.getElementById('divDebugInfo').innerHTML = 'done';
+}
+
+function showMessage(text, bgcolor) {
+	var x = document.getElementById('divMessage');
+	x.innerHTML = text;
+	x.style.backgroundColor = bgcolor;
+} 
+
+function countScansPerDay(fullData) {
+	//document.getElementById('divDebugInfo').innerHTML = "start countScansPerDay";
+	//document.getElementById('divDebugInfo').innerHTML = fullData.length;
+	listDays = [];
+	numScans = [];
+	indexDayStart = [];
+	indexDayEnd = [];
+	var dateLast = '';
+	var n = 0;
+	for (var i=0; i<fullData.length; i++) {
+		var d = fullData[i].datetime.toLocaleDateString();
+		if (i == 0) {
+			listDays.push(d);
+			n = 1;
+			dateLast = d;
+			indexDayStart.push(0);
+		}
+		else {
+			if (d != dateLast) {
+				listDays.push(d);
+				numScans.push(n);
+				n = 1;
+				dateLast = d;
+				indexDayStart.push(i);
+				indexDayEnd.push(i-1);
+			}
+			else {
+				n++;
+			}
+		}
+	}
+	numScans.push(n);
+	indexDayEnd.push(fullData.length-1);
+
+	//for (var i=0; i<numScans.length; i++) { numScans[i] *= 1000; }
+	//document.getElementById('divDebugInfo').innerHTML = numScans;
+	//document.getElementById('divDebugInfo').innerHTML = listDays;
+	//document.getElementById('divDebugInfo').innerHTML = indexDayStart.toString()+'--'+indexDayEnd.toString();
+}
+
+function setSliderInitialPosition() {
+	var idxDayLast = listDays.length - 1;
+	document.getElementById('slider1').max = idxDayLast;
+	document.getElementById('slider2').max = idxDayLast;
+	document.getElementById('slider2').value = idxDayLast;
+	var idxDayFirst = 0;
+	var maxScans = 10000;
+	var sumScans = 0;
+	for (var i=idxDayLast; i>=0; i--) {
+		sumScans += numScans[i];
+		if (sumScans >= maxScans) {
+			idxDayFirst = i+1;
+			if (idxDayFirst > idxDayLast) { idxDayFirst=idxDayLast; }
+			break;
+		}
+	}
+	document.getElementById('slider1').value = idxDayFirst;
+}
+
+function showSliderValue(idSlider, idTextfield) {
+	var s = document.getElementById(idSlider);
+	var t = document.getElementById(idTextfield);
+	//t.innerHTML = s.value;
+	t.innerHTML = listDays[Number(s.value)];
+
+	var buttonPlot = document.getElementById('buttonPlot');
+
+	var i1 = Number(document.getElementById('slider1').value);
+	var i2 = Number(document.getElementById('slider2').value);
+	if (i2 >= i1) {
+		var numScansSelected = 0;
+		for (var i=i1; i<=i2; i++) {
+			numScansSelected += numScans[i];
+		}
+		buttonPlot.disabled = false;
+		showMessage('', '#ffffff');
+	}
+	else {
+		numScansSelected = 0;
+		buttonPlot.disabled = true;
+		showMessage('Please select an end date after the start date.', '#ffff00');
+	}
+	document.getElementById('numScansSelected').innerHTML = 'Number of scans found: ' + String(numScansSelected);
+}
+
+function fillSelectElement(id, thFormat) {
+	var x = document.getElementById(id);
+
+	// remove all
+	while (x.options.length) {
+		x.remove(0);
+	}
+
+	for (var k=0; k<thFormat.columnDef.length; k++) {
+		if (thFormat.columnDef[k].plot==1) {
+			var c = document.createElement("option");
+			c.text = thFormat.columnDef[k].id;
+			x.options.add(c);
+		}
+	}
+	x.disabled = false;
+}
+
+function addEmptyOptionToSelectElement(id) {
+	var x = document.getElementById(id);
+	var c = document.createElement("option");
+	c.text = '(none)';
+	c.selected = true;
+	x.options.add(c, 0);
+}
+
+function getKeys(struct) {
+	var keys = [];
+	for (var k in struct) {
+		keys.push(k);
+	}
+	return keys;
+}
+
+function makeUsableAsKey(strInput) {
+	var strCleaned = '';
+	// replace any non-word character
+	strCleaned = strInput.replace(/\W/g, '_');
+	return strCleaned;
+}
+
+function addIndicator(colName) {
+	var hash = {};
+	for (var i=0; i<fullData.length; i++) {
+		var key = makeUsableAsKey(fullData[i][colName]);
+		hash[key] = 1;
+	}
+	var listIndicatorNames = [];
+	for (var k in hash) {
+		listIndicatorNames.push(colName + '_' + k);
+	}
+	//document.getElementById('divDebugInfo').innerHTML = listIndicatorNames;
+
+	for (var i=0; i<fullData.length; i++) {
+		// add columns for indicators
+		for (var k=0; k<listIndicatorNames.length; k++) {
+			fullData[i][listIndicatorNames[k]] = 0;
+		}
+		// set 1 for actual value
+		var k0 = colName + '_' + makeUsableAsKey(fullData[i][colName]);
+		fullData[i][k0] = 1;
+	}
+	//document.getElementById('divDebugInfo').innerHTML = getKeys(fullData[0]).join("<br>");
+
+	// add indicators to column definition
+	for (var k=0; k<listIndicatorNames.length; k++) {
+		thFormat.columnDef.push(
+			{ id: listIndicatorNames[k], plot: 1, min: indicatorValueMin, max: indicatorValueMax }
+		);
+	}
+}
+
+
+// indicators[name] = [...]  array of Date()
+var indicators = {};
+var guideIndicators = {};
+
+function loadIndicatorSingle(colName) {
+	// first pass: get indicator levels
+	var hash = {};
+	for (var i=0; i<chartData.length; i++) {
+		var key = makeUsableAsKey(chartData[i][colName]);
+		hash[key] = 1;
+	}
+	var listIndicatorLevels = [];
+	for (var k in hash) {
+		listIndicatorLevels.push(colName + '_' + k);
+	}
+	//document.getElementById('divDebugInfo').innerHTML = listIndicatorLevels;
+
+	// initialize
+	for (var k=0; k<listIndicatorLevels.length; k++) {
+		indicators[listIndicatorLevels[k]] = [];
+	}
+
+	// second pass: extract timestamps for each level
+	var colNameTimestamp = thFormat.columnDef[thFormat.indexTimestamp].id;
+	for (var i=0; i<chartData.length; i++) {
+		var level = colName + '_' + makeUsableAsKey(chartData[i][colName]);
+		var ts = chartData[i][colNameTimestamp];
+		indicators[level].push(ts);
+		//document.getElementById('divDebugInfo').innerHTML = ts;
+	}
+	//document.getElementById('divDebugInfo').innerHTML = getKeys(chartData[0]).join("<br>");
+}
+
+function loadIndicatorsAll() {
+	indicators = {};
+	for (var k=0; k<thFormat.columnDef.length; k++) {
+		if (thFormat.columnDef[k].plot==2) {
+			loadIndicatorSingle(thFormat.columnDef[k].id);
+		}
+	}
+	//document.getElementById('divDebugInfo').innerHTML = getKeys(indicators).join("<br>");
+	//document.getElementById('divDebugInfo').innerHTML = indicators['region_head'];
+	//document.getElementById('divDebugInfo').innerHTML = indicators['region_body'].join("<br>");
+
+	guideIndicators = {};
+	for (var level in indicators) {
+		var listTimestamps = indicators[level];
+		var guides = [];
+		for (var i=0; i<listTimestamps.length; i++) {
+			guides.push({
+				date: listTimestamps[i],
+				lineColor: colorIndicator1,
+				lineAlpha: 1,
+				tickLength: 0
+			});
+		}
+		guideIndicators[level] = guides;
+	}
+	//document.getElementById('divDebugInfo').innerHTML = guideIndicators['region_body'].join("<br>");
+	//document.getElementById('divDebugInfo').innerHTML = guideIndicators['region_head'].join("<br>");
+}
+
+function loadTubeHistoryFormat(sampleLine) {
+	var delim = "\t";
+	//document.getElementById('divDebugInfo').innerHTML = sampleLine;
+	var tokens = sampleLine.split(delim);
+	var nCols = tokens.length;
+	//document.getElementById('divDebugInfo').innerHTML = "nCols = " + nCols;
+	if (nCols == 43) { return loadTubeHistoryFormat43(); }
+	if (nCols == 81) { return loadTubeHistoryFormat81(); }
+}
+
+// update min/max values for parameters based on loaded data
+function updateParameterLimits() {
+	for (var i=0; i<fullData.length; i++) {
+		var record = fullData[i];
+		for (var k=0; k<thFormat.columnDef.length; k++) {
+			if (thFormat.columnDef[k].plot==1) {
+				var colName = thFormat.columnDef[k].id;
+				var val = record[colName];
+				// update min-value
+				if (val < thFormat.columnDef[k].min) { thFormat.columnDef[k].min = val; }
+				// update max-value
+				if (val > thFormat.columnDef[k].max) { thFormat.columnDef[k].max = val; }
+			}
+		}
+	}
+}
+
+function fillSelectElementIndicator(id) {
+	var x = document.getElementById(id);
+
+	// remove all
+	while (x.options.length) {
+		x.remove(0);
+	}
+
+	for (var level in indicators) {
+		var c = document.createElement("option");
+		c.text = level;
+		x.options.add(c);
+	}
+	x.disabled = false;
+	addEmptyOptionToSelectElement(id);
+}
+
+function parseData(strInput) {
+	var n = strInput.length;
+	//document.getElementById('divDebugInfo').innerHTML = "length = " + String(n);
+	var datalines = strInput.split("\n");
+	var nLines = datalines.length;
+	//document.getElementById('divDebugInfo').innerHTML = "nLines = " + String(nLines);
+	var idxHeader = findHeaderLine(datalines);
+	//document.getElementById('divDebugInfo').innerHTML = "idxHeader = " + String(idxHeader);
+
+	var idxStart = idxHeader + 1;
+
+	thFormat = loadTubeHistoryFormat(datalines[idxStart]);
+	//document.getElementById('divDebugInfo').innerHTML = thFormat.columnDef[0].id;
+
+	showMetadataAll(datalines);
+
+	loadFullData(datalines, idxStart, thFormat);
+	//document.getElementById('divDebugInfo').innerHTML = fullDataToString(fullData);
+
+	if (switchAutoAdjustParameterLimits) {
+		updateParameterLimits();
+	}
+
+	// add indicators
+	var listIndicators = [];
+	for (var k=0; k<thFormat.columnDef.length; k++) {
+		if (thFormat.columnDef[k].plot==2) {
+			listIndicators.push(thFormat.columnDef[k].id);
+		}
+	}
+	for (var k=0; k<listIndicators.length; k++) {
+		addIndicator(listIndicators[k]);
+	}
+
+	// fill select elements
+	fillSelectElement('tube_param1', thFormat);
+	fillSelectElement('tube_param2', thFormat);
+	fillSelectElement('tube_param3', thFormat);
+	fillSelectElement('tube_param4', thFormat);
+	addEmptyOptionToSelectElement('tube_param2');
+	addEmptyOptionToSelectElement('tube_param3');
+	addEmptyOptionToSelectElement('tube_param4');
+
+	countScansPerDay(fullData);
+	setSliderInitialPosition();
+	showSliderValue('slider1','valueSlider1');
+	showSliderValue('slider2','valueSlider2');
+}
+
+function getColumnIndex(thFormat, id) {
+	var idxColumn = -1;
+	for (var k=0; k<thFormat.columnDef.length; k++) {
+		if (thFormat.columnDef[k].id == id) {
+			idxColumn = k;
+			break;
+		}
+	}
+	return idxColumn;
+}
+
+function selectParam(idSelectBox, idxGraph, chart, doRefresh) {
+	var e = document.getElementById(idSelectBox);
+	var param = e.options[e.selectedIndex].value;
+
+	if (param == "(none)") {
+		chart.graphs[idxGraph].hidden = true;
+	}
+	else {
+		chart.graphs[idxGraph].valueField = param;
+		chart.graphs[idxGraph].hidden = false;
+		chart.graphs[idxGraph].valueAxis.title = param;
+
+		var idxColumn = getColumnIndex(thFormat, param);
+		//showMessage(param + "--" + idxColumn, "#ffff00");
+		chart.graphs[idxGraph].valueAxis.minimum = thFormat.columnDef[idxColumn].min;
+		chart.graphs[idxGraph].valueAxis.maximum = thFormat.columnDef[idxColumn].max;
+	}
+
+	// store zoom window because validateData() overwrites it
+	var z1 = zoomStartIndexLast;
+	var z2 = zoomEndIndexLast;
+
+	if (doRefresh) chart.validateData();
+
+	// restore zoom window
+	//if (doRefresh) chart.zoomToIndexes(zoomStartIndexLast, zoomEndIndexLast);
+	if (doRefresh) chart.zoomToIndexes(z1, z2);
+}
+
+function selectIndicator(idSelectBox, chart, doRefresh) {
+	var e = document.getElementById(idSelectBox);
+	var level = e.options[e.selectedIndex].value;
+
+	// remove guides
+	chart.categoryAxis.guides = [];
+	chart.guides = [];
+
+	var numScansText = '';
+	if (level == "(none)") {
+		//chart.guides = [];
+		//chart.categoryAxis.guides = [];
+	}
+	else {
+		chart.guides = guideIndicators[level];
+		if (chart.guides.length == 1) {
+			numScansText = '1 scan';
+		}
+		else {
+			numScansText = chart.guides.length + ' scans';
+		}
+	}
+//showMessage(level, '#ffff00');
+//showMessage(level + ':' + chart.categoryAxis.guides.length, '#ffff00');
+//showMessage(level + ':' + chart.guides.length, '#ffff00');
+//showMessage(indicators[level], '#ffff00');
+
+	document.getElementById('num_hits').innerHTML = numScansText;
+
+	// store zoom window because validateData() overwrites it
+	var z1 = zoomStartIndexLast;
+	var z2 = zoomEndIndexLast;
+
+	if (doRefresh) chart.validateData();
+
+	// restore zoom window
+	//if (doRefresh) chart.zoomToIndexes(zoomStartIndexLast, zoomEndIndexLast);
+	if (doRefresh) chart.zoomToIndexes(z1, z2);
+}
+
+function stopwatchStart() {
+	stopwatchStartTimestamp = Date.now();
+}
+
+function stopwatchEnd() {
+	return Date.now() - stopwatchStartTimestamp;
+}
+
+function callbackOnLoad(e) {
+	//var contents = e.target.result;
+	//document.getElementById('divDebugInfo').innerHTML = fileObj.name + " " + fileObj.type;
+	//document.getElementById('divDebugInfo').innerHTML = fileObj.name + ", " + String(fileObj.size) + " bytes";
+	//document.getElementById('divDebugInfo').innerHTML = "<pre>"+fileReader.result+"</pre>";
+	parseData(fileReader.result);
+	var t = Number(stopwatchEnd())*1e-3;
+	t = t.toFixed(1);
+	var text = 'Finished reading file in ' + String(t) + ' sec.';
+	showMessage(text, '#ffffff');
+}
+
+function callbackOnLoadStart(e) {
+	showMessage('Reading file ...', '#ffff00');
+	stopwatchStart();
+}
+
+function selectOption(id, name) {
+	var e = document.getElementById(id);
+	for (var i=0; i<e.options.length; i++) {
+		if (e.options[i].text == name) {
+			e.options.selectedIndex = i;
+			break;
+		}
+	}
+}
+
+function callbackPlotButton() {
+	//document.getElementById('divDebugInfo').innerHTML = 'Plot button pressed';
+	document.getElementById('divChart1').style.backgroundColor = '#ffffff';
+	document.getElementById('divChart2').style.backgroundColor = '#ffffff';
+	showMessage('', '#ffffff');
+
+	// copy subset
+	var k1 = Number(document.getElementById('slider1').value);
+	var k2 = Number(document.getElementById('slider2').value);
+	var i1 = indexDayStart[k1];
+	var i2 = indexDayEnd[k2];
+	chartData = fullData.slice(i1, i2);
+
+	// add indicators
+	//loadIndicatorsAll();
+	//fillSelectElementIndicator('indicator1');
+
+	//showMessage(i1 + ' ' + i2, '#ffffff');
+	//document.getElementById('divDebugInfo').innerHTML = fullDataToString(chartData);
+
+	chart.dataProvider = chartData;
+	chart2.dataProvider = chartData;
+
+	// default selected options
+	/*
+	selectOption('tube_param1', 'oil_pressure');
+	selectOption('tube_param2', 'arcings_one');
+	selectOption('tube_param3', 'frequency');
+	selectOption('tube_param4', 'arcings_both');
+	*/
+
+	var doRefresh = false;
+	selectParam('tube_param1', 0, chart, doRefresh);
+	selectParam('tube_param2', 1, chart, doRefresh);
+	selectParam('tube_param3', 0, chart2, doRefresh);
+	selectParam('tube_param4', 1, chart2, doRefresh);
+	//selectIndicator('indicator1', chart, doRefresh);
+
+	// balloon text for primary graph
+	var scanModeId = thFormat.columnDef[thFormat.indexScanMode].id;
+	chart.graphs[0].balloonText = "[[value]] : [[" + scanModeId + "]]";
+	chart2.graphs[0].balloonText = "[[value]] : [[" + scanModeId + "]]";
+
+/*
+chart.guides.push({
+    date: new Date(2016,0,14,12,0,0),
+    toDate: new Date(2016,0,14,13,0,0),
+    lineColor: "#ff0000",
+    lineAlpha: 1,
+    fillAlpha: 0.2,
+    fillColor: "#cccc00",
+    dashLength: 2,
+    inside: true,
+    labelRotation: 90,
+    label: "local service",
+	color: "#ff0000",
+	position: "top"
+});
+*/
+
+	chart.validateData();
+	chart2.validateData();
+
+	//chart.invalidateSize();
+}
+
+function readSingleFile(evt) {
+	fileObj = evt.target.files[0];
+
+	if (fileObj) {
+		fileReader = new FileReader();
+		fileReader.onload = callbackOnLoad;
+		fileReader.onloadstart = callbackOnLoadStart;
+		fileReader.readAsText(fileObj);
+	} else {
+		showMessage('Failed to load file', '#ffff00');
+	}
+}
+
+AmCharts.ready(initializeCharts);
+document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
+
+
+
+//showMessage("hello", '#ffff00');
+
+//var x = loadTubeHistoryFormat43();
+//showMessage(x.parseTimestamp('2016-01-17 12:20:46.943991'), '#ffff00');</script></body></html>

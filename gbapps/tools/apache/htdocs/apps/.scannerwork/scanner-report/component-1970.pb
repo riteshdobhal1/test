@@ -1,0 +1,1 @@
+² 2webX+hr7app/partials/rules-and-alerts/show_subscriber_list.html

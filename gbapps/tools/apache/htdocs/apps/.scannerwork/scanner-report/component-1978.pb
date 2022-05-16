@@ -1,0 +1,1 @@
+º 2webX,hr6app/partials/rules-and-alerts/analytics-pie-chart.html

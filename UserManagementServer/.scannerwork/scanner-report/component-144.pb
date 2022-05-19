@@ -1,1 +1,0 @@
-ê 2scalaXËhrapp/models/RulesAlerts.scala

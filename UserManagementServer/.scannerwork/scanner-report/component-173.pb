@@ -1,1 +1,0 @@
-­ 2scalaX€hr-app/dao/vertica/alert_filter_attributes.scala

@@ -1,1 +1,0 @@
-½ 2scalaX hr$app/dao/vertica/bundle_columns.scala

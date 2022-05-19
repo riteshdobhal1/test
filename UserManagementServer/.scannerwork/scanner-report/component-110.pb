@@ -1,1 +1,0 @@
-n 2webXhrapp/views/mfr/addNew.scala.html

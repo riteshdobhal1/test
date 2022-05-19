@@ -1,1 +1,0 @@
-^ 2scalaXfhr(app/controllers/SSOPingoneEmbedded.scala

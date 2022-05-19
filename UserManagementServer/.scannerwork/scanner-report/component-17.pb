@@ -1,1 +1,0 @@
- 2scalaXThrtest/ApplicationSpec.scala

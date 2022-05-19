@@ -1,1 +1,0 @@
-' 2scalaXÏhr app/controllers/SSOPingone.scala

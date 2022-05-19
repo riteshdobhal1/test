@@ -1,1 +1,0 @@
-• 2scalaXõhrapp/models/ClinsightMenu.scala

@@ -1,1 +1,0 @@
-d 2scalaX¸hrapp/constants/package.scala

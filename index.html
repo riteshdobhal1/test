@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>CORS Test (Parent Domain)</h2>
+  <button onclick="test()">Test API</button>
+
+  <script>
+    function test() {
+      fetch("https://psums.glassbeam.com/api/test", {
+        method: "GET",
+        credentials: "include"
+      })
+      .then(res => res.text())
+      .then(data => console.log("SUCCESS:", data))
+      .catch(err => console.error("CORS ERROR:", err));
+    }
+  </script>
+</body>
+</html>
